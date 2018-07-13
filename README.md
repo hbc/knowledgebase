@@ -1,7 +1,29 @@
 # knowledgebase
 General knowledge for HBC computing
 
-## Single-cell RNA-seq Resources
+* [Standarize template and packages for the core](http://bioinformatics.sph.harvard.edu/hbcABC/)
+
+# General tricks
+
+* [OSX](https://github.com/hbc/knowledgebase/OSX)
+* [R-tips-and-tricks](https://github.com/hbc/knowledgebase/R-tips-and-tricks)
+* [Bash](https://github.com/hbc/knowledgebase/Bash)
+
+# O2
+
+* [helpers to run bcbio in O2](https://code.harvard.edu/HSPH/hbc_bcbio_o2)
+
+## General NGS
+
+* [General NGS](https://github.com/hbc/knowledgebase/GeneralNGS)
+
+# Single-cell RNA-seq Resources
+
+* [SingleCell](https://github.com/hbc/knowledgebase/Single-Cell)
+
+## External methods
+
+Worthy to check by someone and add it or not to our main documentation:
 
 * [Single Cell Transcriptomics Repo](https://github.com/SingleCellTranscriptomics)
 * Tutorial for people starting out with single-cell: 

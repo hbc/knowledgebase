@@ -5,9 +5,9 @@ General knowledge for HBC computing
 
 # General tricks
 
-* [OSX](https://github.com/hbc/knowledgebase/OSX.md)
-* [R-tips-and-tricks](https://github.com/hbc/knowledgebase/R-tips-and-tricks.md)
-* [Bash](https://github.com/hbc/knowledgebase/Bash.md)
+* [OSX](https://github.com/hbc/knowledgebase/blob/master/OSX.md)
+* [R-tips-and-tricks](https://github.com/hbc/knowledgebase/blob/master/R-tips-and-tricks.md)
+* [Bash](https://github.com/hbc/knowledgebase/blob/master/Bash.md)
 
 # O2
 
@@ -15,11 +15,11 @@ General knowledge for HBC computing
 
 ## General NGS
 
-* [General NGS](https://github.com/hbc/knowledgebase/GeneralNGS.md)
+* [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
 
 # Single-cell RNA-seq Resources
 
-* [SingleCell](https://github.com/hbc/knowledgebase/Single-Cell.md)
+* [SingleCell](https://github.com/hbc/knowledgebase/blob/master/Single-Cell.md)
 
 ## External methods
 

@@ -7,7 +7,7 @@ There is a Rlib shared installation in O2 with seurat and zinbvawe and tidyverse
 To use it, load:
 
 ```
-module load module load gcc/6.2.0 R/3.4.1 gsl
+module load gcc/6.2.0 R/3.4.1 gsl hdf5
 ```
 
 Add this to `~/.Renviron`

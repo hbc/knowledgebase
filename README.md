@@ -13,9 +13,18 @@ General knowledge for HBC computing
 
 * [helpers to run bcbio in O2](https://code.harvard.edu/HSPH/hbc_bcbio_o2)
 
-## General NGS
+# General NGS
 
 * [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
+
+# Clustering
+
+## External method to test 
+
+If somebody tries and it works, please share a template at hbcACB repo:
+
+* Method to find the best [clusters](https://www.bioconductor.org/help/course-materials/2016/BioC2016/ConcurrentWorkshops1/Risso/clusterExperiment.html) using PCA or any other dimensional reduction algorithm.
+* Find significance in your [samples clustering](https://bioconductor.org/packages/release/bioc/vignettes/ClusterSignificance/inst/doc/ClusterSignificance-vignette.html)
 
 # Single-cell RNA-seq Resources
 

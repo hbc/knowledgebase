@@ -40,4 +40,6 @@ https://github.com/SingleCellTranscriptomics/ISMB2018_SingleCellTranscriptomeTut
 * [Haghverdi et al, 2018](https://europepmc.org/abstract/med/29608177) correcting for confounders/batch by matching mutual nearest neighbors
 * [A comparison of single-cell trajectory inference methods](https://www.biorxiv.org/content/early/2018/03/05/276907)
 * [Single cell Toolkit uses COMBAT for scRNA-seq batch correction](https://compbiomed.github.io/sctk_docs/articles/v03-tab01_Upload.html)
+* [BatchQC](https://bioconductor.org/packages/release/bioc/html/BatchQC.html) Software for assessing best methods for batch correction (based on ComBat methodology). Publication [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2263-6)
+
 

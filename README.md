@@ -17,6 +17,10 @@ General knowledge for HBC computing
 
 * [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
 
+# bcbio
+* [tips for running bcbio](https://github.com/hbc/knowledgebase/blob/master/bcbio_tips.md)
+
+
 # Clustering
 
 ## External method to test 

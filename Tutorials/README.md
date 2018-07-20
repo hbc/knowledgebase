@@ -5,4 +5,4 @@ This repository contains tutorials for various next-generation sequencing analys
 | [bcbio]() | Annually |
 | [RNA-seq differential expression]() | Continuously |
 | [Single-cell RNA-seq]() | Continuously |
-| [Intron retention analysis]() | May 2018 |
+| [Intron retention analysis](https://github.com/hbc/knowledgebase/tree/master/Tutorials/Intron%20retention%20analysis) | May 2018 |

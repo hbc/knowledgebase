@@ -2,5 +2,5 @@ This repository contains directions for completing an intron retention workflow 
 
 **Guides for intron retention analyses**
 - [Running IRFinder on O2](https://github.com/hbc/knowledgebase/blob/master/Tutorials/Intron%20retention%20analysis/running_IRFinder.md)
-- [Intron retention results and report]()
+- [Intron retention results and report](https://github.com/hbc/knowledgebase/blob/master/Tutorials/Intron%20retention%20analysis/IRFinder_report.md)
 

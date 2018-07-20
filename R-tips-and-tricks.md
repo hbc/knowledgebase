@@ -45,3 +45,38 @@ p %>%
 
 # [Link to information about count normalization methods](https://github.com/hbc/knowledgebase/wiki/Count-normalization-methods) 
 The images currently break, but I will update when the course materials are in a more permanent state.
+
+# .Rprofile usefulness
+```R
+## don't ask for CRAN repository
+options("repos" = c(CRAN = "http://cran.rstudio.com/"))
+## for the love of god don't open up tcl/tk ever
+options(menu.graphics=FALSE)
+## set seed for reproducibility
+set.seed(123456)
+## don't print out more than 100 lines at once
+options(max.print=100)
+
+
+## Create a new invisible environment for all the functions to go in
+## so it doesn't clutter your workspace.
+.env <- new.env()
+
+## ht==headtail, i.e., show the first and last 10 items of an object
+.env$ht <- function(d, n=10) rbind(head(d, n), tail(d, n))
+
+## copy from clipboard
+.env$pbcopy = function(x) {
+  capture.output(x, file=pipe("pbcopy"))
+}
+
+## update your local bcbioRNASeq and bcbioSingleCell installations
+.env$update_bcbio = function(x) {
+    devtools::install_github("steinbaugh/basejump")
+    devtools::install_github("hbc/bcbioBase")
+    devtools::install_github("hbc/bcbioRNASeq")
+    devtools::install_github("hbc/bcbioSingleCell")
+}
+
+attach(.env)
+```

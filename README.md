@@ -18,7 +18,8 @@ General knowledge for HBC computing
 * [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
 
 # bcbio
-* [tips for running bcbio](https://github.com/hbc/knowledgebase/blob/master/bcbio_tips.md)
+* [tips for running bcbio on HPC](https://github.com/hbc/knowledgebase/blob/master/bcbio_tips.md)
+* [genomes](https://github.com/hbc/knowledgebase/blob/master/bcbio_genomes.md)
 
 
 # Clustering

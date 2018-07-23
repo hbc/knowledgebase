@@ -19,7 +19,7 @@ General knowledge for HBC computing
 
 # bcbio
 * [tips for running bcbio on HPC](https://github.com/hbc/knowledgebase/blob/master/bcbio_tips.md)
-* [genomes](https://github.com/hbc/knowledgebase/blob/master/bcbio_genomes.md)
+* [tips for genomes](https://github.com/hbc/knowledgebase/blob/master/bcbio_genomes.md)
 
 
 # Clustering

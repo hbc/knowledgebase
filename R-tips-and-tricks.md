@@ -80,3 +80,11 @@ options(max.print=100)
 
 attach(.env)
 ```
+
+# Make density plot without underline
+```R
+ggplot(colData(sce) %>%
+       as.data.frame(), aes(log10GenesPerUMI)) +
+    stat_density(geom="line") +
+    facet_wrap(~period + intervention) 
+```

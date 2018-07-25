@@ -79,7 +79,7 @@ R_MAX_NUM_DLLS=150
 Then start an interactive session with extra memory and x11:
 
 ```bash
-srun --pty -p interactive -t 0-12:00 --x11 --mem 128G /bin/bash
+srun --pty -p interactive -t 0-12:00 --x11 --mem 96G /bin/bash
 ```
 
 After starting the interactive session, load the necessary R modules and start R:

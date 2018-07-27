@@ -3,6 +3,10 @@ General knowledge for HBC computing
 
 * [Standarize template and packages for the core](http://bioinformatics.sph.harvard.edu/hbcABC/)
 
+# Project set up
+
+[Document](https://docs.google.com/document/d/1FVyPPI7b1KdeDYp7CQRct6Gozpmmy-Xq2P7QeAcxG10/edit?usp=sharing) explaining how to set up projects [Need to be migrated to MD].
+
 # General tricks
 
 * [OSX](https://github.com/hbc/knowledgebase/blob/master/OSX.md)

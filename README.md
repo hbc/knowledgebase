@@ -39,7 +39,7 @@ If somebody tries and it works, please share a template at hbcACB repo:
 
 * [SingleCell](https://github.com/hbc/knowledgebase/blob/master/Single-Cell.md)
 
-## External methods
+## Other external methods
 
 Worthy to check by someone and add it or not to our main documentation:
 

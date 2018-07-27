@@ -5,7 +5,7 @@ General knowledge for HBC computing
 
 # Project set up
 
-[Document](https://docs.google.com/document/d/1FVyPPI7b1KdeDYp7CQRct6Gozpmmy-Xq2P7QeAcxG10/edit?usp=sharing) explaining how to set up projects [Need to be migrated to MD].
+[Document](https://docs.google.com/document/d/1FVyPPI7b1KdeDYp7CQRct6Gozpmmy-Xq2P7QeAcxG10/edit?usp=sharing) with suggested procedure on setting up projects [Need to be migrated to MD].
 
 # General tricks
 

@@ -1,7 +1,7 @@
 # knowledgebase
 General knowledge for HBC computing
 
-* [Standarized templates and packages for the core](http://bioinformatics.sph.harvard.edu/hbcABC/)
+* [Standardized templates and packages for the core](http://bioinformatics.sph.harvard.edu/hbcABC/)
 
 # Project set up
 

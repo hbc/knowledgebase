@@ -8,4 +8,4 @@ The contents is organized as it relates to the following topics:
 - [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
 - [O2](https://code.harvard.edu/HSPH/hbc_bcbio_o2)
 - [bcbio pipeline usage]()
-- [3' DGE](https://github.com/hbc/knowledgebase/blob/master/3'-DGE.md
+- [3' DGE](https://github.com/hbc/knowledgebase/blob/master/3'-DGE.md)

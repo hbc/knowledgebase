@@ -6,3 +6,4 @@ This repository contains tutorials for various next-generation sequencing analys
 | [RNA-seq differential expression]() | Continuously |
 | [Single-cell RNA-seq]() | Continuously |
 | [Intron retention analysis](https://github.com/hbc/knowledgebase/tree/master/Tutorials/Intron%20retention%20analysis) | May 2018 |
+| [Using conda]() | Continuously | # this as a base for setting up conda, then include more specifics when using it in a tutorial for a particular analysis - could

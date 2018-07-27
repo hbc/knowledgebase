@@ -2,7 +2,7 @@ This repository contains tutorials for various next-generation sequencing analys
 
 | Tutorial | Last updated |
 |:------------------------|:----------|
-| [bcbio]() | Annually |
+| [bcbio](https://hbctraining.github.io/In-depth-NGS-Data-Analysis-Course/sessionIV/lessons/04_bcbio_nextgen.html) | Annually |
 | [RNA-seq differential expression]() | Continuously |
 | [Single-cell RNA-seq]() | Continuously |
 | [Intron retention analysis](https://github.com/hbc/knowledgebase/tree/master/Tutorials/Intron%20retention%20analysis) | May 2018 |

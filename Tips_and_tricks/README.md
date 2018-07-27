@@ -1,6 +1,6 @@
-# Repository for tips and tricks related to specific tools and analyses
+# Tips and tricks
 
-The contents is organized as it relates to the following topics:
+This repository is organized with tips and tricks related to the following topics:
 
 **Operating system and general scripting/programming languages**
 - [OSX](https://github.com/hbc/knowledgebase/blob/master/OSX.md)

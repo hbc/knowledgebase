@@ -56,3 +56,6 @@ https://github.com/SingleCellTranscriptomics/ISMB2018_SingleCellTranscriptomeTut
   * [Haghverdi et al, 2018](https://europepmc.org/abstract/med/29608177) correcting for confounders/batch by matching mutual nearest neighbors
 
 
+# Admin info
+* [the getting started doc for new employees](https://code.harvard.edu/HSPH/hbc_admin/blob/master/Getting_Started.md)
+* [the doc we use for tracking publications, grants and talks/posters](https://docs.google.com/document/d/1gMWqhztzgB23heQ2DSjtO53RlNnNPPRqekv-RRePexs)

@@ -56,7 +56,8 @@ options(menu.graphics=FALSE)
 set.seed(123456)
 ## don't print out more than 100 lines at once
 options(max.print=100)
-
+## helps with debugging Bioconductor/S4 code
+options(showErrorCalls = TRUE, showWarnCalls = TRUE)
 
 ## Create a new invisible environment for all the functions to go in
 ## so it doesn't clutter your workspace.

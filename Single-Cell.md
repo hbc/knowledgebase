@@ -17,6 +17,42 @@ R_LIBS_USER=/n/data1/cores/bcbio/R/library/3.4-bioc-release/library
 R_MAX_NUM_DLLS=150
 ```
 
+There is also a Rlib installation in O2 with seurat and zinbvawe and tidyverse packages for R.3.5.1
+
+
+To use it, load:
+
+```
+module load gcc/6.2.0 R/3.5.1 gsl hdf5
+```
+
+Add this to `~/.Renviron`
+
+```
+R_LIBS_USER=/n/data1/cores/bcbio/R/library/3.5-bioc-release/library
+R_MAX_NUM_DLLS=150
+```
+
+### Notes:
+
+During Zinbwave installation an error may arise with the gsl package. To solve it:
+
+With gsl module loaded find which flags are set with: 
+```
+gsl-config --cflags
+
+gsl-config --libs
+```
+Export them before loading R as (the indicated flags are O2's at 08/02/2018):
+
+```
+export CFLAGS="-I/n/app/gsl/2.3/include"; export LDFLAGS="-L/n/app/gsl/2.3/lib -lgsl -lgslcblas -lm"
+```
+
+Now you can install the package normally.
+
+(source: https://stackoverflow.com/questions/24781125/installing-r-gsl-package-on-mac)
+
 Then just type `R` or use `Rscript`.
 
 ## Docker container with bcbioSingleCell

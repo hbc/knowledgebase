@@ -2,9 +2,10 @@
 
 ## Biopolymers
 
-bipolymers make their data available through an FTP site.
+- Biopolymers make their data available through an FTP site.
 
-Their data will often come as both fastq files AND fastq.bz2 files. Feel free to delete one of these, we really don't need both and they take up a lot of space.
+- Their data will often come as both fastq files AND fastq.bz2 files. 
+- Feel free to delete one of these, we really don't need both and they take up a lot of space.
 
 
 ## Dana Farber MBCF
@@ -31,7 +32,10 @@ A typical command might be something like this:
 
 ## Broad Institute
 
-It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs. For their DGE (96 well) platform, they give everything under the sun.
-You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data. While you can do this on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`. If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.
+- It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs. 
+- For their DGE (96 well) platform, they give everything under the sun.
+- You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data. 
+  - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`. 
+  - If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.
 
 

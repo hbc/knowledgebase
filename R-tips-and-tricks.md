@@ -89,3 +89,19 @@ ggplot(colData(sce) %>%
     stat_density(geom="line") +
     facet_wrap(~period + intervention) 
 ```
+
+# Archive a file to Dropbox with a link to it
+```R
+```{r results='asis'}
+dropbox_dir = "HSPH/eggan/hbc02067"
+archive_data_with_link = function(data, filename, description, dropbox_dir) {
+    readr::write_csv(data, filename)
+    links = bcbioBase::copyToDropbox(filename, dropbox_dir)
+    link = gsub("dl=0", "dl=1", links[[1]]$url)
+    basejump::markdownLink(filename, link, paste0(" ", description))
+}
+archive_data_with_link(als, "dexseq-all.csv", "All DEXSeq results", dropbox_dir)
+archive_data_with_link(als %>%
+                     filter(padj < 0.1), "dexseq-sig.csv",
+                     "All significant DEXSeq results", dropbox_dir)
+```

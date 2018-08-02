@@ -58,4 +58,4 @@ https://github.com/SingleCellTranscriptomics/ISMB2018_SingleCellTranscriptomeTut
 
 # Admin info
 * [the getting started doc for new employees](https://code.harvard.edu/HSPH/hbc_admin/blob/master/Getting_Started.md)
-* [the doc we use for tracking publications, grants and talks/posters](https://docs.google.com/document/d/1gMWqhztzgB23heQ2DSjtO53RlNnNPPRqekv-RRePexs)
+* [the doc we use for tracking publications, grants and talks/posters](https://docs.google.com/document/d/1gMWqhztzgB23heQ2DSjtO53RlNnNPPRqekv-RRePexs) (*if you need editing permissions and don't have them, contact John*)

@@ -2,10 +2,18 @@
 
 ## Biopolymers
 
-- Biopolymers make their data available through an FTP site.
+- Biopolymers (BPF) make their data available through an SFTP site
 
 - Their data will often come as both fastq files AND fastq.bz2 files. 
 - Feel free to delete one of these, we really don't need both and they take up a lot of space.
+
+- Typically, the researcher will have an email from BPF with their login, password and the dataset id (usually in the form of FC_$number)
+- Complete instructions can be found [here](https://genome.med.harvard.edu/documents/illumina/BPFNGS_FTP_Instructions.pdf)
+- You can use `scp` or `rsync` to pull down the files
+
+A typical command might look like this:
+
+`scp -r jmubel2@bpfngs.med.harvard.edu:./FC_03443 . `
 
 
 ## Dana Farber MBCF
@@ -28,7 +36,7 @@ A typical command might be something like this:
 
 `nohup wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178/*`
 
-*note the escaped exclamation point in the password, they like to put characters like that in their passwords*
+*note the escaped exclamation point in the password, they like to put characters like that in their passwords, which are usually in the form of MBCF$userid!*
 
 ## Broad Institute
 

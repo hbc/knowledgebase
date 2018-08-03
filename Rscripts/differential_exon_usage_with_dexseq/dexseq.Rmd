@@ -1,0 +1,219 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: readable
+    df_print: paged
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(tidy=TRUE, highlight=TRUE, dev="png",
+               cache=TRUE, highlight=TRUE, autodep=TRUE, warning=FALSE, error=FALSE,
+               message=FALSE, prompt=TRUE, comment='', fig.cap='')
+```
+
+# Overview
+
+```{r load-dexseq-data}
+library(tidyverse)
+summarydir = "../bcbio-remote/2018-07-31_illumina_rnaseq"
+dexseq_fn = file.path(summarydir, "combined.dexseq")
+metadata_fn = file.path("../metadata/", "metadata.csv")
+dat = readr::read_tsv(dexseq_fn) %>%
+    as.data.frame()
+rownames(dat) = dat$id
+dat$id = NULL
+metadata = readr::read_csv(metadata_fn) %>%
+    as.data.frame()
+rownames(metadata) = metadata$description
+flattenedFile = file.path("../metadata", "ref-transcripts.dexseq.gff")
+```
+
+```{r keep-only-scramble-knockdown-red}
+metadata = metadata %>%
+    as.data.frame() %>%
+    filter(treatment %in% c("scrambled", "als"))
+rownames(metadata) = metadata$description
+dat = dat[, rownames(metadata)]
+metadata$sample = as.factor(metadata$sample)
+metadata$month = as.factor(ifelse(metadata$date == "1/10/13", "January", "June"))
+metadata$description = as.factor(metadata$description)
+metadata$treatment = factor(metadata$treatment, levels=c("scrambled", "red", "als"))
+```
+
+```{r dexseq-from-matrix}
+DEXSeqDataSetFromMatrix = function(dcounts, sampleData,
+                                   design = ~sample + exon + condition:exon,
+                                   flattenedfile = NULL) {
+    dcounts <- dcounts[substr(rownames(dcounts), 1, 1) != "_",]
+    rownames(dcounts) <- sub(":", ":E", rownames(dcounts))
+    splitted <- strsplit(rownames(dcounts), ":")
+    exons <- sapply(splitted, "[[", 2)
+    genesrle <- sapply(splitted, "[[", 1)
+    if (!is.null(flattenedfile)) {
+        aggregates <- read.delim(flattenedfile, stringsAsFactors = FALSE, 
+            header = FALSE)
+        colnames(aggregates) <- c("chr", "source", "class", "start", 
+            "end", "ex", "strand", "ex2", "attr")
+        aggregates$strand <- gsub("\\.", "*", aggregates$strand)
+        aggregates <- aggregates[which(aggregates$class == "exonic_part"), 
+            ]
+        aggregates$attr <- gsub("\"|=|;", "", aggregates$attr)
+        aggregates$gene_id <- sub(".*gene_id\\s(\\S+).*", "\\1", 
+            aggregates$attr)
+        transcripts <- gsub(".*transcripts\\s(\\S+).*", "\\1", 
+            aggregates$attr)
+        transcripts <- strsplit(transcripts, "\\+")
+        exonids <- gsub(".*exonic_part_number\\s(\\S+).*", "\\1", 
+            aggregates$attr)
+        exoninfo <- GRanges(as.character(aggregates$chr), IRanges(start = aggregates$start, 
+            end = aggregates$end), strand = aggregates$strand)
+        names(exoninfo) <- paste(aggregates$gene_id, exonids, 
+            sep = ":E")
+        names(transcripts) <- rownames(exoninfo)
+        if (!all(rownames(dcounts) %in% names(exoninfo))) {
+            stop("Count files do not correspond to the flattened annotation file")
+        }
+        matching <- match(rownames(dcounts), names(exoninfo))
+        stopifnot(all(names(exoninfo[matching]) == rownames(dcounts)))
+        stopifnot(all(names(transcripts[matching]) == rownames(dcounts)))
+        dxd <- DEXSeqDataSet(dcounts, sampleData, design, exons, 
+            genesrle, exoninfo[matching], transcripts[matching])
+        return(dxd)
+    }
+    else {
+        dxd <- DEXSeqDataSet(dcounts, sampleData, design, exons, 
+            genesrle)
+        return(dxd)
+    }
+}
+```
+
+```{r make-dexseq-object}
+library(DEXSeq)
+fullModel = ~description+exon+month:exon+treatment:exon
+reducedModel = ~description+exon+month:exon
+dexseq = DEXSeqDataSetFromMatrix(dat, metadata, design=fullModel,
+                                 flattenedfile=flattenedFile)
+```
+
+```{r dispersion-estimation}
+dexseq = estimateSizeFactors(dexseq)
+dexseq = estimateDispersions(dexseq)
+```
+
+
+# Differential expression
+
+```{r diff-expression}
+dexseq = testForDEU(dexseq, fullModel=fullModel, reducedModel=reducedModel)
+dexseq = estimateExonFoldChanges(dexseq, fitExpToVar="treatment")
+```
+
+```{r pretty-logscale}
+pretty_x_logscale = function(...) {
+    scale_x_log10(...,
+        breaks = scales::trans_breaks("log10", function(x) 10^x),
+        labels = scales::trans_format("log10", scales::math_format(10^.x))) 
+    }
+```
+
+## ALS vs scramble
+It doesn't look like there are too many changes. However, below is a MA-plot showing
+there tends to be more splicing events in the knockdown than the wildtype. I don't
+find DEXSeq results particularly compelling; they are kind of hard to follow up on
+since we are just looking at parts of exons and not known annotated transcripts.
+That said, if DEXSeq is not calling much then isoform callers are likely to call
+similar degrees of splicing.
+
+```{r MAplot-als-vs-scramble}
+als = DEXSeqResults(dexseq) %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column("fragment") %>%
+    left_join(annotables::grch38, by=c("groupID"="ensgene"))
+ggplot(als %>%
+     filter(!is.na(padj)), aes(exonBaseMean, log2fold_als_scrambled, color=padj < 0.1)) +
+    geom_point(alpha=0.8, size=0.5) +
+    pretty_x_logscale() +
+    annotation_logticks(sides='b') +
+    scale_color_manual(values=c("grey", "red"))
+```
+
+The volcano plot shows a similar pattern.
+
+```{r volcano-als-vs-scramble}
+ggplot(als %>%
+       filter(!is.na(padj)), aes(log2fold_als_scrambled, -log10(pvalue),
+                                 color=padj < 0.1)) +
+    geom_point(alpha=0.8, size=0.5) +
+    scale_color_manual(values=c("grey", "red"))
+```
+
+## Top 5 genes with exon usage differences
+```{r top5-plots}
+alsraw = DEXSeqResults(dexseq)
+top5sig = als %>%
+    arrange(padj)
+graphics.off()
+par(mar=c(1,1,1,1))
+```
+
+### 'exon' 9 in GRAMD1A
+```{r exon9}
+plotDEXSeq(alsraw, "ENSG00000089351", fitExpToVar="treatment", norCounts=TRUE)
+```
+
+### 'exon' 14 in POLD1P3
+```{r exon14-ENSG00000100227}
+plotDEXSeq(alsraw, "ENSG00000100227", fitExpToVar="treatment", norCounts=TRUE)
+```
+
+### 'exon' 32 in EXD3
+```{r exon-32-ENSG00000187609}
+plotDEXSeq(alsraw, "ENSG00000187609",
+           fitExpToVar="treatment", norCounts=TRUE)
+```
+
+
+### 'exon' 3 shared among NDUFS1 and GCSHP3
+These two genes overlap, which is why they are included together. GCSHP3 is
+a pseudogene.
+```{r exon-3-ENSG00000023228}
+plotDEXSeq(alsraw, "ENSG00000023228+ENSG00000237580", fitExpToVar="treatment",
+           norCounts=TRUE)
+```
+
+### 'exon' 11 shared among ACTN1 and HMGN1P3
+These two overlap, which is why they are included together.
+```{r exon-11-ENSG00000072110}
+plotDEXSeq(alsraw, "ENSG00000072110+ENSG00000258967",
+           fitExpToVar="treatment",
+           norCounts=TRUE)
+```
+
+## Output tables
+```{r output-link-function}
+dropbox_dir = "HSPH/eggan/hbc02067"
+archive_data_with_link = function(data, filename, description, dropbox_dir) {
+    readr::write_csv(data, filename)
+    links = bcbioBase::copyToDropbox(filename, dropbox_dir)
+    link = gsub("dl=0", "dl=1", links[[1]]$url)
+    basejump::markdownLink(filename, link, paste0(" ", description))
+}
+```
+
+```{r results='asis'}
+archive_data_with_link(als, "dexseq-all.csv", "All DEXSeq results", dropbox_dir)
+archive_data_with_link(als %>%
+                     filter(padj < 0.1), "dexseq-sig.csv",
+                     "All significant DEXSeq results", dropbox_dir)
+```
+
+
+# sessioninfo
+```{r sessioninfo}
+sessioninfo::session_info()
+```
+

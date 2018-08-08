@@ -18,7 +18,7 @@ These are resources for use within the Core and include things like a list of pu
 These are resources to share amongst us and/or with the client which include interesting papers and blog posts.
 
 
-# Research consults
+# Research
 
 These are categories which describe the various types of analyses that are perfomed.
 

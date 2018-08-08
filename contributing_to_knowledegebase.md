@@ -15,13 +15,13 @@ In both cases, you will be required to **tag what you are adding with the approp
 Tag options (must choose one): `docs` or `feature request`
 
 
-### Which major category (level 1) does this fall under?
+### Which major category (Level 1) does this fall under?
 
 Tag options (must choose one): `admin`, `research`, `computing`, `faq`
 
 ### Which sub-category does this classify with?
 
-Each level 1 category has the following tags (must choose one):
+Each Level 1 category has the following Level 2 tags (must choose one):
 
 * Admin: `guides`, `tools`, `internal resources`, `general resources`
 * Computing: `bcbio`, `installation`, `tips and tricks`

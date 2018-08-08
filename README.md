@@ -1,7 +1,7 @@
 # knowledgebase
 General knowledge for HBC computing
 
-# Admin 
+# [Admin](https://github.com/hbc/knowledgebase/tree/org_test/admin) 
 
 The categories that associate with admin related things in the Core.
 

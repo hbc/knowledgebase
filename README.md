@@ -40,3 +40,4 @@ These are categories which pertain to any computing related topics.
 
 
 # Frequently asked questions (FAQ)
+ * [How can I add my knowledge to the knowledgebase?](https://github.com/hbc/knowledgebase/blob/org_test/contributing_to_knowledegebase.md)

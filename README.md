@@ -23,6 +23,7 @@ These are resources to share amongst us and/or with the client which include int
 These are categories which describe the various types of analyses that are perfomed.
 
 ## [RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/rnaseq)
+## [small RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/smallrna)
 ## [ChIP-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/chipseq)
 ## [single cell RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/scrnaseq)
 ## [ATAC-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/atacseq)

@@ -41,4 +41,5 @@ These are categories which pertain to any computing related topics.
 
 
 # Frequently asked questions (FAQ)
- * [How can I add my knowledge to the knowledgebase?](https://github.com/hbc/knowledgebase/blob/org_test/contributing_to_knowledegebase.md)
+ * [How can I add my knowledge to the knowledgebase?](https://github.com/hbc/knowledgebase/blob/org_test/faq/contributing_to_knowledegebase.md)
+ * [How can I get my question listed in the FAQ?](https://github.com/hbc/knowledgebase/blob/org_test/faq/FAQ%20contributions.md)

@@ -1,4 +1,9 @@
 ---
+title: Differential expression at isoform level
+description: This code helps to get differentially expressed isoforms from RNAseq data
+category: research
+subcategory: rnaseq
+tag: [isoforms, differential_expression]
 output:
   html_document:
     toc: true

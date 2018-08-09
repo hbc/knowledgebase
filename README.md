@@ -1,63 +1,45 @@
 # knowledgebase
 General knowledge for HBC computing
 
-* [Standardized templates and packages for the core](http://bioinformatics.sph.harvard.edu/hbcABC/)
+# Admin
 
-# Project set up
+The categories that associate with admin related things in the Core.
 
-[Document](https://github.com/hbc/knowledgebase/blob/master/setting_up_an_analysis_guidelines.md) with suggested procedure on setting up projects.
+## [Guides](https://github.com/hbc/knowledgebase/tree/org_test/admin/guides)
+These documents outline how to set up when starting a project for a client. This includes the organization and naming conventions for GitHub, DropBox and the HPC environment.
 
-[Notes](https://github.com/hbc/knowledgebase/blob/master/Sequencing_downloads.md) on downloading data from different facilities.
+## [Tools](https://github.com/hbc/knowledgebase/tree/org_test/admin/tools)
+These pages provide instructions for using various software and platforms that help the Core function administratively (i.e Basecamp, Harvest, Trello) 	 	
 
-# General tricks
+## [Internal Resources](https://github.com/hbc/knowledgebase/tree/org_test/admin/internal_resources)
+These are resources for use within the Core and include things like a list of publications with Core acknowledgement/authorship and Methods and Materials for manuscript writing.
 
-* [OSX](https://github.com/hbc/knowledgebase/blob/master/OSX.md)
-* [R-tips-and-tricks](https://github.com/hbc/knowledgebase/blob/master/R-tips-and-tricks.md)
-* [Bash](https://github.com/hbc/knowledgebase/blob/master/Bash.md)
-
-# O2
-
-* [helpers to run bcbio in O2](https://code.harvard.edu/HSPH/hbc_bcbio_o2)
-
-# General NGS
-
-* [General NGS](https://github.com/hbc/knowledgebase/blob/master/GeneralNGS.md)
-
-# bcbio
-* [tips for running bcbio on HPC](https://github.com/hbc/knowledgebase/blob/master/bcbio_tips.md)
-* [tips for genomes](https://github.com/hbc/knowledgebase/blob/master/bcbio_genomes.md)
+## [General Resources](https://github.com/hbc/knowledgebase/tree/org_test/admin/general_resources)
+These are resources to share amongst us and/or with the client which include interesting papers and blog posts.
 
 
-# Clustering
+# Research
 
-## External method to test 
+These are categories which describe the various types of analyses that are perfomed.
 
-If somebody tries and it works, please share a template at hbcACB repo:
+## [RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/rnaseq)
+## [small RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/smallrna)
+## [ChIP-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/chipseq)
+## [single cell RNA-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/scrnaseq)
+## [ATAC-seq](https://github.com/hbc/knowledgebase/tree/org_test/research/atacseq)
+## [WES](https://github.com/hbc/knowledgebase/tree/org_test/research/wes)
+## [WGS](https://github.com/hbc/knowledgebase/tree/org_test/research/wgs)
+## [General NGS](https://github.com/hbc/knowledgebase/tree/org_test/research/general_ngs)
 
-* Method to find the best [clusters](https://www.bioconductor.org/help/course-materials/2016/BioC2016/ConcurrentWorkshops1/Risso/clusterExperiment.html) using PCA or any other dimensional reduction algorithm.
-* Find significance in your [samples clustering](https://bioconductor.org/packages/release/bioc/vignettes/ClusterSignificance/inst/doc/ClusterSignificance-vignette.html)
+# Computing
 
-# Single-cell RNA-seq Resources
+These are categories which pertain to any computing related topics.
 
-* [SingleCell](https://github.com/hbc/knowledgebase/blob/master/Single-Cell.md)
-
-## External methods to test
-
-Worthy to check by someone and add it or not to our main documentation:
-
-* [Single Cell Transcriptomics Repo](https://github.com/SingleCellTranscriptomics)
-* Tutorial for people starting out with single-cell: 
-https://github.com/SingleCellTranscriptomics/ISMB2018_SingleCellTranscriptomeTutorial/wiki
-
-* [A comparison of single-cell trajectory inference methods](https://www.biorxiv.org/content/early/2018/03/05/276907)
-* [Single cell Toolkit uses COMBAT for scRNA-seq batch correction](https://compbiomed.github.io/sctk_docs/articles/v03-tab01_Upload.html)
-
-# Batch correction
-## External methods to test
-* [BatchQC](https://bioconductor.org/packages/release/bioc/html/BatchQC.html) Software for assessing best methods for batch correction (based on ComBat methodology). Publication [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2263-6)
-  * [Haghverdi et al, 2018](https://europepmc.org/abstract/med/29608177) correcting for confounders/batch by matching mutual nearest neighbors
+## [bcbio-nextgen](https://github.com/hbc/knowledgebase/tree/org_test/computing/bcbio)
+## [Software installation](https://github.com/hbc/knowledgebase/tree/org_test/computing/software_installation)
+## [Tips and Tricks](https://github.com/hbc/knowledgebase/tree/org_test/computing/tips_tricks)
 
 
-# Admin info
-* [the getting started doc for new employees](https://code.harvard.edu/HSPH/hbc_admin/blob/master/Getting_Started.md)
-* [the doc we use for tracking publications, grants and talks/posters](https://docs.google.com/document/d/1gMWqhztzgB23heQ2DSjtO53RlNnNPPRqekv-RRePexs) (*if you need editing permissions and don't have them, contact John*)
+# Frequently asked questions (FAQ)
+ * [How can I add my knowledge to the knowledgebase?](https://github.com/hbc/knowledgebase/blob/org_test/faq/contributing_to_knowledegebase.md)
+ * [How can I get my question listed in the FAQ?](https://github.com/hbc/knowledgebase/blob/org_test/faq/FAQ_contributions.md)

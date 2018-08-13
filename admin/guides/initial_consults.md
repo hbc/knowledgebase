@@ -1,4 +1,12 @@
-#We need to talk about
+---
+title: Information related to initial consults
+description: This document contains information it is useful to get from initial consults
+category: admin
+subcategory: guide
+tags: [consults]
+---
+
+# We need to talk about
 
 ## Who they are  
 	-  PI for the lab

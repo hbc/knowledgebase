@@ -1,3 +1,11 @@
+---
+title: Transfer files inside cluster
+description: This code helps with transfer files inside cluster
+category: computing
+subcategory: tips_tricks
+tags: [ssh, hpc]
+---
+
 Useful for file transfers on O2's new transfer cluster (transfer.rc.hms.harvard.edu).
 
 The nohup command can be prepended to the bash command and the command will keep running after you logout (or have your connection interrupted).

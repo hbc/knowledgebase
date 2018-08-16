@@ -1,3 +1,14 @@
+---
+title: Connecting to hpc from local
+description: This code helps with connecting to hpc computers
+category: computing
+subcategory: tips_tricks
+tags: [ssh, hpc]
+---
+
+
+# osx
+
 Use [Homebrew](http://brew.sh/) to get linux-like functionality on OSX
 
 Use [XQuartz](https://www.xquartz.org/) for X11 window functionality in OSX.
@@ -29,6 +40,3 @@ Host *
      IdentityFile ~/.ssh/id_rsa
      XAuthLocation /opt/X11/bin/xauth
 ```
-
-
-

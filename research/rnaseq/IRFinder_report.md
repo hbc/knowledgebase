@@ -1,3 +1,12 @@
+---
+title: Intron retention analysis
+description: This code helps with the analysis of intron retention from RNAseq data.
+category: research
+subcategory: rnaseq
+tags: [intron_retention, differential_expression]
+---
+
+
 ## Methods for IRFinder
 
 The intron retention analysis was performed using IRFinder version 1.2.3 based on the gene annotations for the hg19 reference genome.

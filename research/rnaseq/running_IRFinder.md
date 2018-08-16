@@ -1,3 +1,11 @@
+---
+title: How to run intron retention analysis
+description: This code helps to run IRFinder in the cluster.
+category: research
+subcategory: rnaseq
+tags:[hpc, intro_retention]
+---
+
 To run any of these commands, need to activate the bioconda IRFinder environment prior to running script.
 
 1. First script creates reference build required for IRFinder
@@ -9,7 +17,7 @@ To run any of these commands, need to activate the bioconda IRFinder environment
     #SBATCH --mem=128G        # 128 GB memory needed (memory PER CORE)
     #SBATCH -o %j.out               # Standard out goes to this file
     #SBATCH -e %j.err               # Standard err goes to this file
-    #SBATCH --mail-type=END         # Mail when the job ends 
+    #SBATCH --mail-type=END         # Mail when the job ends
 
     IRFinder -m BuildRefProcess -r reference_data/
     ```
@@ -67,6 +75,4 @@ To run any of these commands, need to activate the bioconda IRFinder environment
 
 5. Output `KD_ctrl-v-nrde2.tab` file can be read directly into R for filtering and results exploration.
 
-6. Rmarkdown workflow (included in report): https://github.com/hbc/hbcABC/blob/master/inst/rmarkdown/Rscripts/intron_retention/IRFinder.md
-
-
+6. Rmarkdown workflow (included in report): IRFinder_report.md

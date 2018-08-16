@@ -3,6 +3,7 @@ title: Training Materials
 description: Link to training materials
 category: training
 subcategory: admin
+tag: [readme]
 ---
 
 # Training administration:

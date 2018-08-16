@@ -1,3 +1,12 @@
+---
+title: Contributing to FAQ
+description: This document describes procedures to follow when adding a FAQ
+category: faq
+subcategory: 
+tags: [tutorial]
+---
+
+
 # FAQ contributions
 
 To have a question listed in the Frequently Asked Questions (FAQ) section, you can propose it as an issue. Create an issue and be sure to add the `faq` label. 

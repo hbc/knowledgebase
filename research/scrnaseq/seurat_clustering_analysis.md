@@ -1,3 +1,11 @@
+---
+title: Clustering with Seurat
+description: This code is for clustering single cell rnaseq data with Seurat.
+category: research
+subcategory: scrnaseq
+tags: [clustering]
+---
+
 # Seurat singlecell RNA-Seq clustering analysis
 
 This is a clustering analysis workflow to be run mostly on O2 using the output from the QC which is the `bcb_filtered` object. This workflow incorporates **Lorena's scripts** available within this same `Rscripts` folder. 

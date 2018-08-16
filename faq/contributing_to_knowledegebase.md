@@ -53,11 +53,9 @@ tag: [readme]
 
 ### Annotate issues and pull requests with existing labels
 
-* Please add all of the appropriate labels to tag an issue or a pull request being submitted based on the following questions:
-
-### Is this information you would like to add to the knowledgebase or is it an internal feature request for the develeopers?
-
-Tag options (must choose one): `docs` or `feature request`
+* Please add all of the appropriate labels to tag an issue or a pull request being submitted based on the following guidelines:
+ ** Adding information to the knowledgebase: `docs` 
+ ** Iternal feature request for the developers: `feature request`
 
 ### Which major category (Level 1) does this fall under?
 

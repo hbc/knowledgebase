@@ -1,3 +1,11 @@
+---
+title: Tips for bcbio
+description: This code helps with fixing jobs which timeout, and other general tips
+category: computing
+subcategory: bcbio
+tags: [bcbio, bash, hpc]
+---
+
 ## How to fix jobs bcbio jobs timing out
 
 The O2 cluster can take a really long time to schedule jobs. If you are having problems with bcbio timing out, set your --timeout parameter to something high, like this:

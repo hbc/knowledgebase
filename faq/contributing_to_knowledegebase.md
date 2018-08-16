@@ -16,11 +16,11 @@ You can contribute to knowledgebase in one of two ways.
 * `git clone <repo>`
 * `git checkout master`
 * `git pull origin master`
-* `git checkout -b <branch_name>`
+* `git checkout -b <new_branch_name>`
 * *make necessary changes locally*
 * `git add <changes>`
 * `git commit -m "good message"`
-* `git push origin <branch name>`
+* `git --set-upstream origin <new_branch name>`
 * *create pull request in github to merge the new branch with master branch*
 
 After the pull request is created, one other member with write edits will have to "review" it, at which time they can approve it first, then merge it! 

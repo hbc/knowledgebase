@@ -53,25 +53,44 @@ tag: [readme]
 
 ### Annotate issues and pull requests with existing labels
 
-* Please add all of the appropriate labels to tag an issue or a pull request being submitted based on the following guidelines:
- ** Adding information to the knowledgebase: `docs` 
- ** Iternal feature request for the developers: `feature request`
+Please add all of the appropriate labels to tag an issue or a pull request being submitted based on the following guidelines:
 
-### Which major category (Level 1) does this fall under?
+* Add the `docs` label (mandatory).
+* You will then need a single "category-" label (mandatory).
+* You will then need a single "subcategory-" label (mandatory).
+* You can then have as many other labels as necessary.
 
-Tag options (must choose one): `admin`, `research`, `computing`, `faq`
 
-### Which sub-category does this classify with?
+### Controlled vocabulary for headers/labels
 
-Each Level 1 category has the following Level 2 tags (must choose one):
+#### "Category":
+
+*Note use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `category-` prefix).*
+
+* `admin` (label: `category-admin`)
+* `research` (label: `category-research`)
+* `computing` (label: `category-computing`)
+* `faq` (label: `category-faq`)
+
+#### "Sub-category" for specific "Categories":
+
+*Note use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `subcategory-` prefix).*
 
 * **Admin**: `guides`, `tools`, `internal resources`, `general resources`
 * **Computing**: `bcbio`, `installation`, `tips and tricks`
 * **Research**: `rnaseq`, `chipseq`, `atacseq`, `scrnaseq`, `smallrnaseq`, `general_ngs`, `wes`, `wgs`, `orphans`
 * **Training**: `admin`, `materials`, `resources`
 
-#### Tag your issue with any one or more of the relevant tags
+#### "Tags":
 
-* **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh` 
+***Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.***
+
+*Note that you can use as many of these as needed to populate the `tag:` item within the header of any markdown you are contributing. These are all also available as labels on github to tag pull requests and issues.*
+
+* **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`
 * **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`
+* **Training tags**: `metrics`,`evaluation`, `catalyst`, `hsci`, `hms`, `hsph`, `social`, `literature`
 
+#### Proposing a new label
+
+If none of the labels we have above are appropriate for your issue/pull request, you can propose a new label on #knowledgebase channel in the HBC team Slack.

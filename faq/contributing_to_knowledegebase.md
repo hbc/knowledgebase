@@ -1,3 +1,11 @@
+---
+title: Contributing to knowledgebase
+description: This document describes procedures to follow when adding information to knowledgeBase
+category: faq
+subcategory: 
+tags: [tutorial]
+---
+
 
 # Contributing to knowledegebase
 

@@ -20,7 +20,7 @@ You can contribute to knowledgebase in one of two ways.
 * *make necessary changes locally*
 * `git add <changes>`
 * `git commit -m "good message"`
-* `git --set-upstream origin <new_branch name>`
+* `git push --set-upstream origin <new_branch name>`
 * *create pull request in github to merge the new branch with master branch*
 
 After the pull request is created, one other member with write edits will have to "review" it, at which time they can approve it first, then merge it! 
@@ -28,9 +28,31 @@ After the pull request is created, one other member with write edits will have t
 
 ***
 
-## Tags
+## Annotation
 
-In both cases, you will be required to **tag what you are adding with the appropriate labels**. For every issue/ pull request you can add tags based on the following questions:
+In both of the above cases, you will be required to **annotate what you are adding appropriately**. Below are a couple of ways to annotate your contribution; please note that they are not mutually exclusive:
+
+### Annotate new markdown files before the pull request is created
+
+Add a yaml header with the 5 items listed in the following example:
+```
+---
+title: Training Materials
+description: Link to training materials
+category: training
+subcategory: resources
+tag: [readme]
+---
+```
+
+`title:` and `description:` will obviously have the information specific to the file you are adding the header to. For the remaining 3 items, we have controlled vocabulary available and is listed at the bottom of this section.
+
+### Annotate issues and pull requests with existing labels
+
+
+
+
+Note that For every issue/pull request you can add tags based on the following questions:
 
 ### Is this information you would like to add to the knowledgebase or is it an internal feature request for the develeopers?
 

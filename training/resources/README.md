@@ -3,6 +3,7 @@ title: Training Materials
 description: Link to training materials
 category: training
 subcategory: resources
+tag: [readme]
 ---
 
 # Training Resources

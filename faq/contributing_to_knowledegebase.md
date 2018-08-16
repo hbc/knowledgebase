@@ -65,7 +65,7 @@ Please add all of the appropriate labels to tag an issue or a pull request being
 
 #### "Category":
 
-*Note use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `category-` prefix).*
+Use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `category-` prefix).
 
 * `admin` (label: `category-admin`)
 * `research` (label: `category-research`)
@@ -74,7 +74,7 @@ Please add all of the appropriate labels to tag an issue or a pull request being
 
 #### "Sub-category" for specific "Categories":
 
-*Note use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `subcategory-` prefix).*
+Use these as they are listed below when creating a header for a markdown file being created for contribution. When the pull request (or an issue) is created, use the matching label to tag it (matching labels will have the `subcategory-` prefix).
 
 * **Admin**: `guides`, `tools`, `internal resources`, `general resources`
 * **Computing**: `bcbio`, `installation`, `tips and tricks`
@@ -83,9 +83,9 @@ Please add all of the appropriate labels to tag an issue or a pull request being
 
 #### "Tags":
 
-***Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.***
+You can use as many of these as needed to populate the `tag:` item within the header of any markdown you are contributing. These are all also available as labels on github to tag pull requests and issues.
 
-*Note that you can use as many of these as needed to populate the `tag:` item within the header of any markdown you are contributing. These are all also available as labels on github to tag pull requests and issues.*
+*Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.*
 
 * **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`
 * **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`

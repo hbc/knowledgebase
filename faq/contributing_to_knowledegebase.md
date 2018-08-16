@@ -85,7 +85,7 @@ Use these as they are listed below when creating a header for a markdown file be
 
 You can use as many of these as needed to populate the `tag:` item within the header of any markdown you are contributing. These are all also available as labels on github to tag pull requests and issues.
 
-*Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.*
+> *Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.*
 
 * **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`
 * **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`

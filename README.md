@@ -40,6 +40,14 @@ These are categories which pertain to any computing related topics.
 ## [Tips and Tricks](https://github.com/hbc/knowledgebase/tree/org_test/computing/tips_tricks)
 
 
+# Training
+
+The major training subtopics of interest to all.
+
+## [Training materials](https://github.com/hbc/knowledgebase/tree/org_test/training/admin)
+## [Resources](https://github.com/hbc/knowledgebase/tree/org_test/training/materials)
+## [Administration](https://github.com/hbc/knowledgebase/tree/org_test/training/resources)
+
 # Frequently asked questions (FAQ)
  * [How can I add my knowledge to the knowledgebase?](https://github.com/hbc/knowledgebase/blob/org_test/faq/contributing_to_knowledegebase.md)
  * [How can I get my question listed in the FAQ?](https://github.com/hbc/knowledgebase/blob/org_test/faq/FAQ_contributions.md)

@@ -1,0 +1,98 @@
+---
+title: Example of snakemake pipeline
+description: An example of snakemake file to run a pipeline applied to a bunch of files
+category: research
+subcategory: general_ngs
+tags: [snakemake]
+---
+
+
+This file shows how to run a pipeline with snakemake for a bunch of files defined in `SAMPLES` variables. 
+
+It shows how to put together different steps and how they are related to each other.
+
+The tricky part is to have always `rule all` step and get all the output filenames you want to generate. If you miss
+some files that you want to generate and they are not the input in any other step then that step is not happening.
+
+```
+from os.path import join
+
+# Globals ---------------------------------------------------------------------
+
+# Full path to a FASTA file.
+GENOME_DIR = '../reference'
+
+# Full path to a folder that holds all of your FASTQ files.
+FASTQ_DIR = '../rawdata'
+
+# A Snakemake regular expression matching the forward mate FASTQ files.
+SAMPLES, = glob_wildcards(join(FASTQ_DIR, '{sample,[^/]+}_R1_001.fastq.gz'))
+
+# Patterns for the 1st mate and the 2nd mate using the 'sample' wildcard.
+PATTERN_R1 = '{sample}_R1_001.fastq.gz'
+PATTERN_R2 = '{sample}_R2_001.fastq.gz'
+PATTERN_GENOME = '{sample}.fa'
+
+
+rule all:
+    input:
+        index = expand(join(GENOME_DIR, '{sample}.fa.bwt'), sample = SAMPLES),
+        vcf = expand(join('vcf', '{sample}.vcf'), sample = SAMPLES),
+        vcfpileup = expand(join('pileup', '{sample}.vcf'), sample = SAMPLES),
+        sam = expand(join('stats', '{sample}.txt'), sample = SAMPLES)
+
+rule index:
+    input:
+        join(GENOME_DIR, '{sample}.fa')
+    output:
+        join(GENOME_DIR, '{sample}.fa.bwt')
+    shell:
+        'bwa index {input}'
+
+rule map:
+    input:
+        genome = join(GENOME_DIR, PATTERN_GENOME),
+        index = join(GENOME_DIR, '{sample}.fa.bwt'),
+        r1 = join(FASTQ_DIR, PATTERN_R1),
+        r2 = join(FASTQ_DIR, PATTERN_R2)
+    output:
+        'bam/{sample}.bam'
+    shell:
+        'bwa mem  -c 250 -M -t 6 -v 1 {input.genome} {input.r1} {input.r2} | samtools sort - > {output}'
+
+rule stats:
+    input:
+        bam = 'bam/{sample}.bam'
+    output:
+        'stats/{sample}.txt'
+    shell:
+        'samtools stats {input} > {output}'
+
+rule pileup:
+    input:
+        bam = 'bam/{sample}.bam',
+        genome = join(GENOME_DIR, PATTERN_GENOME)
+    output:
+        'pileup/{sample}.mp'
+    shell:
+        'samtools mpileup -f {input.genome} -t DP -t AD -d 10000 -u -g {input.bam} > {output}'
+
+
+rule mpconvert:
+    input:
+        'pileup/{sample}.mp',
+    output:
+        'pileup/{sample}.vcf'
+    shell:
+        'bcftools convert -O v  {input} >  {output}'
+
+
+rule bcf:
+    input:
+        'pileup/{sample}.mp',
+    output:
+        'vcf/{sample}.vcf'
+    shell:
+        'bcftools call -v -m  {input} >  {output}'
+
+```

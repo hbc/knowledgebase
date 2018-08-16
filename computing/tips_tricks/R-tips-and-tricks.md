@@ -1,3 +1,11 @@
+---
+title: R tips
+description: This code helps with regular data improving efficiency
+category: computing
+subcategory: tips_tricks
+tags: [R, visualization]
+---
+
 # Import/Export of files
 Stop using write.csv, write.table and use the [rio](https://cran.r-project.org/web/packages/rio/index.html) library instead. All rio needs is the file extension to figure out what file type you're dealing with. Easy import and export to Excel files for clients.
 
@@ -37,13 +45,13 @@ read_files = function(files) {
 # remove a layer from a ggplot2 object with ggedit
 ```
 plotGeneSaturation(bcb, interestingGroups=NULL) +
-  ggrepel::geom_text_repel(aes(label=description, color=NULL)) 
+  ggrepel::geom_text_repel(aes(label=description, color=NULL))
 p %>%
   ggedit::remove_geom('point', 1) +
   geom_point(aes(color=NULL))
 ```
 
-# [Link to information about count normalization methods](https://github.com/hbc/knowledgebase/wiki/Count-normalization-methods) 
+# [Link to information about count normalization methods](https://github.com/hbc/knowledgebase/wiki/Count-normalization-methods)
 The images currently break, but I will update when the course materials are in a more permanent state.
 
 # .Rprofile usefulness
@@ -87,7 +95,7 @@ attach(.env)
 ggplot(colData(sce) %>%
        as.data.frame(), aes(log10GenesPerUMI)) +
     stat_density(geom="line") +
-    facet_wrap(~period + intervention) 
+    facet_wrap(~period + intervention)
 ```
 
 # Archive a file to Dropbox with a link to it

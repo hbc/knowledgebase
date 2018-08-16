@@ -91,7 +91,7 @@ You can use as many of these as needed to populate the `tag:` item within the he
 
 * **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`
 * **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`
-* **Training tags**: `metrics`,`evaluation`, `catalyst`, `hsci`, `hms`, `hsph`, `social`, `literature`
+* **Training tags**: `metrics`, `evaluation`, `catalyst`, `hsci`, `hms`, `hsph`, `social`, `literature`
 
 #### Proposing a new label/"tag"
 

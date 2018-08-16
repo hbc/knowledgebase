@@ -1,3 +1,11 @@
+---
+title: Seurat Markers
+description: This code is for finding Seurat markers
+category: research
+subcategory: scrnaseq
+tags: [differential_analysis]
+---
+
 ```bash
 ssh -XY username@o2.hms.harvard.edu
 

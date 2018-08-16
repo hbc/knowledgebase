@@ -34,7 +34,7 @@ In both of the above cases, you will be required to **annotate what you are addi
 
 ### Annotate new markdown files before the pull request is created
 
-Add a yaml header with the 5 items listed in the following example:
+* Add a yaml header with the 5 items listed in the following example:
 ```
 ---
 title: Training Materials
@@ -45,14 +45,15 @@ tag: [readme]
 ---
 ```
 
-`title:` and `description:` will obviously have the information specific to the file you are adding the header to. For the remaining 3 items, we have controlled vocabulary available and is listed at the bottom of this section.
+* "`title:`" and "`description:`" will obviously have the information specific to the file you are adding the header to. 
+* For the remaining 3 items ("`category:`", "`subcategory:`", "`tag:`"), we have controlled vocabulary available and it is listed at the bottom of this section.
+* Please note whatever you use as a "`tag:`" will need to be encased in brackets (`[]`).
+* Make sure you only have one category and subcategory.
+* However, you can use multiple tags separated by commas! E.g. `tag: [R], [visualization], [hpc]`
 
 ### Annotate issues and pull requests with existing labels
 
-
-
-
-Note that For every issue/pull request you can add tags based on the following questions:
+* Please add all of the appropriate labels to tag an issue or a pull request being submitted based on the following questions:
 
 ### Is this information you would like to add to the knowledgebase or is it an internal feature request for the develeopers?
 

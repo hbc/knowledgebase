@@ -70,3 +70,6 @@ docker pull lpantano/bcbiosinglecell:r3.5-bsc0.1.5
 ```
 
 After pulling the docker image, run the container as detailed at https://hub.docker.com/r/lpantano/bcbiosinglecell/. This site also has explanations on how to install/update packages when you have it running in your local computer.
+
+# zinbwave and DESeq2
+If you have a complicated experimental design, zinbwave can assign invalid weights; DESeq2 will fail with a `weights.ok not all TRUE` message. Mike and I fixed that in the devel version of `DESeq2` which you can install with `devtools::install_github("mikelove/DESeq2")`.

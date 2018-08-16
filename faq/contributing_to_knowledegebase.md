@@ -6,14 +6,35 @@ You can contribute to knowledgebase in one of two ways.
 1. Add the information as **an issue**
 2. Add the information via a **pull request**
 
+### Add the information as **an issue**
+
+* 
+* 
+
+### Add the information via a **pull request**
+
+* `git clone <repo>`
+* `git checkout master`
+* `git pull origin master`
+* `git checkout -b <new_branch_name>`
+* *make necessary changes locally*
+* `git add <changes>`
+* `git commit -m "good message"`
+* `git --set-upstream origin <new_branch name>`
+* *create pull request in github to merge the new branch with master branch*
+
+After the pull request is created, one other member with write edits will have to "review" it, at which time they can approve it first, then merge it! 
+**The person who merges should make sure they *delete* the branch they pulled from!**
+
+***
+
+## Tags
 
 In both cases, you will be required to **tag what you are adding with the appropriate labels**. For every issue/ pull request you can add tags based on the following questions:
-
 
 ### Is this information you would like to add to the knowledgebase or is it an internal feature request for the develeopers?
 
 Tag options (must choose one): `docs` or `feature request`
-
 
 ### Which major category (Level 1) does this fall under?
 

@@ -1,3 +1,11 @@
+---
+title: Genomes in bcbio
+description: This describes redundant genomes in bcbio and their differences
+category: computing
+subcategory: bcbio
+tags: [bcbio]
+---
+
 **Drosophila melanogaster**
 
 *DGP6* - built from Flybase

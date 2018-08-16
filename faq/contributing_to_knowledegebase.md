@@ -44,11 +44,13 @@ Tag options (must choose one): `admin`, `research`, `computing`, `faq`
 
 Each Level 1 category has the following Level 2 tags (must choose one):
 
-* Admin: `guides`, `tools`, `internal resources`, `general resources`
-* Computing: `bcbio`, `installation`, `tips and tricks`
-* Research: `rnaseq`, `chipseq`, `atacseq`, `scrnaseq`, `smallrnaseq`, `general_ngs`, `wes`, `wgs`, `orphans`
+* **Admin**: `guides`, `tools`, `internal resources`, `general resources`
+* **Computing**: `bcbio`, `installation`, `tips and tricks`
+* **Research**: `rnaseq`, `chipseq`, `atacseq`, `scrnaseq`, `smallrnaseq`, `general_ngs`, `wes`, `wgs`, `orphans`
+* **Training**: `admin`, `materials`, `resources`
 
 #### Tag your issue with any one or more of the relevant tags
 
-* `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash` (more to come?)
+* **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh` 
+* **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`
 

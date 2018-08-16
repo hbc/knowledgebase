@@ -1,3 +1,12 @@
+---
+title: Single Cell Installations
+description: This code helps with installing tools and setting up docker for single cell rnaseq.
+category: research
+subcategory: scrnaseq
+tags: [hpc, R]
+---
+
+
 # single cell RNAseq
 
 ## Shared installation in O2

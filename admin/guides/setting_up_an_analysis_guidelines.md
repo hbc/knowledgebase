@@ -1,4 +1,21 @@
 # Setting up an analysis Guidelines
+
+## General notes
+The main purpose of following these guidelines is to have reproducible results over a period of years. Someone should be able to come back to us 5 years later when they are looking to publish and we should be able to figure out what we did. This can be a challenge even if you are the one that did the initial work (future you != past you)
+
+As such, in general there are some things to do: 
+
+1) Get your code off of your local computer somehow, either through the shared (not your personal) github or shared (not your personal) dropbox.  Github is great for atomic level version tracking, so you can see what you changed in your code and go back. Dropbox is great for associating a particular version of the code with a set of results. I recommend doing both.
+
+2) Name your folders for consults in a way that is consistent and interpretable, For instance, naming folders RNAseq1 or Chipseq_experiment don't tell us who the researcher was or which project it was. We try to use the same name for the Trello, Basecamp and Harvest cards, along with a unique ID. Using these in the name of the consult folder helps us figure out which results belong to which project.
+
+3) Keep everything available to your coworkers. Avoid keeping stuff on your own laptop if you can. Don't put core stuff on your private github or in your private Dropbox where we can't easily get to them. Make sure all your server files and folders are readable and writeable by the bcbio group. Check your permissions, sometimes the defaults for sshfs and R are set improperly. The only files you might want to set to read only are the raw data files.
+
+Finally, in an unrelated note, another goal is to avoid wasting space. Use symlinks instead of copying files, erase duplicates (or uncompressed versions of already compressed files). Use scratch for intermediate files in an analysis. 
+
+
+These are guidelines for 
+
 ## Initial folder and git setup on on O2/Odyssey
 1. Setup repo on code.harvard.edu (unless PI wants it to be public, then setup repo on Github). Use same name explained before with hbc_ prefix:
 `hbc_$technology_of_$pilastname_$intervention_on_$tissue_in_$organism_$hbccode`
@@ -7,6 +24,7 @@
 4. Go inside the repo directory, and setup subfolders called:  
 
 	#### data (for raw data)	
+	These files should be compressed gz files. If you pull down data from the sequencing core, there is no need to keep both compressed and uncompressed versions of the fastq files.
 
 	#### meta (for extra, unformatted, sample metadata)
 

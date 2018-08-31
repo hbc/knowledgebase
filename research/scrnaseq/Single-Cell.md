@@ -9,7 +9,7 @@ tags: [hpc, R]
 
 # single cell RNAseq
 
-## Shared installation in O2
+## R Shared installation in O2
 
 There is a Rlib shared installation in O2 with seurat and zinbvawe and tidyverse packages.
 
@@ -64,21 +64,13 @@ Now you can install the package normally.
 
 Then just type `R` or use `Rscript`.
 
-## Docker container with bcbioSingleCell
+## How to run main analysis
 
-There is a docker container with the last version of R and Seurat installed and kind of updated bcbioSingleCell package.
+Read the full documentation at: https://github.com/marypiper/bcbio_single_cell_workflow/tree/master/lessons. It provides with step by step explanation on how to analyze single cell data inside HBC core. If you see something out of date, please open a PR at that repository.
 
-To set up the Docker container to run the single-cell RNA-Seq analysis using bcbioSingleCell and Seurat, we need to perform a few steps. 
+## Visualization
 
-> **NOTE:** There are nice tutorials online to help understand the basics of Docker, including [Docker for beginners](https://docker-curriculum.com) and [Titus' materials](http://angus.readthedocs.io/en/2016/week3/CTB_docker.html).
-
-To set up Docker on a local computer, install the Docker application, then run the `docker pull` command using the `r3.5-bsc0.1.5` tag available from `lpantano/bcbiosinglecell`(available tags can be found [here](https://hub.docker.com/r/lpantano/bcbiosinglecell/tags/)):
-
-```bash
-docker pull lpantano/bcbiosinglecell:r3.5-bsc0.1.5
-```
-
-After pulling the docker image, run the container as detailed at https://hub.docker.com/r/lpantano/bcbiosinglecell/. This site also has explanations on how to install/update packages when you have it running in your local computer.
+Reports to visualize markers and clusters can be found here: http://bioinformatics.sph.harvard.edu/hbcABC/articles/singlecell-tutorial.html. It includes simple QC report and clustering and markers reports.
 
 # zinbwave and DESeq2
 If you have a complicated experimental design, zinbwave can assign invalid weights; DESeq2 will fail with a `weights.ok not all TRUE` message. Mike and I fixed that in the devel version of `DESeq2` which you can install with `devtools::install_github("mikelove/DESeq2")`.

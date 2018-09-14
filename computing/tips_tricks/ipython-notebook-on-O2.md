@@ -28,15 +28,15 @@ This command will open up a notebook server on port 1234. You might have to pick
 a different port if 1234 is being used. Note the token it provides for you, you
 will need this token to use your notebook server.
 
-4. Create a SSH tunnel from your local machine to the jupyter notebook:
+4. Create an auto-closing SSH tunnel from your local machine to the jupyter notebook:
 
 On your local machine do:
 
-```
-ssh -L 9999:localhost:9998 134.174.159.22 ssh -L 9998:localhost:1234 -N compute-e-16-238
+```bash
+ssh -f -L 9999:localhost:9999 o2 -t 'ssh -f -L 9999:localhost:1234 compute-a-16-49 "sleep 60"'
 ```
 
-This sets up a two SSH tunnels. The first one is connecting port 9999 on your laptop to port 9998 on `login02` on o2 (134.174.159.22). The second is connecting port 9998 on `login02` to port 1234 on `compute-e-16-238`.
+This sets up a two SSH tunnels. The first one is connecting port 9999 on your laptop to port 9998 on `login02` on o2 (134.174.159.22). The second is connecting port 9998 on `login02` to port 1234 on `compute-e-16-49`. This script will auto-close the tunnel if you don't connect to it in 60 seconds, and will auto-close the tunnel when your session is closed.
 
 5. Open a web browser and put `localhost:9999` as the address.
 

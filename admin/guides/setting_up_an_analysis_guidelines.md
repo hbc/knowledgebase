@@ -1,3 +1,11 @@
+---
+title: How to set up data and analysis
+description: Step by step instruction on how to set up data, bcbio run, code repository and reports.
+category:admin
+subcategory:guides
+tags:[consults]
+---
+
 # Setting up an analysis Guidelines
 ## Initial folder and git setup on on O2/Odyssey
 1. Setup repo on code.harvard.edu (unless PI wants it to be public, then setup repo on Github). Use same name explained before with hbc_ prefix:
@@ -179,6 +187,9 @@ eg. bcbio_nextgen.py -w template project-template.yaml bcbiol.csv ./data/*gz
 - Commit QC code to git, and push to repo
 - Do analysis and update git as you go      
  
+## Adding funding section to reports:
+
+See this instruction to add the different funding information to reports for clients to be added to papers: http://bioinformatics.sph.harvard.edu/hbcABC/articles/general_start.html#adding-funding-to-template
 
 ## Sharing results
 

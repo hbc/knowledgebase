@@ -49,5 +49,5 @@ The major training subtopics of interest to all.
 ## [Administration](./training/resources)
 
 # Frequently asked questions (FAQ)
- * [How can I add my knowledge to the knowledgebase?](./faq/contributing_to_knowledegebase.md)
+ * [How can I add my knowledge to the knowledgebase?](./faq/contributing_to_knowledgebase.md)
  * [How can I get my question listed in the FAQ?](./faq/FAQ_contributions.md)

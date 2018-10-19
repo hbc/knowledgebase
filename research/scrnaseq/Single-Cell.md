@@ -74,3 +74,7 @@ Reports to visualize markers and clusters can be found here: http://bioinformati
 
 # zinbwave and DESeq2
 If you have a complicated experimental design, zinbwave can assign invalid weights; DESeq2 will fail with a `weights.ok not all TRUE` message. Mike and I fixed that in the devel version of `DESeq2` which you can install with `devtools::install_github("mikelove/DESeq2")`.
+
+# Use DESeq2 only for UMI disambiguated protocols
+zinbwave will cause you to miss many of the low expressors that would be good markers. See 
+https://github.com/roryk/zinbwave-deseq2-indrop and https://support.bioconductor.org/p/112163/

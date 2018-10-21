@@ -3,7 +3,7 @@ title: Contributing to FAQ
 description: This document describes procedures to follow when adding a FAQ
 category: faq
 subcategory: 
-tags: [tutorial]
+tags: [tutorial, github]
 ---
 
 

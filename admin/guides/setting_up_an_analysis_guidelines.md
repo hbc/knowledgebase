@@ -3,7 +3,7 @@ title: How to set up data and analysis
 description: Step by step instruction on how to set up data, bcbio run, code repository and reports.
 category:admin
 subcategory:guides
-tags:[consults]
+tags:[consults, github, hpc, bcbio]
 ---
 
 # Setting up an analysis Guidelines

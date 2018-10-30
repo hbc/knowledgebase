@@ -3,7 +3,7 @@ title: Tutorials
 description: short description of the content
 category: research
 subcategory: scrnaseq
-tags: [tutorial, R]
+tags: [tutorial, bcbio, hpc, bash]
 ---
 
 ## Tutorials

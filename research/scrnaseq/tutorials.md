@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: short description of the content
+description: directions for setting up and running bcbio for scRNA-seq
 category: research
 subcategory: scrnaseq
 tags: [tutorial, bcbio, hpc, bash]

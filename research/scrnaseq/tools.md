@@ -1,3 +1,11 @@
+---
+title: Tools related to single cell RNAseq 
+description: This page shows tools that can be applied to single cell RNAseq data.
+category: research
+subcategory: scrnaseq
+tags: [literature]
+---
+
 # Future
 ## doublet detection
 [scrublet](https://github.com/AllonKleinLab/scrublet)

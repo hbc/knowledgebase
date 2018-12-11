@@ -8,6 +8,6 @@ Information about the tools used as part of bcbio is available [here](../../comp
 
 ## All tools incorporated, tested or planning to test
 
-Information about all of the tools that we either use, have tested, or would like to test are available within the `knowledgebase/research/[NGS_method]/tools.md`.
+Information about all of the tools that we either use, have tested, or would like to test are available within the `knowledgebase/research/[NGS_method]/tools.md` documents for each of the NGS methods.
 
 The `tools.md` document should have two sections, with one section for tools that have been tested, `Tools_tested` and another section for tools that we would like to explore, `Tools_novel`. A template for the `tools.md` document is available [here](../../research/template/tools.md).

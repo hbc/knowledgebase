@@ -31,10 +31,7 @@ library(scales)
 
 # Read a bunch of files into one dataframe
 ```r
-library(purrr)
-library(readr)
-library(dplyr)
-library(tidyr)
+library(tidyverse)
 read_files = function(files) {
   data_frame(filename = files) %>%
     mutate(contents = map(filename, ~ read_tsv(.))) %>%

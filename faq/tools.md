@@ -2,7 +2,7 @@
 title: Finding information about tools
 description: This document describes how to find information about tools incorporated in bcbio, tested or planning to test
 category: faq
-subcategory: 
+subcategory: tools
 tags: [tutorial]
 ---
 

@@ -12,7 +12,7 @@ This document is a guide on how to find information about software tools that ha
 
 ## bcbio-incorporated tools
 
-Information about the tools used as part of bcbio is available [here](../../computing/bcbio/tools_incorporated.md).
+Information about the tools used as part of bcbio is available [here](https://github.com/hbc/knowledgebase/blob/master/computing/bcbio/tools_incorporated.md).
 
 ## All tools tested or planning to test
 

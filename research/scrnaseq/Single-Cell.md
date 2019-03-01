@@ -66,7 +66,7 @@ Then just type `R` or use `Rscript`.
 
 ## How to run main analysis
 
-Read the full documentation at: https://github.com/marypiper/bcbio_single_cell_workflow/tree/master/lessons. It provides with step by step explanation on how to analyze single cell data inside HBC core. If you see something out of date, please open a PR at that repository.
+[Full documentation](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/README.md) is available providing step by step explanation on how to analyze single cell data inside HBC core. If you see something out of date, please open a PR at that repository.
 
 ## Visualization
 

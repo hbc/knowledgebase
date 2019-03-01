@@ -1,3 +1,11 @@
+---
+title: Finding information about tools
+description: This document describes how to find information about tools incorporated in bcbio, tested or planning to test
+category: faq
+subcategory: tools
+tags: [tutorial]
+---
+
 # HBC tools
 
 This document is a guide on how to find information about software tools that have been incorporated into the bcbio pipeline, tools that we have tested for use in bcbio or as part of downstream analyses, and tools that we would like to test.

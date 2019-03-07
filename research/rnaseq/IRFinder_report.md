@@ -60,7 +60,7 @@ sig_irfinder_ACtest <- sig_irfinder_ACtest[order(sig_irfinder_ACtest$p.diff),]
 
 ## Results
 
-There were ### significantly retained introns. The results output for each intron includes the following information, also described in the [IRFinder wiki](https://github.com/williamritchie/IRFinder/wiki) and an [analysis example](http://mimirna.centenary.org.au/irfinder/example1.html). 
+There were ### significantly retained introns. The results output for each intron includes the following information, also described in the [IRFinder wiki](https://github.com/williamritchie/IRFinder/wiki) and an [analysis example](http://mimirna.centenary.org.au/irfinder/example1.html).
 
 - **ensembl_id:** Ensembl ID
 - **Chr**: chromosome
@@ -73,13 +73,13 @@ There were ### significantly retained introns. The results output for each intro
 - **p.decreased:** p-value for whether lower intron retention in Nrde2-KD relative to control
 - **A.IRratio:** intron retention ratio for control. Calculated by: IntronDepth / (max(number of reads that map the 3' flanking exon surrounding the intron and to another exon within the same gene, number of reads that map the 5' flanking exon surrounding the intron and to another exon within the same gene) + IntronDepth)
 - **A.IRok:** Warnings about potential biases to the IR calculation. Low coverage, non-uniform coverage of the intron, etc. "NonUniformCover" indicates that the multiple places IRFinder measures the depth of the intron are not consistent. A visual check of the RNA-Seq trace is advised to rule out alternate-TSS or similar. In some cases this warning may simply be triggered by the uneven cover often seen in short-read RNA-Seq experiments.
-- **A.IntronCover:** Ratio of bases with mapped reads for control 
+- **A.IntronCover:** Ratio of bases with mapped reads for control
 - **A.IntronDepth:** number of reads that map over a given bp for control. IntronDepth is the median depth of the intronic region without the excluded regions. It is used to calculate the IRratio. Excluded regions comprise ExclBases and bases with the top and bottom 30% of intronic depth.
 - **A.SplicesMax:** number of reads that map to any exon for control? (no documentation)
-- **A.SplicesExact:** number of reads that map across the 3' and 5' flanking exons for control 
-- **B.IRratio:** intron retention ratio for Nrde-KD. 
+- **A.SplicesExact:** number of reads that map across the 3' and 5' flanking exons for control
+- **B.IRratio:** intron retention ratio for Nrde-KD.
 - **B.IRok:** Warnings about potential biases to the IR calculation for Nrde-KD.
-- **B.IntronCover:** Ratio of bases with mapped for Nrde-KD. 
+- **B.IntronCover:** Ratio of bases with mapped for Nrde-KD.
 - **B.IntronDepth:** number of reads that map over a given bp for Nrde-KD.
 - **B.SplicesMax:** number of reads that map to any exon for Nrde-KD? (no documentation).
 - **B.SplicesExact:** number of reads that map across the 3' and 5' flanking exons for Nrde-KD.
@@ -123,7 +123,7 @@ write.csv(sig_irfinder_filtered2, "results/significant_irfinder_ACtest_results_p
 
 [Download significant results]
 
-The significantly retained introns were explored for several genes of interest. 
+The significantly retained introns were explored for several genes of interest.
 
 ```r
 interesting_genes <- sig_irfinder_filtered2[sig_irfinder_filtered2$gene %in% c(), ]

@@ -3,7 +3,7 @@ title: How to run intron retention analysis
 description: This code helps to run IRFinder in the cluster.
 category: research
 subcategory: rnaseq
-tags:[hpc, intro_retention]
+tags: [hpc, intro_retention]
 ---
 
 To run any of these commands, need to activate the bioconda IRFinder environment prior to running script.

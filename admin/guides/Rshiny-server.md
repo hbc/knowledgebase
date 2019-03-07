@@ -1,9 +1,9 @@
 ---
 title: How to set up new app in hbc rshiny
 description: Information on where to connect and where to put apps in hbc rshiny server.
-category:admin
-subcategory:guides
-tags:[visualization, report]
+category: admin
+subcategory: guides
+tags: [visualization, report]
 ---
 
 To get access to the server, ask to the Director or Associate Director of the core

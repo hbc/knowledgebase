@@ -1,9 +1,9 @@
 ---
 title: How to set up data and analysis
 description: Step by step instruction on how to set up data, bcbio run, code repository and reports.
-category:admin
-subcategory:guides
-tags:[consults, github, hpc, bcbio]
+category: admin
+subcategory: guides
+tags: [consults, github, hpc, bcbio]
 ---
 
 # Setting up an analysis Guidelines
@@ -14,7 +14,7 @@ tags:[consults, github, hpc, bcbio]
 3. Clone the repo inside this directory
 4. Go inside the repo directory, and setup subfolders called:  
 
-	#### data (for raw data)	
+	#### data (for raw data)
 
 	#### meta (for extra, unformatted, sample metadata)
 
@@ -23,7 +23,7 @@ tags:[consults, github, hpc, bcbio]
 
 
 	## Notes on folders
-	- these are the FASTQ or similar file types for other technologies. 
+	- these are the FASTQ or similar file types for other technologies.
 	- In the data folder, you can have the actual downloaded files, or symlinks to someone else’s downloaded files
 
 	### meta
@@ -33,10 +33,10 @@ https://docs.google.com/spreadsheets/d/18h6qPc7_rGzyg2gTbgyg5Nmo00zBikXBJGzDl9QR
 	- The stem of this file (filename without extension) will be used to name the folder with your final bcbio results
 	- Typically, I just call it “bcbio.csv”
 	- if I was to do another bcbio run with a different genome than before (Flybase for example), I give it a new, descriptive name (eg. “bcbio_flybase.csv”)
-	
+
 
 	### templates
-	- These are the bcbio templates. 
+	- These are the bcbio templates.
 	- you can grab one from a previous project or download from the bcbio repo
 	- you can also just run `bcbio_download_template rnaseq` (for example) to get the template for your particular technology
 	- The final term in the command will be used to match against the following templates and any having any overlap will be downloaded:		
@@ -44,10 +44,10 @@ https://docs.google.com/spreadsheets/d/18h6qPc7_rGzyg2gTbgyg5Nmo00zBikXBJGzDl9QR
 		freebayes-variant.yaml   
 		illumina-chipseq.yaml   
 		illumina-rnaseq.yaml     
-		indrop-singlecell.yaml 
-		tumor-paired.yaml 
+		indrop-singlecell.yaml
+		tumor-paired.yaml
 		gatk-variant.yaml       
-		illumina-fastrnaseq.yaml 
+		illumina-fastrnaseq.yaml
 		illumina-srnaseq.yaml    
 		noalign-variant.yaml
 		~~~
@@ -59,7 +59,7 @@ https://docs.google.com/spreadsheets/d/18h6qPc7_rGzyg2gTbgyg5Nmo00zBikXBJGzDl9QR
 5. Setup .gitignore file to ignore all files you don’t want to sync. In theory we only use git to store code and very small files. (Ignore bcb final folder, and data folder) [*FUTURE: NEED EXAMPLES*]*
 
 ## Running bcbio
-### Option 1: run the bcbio variant on O2 
+### Option 1: run the bcbio variant on O2
 This variant has the nice feature of automatically putting the working directory on the scratch drive, so that our storage space doesn’t blow up
 
 `bcbio_o2 /n/scratch2/hsph_bioinformatic_core/$username/$project_name  -w template template/indrop-singlecell.yaml bcbio.csv data/*gz`
@@ -112,10 +112,10 @@ At the end of the run, you will have a directory structure that looks something 
 │       │   └── lane2-AAGAGCGT-transcriptome.bam      
 │       └── mtx.tar.gz   
 └── sc-human.csv  
-~~~ 
+~~~
 
 
-If this don’t work 
+If this don’t work
 - Copy project template yaml file to the main directory of consult on server
 - Copy a slurm batch file for your analysis to the main directory of consult on server
 - Edit both to reflect the properties of your consult, making sure to have the final upload dir point to an appropriate folder
@@ -186,7 +186,7 @@ eg. bcbio_nextgen.py -w template project-template.yaml bcbiol.csv ./data/*gz
 - Load up a QC template for bcbioRNASeq and save in report folder as something like QC.Rmd
 - Commit QC code to git, and push to repo
 - Do analysis and update git as you go      
- 
+
 ## Adding funding section to reports:
 
 See this instruction to add the different funding information to reports for clients to be added to papers: http://bioinformatics.sph.harvard.edu/hbcABC/articles/general_start.html#adding-funding-to-template

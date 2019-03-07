@@ -1,10 +1,18 @@
+---
+title: Data downloading
+description: Guidelines on downloading from different sequencing facilities.
+category: admin
+subcategory: guides
+tags: [tutorial]
+---
+
 # Guidelines on downloading from different sequencing facilities
 
 ## Biopolymers
 
 - Biopolymers (BPF) make their data available through an SFTP site
 
-- Their data will often come as both fastq files AND fastq.bz2 files. 
+- Their data will often come as both fastq files AND fastq.bz2 files.
 - Feel free to delete one of these, we really don't need both and they take up a lot of space.
 
 - Typically, the researcher will have an email from BPF with their login, password and the dataset id (usually in the form of FC_$number)
@@ -19,9 +27,9 @@ A typical command might look like this:
 ## Dana Farber MBCF
 
 ### Notes
-- Zach and co. always share raw data but may default to sharing it through their pydio web interface, which is not reliable. 
+- Zach and co. always share raw data but may default to sharing it through their pydio web interface, which is not reliable.
 
-- If you email Zach (zherbert@mail.dfci.harvard.edu) or Drew (andrew_caruso@mail.dfci.harvard.edu) and tell them who's data you need (cc: the researcher) they will setup an FTP site for you to use. 
+- If you email Zach (zherbert@mail.dfci.harvard.edu) or Drew (andrew_caruso@mail.dfci.harvard.edu) and tell them who's data you need (cc: the researcher) they will setup an FTP site for you to use.
 
 - Make sure to let them know you've pulled down the data, so they can turn off the site when you're done (it costs money to run this).
 
@@ -29,9 +37,9 @@ A typical command might look like this:
 
 ### Getting the data
 
-- You can access the data through a `wget` command. 
-- Preface it with `nohup` so your job keeps running even if you connection drops. 
-- The final nohup.out file will the download progress in it if you want to confirm download. 
+- You can access the data through a `wget` command.
+- Preface it with `nohup` so your job keeps running even if you connection drops.
+- The final nohup.out file will the download progress in it if you want to confirm download.
 A typical command might be something like this:
 
 `nohup wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178/*`
@@ -40,10 +48,8 @@ A typical command might be something like this:
 
 ## Broad Institute
 
-- It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs. 
+- It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs.
 - For their DGE (96 well) platform, they give everything under the sun.
-- You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data. 
-  - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`. 
+- You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data.
+  - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`.
   - If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.
-
-

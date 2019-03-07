@@ -2,14 +2,14 @@
 title: Contributing to knowledgebase
 description: This document describes procedures to follow when adding information to knowledgeBase
 category: faq
-subcategory: 
+subcategory: faq
 tags: [tutorial, github]
 ---
 
 
 # Contributing to knowledegebase
 
-You can contribute to knowledgebase in one of two ways. 
+You can contribute to knowledgebase in one of two ways.
 
 ### (1) Add the information via a **pull request**
 
@@ -26,13 +26,13 @@ You can contribute to knowledgebase in one of two ways.
 * create pull request in github ***annotated with appropriate labels*** to merge the new branch with master branch
 * continue to make necessary changes if need be (on github or locally)
 
-After the pull request is created, someone will have to "review" and "approve" it first, then merge it! 
+After the pull request is created, someone will have to "review" and "approve" it first, then merge it!
 
 **The person who merges should make sure they *delete* the branch they pulled from!**
 
 ### (2) Add the information as **an issue**
 
-* Create an issue with a question or documentation 
+* Create an issue with a question or documentation
 * Tag with the necessary labels (see below)
 * If you need to alert a specific person or persons, assign them to the issue
 
@@ -55,7 +55,7 @@ tag: [readme]
 ---
 ```
 
-* "`title:`" and "`description:`" will obviously have the information specific to the file you are adding the header to. 
+* "`title:`" and "`description:`" will obviously have the information specific to the file you are adding the header to.
 * For the remaining 3 items ("`category:`", "`subcategory:`", "`tag:`"), we have controlled vocabulary available and it is listed at the bottom of this section.
 * Please note whatever you use as a "`tag:`" will need to be encased in brackets (`[]`).
 * Make sure you only have one category and subcategory.
@@ -97,7 +97,7 @@ You can use as many of these as needed to populate the `tag:` item within the he
 
 > *Note that these have been roughly split up into general, research and training so it is easier to read, but they are all interchangeable and can be used as needed.*
 
-* **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`, `report`
+* **General tags**: `hpc`, `bcbio`, `local`, `R`, `python`, `snakemake`, `tutorial`, `template`, `bash`, `ssh`, `linux`, `osx`, `perl`, `report`, `ngs`
 * **Research tags**: `quality_control`, `annotation`, `clustering`, `functional_analysis`, `differential_analysis`, `intron_retention`, `motif_analysis`, `trajectory`, `isoforms`, `visualization`, `readme`, `alignment`, `variant_calling`, `quantification`, `peak_calling`, `filtering`
 * **Training tags**: `metrics`, `evaluation`, `catalyst`, `hsci`, `hms`, `hsph`, `social`, `literature`
 
@@ -113,4 +113,3 @@ If none of the labels we have above are appropriate for your issue/pull request,
 	* Not approved! - everyone votes and final net value is 3 thumbs down
 	* Discuss in group meeting - total net value is < 3 for either "up" or "down"
 * If approved, move forward with adding the proposed label to master
-

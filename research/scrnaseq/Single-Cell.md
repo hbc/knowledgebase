@@ -78,3 +78,8 @@ If you have a complicated experimental design, zinbwave can assign invalid weigh
 # Use DESeq2 only for UMI disambiguated protocols
 zinbwave will cause you to miss many of the low expressors that would be good markers. See 
 https://github.com/roryk/zinbwave-deseq2-indrop and https://support.bioconductor.org/p/112163/
+
+# first pass marker genes
+This tool seems to be pretty useful for generating a first pass list of marker genes from tissues. It does a paper-counting type method, which is a pretty reasonable metric to use.
+
+https://www.flyrnai.org/tools/biolitmine

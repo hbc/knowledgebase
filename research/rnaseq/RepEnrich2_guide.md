@@ -3,7 +3,7 @@ title: How to run repeat enrichment analysis
 description: This guide shows how to run RepEnrich2
 category: research
 subcategory: rnaseq
-tags: []
+tags: [annotation]
 ---
 
 RepEnrich2 tries to look at something that standard RNA-seq pipelines miss, the

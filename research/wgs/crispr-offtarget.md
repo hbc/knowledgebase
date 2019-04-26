@@ -1,3 +1,10 @@
+---
+title: How to find off-target CRISPR edits
+description: How to find off-target CRISPR edits
+category: research
+subcategory: wgs
+tags: [annotation]
+---
 
 # Overview
 This guide is how to call offtarget edits in a CRISPR edited genome. This is

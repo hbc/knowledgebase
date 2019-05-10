@@ -59,10 +59,6 @@ https://docs.google.com/spreadsheets/d/18h6qPc7_rGzyg2gTbgyg5Nmo00zBikXBJGzDl9QR
 5. Setup .gitignore file to ignore all files you don’t want to sync. In theory we only use git to store code and very small files. (Ignore bcb final folder, and data folder) [*FUTURE: NEED EXAMPLES*]*
 
 ## Running bcbio
-### Option 1: run the bcbio variant on O2
-This variant has the nice feature of automatically putting the working directory on the scratch drive, so that our storage space doesn’t blow up
-
-`bcbio_o2 /n/scratch2/hsph_bioinformatic_core/$username/$project_name  -w template template/indrop-singlecell.yaml bcbio.csv data/*gz`
 
 
 At the end of the run, you will have a directory structure that looks something like this:
@@ -115,7 +111,6 @@ At the end of the run, you will have a directory structure that looks something 
 ~~~
 
 
-If this don’t work
 - Copy project template yaml file to the main directory of consult on server
 - Copy a slurm batch file for your analysis to the main directory of consult on server
 - Edit both to reflect the properties of your consult, making sure to have the final upload dir point to an appropriate folder
@@ -154,13 +149,16 @@ export PATH=/n/app/bcbio/tools/bin:$PATH
 ```
 
 ####  Setting up on scratch
+
+It's a good idea to get bcbio to use a work directory that is on scratch. One way to do this is to run bcbio's templating script and then replace the work folder with a symlink to a folder on scratch. keep your work direcotyr  variant has the nice feature of automatically putting the working directory on the scratch drive, so that our storage space doesn’t blow up
+
+Another more convoluted route is just to run everything on scratch and copy over the final files:
+
 - Run the actual bcbio run on Scratch and only upload the final bcbio results to the main directories
 - Setup directories PI folder and consult subfolder on Scratch the same as you did in steps 1 and 2 of the Raw Data steps
 - Symlink to the raw data directory
 - Symlink to the bcbio metadata file you made in step 2 of Metadata section
 - Symlink to the config files you made
-
-#### Running bcbio on scratch
 - Generate a the template for the run on scrath using bcbio’s template options
 eg. bcbio_nextgen.py -w template project-template.yaml bcbiol.csv ./data/*gz
 - Go into bcbio/config folder, check to make sure the bcbio.yaml file has the proper info (i.e. sample names are correct, all samples are there)
@@ -176,6 +174,26 @@ eg. bcbio_nextgen.py -w template project-template.yaml bcbiol.csv ./data/*gz
 	- If possible, create the bcbioRNASeq object on the server so you have a backup of it. You can run bcbioRNASeq on the cluster using server modules or any other methods, but the easiest is to do it via conda  (for conda installation, see bcbioRNASeq README.md).
 	- It can also be run in your local computer if you mount O2 filesystem using sshfs. If you do this, it’s a good idea to sync the object up to the server after step 2.
 - Load bcbio results into bcbioRNASeq object and save out to the dated bcbio final project folder (`date_projectname`) (this folder will be the dated subfolder in the final subfolder which is  a subfolder of a folder named after the bcbio metadata file you made above, for a better explanation, try looking at the directory structure above)
+- bcbio can now do this automatically with the proper setup in the yaml file...for instance the follwoing tempalte will run generate a bcbioRNASeq object and run the QC template on it with the interesting groups of day and genotype highlighted:
+
+```
+   # Template for mouse RNA-seq using Illumina prepared samples
+   ---
+   details:
+     - analysis: RNA-seq
+       genome_build: mm10
+       algorithm:
+         aligner: star
+         quality_format: standard
+         strandedness: unstranded
+        tools_on: bcbiornaseq
+        bcbiornaseq:
+          organism: mus musculus
+          interesting_groups: [day, genotype]
+  upload:
+    dir: ../bcbio_final
+```
+
 
 ###   Sync git repo to local computer
 - Clone the repo to your local drive (not in a Dropbox or Google Drive folder!). For consitency, you may want to replicate the server folder structure by putting it inside a folder named after the PI (i.e. `$pifirsthane_$pilastname`)

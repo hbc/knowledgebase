@@ -83,20 +83,20 @@ where input.txt has this format:
 
 ```
 hg38.fa
-NNNNNNNNNNNNNNNNNNNNNNNNGGRRT
-CACGTGAAAGACGGTGACGGTGGNGGRRT 6
+NNNNNNNNNNNNNNNNNNNNNNNGRRT
+ACACGTGAAAGACGGTGACGGNNGRRT 6
 ```
 
-`hg38.fa` is the path to the FASTA file of the hg38 genome. NNNNNNNNNNNNNNNNNNNNNNNNGGRRT is the length of the guide sequence you are interested in with the PAM sequence tacked on the end.
-CACGTGAAAGACGGTGACGGTGGNGGRRT is the guide sequence with the PAM sequence tacked on the end. 6 is the number of mismatches you are allowing here, it will look for sites with that many
+`hg38.fa` is the path to the FASTA file of the hg38 genome. NNNNNNNNNNNNNNNNNNNNNNNNGRRT is the length of the guide sequence you are interested in with the PAM sequence tacked on the end.
+ACACACGTGAAAGACGGTGACGGNNGRRT is the guide sequence with the PAM sequence tacked on the end. 6 is the number of mismatches you are allowing here, it will look for sites with that many
 or less mismatches.
 
 If you want to look for bulges, use cas-offinder-bulge with this format:
 
 ```
 hg38.fa
-NNNNNNNNNNNNNNNNNNNNNNNNGGRRT 2 1
-CACGTGAAAGACGGTGACGGTGGNGGRRT 6
+NNNNNNNNNNNNNNNNNNNNNNNGRRT 2 1
+ACACGTGAAAGACGGTGACGGNNGRRT 6
 ```
 
 Where the 2 says to look for a DNA bulge and the 1 a RNA bulge. You can do one or the other, neither or both.
@@ -104,7 +104,7 @@ Where the 2 says to look for a DNA bulge and the 1 a RNA bulge. You can do one o
 After you run cas-offinder you can conver the output to a sorted BED file for use with intersecting the your variants:
 
 ```bash
-cat output.txt | sed 1d | awk '{printf("%s\t%s\t%s\t\n",$4, $5-10,$5+10)}' | sort -V -k 1,1 -k2,2n  > output.bed
+cat output.txt | sed 1d | awk '{printf("%s\t%s\t%s\n",$4, $5-10,$5+10)}' | sort -V -k 1,1 -k2,2n  > output.bed
 ```
 
 # Overlap variants

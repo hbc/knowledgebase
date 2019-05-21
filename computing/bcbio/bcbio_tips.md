@@ -16,7 +16,7 @@ The O2 cluster can take a really long time to schedule jobs. If you are having p
 
 ## Installing a private bcbio development repository on O2
 ```bash
-https://raw.githubusercontent.com/bcbio/bcbio-nextgen/master/scripts/bcbio_nextgen_install.py
+wget https://raw.githubusercontent.com/bcbio/bcbio-nextgen/master/scripts/bcbio_nextgen_install.py
 python bcbio_nextgen_install.py ${HOME}/local/share/bcbio --tooldir=${HOME}/local --nodata
 ln -s /n/app/bcbio/biodata/genomes/ ${HOME}/local/share/genomes
 ln -s /n/app/bcbio/biodata/galaxy/tool-data ${HOME}/local/share/galaxy/tool-data

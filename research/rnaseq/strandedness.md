@@ -53,7 +53,7 @@ It has `SSP estimation (fwd/rev) = 0.04 / 0.96` meaning strand bias (ISR, firsts
 
 Yet another way to confirm strand bias is seqc.  
 http://rseqc.sourceforge.net/#infer-experiment-py.  
-It uses a small subset of the input bam file: 
+It uses a small subset of the input bam file:  
 `infer_experiment.py -r /bcbio/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.bed -i test.bam`
 
 ```

@@ -6,13 +6,15 @@ subcategory: rnaseq
 ---
 
 Bulk RNA-seq libraries retaining strand information (stranded) are useful to quantify expression with higher accuracy for opposite 
-strand transcripts which overlap or have overlapping UTRs (https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-1876-7). 
+strand transcripts which overlap or have overlapping UTRs.
+https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-1876-7. 
 
-Bcbio RNA-seq pipeline has a 'strandedness' parameter: [unstranded|firststrand|secondstrand]
-(https://bcbio-nextgen.readthedocs.io/en/latest/contents/pipelines.html?highlight=strand#configuration).
+Bcbio RNA-seq pipeline has a 'strandedness' parameter: [unstranded|firststrand|secondstrand]  
+https://bcbio-nextgen.readthedocs.io/en/latest/contents/pipelines.html?highlight=strand#configuration.
 
-The terminology was inherited from Tophat, see the detailed description in the Salmon doc (https://salmon.readthedocs.io/en/latest/library_type.html)
-Note that firstrand = ISR.
+The terminology was inherited from Tophat, see the detailed description in the Salmon doc. 
+https://salmon.readthedocs.io/en/latest/library_type.html
+Note, that firstrand = ISR.
 
 If the strandedness is unknown, run a small subset of reads with 'unstranded' in bcbio and check out what Salmon reports in 
 `bcbio_project/final/sample/salmon/lib_format_counts.json`:
@@ -45,11 +47,13 @@ If the strandedness is unknown, run a small subset of reads with 'unstranded' in
 ```
 Here the majority of reads are ISR.
 
-Another way to check strand bias is 
-`bcbio_project/final/sample/qc/qualimap_rnaseq/rnaseq_qc_results.txt`.
+Another way to check strand bias is  
+`bcbio_project/final/sample/qc/qualimap_rnaseq/rnaseq_qc_results.txt`.  
 It has `SSP estimation (fwd/rev) = 0.04 / 0.96` meaning strand bias (ISR, firststrand).
 
-Yet another way to confirm strand bias is seqc (http://rseqc.sourceforge.net/#infer-experiment-py). It uses a small subset of the input bam file:
+Yet another way to confirm strand bias is seqc.  
+http://rseqc.sourceforge.net/#infer-experiment-py.  
+It uses a small subset of the input bam file: 
 `infer_experiment.py -r /bcbio/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.bed -i test.bam`
 
 ```

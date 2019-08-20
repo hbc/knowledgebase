@@ -1,3 +1,11 @@
+---
+title: Docker image with rstudio for single cell analysis
+description: Docker image with rstudio prepared for SC analysis
+category: research
+subcategory: scrnaseq
+tag: [docker,single_cell,resource,R]
+---
+
 # Docker image with rstudio for single cell analysis
 
 ## Description

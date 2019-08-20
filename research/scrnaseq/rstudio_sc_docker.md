@@ -10,7 +10,7 @@ tag: [docker,single_cell,resource,R]
 
 ## Description
 
-This docker image contains an rstudio installation with some helpful packages for singlecell analysis. It also includes a conda environment to deal with necessary pythong packages (like umap-learn).
+This docker image contains an rstudio installation with some helpful packages for singlecell analysis. It also includes a conda environment to deal with necessary python packages (like umap-learn).
 
 The image contains the latest R version that comes with the latest rocker/rstudio image. In order to update it, it's necessary to rebuild the image. 
 

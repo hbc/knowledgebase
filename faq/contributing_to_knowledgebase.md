@@ -59,7 +59,7 @@ tag: [readme]
 * For the remaining 3 items ("`category:`", "`subcategory:`", "`tag:`"), we have controlled vocabulary available and it is listed at the bottom of this section.
 * Please note whatever you use as a "`tag:`" will need to be encased in brackets (`[]`).
 * Make sure you only have one category and subcategory.
-* However, you can use multiple tags separated by commas! E.g. `tag: [R], [visualization], [hpc]`
+* However, you can use multiple tags separated by commas! E.g. `tag: [R,visualization,hpc]`
 
 ### Annotate issues and pull requests with existing labels
 

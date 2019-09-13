@@ -6,7 +6,9 @@ This folder contains various documents/scripts pertaining to scRNA-seq analysis.
 
 * **Tutorials for scRNA-seq analysis:** These documents are tutorials to help you with various types of scRNA-seq analysis.
 
-  - **[example.md]():** 
+  - **[Single-Cell-conda.md](https://github.com/hbc/knowledgebase/blob/master/research/scrnaseq/Single-Cell-conda.md):**  installing tools for scRNA-seq analysis with conda.
+  - **[Single-Cell.md](https://github.com/hbc/knowledgebase/blob/master/research/scrnaseq/Single-Cell.md):** installing tools and setting up docker for single cell rnaseq
+  - **[rstudio_sc_docker.md](https://github.com/hbc/knowledgebase/blob/master/research/scrnaseq/rstudio_sc_docker.md):**  This docker image contains an rstudio installation with some helpful packages for singlecell analysis. It also includes a conda environment to deal with necessary python packages (like umap-learn).
 
 * **Templates for scRNA-seq analysis:** These documents are report templates to help you with various types of scRNA-seq analyses.
   - **[example.Rmd]()

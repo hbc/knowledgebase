@@ -51,7 +51,7 @@ PacBio Sequel Sequencer reports all base qualities as PHRED 0 (ASCII !). So the 
 
 ### Using Canu for genome assembly
 
-[Canu](https://github.com/marbl/canu) does correction, trimming and assembly in a single command. Follow it github page to install the software to a location of preference.
+[Canu](https://github.com/marbl/canu) does correction, trimming and assembly in a single command. Follow its github page to install the software to a location of preference.
 
 An example of slurm script for a single sample:
 ```

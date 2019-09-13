@@ -1,6 +1,6 @@
 ---
 tags:
-title:
+title: Genome Assembly Using PacBio Reads Only
 author: Zhu Zhuo
 created: '2019-09-13'
 ---

@@ -10,6 +10,6 @@ tag: [readme]
 
 This folder contains links to internal and external docs associated with the training program at the Harvard Chan Bioinformatics Core.
 
-* Workshops taught to date: https://github.com/hbc/hbc.github.io/blob/master/training/index.md#past-workshops
+* [List of workshops taught to date](https://github.com/hbc/hbc.github.io/blob/master/training/index.md#past-workshops)
 * Funder-specific metrics: 
 * Exit surveys: 

@@ -1,10 +1,19 @@
 ## All things related to HBC's training program
 
-Upcoming workshops: http://bioinformatics.sph.harvard.edu/training/
+* HBC Training Github Org: https://github.com/hbctraining
 
-List of past workshops: http://bioinformatics.sph.harvard.edu/training#past-workshops
+* Upcoming workshops: http://bioinformatics.sph.harvard.edu/training
 
-Workshop materials: [hbctraining.github.io/main](https://hbctraining.github.io/main/)
+* Past workshops: http://bioinformatics.sph.harvard.edu/training#past-workshops
 
-Training resources: *Coming soon!*
+* Workshop materials: https://hbctraining.github.io/main
 
+* Training resources: *Coming soon!*
+
+* Training team members:
+  * Radhika Khetani
+  * Mary Piper
+  * Meeta Mistry
+  * Jihe Liu
+  
+* Training email: [hbctraining (at) hsph.harvard.edu](mailto: hbctraining@hsph.harvard.edu)

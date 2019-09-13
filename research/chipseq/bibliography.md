@@ -1,6 +1,6 @@
 ---
 title: ChIP-seq Bibliography
-description: This page shows tutorials that can be applied to ChIP-seq and related data.
+description: This page lists papers that are relevant to ChIP-seq and related data.
 category: research
 subcategory: chipseq 
 tags: [literature]

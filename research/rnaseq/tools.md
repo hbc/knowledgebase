@@ -8,8 +8,8 @@ tags: [tools, literature]
 
 ## Tools_tested
 
-- Exampletool_name
-  - tester initials, date of testing (yyyy_mm)
+- Exampletool_name (as link to tool)
+    - tester initials, date of testing (yyyy_mm)
     - version#
     - brief description about what the tool does
     - information about how the tool performed
@@ -19,7 +19,7 @@ tags: [tools, literature]
     - if used in a template/report, then provide a link to the template/report
     
  - [IsoformSwitchAnalyzer](https://bioconductor.org/packages/release/bioc/vignettes/IsoformSwitchAnalyzeR/inst/doc/IsoformSwitchAnalyzeR.html)
-  - LP/VB?, 2019/02?
+    - LP/VB?, 2019/02?
     - version#?
     - helps to detect alternative splicing
     - output very nice figures
@@ -28,8 +28,8 @@ tags: [tools, literature]
     - not incorporated into bcbio
     -  I tried it and an example of a consults is here:https://code.harvard.edu/HSPH/hbc_RNAseq_christiani_RNAediting_on_lung_in_humna_hbc02307. This packages has very nice figures: https://www.dropbox.com/work/HBC%20Team%20Folder%20(1)/consults/david_christiani/RNAseq_christiani_RNAediting_on_lung_in_humna?preview=dtu.html (see at the end of the report).
     
-- DEXseq
-  - LP/VB/RK?, date?
+- [DEXseq](https://bioconductor.riken.jp/packages/3.0/bioc/html/DEXSeq.html)
+    - LP/VB/RK?, date?
     - version#?
     - used to call isoform switching
     - not recommended - use DTU instead

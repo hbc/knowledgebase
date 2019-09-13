@@ -1,6 +1,8 @@
 # knowledgebase
 General knowledge for HBC computing
 
+# test
+
 # Admin
 
 The categories that associate with admin related things in the Core.

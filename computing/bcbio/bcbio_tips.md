@@ -37,6 +37,7 @@ The O2 cluster can take a really long time to schedule jobs. If you are having p
 
 ## How to run a one-node bcbio job (multicore, not multinode)
 it just runs a bcbio job on one node of the cluster (no IPython)
+[More slurm options](https://wiki.rc.hms.harvard.edu/display/O2/Using+Slurm+Basic#UsingSlurmBasic-sbatchoptionsquickreference)
 
 ```
 #!/bin/bash
@@ -46,11 +47,12 @@ it just runs a bcbio job on one node of the cluster (no IPython)
 #SBATCH --partition=priority        # Partition (queue)
 #SBATCH --time=3-00:00              # Runtime in D-HH:MM format
 #SBATCH --job-name=bcbio            # Job name - any name
-#SBATCH -c 10
-#SBATCH --mem-per-cpu=10G           # Memory needed per CPU or use mem
+#SBATCH -c 10                       # cores per task 
+#SBATCH --mem-per-cpu=10G           # Memory needed per CPU or use --mem to limit total memory
 #SBATCH --output=project_%j.out     # File to which STDOUT will be written, including job ID
 #SBATCH --error=project_%j.err      # File to which STDERR will be written, including job ID
-#SBATCH --mail-type=ALL             # Type of email notification (BEGIN, END, FAIL, ALL)
+#SBATCH --mail-type=ALL             # Type of email notification (BEGIN, END, FAIL, ALL) by default goes to the email associated with O2 accounts
+#SBATCH --mail-user=abc123@hms.harvard.edu   # Email to which notifications will be sent
 
 bcbio_nextgen.py ../config/illumina_rnaseq.yaml -n 10
 ```

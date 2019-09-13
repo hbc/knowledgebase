@@ -9,6 +9,7 @@ This folder contains various documents/scripts pertaining to bulk RNA-seq analys
   - **[running_IRFinder.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/running_IRFinder.md):** Intron retention analysis step-by-step instructions with example scripts and descriptions.
   - **[IRFinder_report.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/IRFinder_report.md):** Intron retention analysis report template for differentially retained introns.
   - **[RepEnrich2_guide.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/RepEnrich2_guide.md):** Guide to exploring the enrichment of repeats in NGS data using RepEnrich2.
+  - **[failure_types.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/failure_types):** A presentation with multiple types of ways RNAseq can fail.
 
 * **Templates for bulk RNA-seq analysis:** These documents are report templates to help you with various types of bulk RNA-seq analyses.
   - **[dexseq.Rmd](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/dexseq.Rmd):** template for using DEXSeq for performing differential expression at the isoform level (2018/08)

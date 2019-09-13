@@ -7,7 +7,7 @@ tags: [tutorial, github]
 ---
 
 
-# Contributing to knowledegebase
+# Contributing to knowledgebase
 
 You can contribute to knowledgebase in one of two ways.
 

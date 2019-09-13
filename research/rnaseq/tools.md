@@ -32,7 +32,7 @@ tags: [tools, literature]
     - LP/VB/RK?, date?
     - version#?
     - used to call isoform switching
-    - not recommended - use DTU instead
+    - not recommended - use DTU tool instead
     - what requirements are needed (e.g. R-3.5.1, etc.)?
     - no tutorials available
     - yes, DEXseq is incorporated in bcbio

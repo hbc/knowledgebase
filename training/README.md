@@ -16,4 +16,4 @@
   * Meeta Mistry
   * Jihe Liu
   
-* Training email: [hbctraining (at) hsph.harvard.edu](mailto: hbctraining@hsph.harvard.edu)
+* Training email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)

@@ -13,6 +13,5 @@ scripts
 
 ###  File information
 ```
-geo_data_submission.md
 readme.md
 ```

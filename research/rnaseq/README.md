@@ -18,6 +18,7 @@ This folder contains various documents/scripts pertaining to bulk RNA-seq analys
   
 * **[Bibliography](bibliography.md):** This document lists relevant papers pertaining to RNA-seq analysis
 
-* **[strandedness.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/strandedness.md):** explains strandedness and where to find info in bcbio
+* **Other documents related to bulk RNA-seq analysis:** 
+  - **[strandedness.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/strandedness.md):** explains strandedness and where to find info in bcbio
 
 

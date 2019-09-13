@@ -11,9 +11,11 @@ This folder contains various documents/scripts pertaining to bulk RNA-seq analys
   - **[RepEnrich2_guide.md](https://github.com/hbc/knowledgebase/blob/master/research/rnaseq/RepEnrich2_guide.md):** Guide to exploring the enrichment of repeats in NGS data using RepEnrich2.
 
 * **Templates for bulk RNA-seq analysis:** These documents are report templates to help you with various types of bulk RNA-seq analyses.
+  - **[example.md]():** description of template
 
 * **Scripts for bulk RNA-seq analysis:** These documents are scripts to help you run various types of bulk RNA-seq analyses.
-
+  - **[example.slurm]():** description of script
+  
 * **[Bibliography](bibliography.md):** This document lists relevant papers pertaining to RNA-seq analysis
 
 

@@ -42,7 +42,7 @@ tags: [tools, literature]
 
 ## Tools_novel
 
-- Exampletool_name:
-  - brief description of tool (one-line)
-  - link to tool
-  - initials of person planning to test tool
+> - Exampletool_name:
+> - brief description of tool (one-line)
+>   - link to tool
+>   - initials of person planning to test tool

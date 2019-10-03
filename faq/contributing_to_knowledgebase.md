@@ -111,5 +111,16 @@ If none of the labels we have above are appropriate for your issue/pull request,
 * There can be 3 outcomes from this:
 	* Approved! - the post gets 3 thumbs ups (net value, so it could be 5 "up" and 2 "down")
 	* Not approved! - everyone votes and final net value is 3 thumbs down
+	
+	
 	* Discuss in group meeting - total net value is < 3 for either "up" or "down"
 * If approved, move forward with adding the proposed label to master
+
+
+# Faster alternative
+- nagivate to where you want to share your knowledge;
+- hit 'edit file' or 'new file';
+- translate knowledge from your mind into markdown;
+- hit 'preview changes' to make sure your formatting is fine;
+- hit 'commit changes';
+- thank you, you just have saved somebody's day!

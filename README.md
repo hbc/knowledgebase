@@ -1,30 +1,11 @@
 # Admin
-- [Methods for manuscripts](https://github.com/hbc/methods/blob/master/method_snippets.md)
-- [Chargeback models](admin/chargeback_models.md)
-- [Data management](data_management.md)
-- [Initial consults](initial_consults.md)
-- [Migrate to code](migrate_to_code.md)
-- [Sequencing download](sequencing_downloads.md)
-- [Setting up the analysis](setting_up_an_analysis_guidelines.md)
+[Methods for manuscripts](https://github.com/hbc/methods/blob/master/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](data_management.md) * [Initial consults](initial_consults.md) * [Migrate to code](migrate_to_code.md) * [Sequencing download](sequencing_downloads.md) * [Setting up the analysis](setting_up_an_analysis_guidelines.md)
 
 # bcbio
-- https://bcbio-nextgen.readthedocs.io/en/latest/
-- https://github.com/bcbio/bcbio-nextgen/issues
-- [Bcbio genomes](bcbio/bcbio_genomes.md)
-- [bcbio tips](bcbio/bcbio_tips.md)
-- [Bcbio multiple files](bcbio/multiple_files_bcbio.md)
+https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md)
 
 # Bulk RNA-seq
-- [Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
-- [Bibliography](rnaseq/bibliography.md)
-- [Dexseq](rnaseq/dexseq.Rmd)
-- [Failure types](rnaseq/failure_types)
-- [IRFinder_report](rnaseq/IRFinder_report.md)
-- [README](rnaseq/README.md)
-- [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md)
-- [IRFinder](rnaseq/running_IRFinder.md)
-- [Strandedness](rnaseq/strandedness.md)
-- [Tools](rnaseq/tools.md)
+[Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) * [Bibliography](rnaseq/bibliography.md) * [Dexseq](rnaseq/dexseq.Rmd) * [Failure types](rnaseq/failure_types) * [IRFinder_report](rnaseq/IRFinder_report.md) * [README](rnaseq/README.md) * [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md) * [IRFinder](rnaseq/running_IRFinder.md) * [Strandedness](rnaseq/strandedness.md) * [Tools](rnaseq/tools.md) 
 
 # CHIP-seq
 - [ENCODE Guidelines](http://genome.cshlp.org/cgi/pmidlookup?view=long&pmid=22955991) A very useful resource for people starting out with ChIP-seq

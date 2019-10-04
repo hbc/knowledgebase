@@ -1,3 +1,18 @@
+# How it is organized
+- minimal overhead: feel free to add any piece of knowledge in any way
+- easy to navigate in one click
+- github is tracking changes for you
+- it is ok to have multiple similar recipes
+- growing naturally 
+
+# How to contribute
+- nagivate to where you want to share your knowledge or fix something;
+- hit 'edit file' or 'new file';
+- translate knowledge from your mind into markdown;
+- hit 'preview changes' to make sure your formatting is fine;
+- hit 'commit changes';
+- thank you, you just have saved somebody's day!
+
 # Admin
 
 The categories that associate with admin related things in the Core.

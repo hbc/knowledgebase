@@ -66,18 +66,6 @@
 - [RShiny](rshiny_server.md)
 - [Tip and tricks](R-tips-and-tricks.md)
 
-# Training team
-- HBC Training Github Org: https://github.com/hbctraining
-- Upcoming workshops: http://bioinformatics.sph.harvard.edu/training
-- Past workshops: http://bioinformatics.sph.harvard.edu/training#past-workshops
-- Workshop materials: https://hbctraining.github.io/main
-- Training team members:
-  - Radhika Khetani
-  - Mary Piper
-  - Meeta Mistry
-  - Jihe Liu
-- Training email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
-
 # RC (Research Computing, HPC, O2)
 - [Connection ot HPC](connection-to-hpc.md)
 - [File transfer](file-transfer.md)
@@ -98,6 +86,18 @@
 - [Tinyatlas](scrnaseq/tinyatlas.md)
 - [Tools](scrnaseq/tools.md)
 - [Tutorials](scrnaseq/tutorials.md)
+
+# Training team
+- HBC Training Github Org: https://github.com/hbctraining
+- Upcoming workshops: http://bioinformatics.sph.harvard.edu/training
+- Past workshops: http://bioinformatics.sph.harvard.edu/training#past-workshops
+- Workshop materials: https://hbctraining.github.io/main
+- Training team members:
+  - Radhika Khetani
+  - Mary Piper
+  - Meeta Mistry
+  - Jihe Liu
+- Training email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
 
 # WGS
 - [CRISPR offtarget](wgs/crispr-offtarget.md)

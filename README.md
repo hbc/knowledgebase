@@ -50,7 +50,7 @@
 - hit 'commit changes'
 - thank you, you just have saved somebody's day!
 
-# Knowdge we need to extract (aka TODO):
+# Knowledge we need to extract (aka TODO):
 - ATAC-seq
 - miRNA
 

@@ -1,8 +1,6 @@
-# Admin
-[Methods for manuscripts](https://github.com/hbc/methods/blob/master/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](data_management.md) * [Initial consults](initial_consults.md) * [Migrate to code](migrate_to_code.md) * [Sequencing download](sequencing_downloads.md) * [Setting up the analysis](setting_up_an_analysis_guidelines.md)
+**Admin**: [Methods for manuscripts](https://github.com/hbc/methods/blob/master/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](data_management.md) * [Initial consults](initial_consults.md) * [Migrate to code](migrate_to_code.md) * [Sequencing download](sequencing_downloads.md) * [Setting up the analysis](setting_up_an_analysis_guidelines.md)
 
-# bcbio
-https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md)
+**bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md)
 
 # Bulk RNA-seq
 [Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) * [Bibliography](rnaseq/bibliography.md) * [Dexseq](rnaseq/dexseq.Rmd) * [Failure types](rnaseq/failure_types) * [IRFinder_report](rnaseq/IRFinder_report.md) * [README](rnaseq/README.md) * [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md) * [IRFinder](rnaseq/running_IRFinder.md) * [Strandedness](rnaseq/strandedness.md) * [Tools](rnaseq/tools.md) 
@@ -13,8 +11,7 @@ https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio
 # Misc
 [Core resources](misc/core_resources.md) * [General NGS](misc/general_ngs.md) * [Orphan improvements](misc/orphan_improvements.md) * [OSX](misc/OSX.md) * [Snakemake](misc/snakemake-example-pipeline)
 
-# R
-[.Rprofile](Rprofile) * [RShiny](rshiny_server.md) * [Tip and tricks](R-tips-and-tricks.md)
+**R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [Tip and tricks](r/R-tips-and-tricks.md)
 
 # RC (Research Computing, HPC, O2)
 [Connection ot HPC](connection-to-hpc.md) * [File transfer](file-transfer.md) * [IPython notebook](ipython-notebook-on-O2.md) * [Manage files](manage-files.md) * [O2](O2-tips.md) * [Scheduler](scheduler.md)

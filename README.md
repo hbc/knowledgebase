@@ -13,6 +13,9 @@
 - hit 'commit changes';
 - thank you, you just have saved somebody's day!
 
+# Bulk RNA-seq
+- [Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
+
 # Admin
 
 The categories that associate with admin related things in the Core.

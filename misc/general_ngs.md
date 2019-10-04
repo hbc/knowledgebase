@@ -17,8 +17,6 @@ Use Illumina's native GUI client or run [BaseMount](https://basemount.basespace.
 
 The [Python downloader](https://support.basespace.illumina.com/knowledgebase/articles/403618-python-run-downloader) is deprecated and no longer supported by Illumina.
 
-
-
 # Figuring out what sequencer was used from FASTQ read names
 
 (via stackoverflow)

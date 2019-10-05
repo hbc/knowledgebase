@@ -1,6 +1,6 @@
 **Admin**: [Methods for manuscripts](admin/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](admin/data_management.md) * [Initial consults](initial_consults.md) * [Migrate to code](admin/migrate_to_code.md) * [Sequencing download](admin/sequencing_downloads.md) * [Setting up the analysis](admin/setting_up_an_analysis_guidelines.md)
 
-**bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md)
+**bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md) * [bcbio installation by Michael)[https://steinbaugh.com/posts/install-bcbio.html] * [bcbio installation by Sergey](https://github.com/naumenko-sa/bioscripts/blob/master/bcbio/bcbio.upgrade.sh)
 
 **Bulk RNA-seq**: [Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) * [Bibliography](rnaseq/bibliography.md) * [Dexseq](rnaseq/dexseq.Rmd) * [Failure types](rnaseq/failure_types) * [IRFinder_report](rnaseq/IRFinder_report.md) * [README](rnaseq/README.md) * [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md) * [IRFinder](rnaseq/running_IRFinder.md) * [Strandedness](rnaseq/strandedness.md) * [Tools](rnaseq/tools.md) * [Bibliography](rnaseq/bcbio_rnaseq.bib)
 

@@ -1,11 +1,3 @@
----
-title: How to set up data and analysis
-description: Step by step instruction on how to set up data, bcbio run, code repository and reports.
-category: admin
-subcategory: guides
-tags: [consults, github, hpc, bcbio]
----
-
 # Setting up an analysis Guidelines
 ## Initial folder and git setup on on O2/Odyssey
 1. Setup repo on code.harvard.edu (unless PI wants it to be public, then setup repo on Github). Use same name explained before with hbc_ prefix:

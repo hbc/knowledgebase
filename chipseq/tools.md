@@ -110,4 +110,32 @@ The most **commonly used aligner for ChIP-seq is Bowtie2**. However, recently we
 - [TF and Histone ChIP-seq processing pipeline](https://github.com/ENCODE-DCC/chip-seq-pipeline2)
   - from the Kundaje lab
 
+## Links to Read.
 
+- ATACseq Guidelines - https://informatics.fas.harvard.edu/atac-seq-guidelines.html
+
+- ChIPQC practical - https://bioinformatics-core-shared-training.github.io/cruk-autumn-school-2017/ChIP/Materials/Practicals/Practical5_chipqc_DB.pdf
+
+- Shamith Samarajiiwa ATACseq analysis - https://bioinformatics-core-shared-training.github.io/cruk-summer-school-2018/ChIP/Practicals/Practical10_ATAC-seq_analysis_SS.html
+
+- Shamith Samarajiwa Lecture chip and ATAC - https://bioinformatics-core-shared-training.github.io/cruk-autumn-school-2017/ChIP/Materials/Lectures/Lecture4_Introduction%20to%20ChIP-seq%20and%20ATAC-seq_SS.pdf
+
+- DiffBind practical - https://bioinformatics-core-shared-training.github.io/cruk-autumn-school-2017/ChIP/Materials/Practicals/Practical9_diffbind_DB.pdf
+
+- Some MACS options - https://ngschool.eu/sites/default/files/uploads/20170907/ATAC-seq%20workshop.pdf
+
+- Improved peak calling with MACS2 bioRxiv - https://www.biorxiv.org/content/10.1101/496521v1.full#F2
+
+- ATACseqQC guide - https://bioconductor.org/packages/release/bioc/vignettes/ATACseqQC/inst/doc/ATACseqQC.html#plot-footprints
+
+- Rockefeller practical on ATACseq - https://rockefelleruniversity.github.io/RU_ATAC_Workshop.html
+
+- DiffBind with ChIPseq - https://www.bioconductor.org/packages/devel/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
+
+- deeptools alignment sieve - https://deeptools.readthedocs.io/en/develop/content/tools/alignmentSieve.html#Required%20arguments
+
+- Duplicates handling with MACS2 - https://bioinformatics-core-shared-training.github.io/cruk-autumn-school-2017/ChIP/Materials/Practicals/Prctical4_PeakCalling_SS.pdf
+
+- Assessing ChIP-seq sample quality withChIPQC - http://bioconductor.org/packages/release/bioc/vignettes/ChIPQC/inst/doc/ChIPQC.pdf
+
+- Nucleosome size reference: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5831847/

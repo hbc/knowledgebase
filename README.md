@@ -12,7 +12,7 @@
 
 **RC**: [Connection to HPC](rc/connection-to-hpc.md) * [File transfer](rc/file-transfer.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2](rc/O2-tips.md) * [Scheduler](rc/scheduler.md)
 
-**Single Cell RNA-seq**: [Bcbio indrops3](bcbio_indrops3.md) * [Readme](README.md) * [Rstudio docker](rstudio_sc_docker.md) * [Saturation](scrnaseq/saturation_qc.md) * [Clustering analysis in Seurat](scrnaseq/seurat_clustering_analysis.md) * [Seurat markers](scrnaseq/seurat_markers.md) * [Single Cell conda](scrnaseq/Single-Cell-conda.md) * [Single cell](scrnaseq/Single-Cell.md) * [Tinyatlas](scrnaseq/tinyatlas.md) * [Tools](scrnaseq/tools.md) * [Tutorials](scrnaseq/tutorials.md) * [Bibliography](scrnaseq/bcbio_sc.bib)
+**Single Cell RNA-seq**: [Bcbio indrops3](scrnaseq/bcbio_indrops3.md) * [Readme](scrnaseq/README.md) * [Rstudio docker](scrnaseq/rstudio_sc_docker.md) * [Saturation](scrnaseq/saturation_qc.md) * [Clustering analysis in Seurat](scrnaseq/seurat_clustering_analysis.md) * [Seurat markers](scrnaseq/seurat_markers.md) * [Single Cell conda](scrnaseq/Single-Cell-conda.md) * [Single cell](scrnaseq/Single-Cell.md) * [Tinyatlas](scrnaseq/tinyatlas.md) * [Tools](scrnaseq/tools.md) * [Tutorials](scrnaseq/tutorials.md) * [Bibliography](scrnaseq/bcbio_sc.bib)
 
 **Training team**: [github](https://github.com/hbctraining) * [Upcoming workshops](http://bioinformatics.sph.harvard.edu/training) * [Past workshops](http://bioinformatics.sph.harvard.edu/training#past-workshops) * [Workshop materials](https://hbctraining.github.io/main)
 - Team members: Radhika Khetani, Mary Piper, Meeta Mistry, Jihe Liu

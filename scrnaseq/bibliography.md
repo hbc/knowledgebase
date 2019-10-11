@@ -7,4 +7,4 @@
 2. https://scrnaseq-course.cog.sanger.ac.uk/website/index.html
 3. https://broadinstitute.github.io/2019_scWorkshop/index.html
 4. https://github.com/SingleCellTranscriptomics/ISMB2018_SingleCellTranscriptomeTutorial
-5. [bcbio_sc.bib](Bibliography in bib)
+5. [Bibliography in bib](bcbio_sc.bib)

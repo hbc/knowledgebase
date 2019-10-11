@@ -1,6 +1,4 @@
-# scRNA-seq contents
-
-This folder contains various documents/scripts pertaining to scRNA-seq analysis. As you add content to the folder, you can add a bullet point to this README.
+# scRNA-seq
 
 * **[Tools for scRNA-seq analysis](tools.md):** This document lists the various tools that are currently being used for scRNA-seq analysis (and who has used/tested them) in addition to new tools that we are interested in but have yet to be tested.
 

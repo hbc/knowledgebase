@@ -30,6 +30,7 @@
 - growing naturally
 - no placeholders
 - please name all pages in small_letters.md
+- order matters: topics come alpabetically, but within topic and within page please put important things first (important articles/tools on top, important links on the left).
 
 # How to contribute
 - nagivate to where you want to share your knowledge or fix something

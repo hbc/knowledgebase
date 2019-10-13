@@ -6,3 +6,31 @@
 - http://sandofsky.com/blog/git-workflow.html
 - https://blog.izs.me/2012/12/git-rebase
 
+# Sync with upstream/master, delete all commits in origin/master branch
+```
+git checkout master
+git reset --hard upstream/master
+git push --force
+```
+
+# Sync with upstream/master
+```
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
+
+# Feature workflow
+```
+git checkout -b feature_branch
+# 1 .. N
+git add -A .
+git commit -m "sync"
+git push?
+
+git checkout master
+git merge --squash private_feature_branch
+git commit -v
+git push
+# pull request to upstream
+```

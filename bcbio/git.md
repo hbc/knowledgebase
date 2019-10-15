@@ -33,4 +33,8 @@ git merge --squash private_feature_branch
 git commit -v
 git push
 # pull request to upstream
+# code review
+# request merged
+git branch -d feature_branch
+git push origin :feature_branch
 ```

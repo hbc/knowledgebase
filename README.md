@@ -1,4 +1,4 @@
-**Admin**: [Methods for manuscripts](admin/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](admin/data_management.md) * [Initial consults](admin/initial_consults.md) * [Sequencing download](admin/sequencing_downloads.md) * [Setting up the analysis](admin/setting_up_an_analysis_guidelines.md)
+**Admin**: [Methods for manuscripts](admin/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](admin/data_management.md) * [Initial consults](admin/initial_consults.md) * [Downloading data](admin/data_download.md) * [Setting up the analysis](admin/setting_up_an_analysis_guidelines.md)
 
 **bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [Bcbio multiple files](bcbio/multiple_files_bcbio.md) * [bcbio installation by Michael](https://steinbaugh.com/posts/install-bcbio.html) * [bcbio installation by Sergey](https://github.com/naumenko-sa/bioscripts/blob/master/bcbio/bcbio.upgrade.sh)
 

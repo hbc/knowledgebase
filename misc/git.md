@@ -58,3 +58,14 @@ git push -u harvard --all
 
 > **NOTE:** If you decide to compile all your old repos into one giant repo (i.e. [hbc_mistrm_reports_legacy](https://code.harvard.edu/HSPH/hbc_mistrm_reports_legacy)), make sure that you remove all `.git` folders from each of them before committing. Otherwise you will not be able to see the contents on each folder on Enterprise.
 
+# Remove sensitive information from the file and from the history
+```
+Make a backup
+# cd ~/backup
+# git clone git@github.com:hbc/knowledgebase.git
+cd ~/work
+git clone git@github.com:hbc/knowledgebase.git
+git filter-branch --tree-filter 'rm -f admin/download_data.md' HEAD
+git push --force-with-lease origin master
+# commit a saved opy of download_data.md without secrets
+```

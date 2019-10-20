@@ -26,7 +26,6 @@ git checkout -b feature_branch
 # 1 .. N
 git add -A .
 git commit -m "sync"
-git push?
 
 git checkout master
 git merge --squash private_feature_branch

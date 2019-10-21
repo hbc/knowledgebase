@@ -6,6 +6,15 @@ subcategory: bcbio
 tags: [bcbio]
 ---
 
+**Caenorhabditis elegans**
+
+*WBcel235_WS272* - built from wormbase
+  - Assembly WBcel235, relase WS272. Project PRJNA13578 (N2 strain)
+  - Files:
+      - Genomic sequence: ftp://ftp.wormbase.org/pub/wormbase/releases/WS272/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS272.genomic.fa.gz
+
+      - Annotation: ftp://ftp.wormbase.org/pub/wormbase/releases/WS272/species/c_elegans/PRJNA13758/c_elegans.PRJNA13758.WS272.canonical_geneset.gtf.gz
+
 **Drosophila melanogaster**
 
 *DGP6* - built from Flybase

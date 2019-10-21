@@ -15,6 +15,3 @@
   - **[example.slurm]():** description of script
   
 * **[Bibliography](bibliography.md):** This document lists relevant papers pertaining to scRNA-seq analysis
-
-* **Other documents related to scRNA-seq analysis:** 
-  - **[example.md]():** 

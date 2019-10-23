@@ -8,7 +8,7 @@ tags: [bcbio]
 
 **Mus musculus**
 
-*GRCm38.98* - built from ensembl
+*GRCm38_98* - built from ensembl
   - Assembly GRCm38, release 98.
   - Files:
     - Genomic sequence: ftp://ftp.ensembl.org/pub/release-98/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.toplevel.fa.gz

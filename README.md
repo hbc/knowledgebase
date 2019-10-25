@@ -1,3 +1,14 @@
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150923842-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-150923842-1');
+</script>
+</head>
+
 **Admin**: [Methods for manuscripts](admin/method_snippets.md) * [Chargeback models](admin/chargeback_models.md) * [Data management](admin/data_management.md) * [Initial consults](admin/initial_consults.md) * [Downloading data](admin/download_data.md) * [Setting up the analysis](admin/setting_up_an_analysis_guidelines.md)
 
 **bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [bcbio RNA-seq workflow by Mary](bcbio/bcbio_workflow_mary.md) * [bcbio installation by Michael](https://steinbaugh.com/posts/install-bcbio.html) * [bcbio installation by Sergey](https://github.com/naumenko-sa/bioscripts/blob/master/bcbio/bcbio.upgrade.sh)

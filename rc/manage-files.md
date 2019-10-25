@@ -20,3 +20,8 @@ Then use find and remove:
   It has a lot of good options but one pretty useful for removing whitespaces and set all to lowercase:
 
   `rename -c --nows <fileName>`
+ 
+## Use umask to restrict default permissions
+
+Set umask 007 in our .bashrc. Then newly created directories will have 770 (rwxrwx---) permissions,
+and files will have 660 (rw-rw-000).

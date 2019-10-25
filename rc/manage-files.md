@@ -21,7 +21,7 @@ Then use find and remove:
 
   `rename -c --nows <fileName>`
  
-## Use umask to restrict default permissions
+## Use umask to restrict default permissions for users outside of the group
 
 Set umask 007 in our .bashrc. Then newly created directories will have 770 (rwxrwx---) permissions,
-and files will have 660 (rw-rw-000).
+and files will have 660 (rw-rw----).

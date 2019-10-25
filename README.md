@@ -2,7 +2,7 @@
 
 **bcbio**: https://bcbio-nextgen.readthedocs.io/en/latest/ * https://github.com/bcbio/bcbio-nextgen/issues * [Bcbio genomes](bcbio/bcbio_genomes.md) * [bcbio tips](bcbio/bcbio_tips.md) * [bcbio RNA-seq workflow by Mary](bcbio/bcbio_workflow_mary.md) * [bcbio installation by Michael](https://steinbaugh.com/posts/install-bcbio.html) * [bcbio installation by Sergey](https://github.com/naumenko-sa/bioscripts/blob/master/bcbio/bcbio.upgrade.sh)
 
-**Bulk RNA-seq**: [Count normalizataion methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) * [Bibliography](rnaseq/bibliography.md) * [Dexseq](rnaseq/dexseq.Rmd) * [Failure types](rnaseq/failure_types) * [IRFinder_report](rnaseq/IRFinder_report.md) * [README](rnaseq/README.md) * [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md) * [IRFinder](rnaseq/running_IRFinder.md) * [Strandedness](rnaseq/strandedness.md) * [Tools](rnaseq/tools.md) * [Bibliography](rnaseq/bcbio_rnaseq.bib)
+**Bulk RNA-seq**: [Count normalization methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) * [Bibliography](rnaseq/bibliography.md) * [Dexseq](rnaseq/dexseq.Rmd) * [Failure types](rnaseq/failure_types) * [IRFinder_report](rnaseq/IRFinder_report.md) * [README](rnaseq/README.md) * [RepEnrich2 guide](rnaseq/RepEnrich2_guide.md) * [IRFinder](rnaseq/running_IRFinder.md) * [Strandedness](rnaseq/strandedness.md) * [Tools](rnaseq/tools.md) * [Bibliography](rnaseq/bcbio_rnaseq.bib)
 
 **CHIP-seq**: [ENCODE Guidelines](http://genome.cshlp.org/cgi/pmidlookup?view=long&pmid=22955991) * [CHIp-seq intro](https://hbctraining.github.io/Intro-to-ChIPseq/schedule/2-day.html) * [Tools](chipseq/tools.md)
 

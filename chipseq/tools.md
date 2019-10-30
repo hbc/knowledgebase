@@ -128,7 +128,7 @@ The most **commonly used aligner for ChIP-seq is Bowtie2**. However, recently we
 
 - ATACseqQC guide - https://bioconductor.org/packages/release/bioc/vignettes/ATACseqQC/inst/doc/ATACseqQC.html#plot-footprints
 
-- Rockefeller practical on ATACseq - https://rockefelleruniversity.github.io/RU_ATAC_Workshop.html
+- Rockefeller practical on ATACseq (might be a good dataset for Rory to work on?) - https://rockefelleruniversity.github.io/RU_ATAC_Workshop.html
 
 - DiffBind with ChIPseq - https://www.bioconductor.org/packages/devel/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
 

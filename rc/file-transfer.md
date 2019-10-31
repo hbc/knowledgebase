@@ -27,3 +27,27 @@ From HMS RC:
 `1. ssh transfer.rc.hms.harvard.edu (let's say you land on transfer03), and then:`
 `2. ssh transfer01`
 `-- from there you can run the "ps" command or however you like to monitor the process.`
+
+
+## Another option from John
+If you run tmux from the login node before you ssh to the transfer node to xfer files, you can drop your connection and then re-attach to your tmux session later. It should still be running your transfer. 
+
+**General steps**
+1) Login to O2
+2) write down what login node your are on (usually something like login0#)
+*at login node*
+3) Start a new tmux session
+`tmux new -s myname`
+4) SSH to the transfer node
+`ssh user@transfer.rc.hms.harvard.edu`
+*on transfer node*
+5) start transfer with rsync, scp etc.
+6) close terminal window without logging out
+*time passes*
+7) Login to O2 again
+8) ssh to the login node you wrote down above
+`ssh user@login0#`
+9) Reattach to your tmux session
+`tmux a -t myname`
+10) Profit
+

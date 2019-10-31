@@ -6,7 +6,12 @@
 - http://sandofsky.com/blog/git-workflow.html
 - https://blog.izs.me/2012/12/git-rebase
 
-# Sync with upstream/master, delete all commits in origin/master branch
+# Add remote upstream
+```
+git remote -v
+git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+```
+# Sync with upstream/master, delete all commits in origin/master
 ```
 git checkout master
 git reset --hard upstream/master

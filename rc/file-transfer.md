@@ -42,7 +42,7 @@ If you run tmux from the login node before you ssh to the transfer node to xfer 
 `ssh user@transfer.rc.hms.harvard.edu`  
 *on transfer node*
 5) start transfer with rsync, scp etc.
-6) close terminal window without logging out
+6) close terminal window without logging out  
 *time passes*
 7) Login to O2 again
 8) ssh to the login node you wrote down above  

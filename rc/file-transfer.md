@@ -34,20 +34,20 @@ If you run tmux from the login node before you ssh to the transfer node to xfer 
 
 **General steps**
 1) Login to O2
-2) write down what login node your are on (usually something like login0#)
+2) write down what login node your are on (usually something like login0#)  
 *at login node*
-3) Start a new tmux session
+3) Start a new tmux session  
 `tmux new -s myname`
-4) SSH to the transfer node
-`ssh user@transfer.rc.hms.harvard.edu`
+4) SSH to the transfer node  
+`ssh user@transfer.rc.hms.harvard.edu`  
 *on transfer node*
 5) start transfer with rsync, scp etc.
 6) close terminal window without logging out
 *time passes*
 7) Login to O2 again
-8) ssh to the login node you wrote down above
+8) ssh to the login node you wrote down above  
 `ssh user@login0#`
-9) Reattach to your tmux session
+9) Reattach to your tmux session  
 `tmux a -t myname`
 10) Profit
 

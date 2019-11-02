@@ -48,3 +48,8 @@
 - integrate (link?) hbctraining, tutorials, bcbio docs
 - https://github.com/hbc/hbcABC
 - https://github.com/vbarrera/bcbioLite
+- Lorena's wisdom:
+  - information that apply to all templates: http://bioinformatics.sph.harvard.edu/hbcABC/articles/general_start.html
+  - List of templates right now: http://bioinformatics.sph.harvard.edu/hbcABC/articles/list_of_templates.html
+  - single cell custom templates: http://bioinformatics.sph.harvard.edu/hbcABC/articles/singlecell-tutorial.html
+

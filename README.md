@@ -18,7 +18,7 @@
 - Team members: Radhika Khetani, Mary Piper, Meeta Mistry, Jihe Liu
 - Email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
 
-**WGS**: [CRISPR offtarget](wgs/crispr-offtarget.md) * [Pacbio genome assmelby](wgs/pacbio_genome_assembly.md)
+**WGS**: [CRISPR offtarget](wgs/crispr-offtarget.md) * [Pacbio genome assembly](wgs/pacbio_genome_assembly.md)
 
 ***
 

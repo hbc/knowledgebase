@@ -45,5 +45,6 @@
 # Knowledge we need to extract (aka TODO):
 - ATAC-seq
 - miRNA
-- integrate (link?) hbcABC, knowledgebase, hbctraining, tutorials, bcbio docs
-
+- integrate (link?) hbctraining, tutorials, bcbio docs
+- https://github.com/hbc/hbcABC
+- https://github.com/vbarrera/bcbioLite

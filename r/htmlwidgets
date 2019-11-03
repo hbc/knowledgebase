@@ -1,3 +1,5 @@
+(See http://gallery.htmlwidgets.org/ for more awesome widgets.)
+
 Using some basic R libraries, you can setup some interactive visualizations wihtout using Rshiny
 
 Here is some example code illustrating what I am thinking about, using the iris dataset from R

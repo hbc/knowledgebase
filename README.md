@@ -10,7 +10,7 @@
 
 **R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md)
 
-**RC**: [Connection to HPC](rc/connection-to-hpc.md) * [File transfer](rc/file-transfer.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2](rc/O2-tips.md) * [Scheduler](rc/scheduler.md)
+**RC**: [Connection to HPC](rc/connection-to-hpc.md) * [Keep command alive](rc/keepalive.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2](rc/O2-tips.md) * [Scheduler](rc/scheduler.md)
 
 **[Single Cell RNA-seq](scrnaseq/README.md):** [Bcbio indrops3](scrnaseq/bcbio_indrops3.md) * [Rstudio docker](scrnaseq/rstudio_sc_docker.md) * [Saturation](scrnaseq/saturation_qc.md) * [Clustering analysis in Seurat](scrnaseq/seurat_clustering_analysis.md) * [Seurat markers](scrnaseq/seurat_markers.md) * [Single Cell conda](scrnaseq/Single-Cell-conda.md) * [Single cell](scrnaseq/Single-Cell.md) * [Tinyatlas](scrnaseq/tinyatlas.md) * [Tools](scrnaseq/tools.md) * [Tutorials](scrnaseq/tutorials.md) * [Bibliography](scrnaseq/bibliography.md)
 

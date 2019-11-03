@@ -197,9 +197,7 @@ eg. bcbio_nextgen.py -w template project-template.yaml bcbiol.csv ./data/*gz
 - Commit QC code to git, and push to repo
 - Do analysis and update git as you go      
 
-## Adding funding section to reports:
 
-See this instruction to add the different funding information to reports for clients to be added to papers: http://bioinformatics.sph.harvard.edu/hbcABC/articles/general_start.html#adding-funding-to-template
 
 ## Sharing results
 

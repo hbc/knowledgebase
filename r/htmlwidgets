@@ -1,0 +1,17 @@
+Using some basic R libraries, you can setup some interactive visualizations wihtout using Rshiny
+
+Here is some example code illustrating what I am thinking about, using the iris dataset from R
+
+`library(crosstalk)`
+`library(lineupjs)`
+`library(d3scatter)`
+
+`shared_iris = SharedData$new(iris)`
+`d3scatter(shared_iris, ~Petal.Length, ~Petal.Width, ~Species, width="100%")`
+`lineup(shared_iris, width="100%")`
+
+Similarly, the morpheus.js html widget makes for fantastic, interactive heatmaps.
+`library(morpheus)`
+
+rowAnnotations <- data.frame(annotation1=1:32, annotation2=sample(LETTERS[1:3], nrow(mtcars), replace = TRUE))`
+`morpheus(mtcars, colorScheme=list(scalingMode="fixed", colors=heat.colors(3)), rowAnnotations=rowAnnotations, overrideRowDefaults=FALSE, rows=list(list(field='annotation2', highlightMatchingValues=TRUE, display=list('color'))))`

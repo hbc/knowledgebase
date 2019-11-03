@@ -8,7 +8,7 @@
 
 **Misc**: [Git tips](misc/git.md) * [AWS](misc/aws.md) * [Core resources](misc/core_resources.md) * [General NGS](misc/general_ngs.md) * [Orphan improvements](misc/orphan_improvements.md) * [OSX](misc/OSX.md) * [Snakemake](misc/snakemake-example-pipeline) * 
 
-**R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [Tip and tricks](r/R-tips-and-tricks.md)
+**R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md)
 
 **RC**: [Connection to HPC](rc/connection-to-hpc.md) * [File transfer](rc/file-transfer.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2](rc/O2-tips.md) * [Scheduler](rc/scheduler.md)
 

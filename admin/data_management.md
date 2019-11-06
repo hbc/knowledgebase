@@ -40,3 +40,8 @@ Use dropbox to share results with collaborators
 Use Basecamp for discussions of project progress.
 * Link to Dropbox for results
 * You may post small files on basecamp to share with collaborators
+
+### Cases to discuss:
+
+* Many times, the client sends us a presentation (ppt/pptx) or a paper to better understand the project or to provide us with some information that may end up in the metadata. Where should we store these files? 
+* Similarly, should we store original metadata files or only the csv file that we end up using.

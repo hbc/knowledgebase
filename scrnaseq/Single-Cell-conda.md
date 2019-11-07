@@ -57,12 +57,17 @@ library(liger)
 q()
 ```
 
-# 5. Deactivate conda
+# 5. Install umap-learn for UMAP clustering
+```
+pip install umap-learn
+```
+
+# 6. Deactivate conda
 ```
 conda deactivate
 ```
 
-# 6. (Troubleshooting)
+# 7. (Troubleshooting)
 - It may ask you to install github token - too many packages loaded from github.
 I generated token on my laptop and placed it in ~/.Renviron
 - BiocManager::install("slingshot") - I failed to install it due to gsl issues.

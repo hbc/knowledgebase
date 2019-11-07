@@ -138,6 +138,8 @@ The most **commonly used aligner for ChIP-seq is Bowtie2**. However, recently we
 
 - Assessing ChIP-seq sample quality withChIPQC - http://bioconductor.org/packages/release/bioc/vignettes/ChIPQC/inst/doc/ChIPQC.pdf
 
+- effective genome size - https://deeptools.readthedocs.io/en/develop/content/feature/effectiveGenomeSize.html
+
 - Nucleosome size reference: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5831847/
 
 - Nice review of the steps by YiweNiu: https://yiweiniu.github.io/blog/2019/03/ATAC-seq-data-analysis-from-FASTQ-to-peaks/

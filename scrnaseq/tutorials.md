@@ -1,11 +1,3 @@
----
-title: Tutorials
-description: directions for setting up and running bcbio for scRNA-seq
-category: research
-subcategory: scrnaseq
-tags: [tutorial, bcbio, hpc, bash]
----
-
-## Tutorials
-
-Please find all tutorials for single-cell RNA-seq [here](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/README.md) 
+- [HSPH](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/README.md) 
+- [Hemberg lab, Cambridge](https://scrnaseq-course.cog.sanger.ac.uk/website/index.html)
+- [Broad](https://broadinstitute.github.io/2019_scWorkshop/)

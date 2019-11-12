@@ -45,3 +45,4 @@ Use Basecamp for discussions of project progress.
 
 * Many times, the client sends us a presentation (ppt/pptx) or a paper to better understand the project or to provide us with some information that may end up in the metadata. Where should we store these files? 
 * Similarly, should we store original metadata files or only the csv file that we end up using.
+* Reviews. Consults that consist on reviewing the client paper (i.e code). Where to keep all the provided documents (if we have to keep them).

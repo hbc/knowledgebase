@@ -13,6 +13,7 @@ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.gi
 ```
 # Sync with upstream/master, delete all commits in origin/master
 ```
+git fetch upstream
 git checkout master
 git reset --hard upstream/master
 git push --force

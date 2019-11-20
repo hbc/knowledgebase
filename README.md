@@ -6,7 +6,7 @@
 
 **CHIP-seq**: [ENCODE Guidelines](http://genome.cshlp.org/cgi/pmidlookup?view=long&pmid=22955991) * [CHIp-seq intro](https://hbctraining.github.io/Intro-to-ChIPseq/schedule/2-day.html) * [Tools](chipseq/tools.md)
 
-**Misc**: [Git tips](misc/git.md) * [AWS](misc/aws.md) * [Core resources](misc/core_resources.md) * [General NGS](misc/general_ngs.md) * [Orphan improvements](misc/orphan_improvements.md) * [OSX](misc/OSX.md) * [Snakemake](misc/snakemake-example-pipeline) * 
+**Misc**: [Git tips](misc/git.md) * [AWS](misc/aws.md) * [Core resources](misc/core_resources.md) * [General NGS](misc/general_ngs.md) * [Orphan improvements](misc/orphan_improvements.md) * [OSX](misc/OSX.md) * [Snakemake](misc/snakemake-example-pipeline) * [miRNA](misc/miRNA.md)
 
 **R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md)
 

@@ -4,7 +4,7 @@ https://github.com/marypiper/bcbio_rnaseq_workflow/blob/master/bcbio_rna-seq_wor
 **Documentation for bcbio:** [bcbio-nextgen readthedocs](http://bcbio-nextgen.readthedocs.org/en/latest/contents/pipelines.html#rna-seq)
 
 ## Set-up
-1. Follow instructions for starting an analysis using https://github.com/hbc/knowledgebase/blob/master/admin/guides/setting_up_an_analysis_guidelines.md.
+1. Follow instructions for starting an analysis using https://github.com/hbc/knowledgebase/blob/master/admin/setting_up_an_analysis_guidelines.md.
 
 3. Download fastq files from facility to data folder
 	

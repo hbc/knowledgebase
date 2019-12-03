@@ -1,6 +1,6 @@
 # Setting up an analysis Guidelines
 ## Initial folder and git setup on on O2/Odyssey
-1. Setup repo on code.harvard.edu (unless PI wants it to be public, then setup repo on Github). Use same name explained before with hbc_ prefix:
+1. Setup repo on github under the HBC org (default to a private repo unless the PI wants it to be public). Use same name explained before with hbc_ prefix:
 `hbc_$technology_of_$pilastname_$intervention_on_$tissue_in_$organism_$hbccode`
 2. If not present already, make a folder on the server in the PIs directory using this format: `$pifirstname_pilastname`
 3. Clone the repo inside this directory

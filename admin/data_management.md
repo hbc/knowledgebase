@@ -43,11 +43,11 @@ Use Basecamp for discussions of project progress.
 
 ### Cases to discuss:
 
-* Many times, the client sends us a presentation (ppt/pptx) or a paper to better understand the project or to provide us with some information that may end up in the metadata. Where should we store these files? 
-John - a "docs" directory on O2 works for this
-* Similarly, should we store original metadata files or only the csv file that we end up using.
-John - I generally do, as it can contain important information or be easier to run past the original researcher. I mark it as "original" so I can clearly differentiate it from the metadata we ended up using. If available, I save any code I used to modify the original metadata with the metadata. 
-* Reviews. Consults that consist on reviewing the client paper (i.e code). Where to keep all the provided documents (if we have to keep them).
-John - I could see keeping them on Dropbox, as we would typically want to share any reviewer responses with the researcher.
-* In the case we have downloaded data from multiple flowcells, should we keep the originals or the concatenated files. Note that errors can happen when "preparing samples" (concatenating the wrong files for example).
-John - would be great if we could only keep the concatenated files, but only after confirming no lane effects and proper concatenation. 
+* Many times, the client sends us a presentation (ppt/pptx) or a paper to better understand the project or to provide us with some information that may end up in the metadata. Where should we store these files?   
+*John - a "docs" directory on O2 works for this*  
+* Similarly, should we store original metadata files or only the csv file that we end up using.  
+*John - I generally do, as it can contain important information or be easier to run past the original researcher. I mark it as "original" so I can clearly differentiate it from the metadata we ended up using. If available, I save any code I used to modify the original metadata with the metadata.*  
+* Reviews. Consults that consist on reviewing the client paper (i.e code). Where to keep all the provided documents (if we have to keep them).  
+* John - I could see keeping them on Dropbox, as we would typically want to share any reviewer responses with the researcher.*  
+* In the case we have downloaded data from multiple flowcells, should we keep the originals or the concatenated files. Note that errors can happen when "preparing samples" (concatenating the wrong files for example).  
+*John - would be great if we could only keep the concatenated files, but only after confirming no lane effects and proper concatenation.*

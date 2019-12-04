@@ -20,7 +20,7 @@ In general, O2 is for the big stuff. Also, anything needed to reproduce the resu
 * Store a copy of the yaml config, metadata csv file, and slurm script used to run the analysis along with the raw data so that someone else can access the project and rerun it if necessary. 
 * It is also very helpful if you keep a copy of the bcbio object for downstream analysis with your data.
 
-### code.harvard.edu
+### HBC org on github
 In general, code is for a continually updated, searchable record of your code, and will mainly be made up of the type of code you run locally. 
 Commit the following:
 * Rmarkdowns for analysis

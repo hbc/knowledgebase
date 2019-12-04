@@ -28,7 +28,7 @@ Commit the following:
 
 ### Dropbox
 
-Use dropbox to share results with collaborators
+Use dropbox to share results and code with collaborators
 * html files
 * Rmarkdown files used to generate the html files
 * text files and "small" processed data files (i.e. files included in the reports, such as normalized counts)

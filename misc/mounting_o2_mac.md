@@ -2,7 +2,7 @@
 
 To have O2 accessible on your laptop/desktop as a folder, you need to use something called [`sshfs`](https://en.wikipedia.org/wiki/SSHFS) (ssh filesystem). This is a command that is not native to OSXand you need to go through several steps in order to get it. Once you have `sshfs`, then you need to set up ssh keys to connect O2 to your laptop without having to type in a password. 
 
-### 1. Installing sshfs on OSX
+### 1. Install sshfs on OSX
 
 Download OSXfuse from [https://github.com/osxfuse/osxfuse/releases](https://github.com/osxfuse/osxfuse/releases/download/osxfuse-3.6.0/osxfuse-3.6.0.dmg), and install it.
 

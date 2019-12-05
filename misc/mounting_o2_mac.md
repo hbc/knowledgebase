@@ -2,7 +2,7 @@
 
 To have O2 accessible on your laptop/desktop as a folder, you need to use something called [`sshfs`](https://en.wikipedia.org/wiki/SSHFS) (ssh filesystem). This is a command that is not native to OSXand you need to go through several steps in order to get it. Once you have `sshfs`, then you need to set up ssh keys to connect O2 to your laptop without having to type in a password. 
 
-### 1. Install sshfs on OSX
+### 1. Installing sshfs on OSX
 
 Download OSXfuse from [https://github.com/osxfuse/osxfuse/releases](https://github.com/osxfuse/osxfuse/releases/download/osxfuse-3.6.0/osxfuse-3.6.0.dmg), and install it.
 
@@ -40,7 +40,7 @@ Download sshfs from [https://github.com/osxfuse/sshfs/releases](https://github.c
 > 
 > Step 5. Install sshfs from fuse
 > ```bash
-> $ brew install homebrew/fuse/sshfs
+> $ brew install sshfs
 > ```
 
 ### 2. Set up "ssh keys"
@@ -95,6 +95,24 @@ Once you are finished using O2 in its mounted form, you can cancel the connectio
 ```bash
 $ umount ~/O2_mount 
 ```
+
+### 4. Set up alias (optional)
+
+It is optional to set shorter commands using `alias` for establishing and canceling `sshfs` connection. Use `vim` to create or open `~/.bashrc` and paste the following `alias` commands and save it.
+
+```bash
+$ alias mounto2='sshfs ecommonsID@transfer.rc.hms.harvard.edu:. ~/O2_mount -o volname="O2" -o follow_symlinks'
+$ alias umounto2='umount ~/O2_mount'
+```
+
+> If your default shell is `zsh` instead of `bash`, use `vim` to create or open `~/.zshrc` and paste the `alias` commands.
+
+Update changes in `.bashrc`
+
+```bash
+$ source .bashrc
+```
+Now we can type `mounto2` and `umounto2` to mount and unmount O2.
 
 ***
 *This lesson has been developed by members of the teaching team at the [Harvard Chan Bioinformatics Core (HBC)](http://bioinformatics.sph.harvard.edu/). These are open access materials distributed under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*

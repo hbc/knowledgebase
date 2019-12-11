@@ -72,5 +72,5 @@ cd ~/work
 git clone git@github.com:hbc/knowledgebase.git
 git filter-branch --tree-filter 'rm -f admin/download_data.md' HEAD
 git push --force-with-lease origin master
-# commit a saved opy of download_data.md without secrets
+# commit saved copy of download_data.md without secrets
 ```

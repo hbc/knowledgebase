@@ -10,3 +10,6 @@ https://bustools.github.io/BUS_notebooks_R/velocity.html
 - module load gcc/6.2.0
 - installed R-devel: https://www.r-bloggers.com/r-devel-in-parallel-to-regular-r-installation/  
 because one of the packages wanted R4.0
+- remove conda from PATH to avoid using its libcurl
+- module load boost/1.62.0
+- module load hdf5/1.10.1

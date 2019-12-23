@@ -83,7 +83,7 @@ If you care, download fresh transcriptome annotation from Gencode (https://www.g
 (it has chrom names with chr matching mm10 assembly).
 ```
 cd sc_mouse/input
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M23/gencode.vM23.annotation.gff3.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M23/gencode.vM23.annotation.gtf.gz
 gunzip gencode.vM23.annotation.gtf.gz
 gffread -g /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10/seq/mm10.fa gencode.vM23.annotation.gtf -x gencode.vM23.annotation.cds.fa
 ```

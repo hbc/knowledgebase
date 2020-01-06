@@ -14,3 +14,4 @@ because one of the packages wanted R4.0
 - remove conda from PATH to avoid using its libcurl
 - module load boost/1.62.0
 - module load hdf5/1.10.1
+- installing velocyto.R: https://github.com/velocyto-team/velocyto.R/issues/86

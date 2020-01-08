@@ -1,4 +1,5 @@
 - [HSPH](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/README.md) 
+- [SPRING visualization](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/SPRING.md)
 - [Seurat, Satija lab](https://satijalab.org/seurat/vignettes.html)
 - [Hemberg lab, Cambridge](https://scrnaseq-course.cog.sanger.ac.uk/website/index.html)
 - [Broad](https://broadinstitute.github.io/2019_scWorkshop/)

@@ -67,5 +67,69 @@ Use Illumina's native GUI client or run [BaseMount](https://basemount.basespace.
 
 The [Python downloader](https://support.basespace.illumina.com/knowledgebase/articles/403618-python-run-downloader) is deprecated and no longer supported by Illumina.
 
+## Update:
+
+If you need to download processed data (i.e: not the bcl files but the fastq or a whole project) or you don't have a run number you can use the [BaseSpace Sequence Hub CLI](https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview#Entitiesandsub-entities). After installing it you can download specific datasets or projects with ```bs download```.
+
+Example: Downloading specific fastq files from a project:
+
+1st. Identify datasets with ```bs list datasets```
+```
+$bs list datasets > avail_datasets
+$head avail_datasets
+
++-----------------------------+-------------------------------------+----------------------+---------------------+
+|            Name             |                 Id                  |     Project.Name     |   DataSetType.Id    |
++-----------------------------+-------------------------------------+----------------------+---------------------+
+| 13_Randa_01_25_19           | ds.9a309d19c84f44c191fc86919b9a562e | Randa_01_25_19_Run1  | common.files        |
+| 11_Randa_01_25_19           | ds.c29329f59b2d42beaa0e617e50829e06 | Randa_01_25_19_Run1  | common.files        |
+| 10_Randa_01_25_19           | ds.d3946986f8da4d8ba9a8c5db4037ff7c | Randa_01_25_19_Run1  | common.files        |
+| 12_Randa_01_25_19           | ds.262b749568fb4733ad958f9dfb4df0e3 | Randa_01_25_19_Run1  | common.files        |
+| 14_Randa_01_25_19           | ds.2645866a5f514e0fb0bb26b191eff138 | Randa_01_25_19_Run1  | common.files        |
+| 23_Randa_01_25_19           | ds.e84152ac7b754e4ca4f0e859b5864344 | Randa_01_25_19_Run1  | common.files        |
+| 5_Randa_01_25_19            | ds.3170cc50b2774650bdbcfedb5ce48830 | Randa_01_25_19_Run1  | common.files        |
+```
+(I clean the header and remove lines of ---- to make avail_datasets to dataset_list)
+
+2nd. Clean up a bit the file and select the ones you're instered in. (in this case I'm using `gawk` to select the ones processed by "illumina.fastq.v1.8" analysis.
+```gawk 'BEGIN{FS="|"}{print $2,$4,$5}' dataset_list | gawk 'BEGIN{OFS=","}$3=="illumina.fastq.v1.8"{print $1,$2}' > fastqIDs.txt```
+
+Then I use the following code to download each dataset and store it in a Project folder:
+
+`<obtain_ds.sh>`
+
+```
+#!/bin/sh
+
+fastqID_file="$1"
+
+while read -r line; do
+    dsID="$(cut -d',' -f1 <<<"$line")"
+    projectID="$(cut -d',' -f2 <<<"$line")"
+	# line is available for processing
+	bs download dataset -n ${dsID} -o ${projectID}/${dsID}
+done < ${fastqID_file}
+```
+
+`<obtain_ds_job.sh>`
+```
+#!/bin/bash
+
+#SBATCH --job-name=mittendorf          # Job name
+#SBATCH --partition=short             # Partition name
+#SBATCH --time=0-11:59                 # Runtime in D-HH:MM format
+#SBATCH --nodes=1                      # Number of nodes (keep at 1)
+#SBATCH --ntasks=1                     # Number of tasks per node (keep at 1)
+#SBATCH --cpus-per-task=1             # CPU cores requested per task (change for threaded jobs)
+#SBATCH --mem=4G                     # Memory needed per node (total)
+#SBATCH --error=jobid_%j.err           # File to which STDERR will be written, including job ID
+#SBATCH --output=jobid_%j.out          # File to which STDOUT will be written, including job ID
+#SBATCH --mail-type=ALL                # Type of email notification (BEGIN, END, FAIL, ALL)
+
+
+bash obtain_ds.sh fastqIDs.txt
+```
+
+
 # Basespace by Sergey
 basespace-cli. New Illumina sequencers upload data to basespace cloud. bs utility copies data from cloud to HPC. To copy bcl files: bs cp //./Runs/<project_name>/Data .

@@ -9,6 +9,7 @@ git clone https://github.com/secastel/phaser.git
 module load gcc/6.2.0  
 module load python/2.7.12
 cython/0.25.1
+pip install intervaltree --user
 cd phaser/phaser
 python setup.py build_ext --inplace
 ```

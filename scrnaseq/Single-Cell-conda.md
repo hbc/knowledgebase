@@ -67,3 +67,11 @@ conda deactivate
 I generated token on my laptop and placed it in ~/.Renviron
 - BiocManager::install("slingshot") - I failed to install it due to gsl issues.
 - when running a batch job, use source activate r/ source deactivate 
+- if conda is trying to write in bcbio cache, check and set cache priority, your home cache should be first:  
+`conda info`,  
+~/.condarc
+```
+pkgs_dirs:
+    - /home/[UID]/.conda/pkgs
+    - /n/app/bcbio/dev/anaconda/pkgs
+```

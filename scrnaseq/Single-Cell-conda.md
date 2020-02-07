@@ -1,10 +1,5 @@
----
-title: Single Cell Installation with conda on O2
-description: This code helps with installing tools for Single Cell analysis with conda.
-category: research
-subcategory: scrnaseq
-tags: [hpc, R, conda]
----
+*Single cell analyses require a lot of memory and often fail on the laptops. 
+Having R + Seurat installed in a conda environment + interactive session or batch jobs with 50-100G RAM helps.*
 
 # 1. Use conda from bcbio
 ```
@@ -71,3 +66,4 @@ conda deactivate
 - It may ask you to install github token - too many packages loaded from github.
 I generated token on my laptop and placed it in ~/.Renviron
 - BiocManager::install("slingshot") - I failed to install it due to gsl issues.
+- when running a batch job, use source activate r/ source deactivate 

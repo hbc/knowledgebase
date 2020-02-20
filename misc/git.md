@@ -26,7 +26,22 @@ git checkout master
 git merge upstream/master
 ```
 
-# Feature workflow
+# 2 Feature workflow
+```
+git checkout -b feature1
+git add -A.
+git commit
+git push --set-upstream origin feature1
+# pull request1
+git checkout master
+git checkout -b feature2
+git add -A.
+git commit
+git push --set-upstream origin feature2
+# pull request 2
+```
+
+# Feature workflow w squash
 ```
 git checkout -b feature_branch
 # 1 .. N

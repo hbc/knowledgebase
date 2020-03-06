@@ -1,6 +1,11 @@
 # Setting up an analysis Guidelines
 ## Initial folder and git setup on on O2/Odyssey
-1. Setup repo on github under the HBC org (default to a private repo unless the PI wants it to be public). Use same name explained before with hbc_ prefix:
+1. Setup repo on github under the HBC org (default to a private repo unless the PI wants it to be public). 
+
+Adapt the Trello project name to work on the server (i.e. replace spaces with underscores, remove special characters and make lowercase) and use that as the github repo name
+
+If the project is not on Trello, use something specific so we can tell which rpoject it is:
+Make sure to include the hbc_ prefix if you can find it:
 `hbc_$technology_of_$pilastname_$intervention_on_$tissue_in_$organism_$hbccode`
 2. If not present already, make a folder on the server in the PIs directory using this format: `$pifirstname_pilastname`
 3. Clone the repo inside this directory

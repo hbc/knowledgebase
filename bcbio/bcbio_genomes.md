@@ -55,3 +55,112 @@ aws s3 cp hg19-rnaseq-2019-02-28_75.tar.xz s3://biodata/annotation/ --grants rea
 ```
 7. push changes back to cloudbiolinux
 
+**Factual list of genomes as of 2020-03-13**
+```
+.
+├── Ad37
+│   ├── GW7619026
+│   └── GW76-19026
+├── Adenovirus
+│   └── Ad37
+├── Amexicanus
+│   └── Amexicanus2
+├── Amis
+│   ├── ASM28112v4
+│   └── ASM28112v4.a
+├── Anidulans
+│   └── FGSC_A4
+├── Atta_cephalotes
+│   └── Attacep1.0
+├── bcbiotx
+├── Btaurus
+│   └── UMD3.1
+├── Celegans
+│   ├── WBcel235
+│   ├── WBcel235_90
+│   ├── WBcel235_raw
+│   └── WBcel235_WS272
+├── Dmelanogaster
+│   ├── BDGP6
+│   ├── BDGP6.15
+│   ├── BDGP6.19
+│   ├── BDGP6.92
+│   ├── flybase
+│   └── flybase_dmel_r6.28
+├── Drerio
+│   ├── Zv10
+│   ├── Zv11
+│   └── Zv9
+├── Ecoli
+│   ├── EDL933
+│   ├── k12
+│   ├── MB0009
+│   ├── MB2409
+│   ├── MB2455
+│   ├── MG1655
+│   ├── MG1655_v2
+│   ├── MG1655_virus
+│   ├── MG1655_wrong_name
+│   └── NC_000913.3
+├── Gallus_gallus
+│   └── galgal5
+├── gdc-virus
+│   └── gdc-virus-hsv
+├── haD37
+│   └── DQ900900.1
+├── Hsapiens
+│   ├── GRCh37
+│   ├── hg19
+│   ├── hg19-ercc
+│   ├── hg19-mt
+│   ├── hg19-subset
+│   ├── hg19-test
+│   └── hg38
+├── humanAd37
+│   └── Ad37.hg19
+├── kraken
+│   ├── bcbio
+│   ├── micro
+│   ├── minikraken_20141208
+│   ├── minimal
+│   └── old_20141302
+├── Lafricana
+│   └── loxAfr3
+├── Macaca
+│   ├── Mfascicularis
+│   ├── Mmul8
+│   └── mmul8noscaffold
+├── Mmulatta
+│   ├── mmul8
+│   └── mmul8noscaffold
+├── Mmusculus
+│   ├── cloudbiolinux
+│   ├── GRCm38_90
+│   ├── GRCm38_98
+│   ├── greenberg-mm9
+│   ├── mm10
+│   └── mm9
+├── Oaires
+│   └── Oar_v31
+├── phiX174
+│   └── phix
+├── Pintermedia
+│   └── ASM195395v1
+├── Rnorvegicus
+│   └── rn6
+├── Scerevisiae
+│   └── sacCer3
+├── Spombe
+│   ├── ASM284v2.25
+│   └── ASM284v2.30
+├── spombe
+│   └── ASM294v2
+├── Sscrofa
+    ├── ss11.1
+    └── Sscrofa10.2
+```
+
+**How to install a custom genome in O2**
+- `sudo -su bcbio /bin/bash`
+- `cd /n/app/bcbio`
+- https://bcbio-nextgen.readthedocs.io/en/latest/contents/configuration.html#adding-custom-genomes

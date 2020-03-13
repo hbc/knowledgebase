@@ -1,11 +1,3 @@
----
-title: Genomes in bcbio
-description: This describes redundant genomes in bcbio and their differences
-category: computing
-subcategory: bcbio
-tags: [bcbio]
----
-
 **Mus musculus**
 
 *GRCm38_98* - built from ensembl

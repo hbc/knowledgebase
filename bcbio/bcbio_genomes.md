@@ -47,7 +47,7 @@ aws s3 cp hg19-rnaseq-2019-02-28_75.tar.xz s3://biodata/annotation/ --grants rea
 ```
 7. push changes back to cloudbiolinux
 
-**Factual list of genomes as of 2020-03-13**
+**Factual list of genomes in O2:/n/shared_db/bcbio/biodata/genomes as of 2020-03-13**
 ```
 .
 ├── Ad37
@@ -155,4 +155,5 @@ aws s3 cp hg19-rnaseq-2019-02-28_75.tar.xz s3://biodata/annotation/ --grants rea
 **How to install a custom genome in O2**
 - `sudo -su bcbio /bin/bash`
 - `cd /n/app/bcbio`
+- https://bcbio-nextgen.readthedocs.io/en/latest/contents/configuration.html#reference-genome-files
 - https://bcbio-nextgen.readthedocs.io/en/latest/contents/configuration.html#adding-custom-genomes

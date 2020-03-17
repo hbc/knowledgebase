@@ -19,8 +19,14 @@ mkdir config input final work
 ```
 cat lane1_r1.fq.gz lane2_r1.fq.gz > project_1.fq.gz
 cat lane1_r2.fq.gz lane2_r2.fq.gz > project_2.fq.gz
-...
-...
+```
+
+- some cores send bz2 files not gz
+```
+bunzip2 *.bz2
+cat *R1.fastq | gzip > sample_1.fq.gz
+```
+
 ```
 - some cores produce R1,R2,R3,R4, others R1,R2,I1,I2, rename them
 ```

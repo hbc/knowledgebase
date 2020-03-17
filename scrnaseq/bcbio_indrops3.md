@@ -27,7 +27,6 @@ bunzip2 *.bz2
 cat *R1.fastq | gzip > sample_1.fq.gz
 ```
 
-```
 - some cores produce R1,R2,R3,R4, others R1,R2,I1,I2, rename them
 ```
 bcbio_R1 = R1

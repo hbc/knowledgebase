@@ -1,4 +1,6 @@
-# Counting cells with bcbio for inDrops3 data - short version
+# Counting cells with bcbio for inDrops3 data - proto-SOP
+
+## Last use - 2020-03-16
 
 ## 1. Check reference genome and transcriptome
 (O2 or another bcbio installation):
@@ -19,6 +21,14 @@ KM_1.fq.gz
 KM_2.fq.gz
 KM_3.fq.gz
 KM_4.fq.gz
+```
+
+some cores produce R1,R2,R3,R3, others R1,R2,I1,I2
+```
+bcbio_R1 = R1
+bcbio_R2 = I1
+bcbio_R3 = I2
+bcbio_R4 = R2
 ```
 
 ## 4. Create `sc_mouse/config/sample_barcodes.csv`
@@ -104,5 +114,6 @@ zcat KM_lane1_R1.fastq KM_lane2_R1.fastq.gz | gzip > KM_1.fq.gz
 Use `cd sc_mouse/input; readlink -f *` to grab full path to each file
 
 ## References
+- indrops3 library structure: https://singlecellcore.hms.harvard.edu/resources
 - [Even shorter guide](https://github.com/bcbio/bcbio-nextgen/blob/master/config/templates/indrop-singlecell.yaml)
 - [Much more comprehensive guide](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/01_bcbio_run.md)

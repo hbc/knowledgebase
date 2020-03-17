@@ -1,34 +1,40 @@
 # Counting cells with bcbio for inDrops3 data - proto-SOP
 
-## Last use - 2020-03-16
+## Last use - 2020-03-17
 
-## 1. Check reference genome and transcriptome
-(O2 or another bcbio installation):
+## 1. Check reference genome and transcriptome - is it mouse?
 - mm10 reference genome: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10
 - transcriptome_fasta: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.fa
 - transcriptome_gtf: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.gtf
 
-## 2. Create bcbio project structure in your /scratch
+## 2. Create bcbio project structure in /scratch
 ```
 mkdir sc_mouse
 cd sc_mouse
 mkdir config input final work
 ```
 
-## 3. Copy(move) input data (fastq) to sc_mouse/input
+## 3. Prepare fastq input in sc_mouse/input
+- some FC come in 1..4 lanes, merge lanes for every read:
 ```
-KM_1.fq.gz
-KM_2.fq.gz
-KM_3.fq.gz
-KM_4.fq.gz
+cat lane1_r1.fq.gz lane2_r1.fq.gz > project_1.fq.gz
+cat lane1_r2.fq.gz lane2_r2.fq.gz > project_2.fq.gz
+...
+...
 ```
-
-some cores produce R1,R2,R3,R3, others R1,R2,I1,I2
+- some cores produce R1,R2,R3,R4, others R1,R2,I1,I2, rename them
 ```
 bcbio_R1 = R1
 bcbio_R2 = I1
 bcbio_R3 = I2
 bcbio_R4 = R2
+```
+- files in sc_mouse/input should be (KM here is project name):
+```
+KM_1.fq.gz
+KM_2.fq.gz
+KM_3.fq.gz
+KM_4.fq.gz
 ```
 
 ## 4. Create `sc_mouse/config/sample_barcodes.csv`

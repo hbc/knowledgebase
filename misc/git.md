@@ -59,6 +59,15 @@ git branch -d feature_branch
 git push origin :feature_branch
 ```
 
+# ~/.ssh/config
+```
+Host github.com
+    HostName github.com
+    PreferredAuthentications publickey
+    IdentityFIle ~/.ssh/id_rsa_git
+    User git
+```
+
 # Migrating github.com repos to [code.harvard.edu](https://code.harvard.edu/)
 
 1. Set up your ssh keys. You can use your old keys (if you remember your passphrase) by going to `Settings --> SSH and GPG keys --> New SSH key`

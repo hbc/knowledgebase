@@ -20,6 +20,10 @@ mkdir config input final work
 cat lane1_r1.fq.gz lane2_r1.fq.gz > project_1.fq.gz
 cat lane1_r2.fq.gz lane2_r2.fq.gz > project_2.fq.gz
 ```
+- cat'ing gzip files sounds ridiculous, but works for the most part, for purists:
+```
+zcat KM_lane1_R1.fastq KM_lane2_R1.fastq.gz | gzip > KM_1.fq.gz
+```
 
 - some cores send bz2 files not gz
 ```
@@ -90,6 +94,7 @@ fc_name: sc-mouse
 upload:
   dir: /full/path/sc_mouse/final
 ```
+Use `cd sc_mouse/input; readlink -f *` to grab full path to each file and paste into yaml.
 
 ## 6. Create `sc_mouse/config/bcbio.sh`
 ```
@@ -116,7 +121,7 @@ cd sc_mouse_work
 sbatch ../config/bcbio.sh
 ```
 
-## 1a (Optional). 
+## 1a. (Optional). 
 If you care, download fresh transcriptome annotation from Gencode (https://www.gencodegenes.org/mouse/)
 (it has chrom names with chr matching mm10 assembly).
 ```
@@ -130,17 +135,6 @@ update sc_mouse/config/sc_mouse.yaml:
 transcriptome_fasta: gencode.vM23.annotation.cds.fa
 transcriptome_gtf: gencode.vM23.annotation.gtf
 ```
-
-## 3a (Optional). 
-Merge multiple lanes for every read:
-```
-zcat KM_lane1_R1.fastq KM_lane2_R1.fastq.gz | gzip > KM_1.fq.gz
-...
-```
-
-## 5a (tip)
-Use `cd sc_mouse/input; readlink -f *` to grab full path to each file
-
 ## References
 - indrops3 library structure: https://singlecellcore.hms.harvard.edu/resources
 - [Even shorter guide](https://github.com/bcbio/bcbio-nextgen/blob/master/config/templates/indrop-singlecell.yaml)

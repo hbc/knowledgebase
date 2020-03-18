@@ -29,10 +29,10 @@ cat *R1.fastq | gzip > sample_1.fq.gz
 
 - some cores produce R1,R2,R3,R4, others R1,R2,I1,I2, rename them
 ```
-bcbio_R1 = R1
-bcbio_R2 = I1
-bcbio_R3 = I2
-bcbio_R4 = R2
+bcbio_R1 = R1 = 86 or 64 bp transcript read
+bcbio_R2 = I1 = 8 bp part 1 of cell barcode
+bcbio_R3 = I2 = 8 bp sample (library) barcode
+bcbio_R4 = R2 = 14 bp = 8 bp part 2 of cell barcode + 6 bp of transcript UMI
 ```
 - files in sc_mouse/input should be (KM here is project name):
 ```
@@ -82,7 +82,7 @@ upload:
 # https://slurm.schedmd.com/sbatch.html
 
 #SBATCH --partition=priority        # Partition (queue)
-#SBATCH --time=5-00:00              # Runtime in D-HH:MM format
+#SBATCH --time=10-00:00             # Runtime in D-HH:MM format
 #SBATCH --job-name=km            # Job name
 #SBATCH -c 20
 #SBATCH --mem-per-cpu=5G            # Memory needed per CPU
@@ -92,6 +92,7 @@ upload:
 
 bcbio_nextgen.py ../config/sc-mouse.yaml -n 20
 ```
+- most projects take < 5days, but some large 4 lane could take more, like 7-8
 
 ## 7. Run bcbio
 ```

@@ -2,7 +2,7 @@
 
 ## Last use - 2020-03-17
 
-## 1. Check reference genome and transcriptome - is it mouse?
+## 1. Check reference genome and transcriptome - is it a mouse project?
 - mm10 reference genome: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10
 - transcriptome_fasta: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.fa
 - transcriptome_gtf: /n/shared_db/bcbio/biodata/genomes/Mmusculus/mm10/rnaseq/ref-transcripts.gtf
@@ -47,7 +47,7 @@ KM_4.fq.gz
 ```
 
 ## 4. Create `sc_mouse/config/sample_barcodes.csv`
-Check out if the sample barcodes provided match the actual barcodes in the data (sometimes you need to reverse complement them):
+Check out if the sample barcodes provided match the actual barcodes in the data.
 ```
 gunzip -c FC_X_3.fq.gz | awk '{if(NR%4 == 2) print $0}' | head -n 400000 | sort | uniq -c | sort -k1,1rn | awk '{print $2","$1}' | head
 
@@ -63,6 +63,12 @@ ATTAGCCG,840
 ATTATACG,699
 ```
 
+Sometimes you need to reverse complement sample barcodes:
+```
+cat barcodes_original.csv | awk -F ',' '{print $1}' | tr ACGTacgt TGCAtgca | rev
+```
+
+sample_barcodes.csv
 ```
 TCTCTCCG,S01
 GCGTAAGA,S02

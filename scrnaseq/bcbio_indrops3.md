@@ -43,6 +43,23 @@ KM_4.fq.gz
 ```
 
 ## 4. Create `sc_mouse/config/sample_barcodes.csv`
+Check out if the sample barcodes provided match the actual barcodes in the data (sometimes you need to reverse complement them):
+```
+gunzip -c FC_05898_3.fq.gz | awk '{if(NR%4 == 2) print $0}' | head -n 400000 | sort | uniq -c | sort -k1,1rn | awk '{print $2","$1}' | head
+
+AGGCTTAG,112303
+ATTAGACG,95212
+TACTCCTT,94906
+CGGAGAGA,62461
+CGGAGATA,1116
+CGGATAGA,944
+GGGGGGGG,852
+ATTAGACC,848
+ATTAGCCG,840
+ATTATACG,699
+
+```
+
 ```
 TCTCTCCG,S01
 GCGTAAGA,S02

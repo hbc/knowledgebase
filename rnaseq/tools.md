@@ -1,23 +1,3 @@
----
-title: Tools related to bulk RNA-seq analysis 
-description: This page shows tools that can be applied to bulk RNA-seq analysis.
-category: research
-subcategory: rnaseq 
-tags: [tools, literature]
----
-
-## Tools_tested
-
-> - Exampletool_name (as link to tool)
->     - tester initials, date of testing (yyyy_mm)
->     - version#
->     - brief description about what the tool does
->     - information about how the tool performed
->     - what requirements are needed (e.g. R-3.5.1, etc.)
->     - whether we have teaching material for this tool with links
->     - whether incorporated in bcbio or downstream analysis template/report (if so, then include date of incorporation)
->     - if used in a template/report, then provide a link to the template/report
-    
  - [IsoformSwitchAnalyzer](https://bioconductor.org/packages/release/bioc/vignettes/IsoformSwitchAnalyzeR/inst/doc/IsoformSwitchAnalyzeR.html)
     - LP/VB?, 2019/02?
     - version#?
@@ -38,11 +18,4 @@ tags: [tools, literature]
     - yes, DEXseq is incorporated in bcbio
     - Following this paper from MLove et al: https://f1000research.com/articles/7-952/v3 I used salmon and DEXseq to call isoform switching. This consult has an example: https://code.harvard.edu/HSPH/hbc_RNAseq_christiani_RNAediting_on_lung_in_humna_hbc02307. I found that normally one isomform changes a lot and another very little, but I found some examples were the switching is more evident.
 
-
-
-## Tools_novel
-
-> - Exampletool_name:
-> - brief description of tool (one-line)
->   - link to tool
->   - initials of person planning to test tool
+- [clusterProfiler](https://yulab-smu.github.io/clusterProfiler-book/index.html)

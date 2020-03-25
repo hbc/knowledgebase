@@ -16,5 +16,7 @@ because one of the packages wanted R4.0
 - module load hdf5/1.10.1
 - installing velocyto.R: https://github.com/velocyto-team/velocyto.R/issues/86
 
+- inDrops3 support: https://github.com/BUStools/bustools/issues/4
+
 # Velocity analysis in Python:
 http://velocyto.org/

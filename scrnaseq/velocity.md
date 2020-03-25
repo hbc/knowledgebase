@@ -18,5 +18,7 @@ because one of the packages wanted R4.0
 
 - inDrops3 support: https://github.com/BUStools/bustools/issues/4
 
+https://www.kallistobus.tools/tutorials
+
 # Velocity analysis in Python:
 http://velocyto.org/

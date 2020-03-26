@@ -28,7 +28,7 @@ tr2g.tsv
 ```
 
 # 3. Index reference
-This step takes ~1h and 100G or RAM
+This step takes ~1h and 100G or RAM:  
 `sbatch `[02_kallisto_index.sh](https://github.com/naumenko-sa/crt/blob/master/velocity/02_kallisto_index.sh)
 
 - inDrops3 support: https://github.com/BUStools/bustools/issues/4

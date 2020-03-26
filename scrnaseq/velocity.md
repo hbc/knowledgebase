@@ -18,7 +18,7 @@ because one of the packages wanted R4.0
 - installing velocyto.R: https://github.com/velocyto-team/velocyto.R/issues/86
 
 # Generate reference files
-- `Rscriptdev 01_get_velocity_files.R`: [01_get_velocity_files.R](https://github.com/naumenko-sa/crt/blob/master/velocity/01_get_velocity_files.R)
+- `Rscriptdev `[01_get_velocity_files.R](https://github.com/naumenko-sa/crt/blob/master/velocity/01_get_velocity_files.R)
 - output:
 ```
 cDNA_introns.fa

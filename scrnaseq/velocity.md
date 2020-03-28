@@ -33,7 +33,10 @@ This step takes ~1-2h and 100G or RAM:
 
 - inDrops3 support: https://github.com/BUStools/bustools/issues/4
 
+# References
+
 https://www.kallistobus.tools/tutorials
+https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 
 # Velocity analysis in Python:
 http://velocyto.org/

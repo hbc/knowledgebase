@@ -31,7 +31,7 @@ setwd("/where/you/cloned/velocyto.R")
 devtools::install_local("velocyto.R")
 ```
 
-# 3. Generate reference files ~ 2h
+# 3. Generate reference files
 - `Rscriptdev `[01_get_velocity_files.R](https://github.com/naumenko-sa/crt/blob/master/velocity/01_get_velocity_files.R)
 - output:
 ```
@@ -48,7 +48,6 @@ This step takes ~1-2h and 100G or RAM:
 - inDrops3 support: https://github.com/BUStools/bustools/issues/4
 
 # 5. References
-
 https://www.kallistobus.tools/tutorials
 https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 

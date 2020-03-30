@@ -31,7 +31,7 @@ setwd("/where/you/cloned/velocyto.R")
 devtools::install_local("velocyto.R")
 ```
 
-# 3. Generate reference files
+# 3. Generate reference files ~ 2h
 - `Rscriptdev `[01_get_velocity_files.R](https://github.com/naumenko-sa/crt/blob/master/velocity/01_get_velocity_files.R)
 - output:
 ```

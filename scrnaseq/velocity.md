@@ -17,7 +17,7 @@ because one of the packages wanted R4.0
 - module load hdf5/1.10.1
 - installing velocyto.R: https://github.com/velocyto-team/velocyto.R/issues/86
 
-# 2. Install velocyto.R on a laptop (Fedora 30 example)
+# 2. Install velocyto.R with R3.6.3 (Fedora 30 example)
 bash:
 ```
 sudo dnf update R

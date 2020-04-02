@@ -54,8 +54,9 @@ barcode_splitter --bcfile samples.tsv Undetermined_S0_L001_R1.fastq Undetermined
 ```
 
 # 6. References
-https://www.kallistobus.tools/tutorials
-https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
+- https://www.kallistobus.tools/tutorials
+- https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
+- [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)
 
 # Velocity analysis in Python:
 http://velocyto.org/

@@ -53,6 +53,8 @@ https://pypi.org/project/barcode-splitter/
 barcode_splitter --bcfile samples.tsv Undetermined_S0_L001_R1.fastq Undetermined_S0_L001_R2.fastq Undetermined_S0_L001_R3.fastq Undetermined_S0_L001_R4.fastq --idxread 3 --suffix .fq
 ```
 
+kallisto bus counting procedure works on per sample basis, so we need to split samples to separate fastq files, and merge samples across lanes.
+
 # 6. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md

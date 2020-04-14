@@ -5,6 +5,7 @@
 - https://nvie.com/posts/a-successful-git-branching-model/
 - http://sandofsky.com/blog/git-workflow.html
 - https://blog.izs.me/2012/12/git-rebase
+- https://benmarshall.me/git-rebase/
 
 # Add remote upstream
 ```
@@ -57,6 +58,15 @@ git push
 # request merged
 git branch -d feature_branch
 git push origin :feature_branch
+```
+
+# get commits from maintainers in a pull request and push back
+```
+git fetch upstream pull/[PR_Number]/head:new_branch
+git checkout new_branch
+git add 
+git commit
+git push --set-upstream origin new_branch
 ```
 
 # ~/.ssh/config

@@ -13,3 +13,6 @@ pip install intervaltree --user
 cd phaser/phaser
 python setup.py build_ext --inplace
 ```
+
+ASE QC:
+- https://github.com/gimelbrantlab/Qllelic

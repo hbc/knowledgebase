@@ -270,3 +270,11 @@ multimapped reads by the number of transcripts they aligned to and collapsing
 counts to genes by adding all counts for each transcript of a gene. The R
 package edgeR 3.18.1 (R version 3.2.1) was used for differential expression
 analysis.
+
+### ATAC-seq
+Reads were aligned with bwa[1] version 0.7.17-r1188 against mm10. Alignments to mitochondria and non-assembled chromosomes, duplicate alignments and multimapping alignments were removed. Alignment files were split into nucleosome (NF) free, mono/di/tri nucleosome free fractions and peaks were called individually with MACS2[2] version 2.2.6 with the parameters `--nomodel -f BAMPE -g 2730871774 --bdg --nolambda`. Consensus peaks were called on NF regions by expanding each summit 250 bases and choosing among overlapping peaks the peak with the highest score (see https://bedops.readthedocs.io/en/latest/content/usage-examples/master-list.html). Counts per peak per sample were called using featureCounts with the consensus peak file using the NF fraction BAM file. Differential peaks were called with DESeq2[3], fitting a model of the form `~0 + sg` where sg is a combined sex-genotype factor. Differential expression of the various comparisons were made with contrasts of the sex-genotype factor, using a BH adjusted p-value cutoff of 0.1. Peaks were annotated for genomic context using the ChIPseeker[4] package.
+
+[1]: Li H. (2013) Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. arXiv:1303.3997v2 [q-bio.GN].  whole BWA package)
+[2]: Zhang et al. Model-based Analysis of ChIP-Seq (MACS). Genome Biol (2008) vol. 9 (9) pp. R137
+[3]: Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.
+[4]: Yu G, Wang L, He Q (2015). “ChIPseeker: an R/Bioconductor package for ChIP peak annotation, comparison and visualization.” Bioinformatics, 31(14), 2382-2383. doi: 10.1093/bioinformatics/btv145

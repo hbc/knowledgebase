@@ -69,7 +69,10 @@ unspliced.genes.txt
 unspliced.mtx
 ```
 
-# 7. References
+# 7. Create Seurat objects for every sample
+
+
+# 8. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 - [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)

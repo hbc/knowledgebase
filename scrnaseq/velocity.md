@@ -58,8 +58,16 @@ kallisto bus counting procedure works on per sample basis, so we need to split s
 - [split_barcodes.sh](https://github.com/naumenko-sa/crt/blob/master/velocity/03_split_barcodes.sh)
 
 # 6. Count spliced and unspliced transcripts
-
 - [kallisto_count](https://github.com/naumenko-sa/crt/blob/master/velocity/04_kallisto_count.sh)
+- output:
+```
+spliced.barcodes.txt
+spliced.genes.txt
+spliced.mtx
+unspliced.barcodes.txt
+unspliced.genes.txt
+unspliced.mtx
+```
 
 # 7. References
 - https://www.kallistobus.tools/tutorials

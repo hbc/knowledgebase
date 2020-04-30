@@ -55,7 +55,13 @@ barcode_splitter --bcfile samples.tsv Undetermined_S0_L001_R1.fastq Undetermined
 
 kallisto bus counting procedure works on per sample basis, so we need to split samples to separate fastq files, and merge samples across lanes.
 
-# 6. References
+- [split_barcodes.sh](https://github.com/naumenko-sa/crt/blob/master/velocity/03_split_barcodes.sh)
+
+# 6. Count spliced and unspliced transcripts
+
+- [kallisto_count](https://github.com/naumenko-sa/crt/blob/master/velocity/04_kallisto_count.sh)
+
+# 7. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 - [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)

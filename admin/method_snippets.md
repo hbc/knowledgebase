@@ -210,7 +210,6 @@ ChIP-seq data quality will be evaluated using FASTQC [6], and if required filter
 [16]: Yu G, Wang L, He Q (2015). “ChIPseeker: an R/Bioconductor package for ChIP peak annotation, comparison and visualization.” Bioinformatics, 31(14), 2382-2383. doi: 10.1093/bioinformatics/btv145.
 [17]: Bailey, Timothy L, Mikael Bodén, Fabian A Buske, Martin Frith, Charles E Grant, Luca Clementi, Jingyuan Ren, Wilfred W Li, and William S Noble. “MEME SUITE: Tools for Motif Discovery and Searching..” Nucleic Acids Research 37, no. Web Server issue: W202–8. doi:10.1093/nar/gkp335.
 
-[14]: McLean, Cory Y, Dave Bristor, Michael Hiller, Shoa L Clarke, Bruce T Schaar, Craig B Lowe, Aaron M Wenger, and Gill Bejerano. “GREAT Improves Functional Interpretation of Cis-Regulatory Regions..” Nature Biotechnology 28, no. 5: 495–501. doi:10.1038/nbt.1630.
 
 ### TF
 

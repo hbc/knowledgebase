@@ -93,4 +93,5 @@ unspliced.mtx
 - [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)
 
 # Velocity analysis in Python:
-http://velocyto.org/
+- http://velocyto.org/
+- https://github.com/pachterlab/MBGBLHGP_2019/blob/master/Figure_3_Supplementary_Figure_8/supp_figure_9.ipynb

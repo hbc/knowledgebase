@@ -73,8 +73,18 @@ unspliced.mtx
 
 # 7. Create Seurat objects for every sample
 - [create_seurat_sample.Rmd](https://github.com/naumenko-sa/crt/blob/master/velocity/05.create_seurat_sample.Rmd)
+- also removes empty droplets
 
-# 8. References
+# 8. Merge seurat objects
+- [merge_seurats](https://github.com/naumenko-sa/crt/blob/master/velocity/06.merge_seurats.Rmd)
+
+# 9. Velocity analysis
+- [velocity_analysis](https://github.com/naumenko-sa/crt/blob/master/velocity/07.velocity_analysis.Rmd)
+
+# 10. Plot velocity picture
+- [plot_velocity](https://github.com/naumenko-sa/crt/blob/master/velocity/08.plot_velocity.Rmd)
+
+# 9. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 - [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)

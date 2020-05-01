@@ -84,6 +84,9 @@ unspliced.mtx
 # 10. Plot velocity picture
 - [plot_velocity](https://github.com/naumenko-sa/crt/blob/master/velocity/08.plot_velocity.Rmd)
 
+# 11. Repeat marker analysis
+- [velocity_markers](https://github.com/naumenko-sa/crt/blob/master/velocity/09.velocity_markers.Rmd)
+
 # 11. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md

@@ -84,7 +84,7 @@ unspliced.mtx
 # 10. Plot velocity picture
 - [plot_velocity](https://github.com/naumenko-sa/crt/blob/master/velocity/08.plot_velocity.Rmd)
 
-# 9. References
+# 11. References
 - https://www.kallistobus.tools/tutorials
 - https://github.com/satijalab/seurat-wrappers/blob/master/docs/velocity.md
 - [preprocessing influences velociy analysis](https://www.biorxiv.org/content/10.1101/2020.03.13.990069v1)

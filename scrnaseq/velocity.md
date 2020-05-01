@@ -48,7 +48,9 @@ This step takes ~1-2h and 100G or RAM:
 - inDrops3 support: https://github.com/BUStools/bustools/issues/4
 
 # 5. Split reads by sample with barcode_splitter
-https://pypi.org/project/barcode-splitter/
+
+- merge reads from multiple flowcells first
+- https://pypi.org/project/barcode-splitter/
 ```
 barcode_splitter --bcfile samples.tsv Undetermined_S0_L001_R1.fastq Undetermined_S0_L001_R2.fastq Undetermined_S0_L001_R3.fastq Undetermined_S0_L001_R4.fastq --idxread 3 --suffix .fq
 ```

@@ -72,7 +72,7 @@ unspliced.mtx
 ```
 
 # 7. Create Seurat objects for every sample
-
+- [create_seurat_sample.Rmd](https://github.com/naumenko-sa/crt/blob/master/velocity/05.create_seurat_sample.Rmd)
 
 # 8. References
 - https://www.kallistobus.tools/tutorials

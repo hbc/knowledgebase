@@ -1,0 +1,22 @@
+Main guide is here:
+https://www.ncbi.nlm.nih.gov/geo/info/submission.html
+Highh throughput sequencing is here:
+https://www.ncbi.nlm.nih.gov/geo/info/seq.html
+
+You will need
+1) [GEO metadata sheet](https://www.ncbi.nlm.nih.gov/geo/info/seq.html)
+2) Raw fastq files
+3) Derived files for data
+  a) RNAseq
+- raw counts table
+- TPM
+- bams are OK too
+4) details on teh analysis for the GEO metadata sheet
+
+Example metadata sheets can be found in this Dropbox folder:
+
+
+
+
+
+

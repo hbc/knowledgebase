@@ -8,3 +8,6 @@ throughput RNA-Seq data](https://bmcbioinformatics.biomedcentral.com/articles/10
 
 # Functional analysis
 https://yulab-smu.github.io/clusterProfiler-book/index.html
+
+
+[RNA-seq qc](https://seqqc.wordpress.com/)

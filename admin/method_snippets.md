@@ -30,7 +30,9 @@ We run many tools to gather QC metrics:
 - qualimap (http://qualimap.bioinfo.cipf.es/)
 - samtools (https://github.com/samtools/)
 - bcftools (http://www.htslib.org/doc/bcftools.html)
-We arggregage all metrics in a single QC report with multiqc (https://multiqc.info/).
+
+
+We arggregate all metrics in a single QC report with multiqc (https://multiqc.info/).
 
 ### Coverage and callable regions
 We calculate coverage using mosdepth (https://github.com/brentp/mosdepth) and calculate callable regions based on real coverage and bed files provided.

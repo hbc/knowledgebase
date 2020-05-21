@@ -1,6 +1,5 @@
 # Method snippets
 
-
 ## Expression Microarrays
 
 ### Illumina arrays
@@ -16,34 +15,77 @@ Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (20
  normalized. Differentially expressed genes (as defined by a minimun 2 fold change in expression and  a  Benjamini-Hochberg FDR adjusted pvalue of less than 0.1) were identified using limma  [Smyth, GK (2005). Limma: linear models for microarray data. In:  'Bioinformatics and Computational Biology Solutions using R and  Bioconductor'. R. Gentleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber  (eds), Springer, New York, pages 397-420.].”
 
 
+## Variant calling
+Overall, the parameters of our workflows are based on GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/).
 
-## Next-gen sequencing
+### Read alignment
+We align reads with `bwa mem` (https://github.com/lh3/bwa), using samtools(https://github.com/samtools/) and sambamba(https://github.com/biod/sambamba) to sort bam files and mark duplicate reads.
 
-### Variant calling methods
+### Quality control
+We run many tools to gather QC metrics: 
+- peddy (https://github.com/brentp/peddy)
+- verifybamid (https://genome.sph.umich.edu/wiki/VerifyBamID)
+- DKFZ bias filter(https://github.com/DKFZ-ODCF/DKFZBiasFilter)
+- fastqc (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- qualimap (http://qualimap.bioinfo.cipf.es/)
+- samtools (https://github.com/samtools/)
+- bcftools (http://www.htslib.org/doc/bcftools.html)
+We arggregage all metrics in a single QC report with multiqc (https://multiqc.info/).
 
-Sequencing data will be obtained, tested for quality and trimmed as before. Filtered reads will be aligned with Novoalign (http://www.novocraft.com/main/index.php) before running a standard GATK best practice workflow (http://gatkforums.broadinstitute.org/discussion/1186/best-practice-variant-detection-with-the-gatk-v4-for-release-2-0) including deduplication, base recalibration and realignment. Variants will be called using an ensembl approach with the GATK UnifiedGenotyper, GATK Haplotype caller and FreeBayes on [[all samples simultaneously | samples grouped by family]]. Combining results in this way from multiple callers can increase overall call confidence (see http://bcbio.wordpress.com/2013/02/06/an-automated-ensemble-method-for-combining-and-evaluating-genomic-variants-from-multiple-callers/). We annotate variant calls using SnpEff (http://snpeff.sourceforge.net/) to predict variant effects, and gemini (http://snpeff.sourceforge.net/) to produce a readily queried database with annotations from external sources such as dbSNP, ENCODE, KEGG and ClinVar.
+### Coverage and callable regions
+We calculate coverage using mosdepth (https://github.com/brentp/mosdepth) and calculate callable regions based on real coverage and bed files provided.
 
+### SNP and indels in germline (WES, WGS, gene panels)
+We support variant calling in germline with:
+- gatk4x (https://github.com/broadinstitute/gatk/)
+- gatk3.8x (https://console.cloud.google.com/storage/browser/gatk-software/package-archive)
+- freebayes (https://github.com/ekg/freebayes)
+- samtools (https://github.com/samtools/)
+- octopus (https://github.com/luntergroup/octopus).
 
+We support:
+- single sample variant calling
+- batch variant calling
+- population variant calling (joint genotyping).
 
-Moving to whole genome analysis, from our previous experience with exome and targeted population sequencing, required reworking our analysis approaches. The primary bottleneck is filesystem IO, which requires new scaling approaches. To provide a practical example, writing a single 100Gb aligned genome in BAM format requires approximately 1 day on a reasonably fast filesystem. When writing 10 files concurrently, shared filesystems like NFS slow down considerably
-and the time can increase to longer than a week.
+### Structural and copy number variants in germline (WGS data)
+We call structural variants with 
+- manta (https://github.com/Illumina/manta)
+- lumpy (https://github.com/arq5x/lumpy-sv)
+- delly (https://github.com/dellytools/delly)
+- wham (https://github.com/zeeev/wham)
 
-Due to these challenges we improved our ability to parallelize these samples by:
+We annotate structural variant calls with coverage information with duphold (https://github.com/brentp/duphold)
 
-- Re-writing our pipeline to avoid file writing steps as much as possible, and running alignment preparation and variant calling steps in smaller chunks of the genome.
+### Somatic small variants
+We call somatic variants in tumor only or tumor/normal mode with:
+- mutect2 (https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2)
+- vardict (https://github.com/AstraZeneca-NGS/VarDict)
+- strelka2 (https://github.com/Illumina/strelka)
+- varscan2 (Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, & Wilson RK (2012). VarScan 2: Somatic mutation and copy number alteration discovery in cancer by exome sequencing. Genome Research PMID: 22300766)
 
-- Improving our shared filesystem network throughput by increasing connectivity between cluster nodes.
+We support ensemble approach to combine somatic calls from several callers (https://github.com/bcbio/bcbio.variation.recall)
 
-- Using distributed filesystems to help distribute network and IO traffic. We're currently exploring GlusterFS (http://www.gluster.org/).
+### Somatic copy number variants
+We use 
+- gatk-cnv (https://gatkforums.broadinstitute.org/gatk/discussion/9143/how-to-call-somatic-copy-number-variants-using-gatk4-cnv)
+- pureCN (https://bioconductor.org/packages/release/bioc/html/PureCN.html)
+- seq2c (https://github.com/AstraZeneca-NGS/Seq2C)
+- titanCNA (https://github.com/gavinha/TitanCNA)
 
-The second significant challenge was machine memory, which becomes limiting during variant calling steps with multiple samples. The major challenge is that traditional cluster management systems manage compute core usage but not memory, so computing on shared machines can become problematic when other memory-intensive jobs get scheduled together. There are both technical solutions, like grabbing entire machines for processing to avoid other scheduled jobs, and algorithmic solutions, like Broad's ReduceReads https://www.broadinstitute.org/gatk/gatkdocs/org_broadinstitute_sting_gatk_walkers_compression_reducereads_ReduceReads.html).
+### Variant annotation
+We annotate variants with
+- VEP (https://useast.ensembl.org/info/docs/tools/vep/index.html)
+- snpEff (A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672].
+- using vcfanno (https://github.com/brentp/vcfanno) and many annotation sources:
+  - gnomad (https://gnomad.broadinstitute.org/)
+  - topmed (https://bravo.sph.umich.edu/freeze5/hg38/)
+  - cosmic (https://cancer.sanger.ac.uk/cosmic)
+  - dbsnp  (https://www.ncbi.nlm.nih.gov/snp/)
+  - dbnsfp (https://sites.google.com/site/jpopgen/dbNSFP)
+  - clinvar (https://www.ncbi.nlm.nih.gov/clinvar/)
 
-
-
-### Cancer variant calling
-
-Sequencing reads will be assed for quality [http://www.bioinformatics.babraham.ac.uk/projects/fastqc/], trimmed and filtered [https://code.google.com/p/cutadapt/], and aligned against the reference genome using Novoalign [http://www.novocraft.com/] before being processed following the GATK's best practice workflow (base recalibration, realignment, and variant calling using the UnifiedGenotyper). In addition, we will apply VarScan2 [Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, & Wilson RK (2012). VarScan 2: Somatic mutation and copy number alteration discovery in cancer by exome sequencing. Genome Research PMID: 22300766] to determine somatic status of detected variants. All variants will be annotated using snpEff [ "A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672] before downstream analysis.
-
+We create gemini database as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
 
 ### RNA-Seq
 
@@ -93,59 +135,6 @@ Lists of differentially expressed genes will be examined for gene ontology (GO)
 and KEGG term enrichment with clusterProfiler [Yu G, Wang L, Han Y and He Q (2012). “clusterProfiler: an R package for comparing biological themes among gene clusters.” OMICS: A Journal of Integrative Biology, 16(5), pp. 284-287.]. Functional redundancy in enriched
 GO terms will be reduced with GOSemSim [Yu G, Li F, Qin Y, Bo X, Wu Y and Wang S (2010). “GOSemSim: an R package for measuring semantic similarity among GO terms and gene products.” Bioinformatics, 26(7), pp. 976-978.] In addition, a cut-off-free gene set
 enrichment analysis (GSEA) will be performed using clusterProfiler and weighted fold change calculations from DESeq2.
-
-
-### Exome Seq (normal or cancer)
-
-To analyze small variants (SNPs) and indels in exome sequencing samples, we
-employ a suite of existing software packages combined with methodology for
-producing a set of combined ensemble calls from multiple approaches.
-
-Our exome sample sequencing approach detects small SNPs and indels
-using two best practice approaches, via an automated parallelized pipeline
-(https://github.com/chapmanb/bcbio-nextgen). We align reads using Novoalign
-(http://www.novocraft.com/main/index.php) and post process with de-duplication,
-base quality score recalibration and realignment around indels. We call variants
-from these prepared reads using two pipelines: the Broad's GATK tools
-(http://gatkforums.broadinstitute.org/discussion/1186/best-practice-variant-detection-with-the-gatk-v4-for-release-2-0)
-call variants with the UnifiedGenotyper, following by filtration with the Variant
-Quality Score Recalibrator; our second pipeline utilizes FreeBayes from the
-Marth Lab (http://gkno.me/pipelines.html) followed by filtration with machine
-learning approaches using self-organizing maps. By combining calls from multiple
-approaches, we find we can achieve improved sensitivity and specificity compared
-to individual methods (http://bcbio.wordpress.com/2013/02/06/an-automated-ensemble-method-for-combining-and-evaluating-genomic-variants-from-multiple-callers/).
-
-We similarly employ two calling methods for variant detection in tumor-normal pairs:
-muTect (http://www.broadinstitute.org/cancer/cga/mutect) from the Broad
-Institute and VarScan2 (http://varscan.sourceforge.net/) from the Genome
-Institute at Washington University. Both provide variant calling and filtering
-on matched samples, removing common sequencing artifacts.
-
-To provide biological context for downstream analysis, we annotate variants from
-both approaches with predicted effects and associated public data. snpEff
-(http://snpeff.sourceforge.net/) predicts coding effects and Gemini
-(https://github.com/arq5x/gemini) stores variants associated with public
-datasets (dbSNP, ENCODE, ClinVar) for query and prioritization.
-
-For copy number detection, we use two freely available packages designed to
-identify CNVs from exome data: CoNIFER (http://conifer.sourceforge.net/) and
-ExomeCNV (https://secure.genome.ucla.edu/index.php/ExomeCNV_User_Guide). These
-provide detection of copy number alterations in single sample and tumor-normal
-data, respectively.
-
-Generally, our approach is to utilize multiple best-practice approaches to
-identify SNP, indel and copy number variations and use flexible approaches to
-combine these into a finalized callset. Our automated installation and pipeline
-approaches help ameliorate the difficulties of setting up and running multiple
-packages. We make this infrastructure trade off because we value the improvement
-in detection sensitivity and specificity, thus passing our most confident variants
-into downstream analysis.
-
-
-[Koboldt DC, Zhang Q, Larson DE, Shen D, McLellan MD, Lin L, Miller CA, Mardis ER, Ding L, & Wilson RK (2012). VarScan 2: Somatic mutation and copy number alteration discovery in cancer by exome sequencing. Genome Research PMID: 22300766]
-
-[ "A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672]
-
 
 
 ### mRNA

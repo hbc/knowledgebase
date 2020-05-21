@@ -57,7 +57,7 @@ We call structural variants with
 - delly (https://github.com/dellytools/delly)
 - wham (https://github.com/zeeev/wham)
 
-We annotate structural variant calls with coverage information with duphold (https://github.com/brentp/duphold)
+We annotate structural variant calls with coverage information using duphold (https://github.com/brentp/duphold)
 
 ### Somatic small variants
 We call somatic variants in tumor only or tumor/normal mode with:

@@ -19,7 +19,7 @@ Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (20
 Overall, the parameters of our workflows are based on GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/).
 
 ### Read alignment
-We align reads with `bwa mem` (https://github.com/lh3/bwa), using samtools(https://github.com/samtools/) and sambamba(https://github.com/biod/sambamba) to sort bam files and mark duplicate reads.
+We align reads with `bwa mem` (1), (https://github.com/lh3/bwa), using samtools (2), (https://github.com/samtools/) and sambamba (3), (https://github.com/biod/sambamba) to sort bam files and mark duplicate reads.
 
 ### Quality control
 We run many tools to gather QC metrics: 
@@ -31,8 +31,7 @@ We run many tools to gather QC metrics:
 - samtools (https://github.com/samtools/)
 - bcftools (http://www.htslib.org/doc/bcftools.html)
 
-
-We aggregate all metrics in a single QC report with multiqc (https://multiqc.info/).
+We aggregate all metrics in a single QC report with multiqc (4-8), (https://multiqc.info/).
 
 ### Coverage and callable regions
 We calculate coverage using mosdepth (https://github.com/brentp/mosdepth) and calculate callable regions based on real coverage and bed files provided.
@@ -52,10 +51,10 @@ We support:
 
 ### Structural and copy number variants in germline (WGS data)
 We call structural variants with 
-- manta (https://github.com/Illumina/manta)
-- lumpy (https://github.com/arq5x/lumpy-sv)
-- delly (https://github.com/dellytools/delly)
-- wham (https://github.com/zeeev/wham)
+- manta (11), (https://github.com/Illumina/manta)
+- lumpy (12), (https://github.com/arq5x/lumpy-sv)
+- delly (13), (https://github.com/dellytools/delly)
+- wham (14), (https://github.com/zeeev/wham)
 
 We annotate structural variant calls with coverage information using duphold (https://github.com/brentp/duphold)
 
@@ -75,7 +74,7 @@ We use
 - seq2c (https://github.com/AstraZeneca-NGS/Seq2C)
 - titanCNA (https://github.com/gavinha/TitanCNA)
 
-### Variant annotation
+### Variant annotation (15,16)
 We annotate variants with
 - VEP (https://useast.ensembl.org/info/docs/tools/vep/index.html)
 - snpEff (A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672].
@@ -87,7 +86,25 @@ We annotate variants with
   - dbnsfp (https://sites.google.com/site/jpopgen/dbNSFP)
   - clinvar (https://www.ncbi.nlm.nih.gov/clinvar/)
 
-We create gemini database as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
+We create gemini database (17) as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
+
+1. Li H. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. 2013 arXiv:1303.3997.
+2. Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943].
+3. A. Tarasov, A. J. Vilella, E. Cuppen, I. J. Nijman, and P. Prins. Sambamba: fast processing of NGS alignment formats. Bioinformatics, 2015.
+4. DKFZ bias filter (https://github.com/DKFZ-ODCF/DKFZBiasFilter).
+5. fastqc (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+6. qualimap (http://qualimap.bioinfo.cipf.es/).
+7. bcftools (http://www.htslib.org/doc/bcftools.html)
+8. Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PMID: 27312411; PMCID: PMC5039924.
+9. Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018;34(5):867‐868. doi:10.1093/bioinformatics/btx699.
+10. GATK4 (https://github.com/broadinstitute/gatk/).
+11. Chen, X. et al. (2016) Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications. Bioinformatics, 32, 1220-1222. doi:10.1093/bioinformatics/btv710.
+12. Layer RM, Chiang C, Quinlan AR, Hall IM. LUMPY: a probabilistic framework for structural variant discovery. Genome Biol. 2014;15(6):R84. Published 2014 Jun 26. doi:10.1186/gb-2014-15-6-r84.
+13. Rausch T, Zichner T, Schlattl A, Stütz AM, Benes V, Korbel JO. DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics. 2012;28(18):i333‐i339. doi:10.1093/bioinformatics/bts378.
+14. Kronenberg ZN, Osborne EJ, Cone KR, et al. Wham: Identifying Structural Variants of Biological Consequence. PLoS Comput Biol. 2015;11(12):e1004572. Published 2015 Dec 1. doi:10.1371/journal.pcbi.1004572.
+15. Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5.
+16. McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4.
+17. Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
 
 ### RNA-Seq
 
@@ -259,23 +276,12 @@ To explore transcriptional heterogeneity and to undertake initial cell clusterin
 Specific gene markers for each cluster were identified with the FindAllMarkers() function using the Wilcoxon rank sum test. Cluster quality was assessed for possible cluster artifacts (variance correlated with UMI counts, mitochondrial ratio, batch effects, and any other principle component biases). Clusters were assigned based on specific gene markers as visualized in Spring (Weinreb C, Wolock S, Klein AM. SPRING: a kinetic interface for visualizing high dimensional single-cell expression data. Bioinformatics. 2018 Apr 1;34(7):1246-1248. doi: 10.1093/bioinformatics/btx792. Epub 2017 Dec 7. PubMed PMID: 29228172; PubMed Central PMCID: PMC6030950.). Differential expression at the gene level between clusters was performed with DESeq2 1.20 (Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.] (https://bioconductor.org/packages/DESeq2/). 
 
 ### DGE
-Reads were processed to counts through the bcbio-nextgen single cell/DGE RNA-seq
-analysis pipeline
-(https://bcbio-nextgen.readthedocs.io/en/latest/contents/pipelines.html#single-cell-rna-seq)
-a brief description follows: The well barcode and UMIs were identified for all
-reads and all reads not within one edit distance of a known well barcode were
-discarded. Each surviving read was quasialigned to the transcriptome (GRCh38)
-using RapMap (Srivastava, Avi, Hirak Sarkar, Nitish Gupta, and Rob Patro. 2016.
-“RapMap: A Rapid, Sensitive and Accurate Tool for Mapping RNA-Seq Reads to
-Transcriptomes.” Bioinformatics 32 (12): i192–200.) Reads per well were counted
-using umis (Svensson, Valentine, Kedar Nath Natarajan, Lam-Ha Ly, Ricardo J.
-Miragaia, Charlotte Labalette, Iain C. Macaulay, Ana Cvejic, and Sarah A.
-Teichmann. 2017. “Power Analysis of Single-Cell RNA-Sequencing Experiments.”
-Nature Methods 14 (4): 381–87.), discarding duplicated UMIs, weighting
-multimapped reads by the number of transcripts they aligned to and collapsing
-counts to genes by adding all counts for each transcript of a gene. The R
-package edgeR 3.18.1 (R version 3.2.1) was used for differential expression
-analysis.
+Reads were processed to counts through the bcbio-nextgen single cell/DGE RNA-seq analysis pipeline (1). A brief description follows: The well barcode and UMIs were identified for all reads and all reads not within one edit distance of a known well barcode were discarded. Each surviving read was quasialigned to the transcriptome (GRCh38)using RapMap (2) Reads per well were counted using umis (3), discarding duplicated UMIs, weighting multimapped reads by the number of transcripts they aligned to and collapsing counts to genes by adding all counts for each transcript of a gene. The R package DESeq2 (4) will be used for differential expression analysis.
+
+1. https://bcbio-nextgen.readthedocs.io/en/latest/contents/3prime_dge.html.
+2. Srivastava, Avi, Hirak Sarkar, Nitish Gupta, and Rob Patro. 2016. “RapMap: A Rapid, Sensitive and Accurate Tool for Mapping RNA-Seq Reads to Transcriptomes.” Bioinformatics 32 (12): i192–200.
+3. Svensson, Valentine, Kedar Nath Natarajan, Lam-Ha Ly, Ricardo J. Miragaia, Charlotte Labalette, Iain C. Macaulay, Ana Cvejic, and Sarah A. Teichmann. 2017. “Power Analysis of Single-Cell RNA-Sequencing Experiments.” Nature Methods 14 (4): 381–87.
+4. Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol. 2014;15(12):550. doi:10.1186/s13059-014-0550-8.
 
 ### ATAC-seq
 Reads were aligned with bwa[1] version 0.7.17-r1188 against mm10. Alignments to mitochondria and non-assembled chromosomes, duplicate alignments and multimapping alignments were removed. Alignment files were split into nucleosome (NF) free, mono/di/tri nucleosome free fractions and peaks were called individually with MACS2[2] version 2.2.6 with the parameters `--nomodel -f BAMPE -g 2730871774 --bdg --nolambda`. Consensus peaks were called on NF regions by expanding each summit 250 bases and choosing among overlapping peaks the peak with the highest score (see https://bedops.readthedocs.io/en/latest/content/usage-examples/master-list.html). Counts per peak per sample were called using featureCounts with the consensus peak file using the NF fraction BAM file. Differential peaks were called with DESeq2[3], fitting a model of the form `~0 + sg` where sg is a combined sex-genotype factor. Differential expression of the various comparisons were made with contrasts of the sex-genotype factor, using a BH adjusted p-value cutoff of 0.1. Peaks were annotated for genomic context using the ChIPseeker[4] package.
@@ -284,39 +290,6 @@ Reads were aligned with bwa[1] version 0.7.17-r1188 against mm10. Alignments to 
 [2]: Zhang et al. Model-based Analysis of ChIP-Seq (MACS). Genome Biol (2008) vol. 9 (9) pp. R137
 [3]: Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.
 [4]: Yu G, Wang L, He Q (2015). “ChIPseeker: an R/Bioconductor package for ChIP peak annotation, comparison and visualization.” Bioinformatics, 31(14), 2382-2383. doi: 10.1093/bioinformatics/btv145
-
-### HT3DGE analysis
- 
-Reads will be processed to counts through the bcbio-nextgen DGE RNA-seq analysis pipeline (1). A brief description follows: The well barcode and UMIs will be identified for all reads. All reads not within one edit distance of a known well barcode will be discarded. Each surviving read will be quasialigned to the transcriptome (GRCh38) using RapMap (2). Reads per well will be counted using umis (3), discarding duplicated UMIs, weighting multimapped reads by the number of transcripts they align to, and collapsing counts to genes by adding all counts for each transcript of a gene. The R package DESeq2 will used for differential expression analysis.
-
-1. (https://bcbio-nextgen.readthedocs.io/en/latest/contents/3prime_dge.html).
-2. Srivastava, Avi, Hirak Sarkar, Nitish Gupta, and Rob Patro. 2016. “RapMap: A Rapid, Sensitive and Accurate Tool for Mapping RNA-Seq Reads to Transcriptomes.” Bioinformatics 32 (12): i192–200.
-3. Svensson, Valentine, Kedar Nath Natarajan, Lam-Ha Ly, Ricardo J. Miragaia, Charlotte Labalette, Iain C. Macaulay, Ana Cvejic, and Sarah A. Teichmann. 2017. “Power Analysis of Single-Cell RNA-Sequencing Experiments.” Nature Methods 14 (4): 381–87.
-4. Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol. 2014;15(12):550. doi:10.1186/s13059-014-0550-8.
- 
- 
-### Variant calling (WES):
- 
-Variants will be called using the bcbio-nextgen framework, which uses GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/). Briefly, reads will be aligned with bwa mem (1), using samtools (2) and sambamba (3) to sort bam files and mark duplicate reads. Quality metrics using several tools will be aggregated with multiqc (4-8). Coverage will be computed using mosdepth(9)  and callable regions will be defined based on the observed coverage. SNPs and indels in germline samples will be identified using GATK4 (10). Structural and copy number variants will be called using a combination of manta (11), lumpy (12) , delly (13) and wham (14). Variants will be annotated (15, 16) and loaded into a GEMINI database (17) to facilitate queries.
- 
-1. Li H. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. 2013 arXiv:1303.3997.
-2. Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943].
-3. A. Tarasov, A. J. Vilella, E. Cuppen, I. J. Nijman, and P. Prins. Sambamba: fast processing of NGS alignment formats. Bioinformatics, 2015.
-4. DKFZ bias filter (https://github.com/DKFZ-ODCF/DKFZBiasFilter).
-5. fastqc (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
-6. qualimap (http://qualimap.bioinfo.cipf.es/).
-7. bcftools (http://www.htslib.org/doc/bcftools.html)
-8. Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PMID: 27312411; PMCID: PMC5039924.
-9. Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018;34(5):867‐868. doi:10.1093/bioinformatics/btx699.
-10. GATK4 (https://github.com/broadinstitute/gatk/).
-11. Chen, X. et al. (2016) Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications. Bioinformatics, 32, 1220-1222. doi:10.1093/bioinformatics/btv710.
-12. Layer RM, Chiang C, Quinlan AR, Hall IM. LUMPY: a probabilistic framework for structural variant discovery. Genome Biol. 2014;15(6):R84. Published 2014 Jun 26. doi:10.1186/gb-2014-15-6-r84.
-13. Rausch T, Zichner T, Schlattl A, Stütz AM, Benes V, Korbel JO. DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics. 2012;28(18):i333‐i339. doi:10.1093/bioinformatics/bts378.
-14. Kronenberg ZN, Osborne EJ, Cone KR, et al. Wham: Identifying Structural Variants of Biological Consequence. PLoS Comput Biol. 2015;11(12):e1004572. Published 2015 Dec 1. doi:10.1371/journal.pcbi.1004572.
-15. Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5.
-16. McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4.
-17. Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
-
 
 
 ## Mass spectrometry based

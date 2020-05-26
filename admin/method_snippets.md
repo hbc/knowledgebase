@@ -19,7 +19,11 @@ Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (20
 Overall, the parameters of our workflows are based on GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/).
 
 ### Read alignment
-We align reads with `bwa mem` (1), (https://github.com/lh3/bwa), using samtools (2), (https://github.com/samtools/) and sambamba (3), (https://github.com/biod/sambamba) to sort bam files and mark duplicate reads.
+We align reads with `bwa mem` (1), using samtools (2), and sambamba (3), to sort bam files and mark duplicate reads.
+
+1. https://github.com/lh3/bwa; Li H. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. 2013 arXiv:1303.3997.
+2. https://github.com/samtools/; Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943].
+3. https://github.com/biod/sambamba; A. Tarasov, A. J. Vilella, E. Cuppen, I. J. Nijman, and P. Prins. Sambamba: fast processing of NGS alignment formats. Bioinformatics, 2015.
 
 ### Quality control
 We run many tools to gather QC metrics: 
@@ -33,8 +37,16 @@ We run many tools to gather QC metrics:
 
 We aggregate all metrics in a single QC report with multiqc (4-8), (https://multiqc.info/).
 
+4. DKFZ bias filter (https://github.com/DKFZ-ODCF/DKFZBiasFilter).
+5. fastqc (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+6. qualimap (http://qualimap.bioinfo.cipf.es/).
+7. bcftools (http://www.htslib.org/doc/bcftools.html)
+8. Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PMID: 27312411; PMCID: PMC5039924.
+
 ### Coverage and callable regions
-We calculate coverage using mosdepth (https://github.com/brentp/mosdepth) and calculate callable regions based on real coverage and bed files provided.
+We calculate coverage using mosdepth (9) and calculate callable regions based on real coverage and bed files provided.
+
+9. https://github.com/brentp/mosdepth; Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018;34(5):867‐868. doi:10.1093/bioinformatics/btx699.
 
 ### SNP and indels in germline (WES, WGS, gene panels)
 We support variant calling in germline with:
@@ -51,12 +63,17 @@ We support:
 
 ### Structural and copy number variants in germline (WGS data)
 We call structural variants with 
-- manta (11), (https://github.com/Illumina/manta)
-- lumpy (12), (https://github.com/arq5x/lumpy-sv)
-- delly (13), (https://github.com/dellytools/delly)
-- wham (14), (https://github.com/zeeev/wham)
+- manta (10), (https://github.com/Illumina/manta)
+- lumpy (11), (https://github.com/arq5x/lumpy-sv)
+- delly (12), (https://github.com/dellytools/delly)
+- wham (13), (https://github.com/zeeev/wham)
 
 We annotate structural variant calls with coverage information using duphold (https://github.com/brentp/duphold)
+
+10. Chen, X. et al. (2016) Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications. Bioinformatics, 32, 1220-1222. doi:10.1093/bioinformatics/btv710.
+11. Layer RM, Chiang C, Quinlan AR, Hall IM. LUMPY: a probabilistic framework for structural variant discovery. Genome Biol. 2014;15(6):R84. Published 2014 Jun 26. doi:10.1186/gb-2014-15-6-r84.
+12. Rausch T, Zichner T, Schlattl A, Stütz AM, Benes V, Korbel JO. DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics. 2012;28(18):i333‐i339. doi:10.1093/bioinformatics/bts378.
+13. Kronenberg ZN, Osborne EJ, Cone KR, et al. Wham: Identifying Structural Variants of Biological Consequence. PLoS Comput Biol. 2015;11(12):e1004572. Published 2015 Dec 1. doi:10.1371/journal.pcbi.1004572.
 
 ### Somatic small variants
 We call somatic variants in tumor only or tumor/normal mode with:
@@ -74,7 +91,7 @@ We use
 - seq2c (https://github.com/AstraZeneca-NGS/Seq2C)
 - titanCNA (https://github.com/gavinha/TitanCNA)
 
-### Variant annotation (15,16)
+### Variant annotation (14,15)
 We annotate variants with
 - VEP (https://useast.ensembl.org/info/docs/tools/vep/index.html)
 - snpEff (A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672].
@@ -86,25 +103,11 @@ We annotate variants with
   - dbnsfp (https://sites.google.com/site/jpopgen/dbNSFP)
   - clinvar (https://www.ncbi.nlm.nih.gov/clinvar/)
 
-We create gemini database (17) as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
+We create gemini database (16) as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
 
-1. Li H. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. 2013 arXiv:1303.3997.
-2. Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943].
-3. A. Tarasov, A. J. Vilella, E. Cuppen, I. J. Nijman, and P. Prins. Sambamba: fast processing of NGS alignment formats. Bioinformatics, 2015.
-4. DKFZ bias filter (https://github.com/DKFZ-ODCF/DKFZBiasFilter).
-5. fastqc (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
-6. qualimap (http://qualimap.bioinfo.cipf.es/).
-7. bcftools (http://www.htslib.org/doc/bcftools.html)
-8. Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PMID: 27312411; PMCID: PMC5039924.
-9. Pedersen BS, Quinlan AR. Mosdepth: quick coverage calculation for genomes and exomes. Bioinformatics. 2018;34(5):867‐868. doi:10.1093/bioinformatics/btx699.
-10. GATK4 (https://github.com/broadinstitute/gatk/).
-11. Chen, X. et al. (2016) Manta: rapid detection of structural variants and indels for germline and cancer sequencing applications. Bioinformatics, 32, 1220-1222. doi:10.1093/bioinformatics/btv710.
-12. Layer RM, Chiang C, Quinlan AR, Hall IM. LUMPY: a probabilistic framework for structural variant discovery. Genome Biol. 2014;15(6):R84. Published 2014 Jun 26. doi:10.1186/gb-2014-15-6-r84.
-13. Rausch T, Zichner T, Schlattl A, Stütz AM, Benes V, Korbel JO. DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics. 2012;28(18):i333‐i339. doi:10.1093/bioinformatics/bts378.
-14. Kronenberg ZN, Osborne EJ, Cone KR, et al. Wham: Identifying Structural Variants of Biological Consequence. PLoS Comput Biol. 2015;11(12):e1004572. Published 2015 Dec 1. doi:10.1371/journal.pcbi.1004572.
-15. Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5.
-16. McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4.
-17. Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
+14. Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5.
+15. McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4.
+16. Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
 
 ### RNA-Seq
 
@@ -216,6 +219,7 @@ ChIP-seq data quality will be evaluated using FASTQC [6], and if required filter
 [15]: Neph S, Kuehn MS, Reynolds AP, et al. BEDOPS: high-performance genomic feature operations. Bioinformatics. 2012;28(14):1919‐1920. doi:10.1093/bioinformatics/bts277.
 
 [16]: Yu G, Wang L, He Q (2015). “ChIPseeker: an R/Bioconductor package for ChIP peak annotation, comparison and visualization.” Bioinformatics, 31(14), 2382-2383. doi: 10.1093/bioinformatics/btv145.
+
 [17]: Bailey, Timothy L, Mikael Bodén, Fabian A Buske, Martin Frith, Charles E Grant, Luca Clementi, Jingyuan Ren, Wilfred W Li, and William S Noble. “MEME SUITE: Tools for Motif Discovery and Searching..” Nucleic Acids Research 37, no. Web Server issue: W202–8. doi:10.1093/nar/gkp335.
 
 

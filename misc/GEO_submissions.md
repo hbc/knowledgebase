@@ -7,7 +7,7 @@ https://www.ncbi.nlm.nih.gov/geo/info/seq.html
 You will need
 1) [GEO metadata sheet](https://www.ncbi.nlm.nih.gov/geo/info/seq.html)
 2) Raw fastq files
-3) Derived files for data
+3) Derived files for data  
   a) RNAseq
 - raw counts table (as tsv/csv), can put as supplementary file
 - TPM (as tsv/csv), can put as supplementary file

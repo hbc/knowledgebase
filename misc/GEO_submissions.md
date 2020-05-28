@@ -64,4 +64,4 @@ Less commonly they may ask you to fix insufficiently descriptive summary and ove
 Note that unless you specifically set things up otherwise, the submission will be tied to your name and you will have to be responsible for updates and releases (i.e. you will be the "Investigator"). You can deal with this one of two ways
 1) set things up from your initial login to have you as the submitter and the researcher as the Investigator, I personallly find this inconvenient as I may be doing multiple GEO submission for different researchers, but YMMV
 2) do the submisison yourself as the Investigator and submitter and once the submisison is accepte, email GEO to have the submission transferred to the researcher. 
-Note that both of these methods will require the researcher to obtain both an NCBI (already likely have) and GEO (unlikely) account. 
+Note that both of these methods will require the researcher to obtain both an NCBI (if they don't already have one) account and share the login id and email address with you. 

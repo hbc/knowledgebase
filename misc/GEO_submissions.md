@@ -39,5 +39,20 @@ They will also need to supply the general info about the experiment including:
 
 I usually fill out what I can and then send them the metadata sheet with their areas to fill out highlighted.
 
+# The upload
+Once you have the data, derived data and metadata sheet, its time to upload to the GEO FTP server.
+Sign into your NCBI and GEO account and go to the [Transfer Files](https://www.ncbi.nlm.nih.gov/geo/info/submissionftp.html) link on the GEO submission page. 
 
+There they will tell you what your directory is on the GEO FTP server (for example, uploads/jnhutchinson_AtsZaoGM) as well as the server address (eg. ftp-private.ncbi.nlm.nih.gov) login (geoftp) and password (rebUzyi1). 
 
+Go to your  upload directory on O2 with the GEO submission files and login to the ftp server using lftp geoftp:rebUzyi1@ ftp-private.ncbi.nlm.nih.gov: . Note that lftp is not available on login or interactive nodes, so you will need to ssh to the O2 transfer node (ssh user@transfer.rc.hms.harvard.edu) to use it. *You can also use Filezilla if your files are on your local machine.* Then move to your remote upload directory (cd /uploads/jnhutchinson_AtsZaoGM, *for Filezilla, you should enter this into the Remote site: directory box*) and start your upload. For lftp, you can use 
+```mirror -R``` or ```mput *``` to upload the files. For Filezilla, just drag the files over to the remote directory. The sit back and maybe work on something else, or like, take a break from the bionformatics mine while everything uploads. If you have a ton of files, you may want to use something like tmux to prevent your session from being terminated. 
+
+When the upload is complete, notify GEO of the submission using the cleverly named [Notify GEO](https://submit.ncbi.nlm.nih.gov/geo/submission/) link. 
+
+You will receive an email confirming your upload and GEO staff will contact you if there are any issues. 
+
+Note that unless you specifically set things up otherwise, the submission will be tied to your name and you will have to be responsible for updates and releases (i.e. you will be the "Investigator"). You can deal with this one of two ways
+1) set things up from your initial login to have you as the submitter and the researcher as the Investigator, I personallly find this inconvenient as I may be doing multiple GEO submission for different researchers, but YMMV
+2) do the submisison yourself as the Investigator and submitter and once the submisison is accepte, email GEO to have the submission transferred to the researcher. 
+Note that both of these methods will require the researcher to obtain both an NCBI (already likely have) and GEO (unlikely) account. 

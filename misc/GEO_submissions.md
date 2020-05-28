@@ -3,6 +3,8 @@ https://www.ncbi.nlm.nih.gov/geo/info/submission.html
 Highh throughput sequencing is here:
 https://www.ncbi.nlm.nih.gov/geo/info/seq.html
 
+# The preparation 
+
 ## Analyst responsibilities
 You will need
 1) [GEO metadata sheet](https://www.ncbi.nlm.nih.gov/geo/info/seq.html)
@@ -48,9 +50,16 @@ There they will tell you what your directory is on the GEO FTP server (for examp
 Go to your  upload directory on O2 with the GEO submission files and login to the ftp server using lftp geoftp:rebUzyi1@ ftp-private.ncbi.nlm.nih.gov: . Note that lftp is not available on login or interactive nodes, so you will need to ssh to the O2 transfer node (ssh user@transfer.rc.hms.harvard.edu) to use it. *You can also use Filezilla if your files are on your local machine.* Then move to your remote upload directory (cd /uploads/jnhutchinson_AtsZaoGM, *for Filezilla, you should enter this into the Remote site: directory box*) and start your upload. For lftp, you can use 
 ```mirror -R``` or ```mput *``` to upload the files. For Filezilla, just drag the files over to the remote directory. The sit back and maybe work on something else, or like, take a break from the bionformatics mine while everything uploads. If you have a ton of files, you may want to use something like tmux to prevent your session from being terminated. 
 
+
 When the upload is complete, notify GEO of the submission using the cleverly named [Notify GEO](https://submit.ncbi.nlm.nih.gov/geo/submission/) link. 
 
-You will receive an email confirming your upload and GEO staff will contact you if there are any issues. 
+You will receive an email confirming your upload and GEO staff will contact you if there are any issues. Common issues to watch out for are:
+1) column headings in derived data not matching fastq sample names
+2) missing gene ids in derived data
+
+Less commonly they may ask you to fix insufficiently descriptive summary and overall design
+
+# The aftermath
 
 Note that unless you specifically set things up otherwise, the submission will be tied to your name and you will have to be responsible for updates and releases (i.e. you will be the "Investigator"). You can deal with this one of two ways
 1) set things up from your initial login to have you as the submitter and the researcher as the Investigator, I personallly find this inconvenient as I may be doing multiple GEO submission for different researchers, but YMMV

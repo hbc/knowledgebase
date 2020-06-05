@@ -29,6 +29,12 @@ rollback_enabled: false
 notify_outdated_conda: false
 ```
 
+## Using shared bcbio installation on O2
+To use bcbio installation in `/n/app/bcbio` add the corresponding tool and Conda directories to your `$PATH`:
+```shell
+export PATH="/n/app/bcbio/tools/bin:/n/app/bcbio/dev/anaconda/bin:${PATH}"
+```
+
 ## How to fix jobs bcbio jobs timing out
 The O2 cluster can take a really long time to schedule jobs. If you are having problems with bcbio timing out, set your --timeout parameter to something high, like this:
 ```bash

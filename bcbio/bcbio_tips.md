@@ -56,3 +56,21 @@ it just runs a bcbio job on one node of the cluster (no IPython)
 
 bcbio_nextgen.py ../config/illumina_rnaseq.yaml -n 10
 ```
+
+## Upgrading shared installation of bcbio on O2
+How to upgrade `/n/app/bcbio/dev/anaconda/bin/bcbio_nextgen.py` installation:
+* switch to `bcbio` user account:
+  ```
+  sudo -su bcbio
+  ```
+* make sure `umask` is set correctly:
+  ```
+  umask 0002
+  ```
+* edit `/n/app/bcbio/bcbio.upgrade.sh`: set `--mail-user` and other options as necessary
+* run the upgrade:
+  ```
+  sbatch /n/app/bcbio/bcbio.upgrade.sh
+  ```
+* copy install log (job output) to `/n/app/bcbio/bcbio.upgrade.sh_YYYY-MM-DD.{err,out}` where YYYY-MM-DD is today's date
+* test the installation

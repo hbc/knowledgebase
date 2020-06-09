@@ -11,6 +11,8 @@ What is geneRatio and bgRatio in overerpresentation analysis?
 
 - The bgRatio is the {# of annotated genes assigned to term from background}/{# of background genes annotated}
 
+Please note that the denominator may be different between MF, BP, and CC as there are different number of genes annotated for those categories.
+
 - The input is a list of candidate genes (i.e. list of significant DEGs) while the background is a list of all the genes in the study.
 
 A good mathematical link: http://www.nonlinear.com/progenesis/qi/v2.0/faq/should-i-use-enrichment-or-over-representation-analysis-for-pathways-data.aspx

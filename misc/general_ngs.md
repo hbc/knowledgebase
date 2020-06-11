@@ -18,3 +18,6 @@ bcl2fastq --adapter-stringency 0.9 --barcode-mismatches 0 --fastq-compression-le
 - ALXX = HiSeqX
 - BGXX, AGXX = High-Output NextSeq
 - AFXX = Mid-Output NextSeq
+
+# Illumina BaseSpace CLI
+https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview

@@ -21,3 +21,11 @@ bcl2fastq --adapter-stringency 0.9 --barcode-mismatches 0 --fastq-compression-le
 
 # Illumina BaseSpace CLI
 https://developer.basespace.illumina.com/docs/content/documentation/cli/cli-overview
+
+# Miscellaneous
+
+**Add text "chr" to #CHROM column of VCF**
+```
+$ bcftools annotate --rename-chrs <map_file.txt> sample.vcf.gz
+```
+map file should contain "`old_name new_name`" pairs separated by whitespaces, each on a separate line

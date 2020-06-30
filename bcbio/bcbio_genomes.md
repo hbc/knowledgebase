@@ -157,3 +157,6 @@ aws s3 cp hg19-rnaseq-2019-02-28_75.tar.xz s3://biodata/annotation/ --grants rea
 - `cd /n/app/bcbio`
 - https://bcbio-nextgen.readthedocs.io/en/latest/contents/configuration.html#reference-genome-files
 - https://bcbio-nextgen.readthedocs.io/en/latest/contents/configuration.html#adding-custom-genomes
+
+**Workflow4: Whole genome trio (50x) - hg38**
+Inputs (FASTQ files) and results (BAM files, etc) of the whole genome BWA alignment and GATK variant calling workflow are stored in `/n/data1/cores/bcbio/shared/NA12878-trio-eval`

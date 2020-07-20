@@ -1,3 +1,12 @@
+**Homo Sapiens + Covid19**
+
+*GRCh38_SARSCov2 * - built from ensembl
+  - Assembly GRCh38, release 99.
+  - Files:
+    - Genomic sequence: ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    - Annotation: ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz
+    - Covid sequence and annotation added: https://www.ncbi.nlm.nih.gov/nuccore/MN988713.1?report=GenBank 
+
 **Mus musculus**
 
 *GRCm38_98* - built from ensembl

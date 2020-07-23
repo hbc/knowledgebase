@@ -80,6 +80,8 @@ Host github.com
 
 # Migrating github.com repos to [code.harvard.edu](https://code.harvard.edu/)
 
+See [this page](https://gist.github.com/niksumeiko/8972566) for good general guidance
+
 1. Set up your ssh keys. You can use your old keys (if you remember your passphrase) by going to `Settings --> SSH and GPG keys --> New SSH key`
 2. Create your repo in code.harvard.edu. Copy the 'Clone with SSH link`:  `git@code.harvard.edu:HSPH/repo_name.git` (*NOTE: some of us have had trouble with the HTTPS link*)
 3. Go to your local repo that you would like to migrate. Enter the directory.

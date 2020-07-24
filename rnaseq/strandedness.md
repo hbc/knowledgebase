@@ -10,11 +10,11 @@ strand transcripts which overlap or have overlapping UTRs.
 https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-1876-7. 
 
 Bcbio RNA-seq pipeline has a 'strandedness' parameter: [unstranded|firststrand|secondstrand]  
-https://bcbio-nextgen.readthedocs.io/en/latest/contents/pipelines.html?highlight=strand#configuration.
+https://bcbio-nextgen.readthedocs.io/en/latest/contents/pipelines.html?highlight=strand#configuration.  <- link not working*
 
 The terminology was inherited from Tophat, see the detailed description in the Salmon doc. 
 https://salmon.readthedocs.io/en/latest/library_type.html
-Note, that firstrand = ISR.
+Note, that firstrand = ISR for PE and SR for SE.
 
 If the strandedness is unknown, run a small subset of reads with 'unstranded' in bcbio and check out what Salmon reports in 
 `bcbio_project/final/sample/salmon/lib_format_counts.json`:

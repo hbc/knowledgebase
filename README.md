@@ -8,7 +8,7 @@
 
 **Misc**: [Git tips](misc/git.md) * [AWS](misc/aws.md) * [Core resources](misc/core_resources.md) * [General NGS](misc/general_ngs.md) * [Orphan improvements](misc/orphan_improvements.md) * [OSX](misc/OSX.md) * [Snakemake](misc/snakemake-example-pipeline) * [miRNA](misc/miRNA.md) * [detect sample mislabeling](https://github.com/brentp/somalier) * [Get SRA links](https://sra-explorer.info) * [GNU parallel](https://opensource.com/article/18/5/gnu-parallel) * [GEO Submissions](misc/GEO_submissions.md) * [Report FAQs Snippet](misc/FAQs.md) * [teaching matherials from Liu lab](https://liulab-dfci.github.io/teaching) * [Connected papers](https://www.connectedpapers.com/)
 
-**R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md) * [Complex heatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
+**R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md) * [Complex heatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) * [Fundamentals of data visualization](https://serialmentor.com/dataviz/)
 
 **RC**: [Connection to HPC](rc/connection-to-hpc.md) * [Keep command alive](rc/keepalive.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2 tips](rc/O2-tips.md) * [Scheduler](rc/scheduler.md) * [Jupyter notebooks](rc/jupyter_notebooks.md)
 

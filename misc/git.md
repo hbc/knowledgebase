@@ -6,6 +6,9 @@
 - http://sandofsky.com/blog/git-workflow.html
 - https://blog.izs.me/2012/12/git-rebase
 - https://benmarshall.me/git-rebase/
+- [find big files in history](https://stackoverflow.com/questions/10622179/how-to-find-identify-large-commits-in-git-history)
+- [remove a big file from history](https://www.czettner.com/2015/07/16/deleting-big-files-from-git-history.html)
+
 
 # Add remote upstream
 ```
@@ -110,6 +113,3 @@ git filter-branch --tree-filter 'rm -f admin/download_data.md' HEAD
 git push --force-with-lease origin master
 # commit saved copy of download_data.md without secrets
 ```
-
-# remove a large file from the history
-[here](https://www.czettner.com/2015/07/16/deleting-big-files-from-git-history.html)

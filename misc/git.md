@@ -110,3 +110,6 @@ git filter-branch --tree-filter 'rm -f admin/download_data.md' HEAD
 git push --force-with-lease origin master
 # commit saved copy of download_data.md without secrets
 ```
+
+# remove a large file from the history
+[here](https://www.czettner.com/2015/07/16/deleting-big-files-from-git-history.html)

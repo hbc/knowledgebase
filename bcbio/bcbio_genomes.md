@@ -1,3 +1,10 @@
+** Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1’ (MN908947.3) **
+  - bcbioID: MN908947.3 
+  - Assembly: MN908947.3
+  - Files:
+    - Genomic sequence: ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    - Annotation: ftp://ftp.ensemblgenomes.org/pub/viruses/gtf/sars_cov_2/Sars_cov_2.ASM985889v3.100.gtf.gz
+
 **Homo Sapiens + Covid19 + OC43**
   - bcbioID: GRCh38_SARSCov2_OC43
   - Assembly GRCh38, release 99, 

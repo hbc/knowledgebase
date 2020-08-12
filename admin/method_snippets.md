@@ -281,6 +281,8 @@ We used bcbio-nextgen [https://bcbio-nextgen.readthedocs.io](https://bcbio-nextg
 Lun A, Risso D (2020). SingleCellExperiment: S4 Classes for Single Cell Data. R package version 1.10.1.)
 ) and edgeR package [https://bioconductor.org/packages/release/bioc/html/edgeR.html](https://bioconductor.org/packages/release/bioc/html/edgeR.html), Robinson MD, McCarthy DJ, Smyth GK (2010). “edgeR: a Bioconductor package for differential expression analysis of digital gene expression data.” Bioinformatics, 26(1), 139-140. doi: 10.1093/bioinformatics/btp616.)  
 
+We used mm10 mouse genome reference (https://www.ncbi.nlm.nih.gov/assembly/GCF_000001635.20/) and ensembl-94 annotation of genes (ftp://ftp.ensembl.org/pub/release-94/gtf/mus_musculus).
+
 ### 10X single cell analysis
 
 We used Cell Ranger 3.0.2 (10X Genomics) to process the raw sequencing data. This pipeline converted Illumina basecall files to fastq format, aligned sequencing reads to the mm10 transcriptome using the STAR aligner (Dobin A, Davis CA, Schlesinger F, Drenkow J, Zaleski C, Jha S, Batut P, Chaisson M, Gingeras TR. STAR: ultrafast universal RNA-seq aligner. Bioinformatics. 2013 Jan;29(1):15-21. doi: 10.1093/bioinformatics/bts635. Epub 2012 Oct 25. PubMed PMID: 23104886; PubMed Central PMCID: PMC3530905.), and quantified the expression of transcripts in each cell using Chromium barcodes. 

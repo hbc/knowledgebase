@@ -309,15 +309,25 @@ Reads were processed to counts through the bcbio-nextgen single cell/DGE RNA-seq
 ATAC-seq data was evaluated for quality using FASTQC (Andrews, 2010)[1a]. Reads were filtered and trimmed with Atropos (Didion et al., 2017)[2a]. High quality reads were mapped to the human genome (build GRcH37/hg19) using Bowtie2 (Langmead et al., 2009)[3a]. After filtering reads from mitochondrial DNA, properly paired reads with high mapping quality (MAPQ score >10, non-duplicates, qualified reads) were retained using Sambamba (Tarasov, et al., 2015)[4a] for further analysis. The 'alignmentSieve' function of Deeptools (Ramirez et al., 2014)[5a] and 'sort' and 'index' functions of Samtools (Li et al., 2009)[6a] were used to isolate fragments in nucleosome free regions (NFRs). Reads were shifted by 9 bp (+4 in positive and -5 in negative strand) to account for the dimeric binding of the Tn5 transposase that results in insertion of two adaptors separated by 9 bp. To call the peaks with unique reads, we used MACS2 (Zhang et al, 2008)[7a] followed by a quality check with the ChIPQC Bioconductor package (Carroll et al, 2014)[8a]. CPM-normalized bigwig files (bin size=20) were visualized using IGV (Robinson et al., 2011)[9a]. Differential binding between CD38high and CD38low samples in SLE patients and healthy subjects was assessed with Diffbind (Stark et al, 2011)[10a] using DESeq2 (Love et al., 2014)[11a] and including sample preparation date in the model. Peaks were filtered at FDR < 0.05 and |log2 fold change| > 1 to obtain significant peaks. 
 
 [1a]: Andrews S. (2010). "FastQC: a quality control tool for high throughput sequence data." Available online at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc.
+
 [2a]: Didion, John P et al. “Atropos: specific, sensitive, and speedy trimming of sequencing reads.” PeerJ vol. 5 e3720. 30 Aug. 2017, doi:10.7717/peerj.3720.
+
 [3a]: Langmead B, Trapnell C, Pop M, Salzberg SL. Ultrafast and memory-efficient alignment of short DNA sequences to the human genome. Genome Biol. 2009;10(3):R25. doi: 10.1186/gb-2009-10-3-r25. Epub 2009 Mar 4. PubMed PMID: 19261174; PubMed Central PMCID: PMC2690996.
+
 [4a]: Tarasov, Artem et al. “Sambamba: fast processing of NGS alignment formats.” Bioinformatics (Oxford, England) vol. 31,12 (2015): 2032-4. doi:10.1093/bioinformatics/btv098
+
 [5a]: Ramírez, Fidel et al. “deepTools: a flexible platform for exploring deep-sequencing data.” Nucleic acids research vol. 42,Web Server issue (2014): W187-91. doi:10.1093/nar/gku365
+
 [6a]: Li H.*, Handsaker B.*, Wysoker A., Fennell T., Ruan J., Homer N., Marth G., Abecasis G., Durbin R. and 1000 Genome Project Data Processing Subgroup (2009) The Sequence alignment/map (SAM) format and SAMtools. Bioinformatics, 25, 2078-9. [PMID: 19505943]
+
 [7a]: Zhang, Yong, Tao Liu, Clifford A Meyer, Jérôme Eeckhoute, David S Johnson, Bradley E Bernstein, Chad Nussbaum, et al. “Model-Based Analysis of ChIP-Seq (MACS).” Genome Biology 9, no. 9: R137. doi:10.1186/gb-2008-9-9-r137
+
 [8a]: Carroll TS, Liang Z, Salama R, Stark R, de Santiago I. Impact of artifact removal on ChIP quality metrics in ChIP-seq and ChIP-exo data. Front Genet. 2014  Apr 10;5:75. doi: 10.3389/fgene.2014.00075. eCollection 2014. PubMed PMID: 24782889; PubMed Central PMCID: PMC3989762.
+
 [9a]: Robinson JT, Thorvaldsdóttir H, Winckler W, et al. Integrative genomics viewer. Nat Biotechnol. 2011;29(1):24-26. doi:10.1038/nbt.1754
+
 [10a]: Stark R, Brown G (2011). DiffBind: differential binding analysis of ChIP-Seq peak data. http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
+
 [11a]: Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.
 
 ```

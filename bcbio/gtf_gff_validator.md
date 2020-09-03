@@ -15,7 +15,7 @@ Found during Danesh Moazed consult
 ### Errors
 Report bugs to https://github.com/genometools/genometools/issues.
 
-##GTF validator (perl-based)
+## GTF validator (perl-based)
 - Download: https://mblab.wustl.edu/software.html#evalLink (press 'RELEASES")
 - Documentation: https://mblab.wustl.edu/media/software/eval-documentation.pdf
 

@@ -20,8 +20,10 @@ Report bugs to https://github.com/genometools/genometools/issues.
 - Documentation: https://mblab.wustl.edu/media/software/eval-documentation.pdf
 
 ### Usage
+let's say tar is downloaded and extracted at **/home/eval-2.2.8**
+
+That folder is noted as **{eval}** in the code:
+
 ```{bash, eval=FALSE}
-let's say tar is downloaded and extracted at {/home/eval-2.2.8}
-that eval folder is note as {eval}
 perl -I {eval} {eval}/validate_gtf.pl {gtf_file} {fasta_file_associated_with_the_gtf}
 ```

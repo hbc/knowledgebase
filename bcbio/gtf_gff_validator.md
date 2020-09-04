@@ -29,3 +29,4 @@ perl -I {eval} {eval}/validate_gtf.pl -f {gtf_file} {fasta_file_associated_with_
 ```
 '-f' is an option, it creates a fixed file with same title as the origial gtf with '.fixed.gtf' extension.
 A custom hg38 gtf ran for an hour.
+Memory ran out with 8GB for some reason, so I ran with 64GB just in case. Since it might be using information from the genome.fa extensively.

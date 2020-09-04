@@ -25,5 +25,7 @@ let's say tar is downloaded and extracted at **/home/eval-2.2.8**
 That folder is noted as **{eval}** in the code:
 
 ```{bash, eval=FALSE}
-perl -I {eval} {eval}/validate_gtf.pl {gtf_file} {fasta_file_associated_with_the_gtf}
+perl -I {eval} {eval}/validate_gtf.pl -f {gtf_file} {fasta_file_associated_with_the_gtf}
 ```
+'-f' is an option, it creates a fixed file with same title as the origial gtf with '.fixed.gtf' extension.
+A custom hg38 gtf ran for an hour.

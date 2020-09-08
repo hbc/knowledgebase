@@ -22,6 +22,19 @@
     - Annotation: ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz
     - Covid sequence and annotation added: https://www.ncbi.nlm.nih.gov/nuccore/MN988713.1?report=GenBank 
 
+**Homo Sapiens + Covid19 scRNA **
+- The virus strain used in experiment is NR-52381, for which the GenBank accession no is: (GenBank: MN988713.1). This stain is known as SARSCoV2-isolate 2019-nCoV/USA-IL1/2020
+- fasta sequence from genebank was retrieved, and labelled as covid.fasta.
+- For creating GTF file : There is a full annotation file available for SARSCov2, isolate Wuhan-Hu-1’ (GenBank: MN908947.3) on Ensemble (http://ftp.ebi.ac.uk/ensemblgenomes/pub/viruses/) Two strains matches 99% in their genome and also in CDS.
+- created a new GTF file for SARSCov2 (MN988713.1) This gtf file was cleaned up with cellranger mkgtf and was labelled as covid.gtf.
+- merged the GRch38 fasta with SARS-Cov2 fasta and similarly genes.gtf, human gtf with SARS-CoV2.gtf.
+- Concatenate the genome and annotation files 
+  cat genome.fa covid.fa > combined.fa cat genes.gtf covid.gtf > combined.gtf
+- Created a Cell Ranger compatible reference 
+  cellranger mkref --genome=GRCh38_with_Covid --fasta=combined.fa --genes=combined.gtf
+- The folder with custom reference GRCh38_with_Covid was used as reference input in the cellranger count.
+- This custome genome can be used with cellrange pipeline. 
+
 **Mus musculus**
 
 *GRCm38_98* - built from ensembl

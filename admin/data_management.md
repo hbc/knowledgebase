@@ -16,10 +16,38 @@ Many of the Core's standard operating procedures are geared towards reproducibil
 ### O2
 In general, O2 is for the big stuff. Also, anything needed to reproduce the results on run on the server should be here.
 * The Core's shared space is located at `/n/data1/cores/bcbio/`.
-  *  We 
-* Refer to the [Setting up an analysis guidelines](https://github.com/hbc/knowledgebase/blob/master/admin/setting_up_an_analysis_guidelines.md) for how to name directories and which folders to include. 
+  *  We keep projects for researcher in the PIs folder
+    * this folder has the following structure 
+    * PIfirstname_PIlastname/project_folder
+    * ideally the project folder would match the github repo name and look similar to the Trello/Harvest name
+    * it should at least contain the hbc code for tracking
+* Refer to the [Setting up an analysis guidelines](https://github.com/hbc/knowledgebase/blob/master/admin/setting_up_an_analysis_guidelines.md) for how to name directories and which folders to include in the project folder. 
 * Store a copy of the yaml config, metadata csv file, and slurm script used to run the analysis along with the raw data so that someone else can access the project and rerun it if necessary. 
 * It is also very helpful if you keep a copy of the bcbio object for downstream analysis with your data.
+
+#### Data managment on O2
+
+As an HMS Core we get storage on O2 for free. We are not the biggest user but we are in the top 10. As such it is smart for us to be good citizens and keep our footprint as low as possible. Ways to reduce our footprint include
+##### Reduce space used by active consults
+* delete redundant files (i.e. some seq facilities will send us both foo.fastq and foo.fastq.gz files) 
+* run bcbio analyses so temporary work folders are put on scratch 
+  * the brute force approach to this is to setup on scratch with everything as a symlink, run the analysis and move the final folder over to the PIs project folder
+  * a more elegant way to do this is to set the output folder of the bcbio run to be in the project folder in the PIs folder
+* keep project folders tidy, delete things you are no longer using (this is a judgement call and not really enforced but can be an issue once the project is complete)
+##### Return data from completed analyses to the researcher
+* this is a hassle so we typically only do it for larger data folders
+* can be by
+  1) "sneaker net" - downloading onto a drive and handing it off to the researcher (not preferred)
+  2) GLOBUS - https://www.globus.org/ If the researcher sets up a GLOBUIS account, we can work with HMS RC to make their directory available to GLOBUS so the researcher can download it through the web or CL interface
+  3) upload to the researcher's server - preferred if access to the server is simple. A good exmaple would be the research data storage that HMS PIs have access to. Passwords and logins are typically required.
+I recommend avoiding things like Dropbox, Google Drive or Box unless the data is small. They aren't really built for this purpose.
+##### Archive the data
+We have access to standby storage on O2 (/n/standby/cores/bcbio/). For projects that are either too small to bother with returning to the researcher or projects where we think we may want to access the data again, we can tar.gz them and store them here. Leave a symlink in the original directory to allow easy restoration of the project 
+**Once you have restored the project, delete the standby file.**
+**Once you are finished with the project, rearchive it**
+Please don't keep an archived copy of the diretory in two places plus the expanded folder. Duplicated data is wasted space and makes John cry.
+
+
 
 ### HBC org on github
 In general, code is for a continually updated, searchable record of your code, and will mainly be made up of the type of code you run locally. 

@@ -15,7 +15,8 @@ Many of the Core's standard operating procedures are geared towards reproducibil
 
 ### O2
 In general, O2 is for the big stuff. Also, anything needed to reproduce the results on run on the server should be here.
-* The Core's shared space is located at `/n/data1/cores/bcbio/PIs`. 
+* The Core's shared space is located at `/n/data1/cores/bcbio/`.
+  *  We 
 * Refer to the [Setting up an analysis guidelines](https://github.com/hbc/knowledgebase/blob/master/admin/setting_up_an_analysis_guidelines.md) for how to name directories and which folders to include. 
 * Store a copy of the yaml config, metadata csv file, and slurm script used to run the analysis along with the raw data so that someone else can access the project and rerun it if necessary. 
 * It is also very helpful if you keep a copy of the bcbio object for downstream analysis with your data.

@@ -29,7 +29,8 @@ In general, O2 is for the big stuff. Also, anything needed to reproduce the resu
 
 As an HMS Core we get storage on O2 for free. We are not the biggest user but we are in the top 10. As such it is smart for us to be good citizens and keep our footprint as low as possible. Ways to reduce our footprint include
 ##### Reduce space used by active consults
-* delete redundant files (i.e. some seq facilities will send us both foo.fastq and foo.fastq.gz files) 
+* delete redundant files 
+  * a special case of this is when you receive raw data as some seq facilities (cough, BPF, cough) will send us both foo.fastq.gz and foo.fastq.bz2 files, we can delete the bz2 files
 * run bcbio analyses so temporary work folders are put on scratch 
   * the brute force approach to this is to setup on scratch with everything as a symlink, run the analysis and move the final folder over to the PIs project folder
   * a more elegant way to do this is to set the output folder of the bcbio run to be in the project folder in the PIs folder

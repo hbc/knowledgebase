@@ -35,8 +35,8 @@ With the caveat that every project is different here are some general guidelines
 
 2) Will you need to access the data and derived files again? If yes, tidy up any unnecessary files and archive
  The following points can inform your decision making about how likely we will need to reaccess the data
- a) Is the analysis published? If its published, its likely we won't be using it again. Ask the researcher what they want returned to them and delete the rest.
-   i)  If the data is unpublished, did the analysis work? If the data is garbage, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.
-   ii) Did the consult end well? If it didn't its likely we won't be using it again. Ask the researcher what they want returned to them (with a time warning in case they don't respond) and delete the rest.
-   iii) Is the consult unique in its approach? i.e. do youy think its something we might come back to in the future for other analyses. If yes, tidy it up and archive.
+  * Is the analysis published? If its published, its likely we won't be using it again. Ask the researcher what they want returned to them and delete the rest.
+  * If the data is unpublished, did the analysis work? If the data is garbage, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.
+  * Did the consult end well? If it didn't its likely we won't be using it again. Ask the researcher what they want returned to them (with a time warning in case they don't respond) and delete the rest.
+  * Is the consult unique in its approach? i.e. do youy think its something we might come back to in the future for other analyses. If yes, tidy it up and archive.
 3) How long has it been since the data was accessed? If its older than 2 years, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.

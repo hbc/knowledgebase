@@ -34,6 +34,7 @@ With the caveat that every project is different here are some general guidelines
 1) Is the data "large" (>500GB)? As much as possible, we'd prefer to get rid of these ASAP
 
 2) Will you need to access the data and derived files again? If yes, tidy up any unnecessary files and archive
+ 
  The following points can inform your decision making about how likely we will need to reaccess the data
   * Is the analysis published? If its published, its likely we won't be using it again. Ask the researcher what they want returned to them and delete the rest.
   * If the data is unpublished, did the analysis work? If the data is garbage, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.

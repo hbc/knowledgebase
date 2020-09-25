@@ -10,7 +10,7 @@ As an HMS Core we get storage on O2 for free. We are not the biggest user but we
 * keep project folders tidy, delete things you are no longer using (this is a judgement call and not really enforced but can be an issue once the project is complete)
 * compress raw data files
   * bcbio can handle gzipped and bzipped (bz2) files, compress those raw fastqs!
-\
+
 ## Get the data out of our main storage area
 ### Return data from completed analyses to the researcher
 * this is a hassle so we typically only do it for larger data folders

@@ -19,6 +19,9 @@ As an HMS Core we get storage on O2 for free. We are not the biggest user but we
 I recommend avoiding things like Dropbox, Google Drive or Box unless the data is small. They aren't really built for this purpose.
 ### Archive the data
 We have access to standby storage on O2 (/n/standby/cores/bcbio/). For projects that are either too small to bother with returning to the researcher or projects where we think we may want to access the data again, we can tar.gz them and store them here. Leave a symlink in the original directory to allow easy restoration of the project 
+
 **Once you have restored the project, delete the standby file.**
+
 **Once you are finished with the project, rearchive it**
+
 Please don't keep an archived copy of the diretory in two places plus the expanded folder. Duplicated data is wasted space and makes John cry.

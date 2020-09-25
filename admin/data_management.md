@@ -8,6 +8,8 @@ As an HMS Core we get storage on O2 for free. We are not the biggest user but we
   * the brute force approach to this is to setup on scratch with everything as a symlink, run the analysis and move the final folder over to the PIs project folder
   * a more elegant way to do this is to set the output folder of the bcbio run to be in the project folder in the PIs folder
 * keep project folders tidy, delete things you are no longer using (this is a judgement call and not really enforced but can be an issue once the project is complete)
+* compress raw data files
+  * bcbio can handle gzipped and bzipped (bz2) files, compress those raw fastqs!
 \
 ## Get the data out of our main storage area
 ### Return data from completed analyses to the researcher

@@ -242,6 +242,10 @@ do.call(grid.arrange,c(lapply(plots, plotFunc)))
 
 ```
 
+<p align="center">
+<img src="MDS_plot.png" width="600">
+</p>
+
 ### Run differential expression analysis
 First set up the experiment design and a constrast matrix.
 

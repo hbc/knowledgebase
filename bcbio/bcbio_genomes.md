@@ -170,3 +170,13 @@ aws s3 cp hg19-rnaseq-2019-02-28_75.tar.xz s3://biodata/annotation/ --grants rea
 **Workflow4: Whole genome trio (50x) - hg38**
 
 Inputs (FASTQ files) and results (BAM files, etc) of the [whole genome BWA alignment and GATK variant calling workflow](https://bcbio-nextgen.readthedocs.io/en/latest/contents/germline_variants.html#workflow4-whole-genome-trio-50x-hg38) are stored in `/n/data1/cores/bcbio/shared/NA12878-trio-eval`
+
+**Use an updated hg38 transcriptome**
+```bash
+wget ftp://ftp.ensembl.org/pub/current_gtf/homo_sapiens/Homo_sapiens.GRCh38.101.gtf.gz
+gtf=Homo_sapiens.GRCh38.101.chr.gtf.gz
+remap_url=http://raw.githubusercontent.com/dpryan79/ChromosomeMappings/master/GRCh38_ensembl2UCSC.txt
+wget --no-check-certificate -qO- $remap_url | awk '{if($1!=$2) print "s/^"$1"/"$2"/g"}' > remap.sed
+gzip -cd ${gtf} | sed -f remap.sed | grep -v "*_*_alt" > hg38-remapped.gtf
+```
+Then pass `hg38-remapped.gtf` as the `transcriptome_gtf` option.

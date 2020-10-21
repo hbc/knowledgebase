@@ -30,7 +30,7 @@ This instruction will download and launch a container using the singlecell image
 * --name assigns a name to the container. Helpful to keep thins tidy.
 * -e ROOT=TRUE options provides root access, in case more tweaking inside the container is necessary.
 * -p 8787:<port> Change the local port to access the container. **This can only be done when creating the container!**
-* - FYI: The working directory will be set as /home/rstudio, not /home/rstudio/projects as default behavior.
+* FYI: The working directory will be set as /home/rstudio, not /home/rstudio/projects as default behavior.
 
 ## Resources
 

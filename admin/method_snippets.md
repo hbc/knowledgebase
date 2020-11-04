@@ -105,7 +105,7 @@ We annotate variants with
 - VEP (https://useast.ensembl.org/info/docs/tools/vep/index.html)
 - snpEff (A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672].
 - using vcfanno (https://github.com/brentp/vcfanno) and many annotation sources:
-  - gnomad (https://gnomad.broadinstitute.org/)
+  - gnomad (Karczewski et al.The mutational constraint spectrum quantified from variation in 141,456 humans. Nature. 2020 May;581(7809):434-443. doi: 10.1038/s41586-020-2308-7. Epub 2020 May 27. PMID: 32461654; PMCID: PMC7334197., https://gnomad.broadinstitute.org/)
   - topmed (https://bravo.sph.umich.edu/freeze5/hg38/)
   - cosmic (https://cancer.sanger.ac.uk/cosmic)
   - dbsnp  (https://www.ncbi.nlm.nih.gov/snp/)

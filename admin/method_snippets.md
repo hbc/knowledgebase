@@ -56,7 +56,7 @@ We calculate coverage using mosdepth [9] and calculate callable regions based on
 
 ### SNP and indels in germline (WES, WGS, gene panels)
 We support variant calling in germline with:
-- gatk4x (https://github.com/broadinstitute/gatk/)
+- gatk4x (McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA. The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. Genome Res. 2010 Sep;20(9):1297-303. doi: 10.1101/gr.107524.110. Epub 2010 Jul 19. PMID: 20644199; PMCID: PMC2928508, https://github.com/broadinstitute/gatk/)
 - gatk3.8x (https://console.cloud.google.com/storage/browser/gatk-software/package-archive)
 - freebayes (https://github.com/ekg/freebayes)
 - samtools (https://github.com/samtools/)

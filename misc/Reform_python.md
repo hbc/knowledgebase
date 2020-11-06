@@ -49,8 +49,11 @@ python3 reform.py
  --ref_fasta=ref.fa \
  --ref_gff=ref.gff3
  ```
+ We will put the in.fa sequence in the X chromosome position 3.
  
-> in.fa
+ Sequence is 10bp, so we expect a new transcript at X:4-13.
+ 
+ > in.fa
  ```
  >input_sequence
 TGGAGGATCG

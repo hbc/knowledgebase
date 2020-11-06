@@ -60,10 +60,10 @@ TGGAGGATCG
 ```
 
 > ref.gff
-<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/gff3.png" width="200">
+<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/gff3.png" width="400">
 
 > in.gff
-<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/in_gff3.png" width="200">
+<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/in_gff3.png" width="400">
 
 > reformed.gff
-<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/reformed_gff.png" width="200">
+<img src="https://github.com/yoonsquared/knowledgebase_image/blob/master/reformed_gff.png" width="400">

@@ -60,7 +60,10 @@ AGTGGTTATGCTGGGTATCGTAAACAAAAATGGAGCCAAATGCAGTTATTAATCGTTTAT
 ```
 
 > ref.gff
+![][https://github.com/yoonsquared/knowledgebase_image/blob/master/gff3.png]
 
 > in.gff
+![][https://github.com/yoonsquared/knowledgebase_image/blob/master/in_gff3.png]
 
 > reformed.gff
+![][https://github.com/yoonsquared/knowledgebase_image/blob/master/reformed_gff.png]

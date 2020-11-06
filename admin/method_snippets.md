@@ -100,12 +100,18 @@ We use
 - seq2c (https://github.com/AstraZeneca-NGS/Seq2C)
 - titanCNA (https://github.com/gavinha/TitanCNA)
 
-### Variant annotation [14,15]
+### Variant annotation
 We annotate variants with
-- VEP (https://useast.ensembl.org/info/docs/tools/vep/index.html)
-- snpEff (A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672].
-- using vcfanno (https://github.com/brentp/vcfanno) and many annotation sources:
-  - gnomad (Karczewski et al.The mutational constraint spectrum quantified from variation in 141,456 humans. Nature. 2020 May;581(7809):434-443. doi: 10.1038/s41586-020-2308-7. Epub 2020 May 27. PMID: 32461654; PMCID: PMC7334197., https://gnomad.broadinstitute.org/)
+#### VEP 
+McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4, https://useast.ensembl.org/info/docs/tools/vep/index.html.
+#### snpEff 
+A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3.", Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. Fly (Austin). 2012 Apr-Jun;6(2):80-92. PMID: 22728672, https://pcingola.github.io/SnpEff/se_introduction/
+#### vcfanno
+Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5, https://github.com/brentp/vcfanno.
+
+We use many annotation sources:
+#### gnomad
+Karczewski et al.The mutational constraint spectrum quantified from variation in 141,456 humans. Nature. 2020 May;581(7809):434-443. doi: 10.1038/s41586-020-2308-7. Epub 2020 May 27. PMID: 32461654; PMCID: PMC7334197, https://gnomad.broadinstitute.org/
   - topmed (https://bravo.sph.umich.edu/freeze5/hg38/)
   - cosmic (https://cancer.sanger.ac.uk/cosmic)
   - dbsnp  (https://www.ncbi.nlm.nih.gov/snp/)
@@ -113,10 +119,6 @@ We annotate variants with
   - clinvar (https://www.ncbi.nlm.nih.gov/clinvar/)
 
 We create gemini database [16] as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
-
-[14]: Pedersen BS, Layer RM, Quinlan AR. Vcfanno: fast, flexible annotation of genetic variants. Genome Biol. 2016;17(1):118. Published 2016 Jun 1. doi:10.1186/s13059-016-0973-5.
-
-[15]: McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. Genome Biol. 2016;17(1):122. Published 2016 Jun 6. doi:10.1186/s13059-016-0974-4.
 
 [16]: Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
 

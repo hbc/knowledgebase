@@ -43,7 +43,7 @@ https://github.com/marypiper/bcbio_rnaseq_workflow/blob/master/bcbio_rna-seq_wor
 
 6. Settings for bcbio- make sure you have following settings in `~/.bashrc` file:
  
- ```
+ ```bash
     unset PYTHONHOME
     unset PYTHONPATH
     export PATH=/n/app/bcbio/tools/bin:$PATH
@@ -60,7 +60,7 @@ https://github.com/marypiper/bcbio_rnaseq_workflow/blob/master/bcbio_rna-seq_wor
 8. Within the `config` folder, add your custom Illumina template
     - Example template for human RNA-seq using Illumina prepared samples (genome_build for mouse = mm10, human = hg19 or hg38 (need to change star to hisat2 if using hg38):
 
-	```
+	```yaml
 	# Template for mouse RNA-seq using Illumina prepared samples
 	---
 	details:
@@ -95,9 +95,11 @@ https://github.com/marypiper/bcbio_rnaseq_workflow/blob/master/bcbio_rna-seq_wor
 
 2. Create script for running the job (in analysis folder)
 
-	```
+For a larger job:
+
+	```bash
 	#!/bin/sh
-	#SBATCH -p priority
+	#SBATCH -p medium
 	#SBATCH -J mootha
 	#SBATCH -o run.o
 	#SBATCH -e run.e
@@ -111,10 +113,27 @@ https://github.com/marypiper/bcbio_rnaseq_workflow/blob/master/bcbio_rna-seq_wor
 	
 	/n/app/bcbio/dev/anaconda/bin/bcbio_nextgen.py ../config/\*\_rnaseq.yaml -n 48 -t ipython -s slurm -q medium -r t=0-100:00 --timeout 300 --retries 3
 	```
+	
+For a smaller job, it might be faster in overall time to just run the job on the priority queue. If you only have a few samples, and your fairshare score is low, running on the priority queue could end up being faster since you will quickly get a job there and not have to wait.
+
+```bash
+#!/bin/sh
+#SBATCH -p priority
+#SBATCH -J mootha
+#SBATCH -o run.o
+#SBATCH -e run.e
+#SBATCH -t 0-100:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=64G
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=piper@hsph.harvard.edu
+export PATH=/n/app/bcbio/tools/bin:$PATH
+/n/app/bcbio/dev/anaconda/bin/bcbio_nextgen.py ../config/\*\_rnaseq.yaml -n 8
+```
 
 3. Go to work folder and start the job - make sure in an interactive session 
 
-	```
+	```bash
 	cd /n/scratch2/path_to_folder/analysis/\*\_rnaseq/work
 	sbatch ../../runJob-\*\_rnaseq.slurm
 	```

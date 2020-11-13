@@ -42,6 +42,11 @@ A typical command might be something like this:
 
 `nohup wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178/*`
 
+-m mirror is to copy a mirror image of the directory/data including all files and subfolders
+
+Use this if nohup isn't working. Double check the UN, PW and IP address as they change.:
+`wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`
+
 *note the escaped exclamation point in the password, they like to put characters like that in their passwords, which are usually in the form of MBCF$userid!*
 
 # Broad Institute

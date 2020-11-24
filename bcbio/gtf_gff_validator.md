@@ -1,4 +1,4 @@
-# GTF and GFF valitors
+# GTF and GFF validators
 Found during Danesh Moazed consult
 
 ## GFF Validator

@@ -1,10 +1,5 @@
----
-title: Data downloading
-description: Guidelines on downloading from different sequencing facilities.
-category: admin
-subcategory: guides
-tags: [tutorial]
----
+# Google drive - big file
+https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive
 
 # Biopolymers
 

@@ -10,6 +10,21 @@
 - [remove a big file from history](https://www.czettner.com/2015/07/16/deleting-big-files-from-git-history.html)
 
 
+# merge master branch into (empty) main and delete master
+```
+module load git
+git fetch origin main
+git branch -a
+git checkout main
+git merge master --allow-unrelated-histories
+git add -A .
+git commit
+git push
+
+git branch -d master
+git push origin :master
+```
+
 # Add remote upstream
 ```
 git remote -v

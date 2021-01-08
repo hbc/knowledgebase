@@ -42,7 +42,7 @@ a) use the same project name as part of the compressed file name **AND**
 b) add the date to the compressed file (I’ll use the date I wrote this document in the format YYYYMMDD, or 20201020)
 c) to ensure the compression finished,  add the `—remove-files` option to the tar command, this will remove the files once the compression has scceeded. 
 In general, the command to compress files would then look like this (`--remove-files` has to be before the other options as `-f` indicates a file name coming after):
-`tar --remove -files-cvzf  YYYYMMDD_folder.tar.gz folder`
+`tar --remove-files -cvzf  YYYYMMDD_folder.tar.gz folder`
 
 
 And in the case of this Arlelen Sharpe hbc038956  example, it would look like this:

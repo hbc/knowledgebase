@@ -241,7 +241,7 @@ Likely transcription factors (TF) associated with differentially expressed genes
 
 ### Integrative analysis of RNA-seq and ChIP-seq data
 
-RNA-seq and ChIP-seq data will be integrated using BETA [Wang S, Sun H, Ma J, Zang C, Wang C, Wang J, Tang Q, Meyer CA, Zhang Y, Liu XS. Target analysis by integration of transcriptome and ChIP-seq data with BETA. Nat Protoc. 2013 Dec;8(12):2502-15. doi: 10.1038/nprot.2013.150. Epub 2013 Nov 21. PMID: 24263090; PMCID: PMC4135175] to identify which of the differentially expressed genes are associated with epigenetic changes. BETA uses a computational model to quantify the regulatory potential of a gene based on the number and distance of regulatory site around the gene, and categorizes the effects as activating, repressive or both.
+RNA-seq and ChIP-seq data will be integrated using BETA [Wang S, Sun H, Ma J, Zang C, Wang C, Wang J, Tang Q, Meyer CA, Zhang Y, Liu XS. Target analysis by integration of transcriptome and ChIP-seq data with BETA. Nat Protoc. 2013 Dec;8(12):2502-15. doi: 10.1038/nprot.2013.150. Epub 2013 Nov 21. PMID: 24263090; PMCID: PMC4135175] to identify which of the differentially expressed genes are associated with epigenetic changes. BETA uses a computational model to quantify the regulatory potential of a gene based on the number and distance of regulatory sites around the gene, and categorizes the effects as activating, repressive or both.
 
 
 ### RRBS

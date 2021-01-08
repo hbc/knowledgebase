@@ -239,6 +239,10 @@ Likely transcription factors (TF) associated with differentially expressed genes
 
 [1]: Kwon, Andrew T, David J Arenillas, Rebecca Worsley Hunt, and Wyeth W Wasserman. “oPOSSUM-3: Advanced Analysis of Regulatory Motif Over-Representation Across Genes or ChIP-Seq Datasets..” G3 (Bethesda, Md.) 2, no. 9 (September 2012): 987–1002. doi:10.1534/g3.112.003202.
 
+### Integrative analysis of RNA-seq and ChIP-seq data
+
+RNA-seq and ChIP-seq data will be integrated using BETA [Wang S, Sun H, Ma J, Zang C, Wang C, Wang J, Tang Q, Meyer CA, Zhang Y, Liu XS. Target analysis by integration of transcriptome and ChIP-seq data with BETA. Nat Protoc. 2013 Dec;8(12):2502-15. doi: 10.1038/nprot.2013.150. Epub 2013 Nov 21. PMID: 24263090; PMCID: PMC4135175] to identify which of the differentially expressed genes are associated with epigenetic changes. BETA uses a computational model to quantify the regulatory potential of a gene based on the number and distance of regulatory site around the gene, and categorizes the effects as activating, repressive or both.
+
 
 ### RRBS
 

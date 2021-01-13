@@ -1,19 +1,36 @@
 # Method snippets
 
-## Expression Microarrays
+## Microarrays
 
-### Illumina arrays
+### Expression arrays
 
-Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (2010). A Framework for Oligonucleotide Microarray Preprocessing. Bioinformatics, 26(19):2363-7.] BioConductor package, quality-controlled with arrayQualityMetrics [Kauffmann, A., Gentleman, R.,, Huber, W. (2009) arrayQualityMetrics--a bioconductor package for quality assessment of microarray data. Bioinformatics, 25(3):415-6.]
- and RMA [Rafael. A. Irizarry, Benjamin M. Bolstad, Francois Collin, Leslie M. Cope, Bridget Hobbs and Terence P. Speed (2003), Summaries of Affymetrix GeneChip probe level data Nucleic Acids Research 31(4):e15]
- normalized. Differentially expressed genes (as defined by a minimun 2 fold change in expression and  a  Benjamini-Hochberg FDR adjusted pvalue of less than 0.1) were identified using limma  [Smyth, GK (2005). Limma: linear models for microarray data. In:  'Bioinformatics and Computational Biology Solutions using R and  Bioconductor'. R. Gentleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber  (eds), Springer, New York, pages 397-420.].”
-
-### Affymetrix arrays
+#### Illumina arrays
 
 Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (2010). A Framework for Oligonucleotide Microarray Preprocessing. Bioinformatics, 26(19):2363-7.] BioConductor package, quality-controlled with arrayQualityMetrics [Kauffmann, A., Gentleman, R.,, Huber, W. (2009) arrayQualityMetrics--a bioconductor package for quality assessment of microarray data. Bioinformatics, 25(3):415-6.]
  and RMA [Rafael. A. Irizarry, Benjamin M. Bolstad, Francois Collin, Leslie M. Cope, Bridget Hobbs and Terence P. Speed (2003), Summaries of Affymetrix GeneChip probe level data Nucleic Acids Research 31(4):e15]
  normalized. Differentially expressed genes (as defined by a minimun 2 fold change in expression and  a  Benjamini-Hochberg FDR adjusted pvalue of less than 0.1) were identified using limma  [Smyth, GK (2005). Limma: linear models for microarray data. In:  'Bioinformatics and Computational Biology Solutions using R and  Bioconductor'. R. Gentleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber  (eds), Springer, New York, pages 397-420.].”
 
+#### Affymetrix arrays
+
+Arrays were processed using the 'oligo' [Carvalho B. S., and Irizarry, R. A. (2010). A Framework for Oligonucleotide Microarray Preprocessing. Bioinformatics, 26(19):2363-7.] BioConductor package, quality-controlled with arrayQualityMetrics [Kauffmann, A., Gentleman, R.,, Huber, W. (2009) arrayQualityMetrics--a bioconductor package for quality assessment of microarray data. Bioinformatics, 25(3):415-6.]
+ and RMA [Rafael. A. Irizarry, Benjamin M. Bolstad, Francois Collin, Leslie M. Cope, Bridget Hobbs and Terence P. Speed (2003), Summaries of Affymetrix GeneChip probe level data Nucleic Acids Research 31(4):e15]
+ normalized. Differentially expressed genes (as defined by a minimun 2 fold change in expression and  a  Benjamini-Hochberg FDR adjusted pvalue of less than 0.1) were identified using limma  [Smyth, GK (2005). Limma: linear models for microarray data. In:  'Bioinformatics and Computational Biology Solutions using R and  Bioconductor'. R. Gentleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber  (eds), Springer, New York, pages 397-420.].”
+
+### Methylation arrays
+
+#### Illumina 850K DNA methylation arrays
+
+Methylation arrays will be processed and analyzed using a combination of  Bioconductor packages and custom scripts  following the general steps outlined in this Bioconductor workflow (https://www.bioconductor.org/packages/devel/workflows/vignettes/methylationArrayAnalysis/inst/doc/methylationArrayAnalysis.html). Raw IDAT file values will be processed using minfi [Aryee, 2014].  For quality control, arrays with low mean detection p-values across probes or outlier status for internal control probes will be discarded. Probes with low mean detection p-values across samples, and cross-reactivity and/or potential SNPs [Pidsley, 2016] will be also be discarded. Arrays will be background corrected using the noom algorithm [Triche, 2013] and inter-array technical variation adjusted for via Functional normalization [Fortin, 2014]. In parallel, the methylumi library [Davis, 2020], will be used to process arrays and internal array SNP probes used to detect potential sample swaps. Beta methylation values from the minfi processed data will be logit transformed to M-values [Du, 2010] and differential methylation at the single probe and regional levels determined using limma [Ritchie, 2015] and DMRcate [Peters, 2015] respectively. 
+
+1. Aryee MJ, Jaffe AE, Corrada-Bravo H, Ladd-Acosta C, Feinberg AP, Hansen KD, Irizarry RA (2014). “Minfi: A flexible and comprehensive Bioconductor package for the analysis of Infinium DNA Methylation microarrays.” Bioinformatics, 30(10), 1363–1369. doi:  10.1093/bioinformatics/btu049 .
+2. Davis S, Du P, Bilke S, Triche, Jr. T, Bootwalla M (2020). methylumi: Handle Illumina methylation data. R package version 2.36.0.
+3. Du, P., Zhang, X., Huang, C.-C., Jafari, N., Kibbe, W. A., Hou, L., & Lin, S. M. (2010). Comparison of Beta-value and M-value methods for quantifying methylation levels by microarray analysis. BMC Bioinformatics, 11, 587.
+4. Fortin, J.-P., Labbe, A., Lemire, M., Zanke, B. W., Hudson, T. J., Fertig, E. J., Greenwood, C. M., & Hansen, K. D. (2014). Functional normalization of 450k methylation array data improves replication in large cancer studies. Genome Biology, 15(12), 503.
+5. Mansell, G., Gorrie-Stone, T. J., Bao, Y., Kumari, M., Schalkwyk, L. S., Mill, J., & Hannon, E. (2019). Guidance for DNA methylation studies: statistical insights from the Illumina EPIC array. BMC Genomics, 20(1), 366.
+6. Peters, T. J., Buckley, M. J., Statham, A. L., Pidsley, R., Samaras, K., V Lord, R., Clark, S. J., & Molloy, P. L. (2015). De novo identification of differentially methylated regions in the human genome. Epigenetics & Chromatin, 8, 6.
+7. Pidsley, R., Zotenko, E., Peters, T. J., Lawrence, M. G., Risbridger, G. P., Molloy, P., Van Djik, S., Muhlhausler, B., Stirzaker, C., & Clark, S. J. (2016). Critical evaluation of the Illumina MethylationEPIC BeadChip microarray for whole-genome DNA methylation profiling. Genome Biology, 17(1), 208.
+8. Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, Smyth GK (2015). “limma powers differential expression analyses for RNA-sequencing and microarray studies.” Nucleic Acids Research, 43(7), e47. doi:  10.1093/nar/gkv007 .
+9. Triche TJ, Weisenberger DJ, Van Den Berg D, Laird PW, Siegmund KD (2013). “Low-level processing of Illumina Infinium DNA Methylation BeadArrays.” Nucleic Acids Research, 41(7), e90. doi:  10.1093/nar/gkt090 .
 
 ## Variant calling
 Overall, the parameters of our workflows are based on GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/).
@@ -354,17 +371,3 @@ Our analysis strategy for the metabolomic data generally follows the methods imp
 1. Chong, J., Soufan, O., Li, C., Caraus, I., Li, S., Bourque, G., Wishart, D.S. and Xia, J. (2018) MetaboAnalyst 4.0: towards more transparent and integrative metabolomics analysis. Nucl. Acids Res. 46, W486-494. 
 2. Trevor Hastie, Robert Tibshirani, Balasubramanian Narasimhan and Gilbert Chu (2019). impute: impute: Imputation for microarray  data. R package version 1.60.0.
 3. Ritchie, M.E., Phipson, B., Wu, D., Hu, Y., Law, C.W., Shi, W., and Smyth, G.K. (2015). limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research 43(7), e47.
-
-### Illumina 850K DNA methylation arrays
-
-Methylation arrays will be processed and analyzed using a combination of  Bioconductor packages and custom scripts  following the general steps outlined in this Bioconductor workflow (https://www.bioconductor.org/packages/devel/workflows/vignettes/methylationArrayAnalysis/inst/doc/methylationArrayAnalysis.html). Raw IDAT file values will be processed using minfi [Aryee, 2014].  For quality control, arrays with low mean detection p-values across probes or outlier status for internal control probes will be discarded. Probes with low mean detection p-values across samples, and cross-reactivity and/or potential SNPs [Pidsley, 2016] will be also be discarded. Arrays will be background corrected using the noom algorithm [Triche, 2013] and inter-array technical variation adjusted for via Functional normalization [Fortin, 2014]. In parallel, the methylumi library [Davis, 2020], will be used to process arrays and internal array SNP probes used to detect potential sample swaps. Beta methylation values from the minfi processed data will be logit transformed to M-values [Du, 2010] and differential methylation at the single probe and regional levels determined using limma [Ritchie, 2015] and DMRcate [Peters, 2015] respectively. 
-
-1. Aryee MJ, Jaffe AE, Corrada-Bravo H, Ladd-Acosta C, Feinberg AP, Hansen KD, Irizarry RA (2014). “Minfi: A flexible and comprehensive Bioconductor package for the analysis of Infinium DNA Methylation microarrays.” Bioinformatics, 30(10), 1363–1369. doi:  10.1093/bioinformatics/btu049 .
-2. Davis S, Du P, Bilke S, Triche, Jr. T, Bootwalla M (2020). methylumi: Handle Illumina methylation data. R package version 2.36.0.
-3. Du, P., Zhang, X., Huang, C.-C., Jafari, N., Kibbe, W. A., Hou, L., & Lin, S. M. (2010). Comparison of Beta-value and M-value methods for quantifying methylation levels by microarray analysis. BMC Bioinformatics, 11, 587.
-4. Fortin, J.-P., Labbe, A., Lemire, M., Zanke, B. W., Hudson, T. J., Fertig, E. J., Greenwood, C. M., & Hansen, K. D. (2014). Functional normalization of 450k methylation array data improves replication in large cancer studies. Genome Biology, 15(12), 503.
-5. Mansell, G., Gorrie-Stone, T. J., Bao, Y., Kumari, M., Schalkwyk, L. S., Mill, J., & Hannon, E. (2019). Guidance for DNA methylation studies: statistical insights from the Illumina EPIC array. BMC Genomics, 20(1), 366.
-6. Peters, T. J., Buckley, M. J., Statham, A. L., Pidsley, R., Samaras, K., V Lord, R., Clark, S. J., & Molloy, P. L. (2015). De novo identification of differentially methylated regions in the human genome. Epigenetics & Chromatin, 8, 6.
-7. Pidsley, R., Zotenko, E., Peters, T. J., Lawrence, M. G., Risbridger, G. P., Molloy, P., Van Djik, S., Muhlhausler, B., Stirzaker, C., & Clark, S. J. (2016). Critical evaluation of the Illumina MethylationEPIC BeadChip microarray for whole-genome DNA methylation profiling. Genome Biology, 17(1), 208.
-8. Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, Smyth GK (2015). “limma powers differential expression analyses for RNA-sequencing and microarray studies.” Nucleic Acids Research, 43(7), e47. doi:  10.1093/nar/gkv007 .
-9. Triche TJ, Weisenberger DJ, Van Den Berg D, Laird PW, Siegmund KD (2013). “Low-level processing of Illumina Infinium DNA Methylation BeadArrays.” Nucleic Acids Research, 41(7), e90. doi:  10.1093/nar/gkt090 .

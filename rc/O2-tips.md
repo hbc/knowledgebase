@@ -20,3 +20,18 @@ fi
 #unset __conda_setup
 # <<< conda initialize <<<
 ```
+
+## Interactive function to request memory and hours
+
+Can be added to .bashrc (or if you don't want to clutter it, put it in .o2_aliases and then source it from .bashrc)
+
+Defaults: 4G mem, 8 hours.
+```
+function interactive() {
+        mem=${1:-4}
+        hours=${2:-8}
+
+        srun --pty -p interactive --mem ${mem}G -t 0-${hours}:00 /bin/bash
+}
+```
+

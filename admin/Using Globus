@@ -1,0 +1,7 @@
+
+
+## Potential issues
+### Non-standard characters in filenames
+- files whose names contain non-alphanumeric characters (eg. ; ? =) may be rejected by windows machines during transfer
+### Changes in files on host or client
+- due to Globus monitoring for file integrity, changes that are made to files or directories on either side during transfer can interrupt the transfer

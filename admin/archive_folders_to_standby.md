@@ -75,7 +75,7 @@ I typically use the following rsync options (as `-ravzuP`)
 Here I will continue with the example from 5 using Arlene Sharpe’s analysis using our compressed folder as source and the standby folder as destination
 
 Example command:
-`rsync -ravzuP /n/data1/cores/bcbio/PIs/arlene_sharpe/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz /n/standby/cores/bcbio/archived_reports/tier2`
+`rsync -ravzuP /n/data1/cores/bcbio/PIs/arlene_sharpe/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz /n/standby/cores/bcbio/compute/archived_reports/tier2/`
 
 This will copy/sync the compressed folder over to the standby folder. 
 
@@ -91,11 +91,11 @@ The command to make a symlink in Unix is `ln -s` and typically has the format of
 
 Using our example of the Sharpe analysis, the command would be:
 
-`ln -s /n/standby/cores/bcbio/archived_reports/tier2/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz /n/data1/cores/bcbio/PIS/arlene_sharpe/ 20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz`
+`ln -s /n/standby/cores/bcbio/compute/archived_reports/tier2/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz /n/data1/cores/bcbio/PIS/arlene_sharpe/ 20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz`
 
 This will drop a symlink in the arelene_sharpe PI directory. W
 You can see that you have a symlink by running `ls -lh ` in the PI directory, you should see at least one line with  the `20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz` file listed with an arrow beside it pointing to the standby folder
-i.e. `20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz -> /n/standy/cores/bcbio/archived_reports/tier2/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz`
+i.e. `20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz -> /n/standby/cores/bcbio/compute/archived_reports/tier2/20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz`
 
 
 

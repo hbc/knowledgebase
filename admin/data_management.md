@@ -48,16 +48,14 @@ With the caveat that every project is different here are some general guidelines
 
 ### 1. Arrange the transfer with the researcher
 
-a) #### Scripts for setting up transfers
-
-i) ##### Warn them about need for xfer 
+#### Warn them about need for xfer 
 >Hi everyone, 
 >I hope you are all doing well. 
 >We need to clear some space on the server and would like to remove your data and analysis files if they are no longer needed. Do you have everything you need from us?
 >Let us know if you need anything and we can setup a transfer via O2 or their new Globus data transfer system. 
 >If we don't hear back by the 10th of March (i.e. two weeks) we will go ahead and remove the files. 
 
-##### Followup with Globus info
+#### Followup with Globus info
 
 >Hi, 
 

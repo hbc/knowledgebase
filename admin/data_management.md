@@ -71,21 +71,19 @@ With the caveat that every project is different here are some general guidelines
 >Please let us know if you have O2 access and if not, please share your Globus ID and we'll set up your data for transfer.
 
 
+#### Alternate followup script
+>HI  – 
+ 
+>With the help of HMS, we’ve been using globus to facilitate transferring the data. (globus.org) It requires you to sign up for a free account and install their client on your system (mac/windows, etc.). We’ll give you access to the data on the HMS cluster from your globus account and globus can transfer it to whatever storage you have access to at MGH, on an external drive, etc. (ie it’s a glorified FTP, file transfer capability and takes care of error recovery & handling etc.)
+ 
+>If this sounds good, let us know your globus account info and we can go from there. 
+ 
+>Thanks, 
+
+
 **Note, share these two help docs:**
 [Globus-Connect-Personal-install-Windows](https://www.dropbox.com/s/aq2g2i06hdctf38/Globus-Connect-Personal-Install-Windows.pdf?dl=1) - setting up the client
 [GlobusOneTimeTransfer](https://www.dropbox.com/s/461sxorxsxcoc5e/GlobusOneTimeTransfer.pdf?dl=1) - initiate the data transfer
-
- 
-
-
-#### Alternate followup script
-HI  – 
- 
-With the help of HMS, we’ve been using globus to facilitate transferring the data. (globus.org) It requires you to sign up for a free account and install their client on your system (mac/windows, etc.). We’ll give you access to the data on the HMS cluster from your globus account and globus can transfer it to whatever storage you have access to at MGH, on an external drive, etc. (ie it’s a glorified FTP, file transfer capability and takes care of error recovery & handling etc.)
- 
-If this sounds good, let us know your globus account info and we can go from there. 
- 
-Thanks, 
 
 ### Setup the transfer
 

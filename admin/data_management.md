@@ -43,3 +43,9 @@ With the caveat that every project is different here are some general guidelines
   * Did the consult end well? If it didn't its likely we won't be using it again. Ask the researcher what they want returned to them (with a time warning in case they don't respond) and delete the rest.
   * Is the consult unique in its approach? i.e. do you think its something we might come back to in the future for other analyses. If yes, tidy it up and archive. If it is something like a standard RNA-seq analysis, we probably don't need it. 
  * How long has it been since the data was accessed? If its older than 2 years, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.
+
+## Globus howto (in progress)
+
+1. ```tar cf project_dir.tar project_dir```
+2. login to www.globus.org
+3. File Manager / Collection / type HMS-RC

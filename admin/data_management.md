@@ -99,7 +99,10 @@ md5sum project_dir.tar > project_dir.tar.md5
 ```
 
 **On Globus:**
-See [SelfServiceCollections](https://www.dropbox.com/s/gyl41z3y0kwe276/SelfServiceCollections.pdf?dl=1) for how to setup a share. Search for the HMS-RC endpoint in the file manager and login with your HMS-RC ID
+
+See [SelfServiceCollections](https://www.dropbox.com/s/gyl41z3y0kwe276/SelfServiceCollections.pdf?dl=1) for how to setup a share. 
+
+Search for the HMS-RC endpoint in the file manager and login with your HMS-RC ID
 
 Share the folder with the researcher after searching for them via their Globus ID , email or name.
 

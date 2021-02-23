@@ -46,10 +46,86 @@ With the caveat that every project is different here are some general guidelines
 
 ## Globus howto (in progress)
 
-1. Prepare an archive to transfer
+### 1. Arrange the transfer with the researcher
+
+a) #### Scripts for setting up transfers
+
+i) ##### Warn them about need for xfer 
+>Hi everyone, 
+>I hope you are all doing well. 
+>We need to clear some space on the server and would like to remove your data and analysis files if they are no longer needed. Do you have everything you need from us?
+>Let us know if you need anything and we can setup a transfer via O2 or their new Globus data transfer system. 
+>If we don't hear back by the 10th of March (i.e. two weeks) we will go ahead and remove the files. 
+
+##### Followup with Globus info
+
+>Hi, 
+
+>I’ll be handling the data transfer.
+
+>Currently, we have your data on HMS RC's O2 server. If you have an account there and appropriate space, we can simply transfer ownership to you there. You can then move it to your directory on O2 and decide whether to keep it on O2 (note that they will start charging for data storage in the summer) or move it to another server/drive.
+
+>Alternatively, we can use the new Globus secure transfer service that HMS offers. It has worked quite well for us to transfer from O2 to external servers and individual laptops/computers. I'm attaching some of their guidance docs on setting up the client and initiating a transfer. We would need you to sign into the system with your Harvard ID first (see below) and give us your Globus user ID (see the “Account” section in the Globus interface) or the email you used to sign in. We'd then share the folder with you to access via Globus and you will receive an email with instructions. 
+
+>**Globus LogIN help**
+>Go to https://www.globus.org/ and click on "LogIn/Use your existing organizational login/Harvard University", this will take you to Harvard Key. You can also login with your ecommons ID. If you don’t have Harvard Key you can create a globus id - (https://www.globusid.org/create).
+
+>Please let us know if you have O2 access and if not, please share your Globus ID and we'll set up your data for transfer.
+
+
+**Note, share these two help docs:**
+[Globus-Connect-Personal-install-Windows](https://www.dropbox.com/s/aq2g2i06hdctf38/Globus-Connect-Personal-Install-Windows.pdf?dl=1) - setting up the client
+[GlobusOneTimeTransfer](https://www.dropbox.com/s/461sxorxsxcoc5e/GlobusOneTimeTransfer.pdf?dl=1) - initiate the data transfer
+
+ 
+
+
+#### Alternate followup script
+HI  – 
+ 
+With the help of HMS, we’ve been using globus to facilitate transferring the data. (globus.org) It requires you to sign up for a free account and install their client on your system (mac/windows, etc.). We’ll give you access to the data on the HMS cluster from your globus account and globus can transfer it to whatever storage you have access to at MGH, on an external drive, etc. (ie it’s a glorified FTP, file transfer capability and takes care of error recovery & handling etc.)
+ 
+If this sounds good, let us know your globus account info and we can go from there. 
+ 
+Thanks, 
+
+### Setup the transfer
+
+**On server**
+1. Check permissions to make sure you have access to everything 
+2. Prepare an archive to transfer (optional)
+
 ```bash
 tar cf project_dir.tar project_dir
 md5sum project_dir.tar > project_dir.tar.md5
 ```
-3. login to www.globus.org
-4. File Manager / Collection / type HMS-RC
+
+**On Globus:**
+See [SelfServiceCollections](https://www.dropbox.com/s/gyl41z3y0kwe276/SelfServiceCollections.pdf?dl=1) for how to setup a share. Search for the HMS-RC endpoint in the file manager and login with your HMS-RC ID
+
+Share the folder with the researcher after searching for them via their Globus ID , email or name.
+
+
+
+
+## Potential issues
+### Permissions 
+- initiator needs proper permissions to actually share data
+### Non-standard characters in filenames
+- files whose names contain non-alphanumeric characters (eg. ; ? =) may be rejected by windows machines during transfer
+### Changes in files on host or client
+- due to Globus monitoring for file integrity, changes that are made to files or directories on either side during transfer can interrupt the transfer
+
+
+## Notes
+* Email from Globus only contains share information, unclear where the researcher learns about the app
+* CAn add additional endpoint folders through Preferences/Options on OSX and Windows.
+* Console interface or client may not tell you that transfer is complete
+
+
+
+
+
+
+
+

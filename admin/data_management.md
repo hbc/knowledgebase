@@ -82,7 +82,9 @@ With the caveat that every project is different here are some general guidelines
 
 
 **Note, share these two help docs:**
+
 [Globus-Connect-Personal-install-Windows](https://www.dropbox.com/s/aq2g2i06hdctf38/Globus-Connect-Personal-Install-Windows.pdf?dl=1) - setting up the client
+
 [GlobusOneTimeTransfer](https://www.dropbox.com/s/461sxorxsxcoc5e/GlobusOneTimeTransfer.pdf?dl=1) - initiate the data transfer
 
 ### Setup the transfer

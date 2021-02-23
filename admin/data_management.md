@@ -46,6 +46,10 @@ With the caveat that every project is different here are some general guidelines
 
 ## Globus howto (in progress)
 
-1. ```tar cf project_dir.tar project_dir```
-2. login to www.globus.org
-3. File Manager / Collection / type HMS-RC
+1. Prepare an archive to transfer
+```bash
+tar cf project_dir.tar project_dir
+md5sum project_dir.tar > project_dir.tar.md5
+```
+3. login to www.globus.org
+4. File Manager / Collection / type HMS-RC

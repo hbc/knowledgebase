@@ -51,3 +51,6 @@ If you run tmux from the login node before you ssh to the transfer node to xfer 
 `tmux a -t myname`
 10) Profit
 
+You can get around having to remember which node you logged into by alwasys logging into the same node. For example you can add this to your .bash_profile on OSX:  
+`alias ssho2='ssh -XY -l user login05.o2.rc.hms.harvard.edu'`
+

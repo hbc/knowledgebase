@@ -4,7 +4,12 @@ Tmux is a great way to work on the server as it allow syou to:
 4) run multiple windows/command lines from a single login (O2 allows a maximum of 2-3 logins to their system).  
 5) quickly spin off windows to do small commands (see 3).  
 
+### Useful resources
 
+#### [Tmux cheat sheet](https://tmuxcheatsheet.com/)
+
+
+#### Tmux configuration
 Tmux works great but can have some issues upon first use that make it challenging to use for those of us used to a GUI:  
 a) the default command key is not great.  
 b) it doesn't work well with a mouse.  

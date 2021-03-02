@@ -1,16 +1,16 @@
-Tmux is a great way to work on the server as it allow syou to
-1) keep your session alive
-2) have multiple named sessions open to firewall tasks/projects
-3) run multiple windows/command lines from a single login (O2 allows a maximum of 2-3 logins to their system)
-4) quickly spin off windows to do small commands (see 3)
+Tmux is a great way to work on the server as it allow syou to:  
+1) keep your session alive.  
+3) have multiple named sessions open to firewall tasks/projects.  
+4) run multiple windows/command lines from a single login (O2 allows a maximum of 2-3 logins to their system).  
+5) quickly spin off windows to do small commands (see 3).  
 
 
 Tmux works great but can have some issues upon first use that make it challenging to use for those of us used to a GUI:  
-a) the default command key is not great
-b) it doesn't work well with a mouse
-c) it doesn't let you copy text easily
-d) it doesn't scroll your window easily
-e) resizing the windows can be challenging
+a) the default command key is not great.  
+b) it doesn't work well with a mouse.  
+c) it doesn't let you copy text easily.  
+d) it doesn't scroll your window easily.  
+e) resizing the windows can be challenging.  
 
 The confirguation file code below should make some of these issues easier:
 

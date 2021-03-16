@@ -22,7 +22,7 @@ A typical command might look like this:
 ## Notes
 - Zach and co. always share raw data but may default to sharing it through their pydio web interface, which is not reliable.
 
-- If you email Zach (zherbert@mail.dfci.harvard.edu) or Drew (andrew_caruso@mail.dfci.harvard.edu) and tell them who's data you need (cc: the researcher) they will setup an FTP site for you to use.
+- If you email Zach (zherbert@mail.dfci.harvard.edu) and tell him who's data you need (cc: the researcher) he will setup an FTP site for you to use. (Drew has left, so don't email him anymore.)
 
 - Make sure to let them know you've pulled down the data, so they can turn off the site when you're done (it costs money to run this).
 

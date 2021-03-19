@@ -3,7 +3,7 @@ https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive
 
 # ActiveMotif
 
-- They will give us a long link like this: ftp://ftp.activemotif.com<https://urldefense.proofpoint.com/v2/url?u=ftp-3A__ftp.activemotif.com_&d=DwMF-g&c=WO-RGvefibhHBZq3fL85hQ&r=CiePDOg3jDpiyuOnMdRMAf55kb0y979UKdT9-l_8xx4&m=sG-iug98j_AhGbB1PxIiUTGzFWLjIwpK-ff9Oza6JZM&s=Nmf-t3MTzOiZQ0WcCpKsFd6PMprEvuMK-izroBVUwB0&e=>
+- They will give us a long link like this: ftp://ftp.activemotif.com<https://urldefense.proofpoint.com/v2/url?u=ftp-3A__ftp.activemotif.com_&d=DwMF-g&c=WO-RGvefibhHBZq3fL85hQ&r=CiePDOg3jDpiyuOnMdRMAf55kb0y979UKdT9-l_8xx4&m=sG-xxxx_AhGbB1PxIiUTGzFWLjIwpK-ff9Oza6JZM&s=Nmf-t3MTzOiZQ0WcCpKsFd6PMprEvuMK-izroBVUwB0&e=>
 
 - We just need to get in to "ftp://ftp.activemotif.com" (some browsers might not open this)
 

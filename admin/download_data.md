@@ -11,7 +11,9 @@ https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive
 
 - click on the folders and get the links.
 
-- get on the terminal wget --user=user --password=password 'link_for_necessary_folders'
+- get on the terminal wget --user=user --password=password {link_for_necessary_folders}
+
+- You can use wget -m for a folder.
 
 # Biopolymers
 

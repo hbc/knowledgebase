@@ -43,7 +43,7 @@ Pipeline most closely followed cut and run tools:
 Peaks were then called using MACS2 and SEACR on all resulting bam files and examined for quality control.
 ```
 
-## Question regarding the insert size and the IgG samples.
+### Question regarding the insert size and the IgG samples.
 ```
 @drpatelh
 For step 5, you could just create another rendition of the file below to filter based on those insert sizes and pass that to the pipeline using --bamtools_filter_pe_config <new_config>. 
@@ -107,19 +107,14 @@ Some thoughts:
 HERE: ** He says we should be removing duplicates **
 ```
 
-## Lab who published CUT&RUN comes up with a pipeline - Henikoff lab FHCRC
-```
-https://pypi.org/project/henipipe/
-```
-
-## Part where @houghtos talks about why duplicates should not be removed
+### Part where @houghtos talks about why duplicates should not be removed
 ```
 Wanted to add C&R may actually produce identical molecules due to base pair resolution of footprints obtained by MNase (differing from ChIP-seq). 
 It's observed high yield experiments produce "PCR duplicates" that are actually biologically meaningful molecules (100k+ cells & histone modification antibodies). 
 Something to keep in mind for post alignment QC in removing duplicates.
 ```
 
-## Primary difference between CUT&RUN, CUT&TAG and atacseq
+### Primary difference between CUT&RUN, CUT&TAG and atacseq
 ```
 Yes the primary differences are the peak caller used (SEACR is the standard for CUT&TAG) and the spike in normalisation. 
 
@@ -128,4 +123,18 @@ We are building the pipeline with options for automated spike in normalisation.
 There are some other smaller differences but they are the main ones.
 
 While SEACR is standard for CUT&TAG, it isn't for cut&run. We just have to worry about spike in normalization mainly and some of the other parameters.
+```
+
+## Useful Links
+### Lab who published CUT&RUN comes up with a pipeline - Henikoff lab FHCRC
+```
+CUT&RUN paper: https://epigeneticsandchromatin.biomedcentral.com/articles/10.1186/s13072-019-0287-4
+pipeline: https://pypi.org/project/henipipe/
+```
+### Other papers and links
+```
+activemotif: https://www.activemotif.com/blog-cut-tag
+cutandtools: https://bitbucket.org/qzhudfci/cutruntools/src/master/
+SEACR peak caller: https://github.com/FredHutch/SEACR
+hainer pipeline: https://github.com/sarahhainer/uliCUT-RUN
 ```

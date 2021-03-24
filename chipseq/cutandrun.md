@@ -169,8 +169,8 @@ hi @nservant sorry for the delayed response. You are right that the insert is fl
 @nservant
 Thanks @Chris Cheshire I fully agree. That's exactly why I do not understand why you can have dovetailed reads as defined in the bowtie2 manual ... in the sense of R1 (or R2) which goes beyond their mates ! I'm sorry if I'm not clear. I try to make a picture.
 ```
-
-![the_nservant_plot](https://imgur.com/OBFGSI8)
+> the_nservant_plot
+<img src="https://imgur.com/OBFGSI8" width="600">
 
 ```
 @nservant

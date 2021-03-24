@@ -130,55 +130,94 @@ While SEACR is standard for CUT&TAG, it isn't for cut&run. We just have to worry
 ```
 original question:
 @nservant
-Hi all. Reading a bit about cut&run data analysis, I did not find any major differences with a standard ChIP-seq pipeline. The trimming may be a bit different, and some people recommand using the --dovetail  option for the bowtie2 mapping, + SEACR for peak calling. Is there any other differences that I missed ? Then, I'm a bit confused about dovetail read pairs (... when one mate alignment extends past the beginning of the other ...), I do not understand how this is possible :slightly_smiling_face: ? If someone has any reference or explanation, it would be great ! thanks !
+Hi all. Reading a bit about cut&run data analysis, I did not find any major differences with a standard ChIP-seq pipeline. 
+The trimming may be a bit different, and some people recommand using the --dovetail  option for the bowtie2 mapping, + SEACR for peak calling. 
+Is there any other differences that I missed ? 
+Then, I'm a bit confused about dovetail read pairs (... when one mate alignment extends past the beginning of the other ...), 
+I do not understand how this is possible? 
+If someone has any reference or explanation, it would be great ! thanks !
 ```
 ```
 original answer:
 @christ cheshire (main dev for nf-core/cutandrun)
-Hi thanks for your message - I think you are right in that the format of the analysis is quite similar as it is with most enriched fragment type genomics pipelines (ChIP-seq, ATAC-seq, CUT&RUN, CUT&TAG etc.); however, the things you mentioned do make quite a large difference to the final output of the pipeline.
+Hi thanks for your message - I think you are right in that the format of the analysis is quite similar as it is with most enriched fragment type genomics pipelines (ChIP-seq, ATAC-seq, CUT&RUN, CUT&TAG etc.); 
+however, the things you mentioned do make quite a large difference to the final output of the pipeline.
 There are two primary differences with CUT&RUN/TAG over ChIP-seq: fragment length and background noise.
-In C&R, the read lengths are predominantly shorter and so normal trimming and alignment settings must be adjusted to account for this. For this reason, trimming is not advised in C&R and during alignment it is also advised that the dovetailed read mates are considered for alignment. I have included a screen shot of the bowtie2 manual below but briefly you get dovetailing when an insert is so short that the sequencer reads almost the same sequence during both read 1 and read 2. Usually this is a sign of a fragment you dont want or perhaps some kind of error, but in C&R this is expected and so the aligner must be told to accept these mate types.
-The second main difference is the very low background noise obtained from C&R when compared to ChIP-seq. Peak callers like MACS were designed to account for large amounts of noise but they can be quite conservative because of this. SEACR is designed specifically for low background-noise experiments and can take advantage of this to produce more accurate peaks for C&R data.
+In C&R, the read lengths are predominantly shorter and so normal trimming and alignment settings must be adjusted to account for this. 
+For this reason, trimming is not advised in C&R and during alignment it is also advised that the dovetailed read mates are considered for alignment. 
+I have included a screen shot of the bowtie2 manual below but briefly you get dovetailing when an insert is so short that the sequencer reads almost the same sequence during both read 1 and read 2. 
+Usually this is a sign of a fragment you dont want or perhaps some kind of error, but in C&R this is expected and so the aligner must be told to accept these mate types.
+The second main difference is the very low background noise obtained from C&R when compared to ChIP-seq. Peak callers like MACS were designed to account for large amounts of noise but they can be quite conservative because of this. 
+SEACR is designed specifically for low background-noise experiments and can take advantage of this to produce more accurate peaks for C&R data.
 In summary all of this really means is that less information is filtered out during processing so that you can take full advantage of the quality of C&R data over ChIP-seq.
-Another minor difference is that spike-in normalisation is almost always used in C&R due to the residual ecoli genetic material that is always present in a sample from the production process of the PA-MNase; therefore, most pipelines include auto-spikein calibration against ecoli. In ChIP-seq, you must add in a specific spike-in which does not always happen.
+Another minor difference is that spike-in normalisation is almost always used in C&R due to the residual ecoli genetic material that is always present in a sample from the production process of the PA-MNase; 
+therefore, most pipelines include auto-spikein calibration against ecoli. 
+In ChIP-seq, you must add in a specific spike-in which does not always happen.
 The pipeline should be complete very soon and we hope at some point before the summer to include the MACS peak caller in the pipeline anyway, so that people can compare.
 Let me know you if have further questions, I would be happy to answer them!
 ```
+> dovetail in bowtie2
+<img src="https://i.imgur.com/Oh7I152.png" width="800">
+
 ```
 @Joon Yoon
-Hi Chris, from the past discussions, I was getting the impression that we should be trimming with trimmomatic and then kseq to account for the <6bp adapters.
+Hi Chris, from the past discussions, 
+I was getting the impression that we should be trimming with trimmomatic and then kseq to account for the <6bp adapters.
 (https://github.com/nf-core/chipseq/issues/127)
-But in this answer, you are suggesting that we shouldn't trim at all. So, would 'no trimming' be the most up to date suggestion?
-Sorry for the naive question as I am a novice at C&R, just reading through the limited information on the web :pensive:.
+But in this answer, you are suggesting that we shouldn't trim at all. 
+So, would 'no trimming' be the most up to date suggestion?
+Sorry for the naive question as I am a novice at C&R, just reading through the limited information on the web.
 Thanks!
 ```
 ```@ Chris cheshire
-Hey Joon, thanks for your message and my slow reply - the message is that we have to be careful with trimming. You still need to look for adaptor sequences and then perform limited trimming for short reads if you see these sequences in your data. Normal trimming strategies however may truncate your reads so I would avoid them
+Hey Joon, thanks for your message and my slow reply - the message is that we have to be careful with trimming. 
+You still need to look for adaptor sequences and then perform limited trimming for short reads if you see these sequences in your data. 
+Normal trimming strategies however may truncate your reads so I would avoid them
 ```
 
 #### still has issues
 ```
 @nservant
-Many thanks @Chris Cheshire for the detailed answer. It's very clear. Just one last question regarding dovetail reads. Actually, I do ont understand how this can happen ! not only for C&R/C&T but for sequencing in general. I understand that because of fragment size, you can have a large overlap between paired reads. But as your insert is flanked by adapter sequences, as soon as you have one mate which overtakes the beginning of the other mate, it means that you start sequencing the adapter sequence, which should be trimmed. So except if we trim the 5' end of the reads (which is not the case here if I'm correct), how this can happen ? Sorry if my question is naive, but thanks again for your time!
+Many thanks @Chris Cheshire for the detailed answer. It's very clear. 
+Just one last question regarding dovetail reads. Actually, I do ont understand how this can happen ! 
+not only for C&R/C&T but for sequencing in general. I understand that because of fragment size, you can have a large overlap between paired reads. 
+But as your insert is flanked by adapter sequences, as soon as you have one mate which overtakes the beginning of the other mate, 
+it means that you start sequencing the adapter sequence, which should be trimmed. 
+So except if we trim the 5' end of the reads (which is not the case here if I'm correct), how this can happen ? Sorry if my question is naive, but thanks again for your time!
 ```
 ```
 @chris cheshire
-hi @nservant sorry for the delayed response. You are right that the insert is flanked by adaptor sequences; however, these are not read as part of the read. In read1, sequencing primer that binds during sequencing actually binds to the R1 site, which is the inner most portion of the adaptor. The sequencing read then immediately moves to the insert. You get adaptor sequences in your reads at the END of the read if your insert is so short that your read 1 process starts reading the R2 (read2) adaptor sequence on the other side of the insert. The same applies for read 2 but in the opposite direction. Does this answer your question?
+hi @nservant sorry for the delayed response. 
+You are right that the insert is flanked by adaptor sequences; however, these are not read as part of the read. 
+In read1, sequencing primer that binds during sequencing actually binds to the R1 site, which is the inner most portion of the adaptor. 
+The sequencing read then immediately moves to the insert. 
+You get adaptor sequences in your reads at the END of the read if your insert is so short that your read 1 process starts reading the R2 (read2) 
+adaptor sequence on the other side of the insert. 
+The same applies for read 2 but in the opposite direction. Does this answer your question?
 ```
 ```
 @nservant
-Thanks @Chris Cheshire I fully agree. That's exactly why I do not understand why you can have dovetailed reads as defined in the bowtie2 manual ... in the sense of R1 (or R2) which goes beyond their mates ! I'm sorry if I'm not clear. I try to make a picture.
+Thanks @Chris Cheshire I fully agree. 
+That's exactly why I do not understand why you can have dovetailed reads as defined in the bowtie2 manual ... 
+in the sense of R1 (or R2) which goes beyond their mates ! I'm sorry if I'm not clear. I try to make a picture.
 ```
 > the_nservant_plot
 <img src="https://i.imgur.com/OBFGSI8.png" width="600">
 
 ```
 @nservant
-At the top, this is the definition of dovetailed reads according to bowtie2. At the bottom, what I would expect after trimming ... as you said the end of the reads should be adapter sequences ... so after trimming, we cannot have reads that extend beyond the start position of their mates. Does it make sense?
+At the top, this is the definition of dovetailed reads according to bowtie2. 
+At the bottom, what I would expect after trimming ... as you said the end of the reads should be adapter sequences ... 
+so after trimming, we cannot have reads that extend beyond the start position of their mates. Does it make sense?
 ```
 ```
 @chris cheshire
-yeah thats a really good point! I guess the bowtie2 diagram does not talk about adapter trimming and so its only possible if you dont trim the sequences completely. In CUT&RUN/TAG I guess you could have dovetails depending on how aggressive your trimming is. As we dont trim aggressively as a rule in CUT&RUN, I suppose there is more chance of a dovetail scenario as the whole adapter sequence has not been trimmed off which is why the setting is included specifically. good spot though I hadnt really thought about it properly.
+yeah thats a really good point! 
+I guess the bowtie2 diagram does not talk about adapter trimming and so its only possible if you dont trim the sequences completely. 
+In CUT&RUN/TAG I guess you could have dovetails depending on how aggressive your trimming is. 
+As we dont trim aggressively as a rule in CUT&RUN, I suppose there is more chance of a dovetail scenario as the whole adapter sequence has not been trimmed off
+which is why the setting is included specifically. 
+good spot though I hadnt really thought about it properly.
 ```
 ```
 @nservant
@@ -186,11 +225,14 @@ Thanks again for the nice discussion !
 ```
 ```
 @Joon Yoon
-I am no expert at this, and I am still interested in this discussion. Would there be problems with the adapters that are not removed because they are <6bp? If trimming of the reads are the issue with the dovetails, I was wondering if the discussion about kseq of cutruntools in this github (https://github.com/nf-core/chipseq/issues/127) is somehow relevant to this issue.
+I am no expert at this, and I am still interested in this discussion. 
+Would there be problems with the adapters that are not removed because they are <6bp? If trimming of the reads are the issue with the dovetails, 
+I was wondering if the discussion about kseq of cutruntools in this github (https://github.com/nf-core/chipseq/issues/127) is somehow relevant to this issue.
 ```
 ```
 @chris cheshire
-Yes perhaps, I am knee deep trying to get the pipeline compete right now, but this kind of thing will be critical to test when we move to the testing phase
+Yes perhaps, I am knee deep trying to get the pipeline compete right now, 
+but this kind of thing will be critical to test when we move to the testing phase
 ```
 
 

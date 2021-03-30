@@ -237,6 +237,22 @@ but this kind of thing will be critical to test when we move to the testing phas
 
 
 ## Useful Links
+### First Mail Meeta received from Qian
+```
+Hi Meeta,
+Thanks for your questions. Only a small part uses ChIP-seq pipeline. I would say that probably peak calling is the only part shared with ChIP-seq (MACS2).
+There are several major considerations unique to pA-MNase CUT&RUN since it is an enzyme digestion based approach, different from sonication based ChIP-seq.
+1) short fragment size. All CR are paired end and give exact fragment length. However, most fragments of interest are short (50-100bp), and when using 150bp paired end sequencing, will leave a long adapter overhang in reads. Trimming is absolutely crucial.
+2) alignment is similar to most high-throughput sequencing, but we use --dove-tail setting in bowtie2 to optimize alignment.
+3) identification of binding sites is based on cut frequency matrix of pA-MNase, not based on peaks alone. Different from ChIP-seq where peaks are the endpoint of an analysis, we calculate cut-frequency matrix in peak regions to further distinguish if a peak is a direct binding site or not. This allows us to give a number to each peak as to how likely it is a binding site. There is no cut-frequency matrix in ChIP-seq. This cut matrix allows users to generate beautiful motif footprinting figures.
+4) the pipeline for histone CUT&RUN is different from TF CUT&RUN. We filter fragments based on fragment size depending if it is histone or TF antibody. Different fragment sizes give us great a deal of information of what regions a TF prefers to bind.
+5) we further provide motif enrichment analysis to validate CUT&RUN peaks. 
+So there are principled differences between CUT&RUN and ChIP-seq and a couple of nice additions in our pipeline CUT&RUNTools (by the way it is recently published in Genome Biology - users have a paper to cite now).
+If there is an interest in integrating it into the Core, I could work with you to have this installed for users of your cluster environment. 
+Best wishes,
+Qian
+```
+
 ### Lab who published CUT&RUN comes up with a pipeline - Henikoff lab FHCRC
 ```
 CUT&RUN paper: https://epigeneticsandchromatin.biomedcentral.com/articles/10.1186/s13072-019-0287-4

@@ -110,3 +110,10 @@ archive_data_with_link(als %>%
                      filter(padj < 0.1), "dexseq-sig.csv",
                      "All significant DEXSeq results", dropbox_dir)
 ```
+
+# Novel operators from magrittr
+The “%<>%” operator lets you pipe  an object to a function and then back into the same object.
+So:
+`foo -> foo %>% bar()`
+is the same as
+`foo %<>% bar()`

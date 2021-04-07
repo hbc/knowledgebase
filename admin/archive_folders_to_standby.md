@@ -58,7 +58,7 @@ Login with your password and DUO challenge, it shouldn’t require your login ID
 
 ## 6) Move  compressed folder to the standby folder
 
-Our standby folder is located at `/n/standby/cores/bcbio/archived_reports/tier2`
+Our standby folder is located at `/n/standby/cores/bcbio/compute/archived_reports/tier2`
 You can see that there are already a bunch of tar gzipped folders in there. 
 
 Move your newly compressed folder to the standby folder using rsync.

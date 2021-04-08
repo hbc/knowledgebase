@@ -265,3 +265,9 @@ cutandtools: https://bitbucket.org/qzhudfci/cutruntools/src/master/
 SEACR peak caller: https://github.com/FredHutch/SEACR
 hainer pipeline: https://github.com/sarahhainer/uliCUT-RUN
 ```
+
+## At HBC
+```
+Running CUT&RUNtools on O2
+<120bp will not be used. Using the all fragments peak calls.
+```

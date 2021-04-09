@@ -272,6 +272,9 @@ Running CUT&RUNtools on O2
 <120bp will not be used. Using the all fragments peak calls.
 ```
 ### JSON file required for the CUT&RUNtools to run at the moment.
+> Please note that qz64 is the first author's O2 ID and his/her folder (The first author is in GC Yuan Group; HSPH).
+> We will have to ask the IT to solve this.
+
 ```
 {
     "Rscriptbin": "/n/app/R/3.3.3/bin",

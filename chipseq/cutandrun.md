@@ -271,3 +271,68 @@ hainer pipeline: https://github.com/sarahhainer/uliCUT-RUN
 Running CUT&RUNtools on O2
 <120bp will not be used. Using the all fragments peak calls.
 ```
+### JSON file required for the CUT&RUNtools to run at the moment.
+```
+{
+    "Rscriptbin": "/n/app/R/3.3.3/bin",
+    "pythonbin": "/n/app/python/2.7.12/bin/",
+    "perlbin": "/n/app/perl/5.24.0/bin",
+    "javabin": "/n/app/java/jdk-1.8u112/bin",
+    "trimmomaticbin": "/n/app/trimmomatic/0.36/bin",
+    "trimmomaticjarfile": "trimmomatic-0.36.jar",
+    "bowtie2bin": "/n/app/bowtie2/2.2.9/bin",
+    "samtoolsbin": "/n/app/samtools/1.3.1/bin",
+    "adapterpath": "/home/qz64/cutrun_pipeline/adapters", 
+    "picardbin": "/n/app/picard/2.8.0/bin",
+    "picardjarfile": "picard-2.8.0.jar",
+    "macs2bin": "/n/app/macs2/2.1.1.20160309/bin",
+    "macs2pythonlib": "/n/app/macs2/2.1.1.20160309/lib/python2.7/site-packages",
+    "kseqbin": "/home/qz64/cutrun_pipeline", 
+    "memebin": "/home/qz64/meme/bin", 
+    "bedopsbin": "/n/app/bedops/2.4.30", 
+    "bedtoolsbin": "/n/app/bedtools/2.27.1/bin",
+    "makecutmatrixbin": "/home/jy256/.local/bin",
+    "bt2idx": "/n/groups/shared_databases/bowtie2_indexes",
+    "genome_sequence": "/home/qz64/chrom.hg19/hg19.fa",
+    "extratoolsbin": "/home/qz64/cutrun_pipeline", 
+    "extrasettings": "/home/qz64/cutrun_pipeline", 
+    "input/output": {
+        "fastq_directory": "/home/jy256/scratch/hbc_cutandrun_shi_yang_violetta_diff_neurons_iPSCs_hbc04185/data",
+        "workdir": "/home/jy256/scratch/hbc_cutandrun_shi_yang_violetta_diff_neurons_iPSCs_hbc04185/work",
+        "fastq_sequence_length": 42,
+        "organism_build": "hg19"
+    },
+    "motif_finding": {
+        "num_bp_from_summit": 150,
+        "num_peaks": 5000,
+        "total_peaks": 15000,
+        "motif_scanning_pval": 0.0005,
+        "num_motifs": 20
+    },
+    "cluster": {
+        "email": "jyoon@hsph.harvard.edu",
+        "step_alignment": {
+            "queue": "short",
+            "memory": 32000,
+            "time_limit": "0-12:00"
+        },
+        "step_process_bam": {
+            "queue": "short",
+            "memory": 32000,
+            "time_limit": "0-12:00"
+        },
+        "step_motif_find": {
+            "queue": "short",
+            "memory": 32000,
+            "time_limit": "0-12:00"
+        },
+        "step_footprinting": {
+            "queue": "short",
+            "memory": 32000,
+            "time_limit": "0-12:00"
+        }
+    }
+}
+
+```
+

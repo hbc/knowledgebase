@@ -1,6 +1,6 @@
 # Note on Metadata for chipseq
-## Linking the inputs together with one line.
-## antibody column matters!
+## Linking the inputs together with one line. (Thanks to Meeta)
+## antibody column matters! (needs to be included in vignette maybe?)
 ```
 samplename,description,batch,phenotype,replicate,treatment,antibody
 Lib4.R1.bc.2.WTMTF2.fq,WTMTF2_1,pair1,chip,1,WT,MTF2
@@ -23,7 +23,7 @@ Lib2.bc.14.INPUT.fq,input_global,pair1;pair2;pair3;pair4;pair5;pair6;pair7;pair8
 ```
 
 ## I am getting these warnings and some samples ran with broadpeak. (samples that have H3K27ME3)
-> Going through the log, I found this.... as I didn't get any peaks for the MTF2 samples.
+> Going through the log, I found this.... as I didn't get any peaks for samples that didn't have H3k27ME3 in the antibody column.
 ```
 [2021-04-10T05:28Z] h3k27me3 specified, using broad peak settings.
 [2021-04-10T05:28Z] h3k27me3 specified, using broad peak settings.

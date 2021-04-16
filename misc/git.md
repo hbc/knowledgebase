@@ -8,6 +8,7 @@
 - https://benmarshall.me/git-rebase/
 - [find big files in history](https://stackoverflow.com/questions/10622179/how-to-find-identify-large-commits-in-git-history)
 - [remove a big file from history](https://www.czettner.com/2015/07/16/deleting-big-files-from-git-history.html)
+- [git-tips](https://github.com/git-tips/tips)
 
 
 # merge master branch into (empty) main and delete master

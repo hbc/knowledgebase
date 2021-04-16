@@ -117,3 +117,15 @@ So:
 `foo -> foo %>% bar()`
 is the same as
 `foo %<>% bar()`
+
+# gghelp: Converts a natural language query into a 'ggplot2' command
+This [package](https://rdrr.io/github/brandmaier/ggx/) allows users to issue natural language commands 
+related to theme-related styling of plots (colors, font size and such), which then are translated into 
+valid 'ggplot2' commands.
+
+### Examples:
+```R
+gghelp("rotate x-axis labels by 90 degrees")
+gghelp("increase font size on x-axis label")
+gghelp("set x-axis label to 'Length of Sepal'")
+```

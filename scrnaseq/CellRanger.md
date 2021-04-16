@@ -1,5 +1,5 @@
 # When running Cell Ranger on O2
-## Sent by Victor
+## Shared by Victor
 > 10x documentation is the one he uses:
 
 https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger

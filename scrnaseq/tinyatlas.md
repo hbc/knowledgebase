@@ -1,3 +1,5 @@
+- [Mouse brain markers](https://www.brainrnaseq.org/)
+- [Mouse and human markers](https://panglaodb.se)
 - https://bioconductor.org/packages/release/bioc/html/SingleR.html
 - [tinyatlas](https://github.com/hbc/tinyatlas)
 - https://www.flyrnai.org/tools/biolitmine/web/

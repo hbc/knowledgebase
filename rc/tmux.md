@@ -93,3 +93,5 @@ The confirguation file code below should make some of these issues easier:
     
     bind-key C-a last-window
     setw -g aggressive-resize on
+    
+#### [Restoring your tmux session after reboot](https://andrewjamesjohnson.com/restoring-tmux-sessions/)

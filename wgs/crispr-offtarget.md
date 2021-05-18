@@ -1,11 +1,3 @@
----
-title: How to find off-target CRISPR edits
-description: How to find off-target CRISPR edits
-category: research
-subcategory: wgs
-tags: [annotation]
----
-
 # Overview
 This guide is how to call offtarget edits in a CRISPR edited genome. This is
 pretty easy to and only takes a few steps. First, we need to figure out what is
@@ -115,3 +107,6 @@ bedtools intersect -header -u -a noCas9_nogRNA-mutect2-annotated.vcf.gz -b outpu
 ```
 
 And you are done!
+
+# More tools
+[CRISPResso2](https://github.com/pinellolab/CRISPResso2)

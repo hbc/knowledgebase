@@ -1,5 +1,6 @@
 Can be run from ` /n/app/bcbio/dev/anaconda/bin/aws` or from  `/usr/bin/aws` on the O2 transfer nodes.
 
+## Setup S3 bucket
 Setup your S3 bucket with: 
 `foo/aws configure`
 You will need your 
@@ -8,7 +9,8 @@ You will need your
 - Default region name
 - Default output format
 
-
+    
+## Interact with AWS bucket      
 
 - no dirs in AWS, those strings are just prefixes
 - use `--dryrun` to test a command

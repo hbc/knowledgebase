@@ -1,3 +1,15 @@
+Can be run from ` /n/app/bcbio/dev/anaconda/bin/aws` or from  `/usr/bin/aws` on the O2 transfer nodes.
+
+Setup your S3 bucket with: 
+`foo/aws configure`
+You will need your 
+- AWS Access Key ID
+- AWS Secret Access Key
+- Default region name
+- Default output format
+
+
+
 - no dirs in AWS, those strings are just prefixes
 - use `--dryrun` to test a command
 

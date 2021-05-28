@@ -19,6 +19,9 @@ Additional notes:
 - if you want to see what in your "Shared with me" drive, use --drive-shared-with-me as in `rclone --drive-shared-with-me lsd remote:`
 - note that "Shared" and "Shared with me" are two different drives.
 
+To copy, use `rclone copy source:directory destination:directory`
+
+## Alternate instructions
 https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive
 
 # ActiveMotif

@@ -1,4 +1,24 @@
 # Google drive - big file
+
+Use rclone to copy or sync files to a Google Drive directory. Instructions are at https://rclone.org/drive/. A few notes:
+
+- log in to the transfer node on HMS (`transfer.rc.hms.harvard.edu`)
+- create new remote using `rclone config` and select `n`. Give it a name.
+- choose `12` for Google Drive
+- skip `client_id` and `client_secret`
+- for `scope`, select either 1 if you want to modify on Google drive or 2 if you just want to read files and copy them
+- no need to select a root unless you want access to the "Computers" folder
+- skip `service_account_file`
+- `n` for auto config since we are a remote machine
+- copy the link into your browser. Log in to Google. Copy key and paste into terminal
+- if the drive is in your "Shared" folder on Google Drive, configure as a Shared Drive.
+
+Additional notes:
+
+- type `rclone lsd remote:` to see the files on your Google drive directory
+- if you want to see what in your "Shared with me" drive, use --drive-shared-with-me as in `rclone --drive-shared-with-me lsd remote:`
+- note that "Shared" and "Shared with me" are two different drives.
+
 https://www.quora.com/How-do-I-download-a-very-large-file-from-Google-Drive
 
 # ActiveMotif

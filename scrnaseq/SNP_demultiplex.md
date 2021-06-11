@@ -27,13 +27,15 @@
   
   _Running on O2: singularity_
 
+
+
 singularity exec -B <local_folder_bam_files>:/bam_files,<local_folder_vcf_files>:/vcf_files,<local_folder_dsc_pileup_results>:/results
 /n/app/singularity/containers/<user>/<popscle_singularity_container> popscle dsc-pileup --sam /bam_files/<bam_file> --vcf /vcf_files/<vcf_file> 
  --out /results/<pileup_file_output>
 
 **Recommendations:**
 
-  It is highly reccomended to reduce the number of reads and SNPs 
+  It is highly reccomended to reduce the number of reads and SNPs before running 
   
   
 

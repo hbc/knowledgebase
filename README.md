@@ -18,7 +18,7 @@
 - Team members: Radhika Khetani, Mary Piper, Meeta Mistry, Jihe Liu
 - Email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
 
-**Variants**: [Clonal evolution](variants/clonal_evolution.md) * [Cancer annotations](https://github.com/seandavi/awesome-cancer-variant-databases)
+**Variants**: [Clonal evolution](variants/clonal_evolution.md) * [Cancer variant databases](https://github.com/seandavi/awesome-cancer-variant-databases)
 
 **WGS**: [CRISPR offtarget](wgs/crispr-offtarget.md) * [Pacbio genome assembly](wgs/pacbio_genome_assembly.md)
 

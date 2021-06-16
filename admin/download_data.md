@@ -74,7 +74,7 @@ A typical command might look like this:
 - The final nohup.out file will the download progress in it if you want to confirm download.
 A typical command might be something like this:
 
-`nohup wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178/*`
+`nohup wget -m ftp://userid:password\!@34.198.31.178/*`
 
 -m mirror is to copy a mirror image of the directory/data including all files and subfolders
 

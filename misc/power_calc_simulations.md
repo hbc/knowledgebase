@@ -5,4 +5,4 @@ This code will use the mean and variance of the data set to derive simulated dat
 
 
 
-**original code written by Lorena Pantano and adapted by John Hutchinson**
+*original code written by Lorena Pantano and adapted by John Hutchinson*

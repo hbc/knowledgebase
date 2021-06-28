@@ -12,6 +12,7 @@ https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/l
 
 https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/tutorial_mr#marker
 
+## Build custom genome 
 > High level steps (based on the 10x tutorial):
 1. Download the gtf and fasta files for the species of interest;
 2. Filter gtf with `cellranger mkgtf` command; 

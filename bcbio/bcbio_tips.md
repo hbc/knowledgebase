@@ -1,11 +1,3 @@
----
-title: Tips for bcbio
-description: This code helps with fixing jobs which timeout, and other general tips
-category: computing
-subcategory: bcbio
-tags: [bcbio, bash, hpc]
----
-
 ## Installing a private bcbio development repository on O2
 ```bash
 wget https://raw.githubusercontent.com/bcbio/bcbio-nextgen/master/scripts/bcbio_nextgen_install.py
@@ -80,3 +72,9 @@ How to upgrade `/n/app/bcbio/dev/anaconda/bin/bcbio_nextgen.py` installation:
   ```
 * copy install log (job output) to `/n/app/bcbio/bcbio.upgrade.sh_YYYY-MM-DD.{err,out}` where YYYY-MM-DD is today's date
 * test the installation
+
+## conda tricks
+Packages dependent on a given one:
+```
+grep r-base /n/app/bcbio/dev/anaconda/pkgs/*/info/index.json
+```

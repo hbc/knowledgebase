@@ -11,3 +11,67 @@ Now at your local terminal Run `jupyter-o2 notebook` for python notebooks. Alter
 This will ask you a paraphrase, you should enter your ecommons password as paraphrase. 
 Boom!!! you are good to go! Happy Pythoning :):)  
 If you wish you run R notebooks on O2, refer this. https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/
+
+
+###################
+
+Just to add, in the HMS-RC documentation they suggested any ports over 50000. To give examples of logging into a jupyter notebook session I have provided the code below:
+
+```
+# Log onto O2 using a specific port - I used '50000' in this instance - you can choose a different  port and just replace the 50000 with the number of your specific port
+ssh -Y -L 50000:127.0.0.1:50000 ecommons_id@o2.hms.harvard.edu 
+```
+
+Once on the login node, you can start an interactive session specifying the port with `--tunnel`
+
+```
+# Create interactive session
+srun --pty -p interactive -t 0-12:00 --x11 --mem 128G --tunnel 50000:50000 /bin/bash
+```
+
+Load the modules that you will need
+
+```
+# Load modules
+module load gcc/9.2.0 python/3.8.12
+```
+
+Create environment for running analysis (example here is for velocity)
+
+```
+# Create virtual environment (only do this once)
+virtualenv velocyto --system-site-packages
+```
+
+Activate virtual environment
+
+```
+# Activate virtual environment
+source velocyto/bin/activate
+```
+
+Install Jupyter notebook and any other libraries (only need to do this once)
+
+```
+# Install juypter notebook
+pip3 install jupyter
+
+# Install any other libraries needed for analysis (this is for velocity)
+pip3 install numpy scipy cython numba matplotlib scikit-learn h5py click
+pip3 install velocyto
+pip3 install scvelo
+```
+
+To create a Jupyter notebook run the following (again instead of 50000, use your port #):
+
+```
+# Start jupyter notebook
+jupyter notebook --port=50000 --browser='none'
+```
+
+Or open an existing notebook
+
+```
+# Open existing notebook
+jupyter notebook name_of_notebook.ipynb --port=PORT --browser='none'
+```

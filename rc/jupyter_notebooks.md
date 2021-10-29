@@ -91,4 +91,4 @@ module load gcc/9.2.0 python/3.8.12
 source velocyto/bin/activate
 
 # Open existing notebook
-jupyter notebook name_of_notebook.ipynb --port=PORT --browser='none'
+jupyter notebook name_of_notebook.ipynb --port=50000 --browser='none'

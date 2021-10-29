@@ -13,9 +13,11 @@ Boom!!! you are good to go! Happy Pythoning :):)
 If you wish you run R notebooks on O2, refer this. https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/
 
 
-###################
+# Example code
 
-Just to add, in the HMS-RC documentation they suggested any ports over 50000. To give examples of logging into a jupyter notebook session I have provided the code below:
+Just to add, in the HMS-RC documentation they suggested any ports over 50000. To give examples of logging into a jupyter notebook session I have provided the code below.
+
+## Creating a Jupyter notebook
 
 ```
 # Log onto O2 using a specific port - I used '50000' in this instance - you can choose a different  port and just replace the 50000 with the number of your specific port
@@ -69,9 +71,20 @@ To create a Jupyter notebook run the following (again instead of 50000, use your
 jupyter notebook --port=50000 --browser='none'
 ```
 
-Or open an existing notebook
+## Logging onto an existing notebook
 
 ```
+# Log onto O2 using a specific port - I used '50000' in this instance - you can choose a different  port and just replace the 50000 with the number of your specific port
+ssh -Y -L 50000:127.0.0.1:50000 ecommons_id@o2.hms.harvard.edu 
+
+# Create interactive session
+srun --pty -p interactive -t 0-12:00 --x11 --mem 128G --tunnel 50000:50000 /bin/bash
+
+# Load modules
+module load gcc/9.2.0 python/3.8.12
+
+# Activate virtual environment
+source velocyto/bin/activate
+
 # Open existing notebook
 jupyter notebook name_of_notebook.ipynb --port=PORT --browser='none'
-```

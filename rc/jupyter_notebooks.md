@@ -1,4 +1,6 @@
-this post is for those who are interested in running notebooks seemingly on O2. There is a well written documentation about running jupyter notebook on O2. you can find it here. https://wiki.rc.hms.harvard.edu/display/O2/Jupyter+on+O2. However, this involves multiple steps, opening bunch of terminals at times, and importantly finding an unused port every-time. I found it quite cumbersome and annoying, so i spent some time solving it. It took me a while to nail it down, with the help of FAC RC, but they suggested a simpler solution. If you wish to run jupyter/R notebook on O2 {where your data sits},
+# Jupyter notebooks
+
+This post is for those who are interested in running notebooks seemingly on O2. There is a well written documentation about running jupyter notebook on O2. you can find it here. https://wiki.rc.hms.harvard.edu/display/O2/Jupyter+on+O2. However, this involves multiple steps, opening bunch of terminals at times, and importantly finding an unused port every-time. I found it quite cumbersome and annoying, so i spent some time solving it. It took me a while to nail it down, with the help of FAC RC, but they suggested a simpler solution. If you wish to run jupyter/R notebook on O2 {where your data sits},
 Here what you need to do : 
 
 Install https://github.com/aaronkollasch/jupyter-o2 by `pip install jupyter-o2` on your local terminal. 
@@ -18,6 +20,8 @@ If you wish you run R notebooks on O2, refer this. https://docs.anaconda.com/ana
 Just to add, in the HMS-RC documentation they suggested any ports over 50000. To give examples of logging into a jupyter notebook session I have provided the code below.
 
 ## Creating a Jupyter notebook
+
+Log onto a login node
 
 ```
 # Log onto O2 using a specific port - I used '50000' in this instance - you can choose a different  port and just replace the 50000 with the number of your specific port

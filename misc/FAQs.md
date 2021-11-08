@@ -37,7 +37,7 @@ https://thestatsgeek.com/2014/04/12/is-the-wilcoxon-mann-whitney-test-a-good-non
 ### UpSetR plots
 To visualize the overlaps, we use the UpSetR package in R to draw bar plots that demonstrate the overlap, instead of Venn diagrams. The bar plots drawn by this package, and their associated annotations, are a cleaner way to demonstrate/observe overlaps. Here is brief guide to reading the UpSetR overlap plots:
 
-*These plots are relatively intuitive for 2 or 3 categories, but can tend to get more complex for >3 categories. In all cases, you will find the categories being compared and their size listed below the bar plots on the left. As you look to the right (directly below each bar) there are dots with connecting lines that denote which samples the overlap is between, or if there is no overlap (just a dot). The numbers at the top of the bars denote the size of the overlap.*
+*These plots are relatively intuitive for 2 or 3 categories, but can tend to get more complex for >3 categories. In all cases, you will find the categories being compared and their size listed below the bar plots on the left. As you look to the right (directly below each bar) there are dots with connecting lines that denote which categories the overlap is between, or if there is no overlap (just a dot). The numbers at the top of the bars denote the size of the overlap.*
 
 
 ## ChIP-seq and ATAC-seq

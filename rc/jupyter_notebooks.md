@@ -92,3 +92,16 @@ source velocyto/bin/activate
 
 # Open existing notebook
 jupyter notebook name_of_notebook.ipynb --port=50000 --browser='none'
+```
+
+## Sharing your notebook
+To share the contents of your notebook, you can either upload the notebook directly to Github and add your client as a collaborator on the repo, or export the report as a markdown or PDF.
+
+To export as a PDF, you need to have additional modules loaded and python packages installed:
+
+```
+module load texlive/2007
+
+pip3 install Pyppeteer
+pip3 install nbconvert
+```

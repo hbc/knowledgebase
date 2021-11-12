@@ -56,3 +56,6 @@ Docker changed its policies to only keep images that have been modified in the l
 Inspired by:
 
 https://www.r-bloggers.com/running-your-r-script-in-docker/
+  
+# Other resources
+Using Singularity Containers on the Cluster: https://docs.rc.fas.harvard.edu/kb/singularity-on-the-cluster/

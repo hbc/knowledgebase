@@ -39,6 +39,11 @@ To visualize the overlaps, we use the UpSetR package in R to draw bar plots that
 
 *These plots are relatively intuitive for 2 or 3 categories, but can tend to get more complex for >3 categories. In all cases, you will find the categories being compared and their size listed below the bar plots on the left. As you look to the right (directly below each bar) there are dots with connecting lines that denote which categories the overlap is between, or if there is no overlap (just a dot). The numbers at the top of the bars denote the size of the overlap.*
 
+### PCA
+For understanding PCA:
+Our lesson - https://hbctraining.github.io/scRNA-seq_online/lessons/05_normalization_and_PCA.html#principal-component-analysis-pca
+A youtube video - https://www.youtube.com/watch?v=_UVHneBUBW0
+
 
 ## ChIP-seq and ATAC-seq
 

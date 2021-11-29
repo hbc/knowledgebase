@@ -1,0 +1,25 @@
+# data management on O2 sop
+
+## General
+Make a folder with the current date in format to put results in
+Year-month-day (eg. 2020-09-08)
+Code is in the /n/data1/cores/bcbio/PIs/size_monitoring/ hmsrc_space_scripts folder
+
+## Finding large and old folders
+"dir_sizes_owners.sh -$date“ 
+Then run the R script dir_sizes_owners.R and point at the resulting tsv file
+     
+`sbatch -t  12:00:00 -p short —wrap=“ bash /n/data1/cores/bcbio/PIs/size_monitoring/hmsrc_data_management/dir_sizes_owners.sh 2021-01-06”`
+
+## Finding redundant versions of fastq and fq files
+
+## Finding uncompressed fastq and fq files
+Run find_fastqs.sh 
+`sbatch -t 24:00:00 -p medium --wrap="bash /n/data1/core/PIs/size_monitoring/hmsrc_data_management/find_fastqs.sh"`
+Then run fastq_dirs.sh to reduce down to the directories
+`bash fastq_dirs.sh < ../2021-01-29/fastq_files.txt | sort | uniq`
+
+## Finding leftover work directories
+Run  find_work_dirs.sh
+`sbatch -t 24:00:00 -p medium --wrap="bash /n/data1/core/PIs/size_monitoring/hmsrc_data_management/find_work_dirs.sh"`
+Run workdir_details.sh

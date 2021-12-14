@@ -64,21 +64,24 @@ git checkout -b feature1
 # create many commits with meaningfull messages
 git add -A.
 git commit
-git push
 # upstream accumulated some commits
 git fetch upsteam
 # rebasing the branch not the master
 # to PR from the branch later not from the master
+# automatic rebase - replay all commit on top of master
 git rebase upstream/master
-# see latest commits from HEAD down to the start of feature1
+
+# alternative - interactive rebase
+# 1. see latest commits from HEAD down to the start of feature1
 # on top of upstream
-git log --oneline --decorate --all --graph
-# interactive rebase for the last 13 commits (including head)
-git rebase -i HEAD~13
+# git log --oneline --decorate --all --graph
+# 2. interactive rebase for the last 13 commits (including head)
+# git rebase -i HEAD~13
 # set s (squash) in the interactive editor for all commits except for the top one
 # alter commit message
+
 # force since origin as 13 separate commits
-git push --force origin feature1
+git push --force --set-upstream origin feature1
 # PR from feature1 branch to upstream/master
 ```
 

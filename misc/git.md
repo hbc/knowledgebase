@@ -27,10 +27,21 @@ git push origin :master
 ```
 
 # Add remote upstream
-```
+```bash
 git remote -v
 git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 ```
+
+# Create a tag in the upstream
+```bash
+git fetch upstream
+git checkout master
+git reset --hard upstream/master
+git tag -a -m "project tag (date)" vx.y.z
+git push upstream vx.y.z
+git push origin vx.y.z
+```
+
 # Sync with upstream/master, delete all commits in origin/master
 ```
 git fetch upstream

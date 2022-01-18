@@ -3,7 +3,7 @@
 ## General
 Make a folder with the current date in format to put results in
 Year-month-day (eg. 2020-09-08)
-Code is in the /n/data1/cores/bcbio/PIs/size_monitoring/ hmsrc_space_scripts folder
+Code is in the /n/data1/cores/bcbio/PIs/size_monitoring/hmsrc_space_scripts folder
 
 ## Finding large and old folders
 "dir_sizes_owners.sh -$date“ 

@@ -1,10 +1,16 @@
 # GTF and GFF validators
-Found during Danesh Moazed consult
+
+> ### Use case example: bosTau9 genome 
+Building a new genome in bcbio. Reference files were retrieved from NCBI (RefSeq genome and gtf files). There are some additional whitespaces in the file causing errors in the build. Solution: download the gff file instead and validate using `gff3validator` and use as input to bcbio with the added parameter `-gff3`. More info on genometools installs and commands found below. Another option woud be to use the GTF validator (perl-based), also listed below.
+
+> **NOTE:** Initially found during Moazed consult
+
 
 ## GFF Validator
 - includes gtf to gff converter
 - Download latest from: http://genometools.org/pub/
 - Documentation: http://genometools.org/tools.html
+
 ### Usage
 ```{bash, eval=FALSE}
 {installed_path}/gt -help

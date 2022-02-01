@@ -91,6 +91,53 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
   - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`.
   - If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.
 
+Getting the data from the Broad initially is a bit of a chore, if you want to download directly to o2.
+
+1. 	Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms.harvard.edu
+
+2.	Go here to the Aspera site [IBM Aspera Connect](https://www.ibm.com/aspera/connect/)
+
+3.	Click on "see all installers"
+
+4.	Check the box for a recent linux version
+
+5.	Scroll down to Fix package location to get ftp credentials
+
+6.	sftp with given userid and server location. For example: `sftp vRmfnWoc@delivery04.dhe.ibm.com`  
+	It will prompt you for ftp password
+	
+7.	Download files with mget: `mget*`
+
+	This will download:  
+	- ibm-aspera-connect_4.1.1.73_linux.tar.gz
+	- IBM_Aspera_Connect_4.1_User_Guide_for_Linux.pdf
+	- IBM_ASP_CONNECT_V4.1.1_RN_EN.pdf
+
+8.	Extract the tarball: `tar -xf ibm-aspera-connect_4.1.1.73_linux.tar.gz`  
+	This will open a shell script ibm-aspera-connect_4.1.1.73_linux.sh
+
+9.	Run the shell script: `bash ibm-aspera-connect_4.1.1.73_linux.sh`  
+	This will install the Aspera Connect client into .aspera/connect under your home directory
+
+10.	Add the executable to your path: `export PATH=~/.aspera/connect/bin:$PATH`
+        
+11.	Download the shares_download.sh script from http://www.broadinstitute.org/aspera/shares_download.txt:  
+	`wget http://www.broadinstitute.org/aspera/shares_download.txt`
+        
+12.	Rename this bash script from shares_download.txt to shares_download.sh:  
+	`mv shares_download.txt shares_download.sh`
+
+13. Make it executible script: `chmod a+x shares_download.sh`
+        
+14.	Use the shares_download.sh script to download your file. You will need the shares site credentials from the email from the Broad with this usage:  
+	`shares_download.sh /download/destination https://shares.broadinstitute.org SN0020420:password SN0020420/`
+	
+	For example, to download into a directory ./data :  
+	`bash shares_download.sh data https://shares.broadinstitute.org SN0243649:OJCGRLNFB8O6R9P SN0243649/`
+	
+15.	Presumably steps 1:13 should only have to be run once.
+
+
 # Basespace by Rory
 wget https://da1s119xsxmu0.cloudfront.net/sites/knowledgebase/API/08052014/Script/BaseSpaceRunDownloader_v2.zip
 unzip BaseSpaceRunDownloader_v2.zip

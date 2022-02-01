@@ -93,7 +93,7 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
 
 Getting the data from the Broad initially is a bit of a chore, if you want to download directly to o2.
 
-1. 	Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms.harvard.edu
+1. 	Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms.harvard.edu as follows:
 
 2.	Go here to the Aspera site [IBM Aspera Connect](https://www.ibm.com/aspera/connect/)
 

@@ -87,6 +87,7 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
 
 - It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs.
 - For their DGE (96 well) platform, they give everything under the sun.
+- For 10x they may give you cellranger count output data matrices, and may or may not include bam files or even fastq files, so check you have what you need.
 - You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data.
   - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`.
   - If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.

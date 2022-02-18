@@ -10,6 +10,8 @@
 
 **Nanopore**: [Master of pores from CRG](https://github.com/biocorecrg/master_of_pores) * [Tombo](https://nanoporetech.github.io/tombo/) * [Megalodon](https://github.com/nanoporetech/megalodon)
 
+**Multi-omics integration**: [Diablo](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6735831/)
+
 **R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md) * [Complex heatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) * [Fundamentals of data visualization](https://serialmentor.com/dataviz/) * [Big Book of R](https://www.bigbookofr.com/index.html) * [Statistical rethinking](https://bookdown.org/content/4857/) * [and other bookdown books](https://bookdown.org/) * [Boxplot evolution](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/) * [Intro to stat computing](https://biodatascience.github.io/statcomp/) * [data to viz](https://www.data-to-viz.com/) * [modern statistics for biology](https://web.stanford.edu/class/bios221/book/index.html)
 
 **RC**: [Connection to HPC](rc/connection-to-hpc.md) * [Keep command alive](rc/keepalive.md) * [IPython notebook](rc/ipython-notebook-on-O2.md) * [Manage files](rc/manage-files.md) * [O2 tips](rc/O2-tips.md) * [Scheduler](rc/scheduler.md) * [Jupyter notebooks](rc/jupyter_notebooks.md) * [tmux tips](rc/tmux.md) * [FAS virtual desktops](rc/openondemand.md)

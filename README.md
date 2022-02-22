@@ -26,6 +26,8 @@
 
 **WGS**: [CRISPR offtarget](wgs/crispr-offtarget.md) * [Pacbio genome assembly](wgs/pacbio_genome_assembly.md)
 
+**WGBS**: [BCratio using centoromere as spike-in](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3334-z)
+
 ***
 
 # How it is organized

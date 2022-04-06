@@ -34,7 +34,7 @@ Commit the following:
 
 ### Dropbox
 
-Use dropbox to share results and code with collaborators (HBC Team Folder (1)/Consults/piFirstName_piLastName/project_folder).
+Use dropbox to share results and code with collaborators (`HBC Team Folder (1)/Consults/piFirstName_piLastName/project_folder`).
 * html files
 * Rmarkdown files used to generate the html files
 * text files and "small" processed data files (i.e. files included in the reports, such as normalized counts)

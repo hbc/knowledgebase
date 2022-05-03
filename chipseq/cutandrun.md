@@ -1,3 +1,6 @@
+[CutandRun Intro](https://github.com/hbctraining/Intro-to-ChIPseq-flipped/blob/main/CUT%26RUN/Intro_to_CUT%26RUN.md)
+
+
 # Main differences in CUT&RUN to atacseq
 ## About trimming
 ### Cutruntools - excerpt

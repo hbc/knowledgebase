@@ -138,7 +138,7 @@ Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms
 	
 Steps 1:12 should only have to be run once.
 
-# Basespace to O2 by Radhika (July 2022)
+# BaseSpace to O2 by Radhika (July 2022)
 
 https://help.basespace.illumina.com/cmd-line-interfaces/basespace-cli/introduction-to-basemount#Overview
 

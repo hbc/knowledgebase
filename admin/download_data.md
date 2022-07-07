@@ -138,6 +138,47 @@ Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms
 	
 Steps 1:12 should only have to be run once.
 
+# Basespace to O2 by Radhika (July 2022)
+
+https://help.basespace.illumina.com/cmd-line-interfaces/basespace-cli/introduction-to-basemount#Overview
+
+1. Log into the transfer node on O2: `ssh username@transfer.rc.hms.harvard.edu`
+2. Use the command `basemount BaseSpace/` from wherever you want to mount (I mounted it in my home directory). If using it for the first time, you will have to authenticate using the link, see example below.
+	```
+	rsk27@transfer06:~$ basemount BaseSpace/
+	,-----.                        ,--.   ,--.                         ,--.   
+	|  |) /_  ,--,--. ,---.  ,---. |   `.'   | ,---. ,--.,--.,--,--, ,-'  '-. 
+	|  .-.  \' ,-.  |(  .-' | .-. :|  |'.'|  || .-. ||  ||  ||      \'-.  .-'
+	|  '--' /\ '-'  |.-'  `)\   --.|  |   |  |' '-' ''  ''  '|  ||  |  |  |  
+	`------'  `--`--'`----'  `----'`--'   `--' `---'  `----' `--''--'  `--' 
+	Illumina BaseMount v0.25.2.3271 public develop 2021-07-12 15:33
+	
+	Command called:
+	    basemount BaseSpace/
+	From:
+	    /home/rsk27
+	
+	Mount point "BaseSpace/" doesn't exist
+	Create this mount point directory? (Y/n) Y
+	Creating directory "BaseSpace/"
+	Starting authentication.
+	
+	You need to authenticate by opening this URL in a browser:
+	  https://basespace.illumina.com/oauth/device?code=U7my2
+	...
+	It worked!
+	Your identification has been saved.
+	
+	Mounting BaseSpace account.
+	To unmount, run: basemount --unmount /home/rsk27/BaseSpace
+	```
+3. `ls BaseSpace/` will show you what is available to you
+	```
+	rsk27@transfer06:~$ ls BaseSpace/
+	IAP  Projects  README  Runs  Trash
+	```
+5. Since it is mounted now, you can simply use cp or rsync, if you prefer to copy over the necessary files/directories into the appropriate location. `cp ~/BaseSpace/Projects/BS_46-RNA_S-21-1766_GAP375/Samples/[A-Z]_*/Files/*gz .`
+6. To unmount, run `basemount --unmount ~/BaseSpace`
 
 # Basespace by Rory
 wget https://da1s119xsxmu0.cloudfront.net/sites/knowledgebase/API/08052014/Script/BaseSpaceRunDownloader_v2.zip

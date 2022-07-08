@@ -177,7 +177,7 @@ https://help.basespace.illumina.com/cmd-line-interfaces/basespace-cli/introducti
 	rsk27@transfer06:~$ ls BaseSpace/
 	IAP  Projects  README  Runs  Trash
 	```
-5. Since it is mounted now, you can simply use cp or rsync, if you prefer to copy over the necessary files/directories into the appropriate location. `cp ~/BaseSpace/Projects/BS_46-RNA_S-21-1766_GAP375/Samples/[A-Z]_*/Files/*gz .`
+5. Since it is mounted now, you can simply use cp or rsync, if you prefer, to copy over the necessary files/directories into the appropriate location. `cp ~/BaseSpace/Projects/BS_46-RNA_S-21-1766_GAP375/Samples/[A-Z]_*/Files/*gz .`
 6. To unmount, run `basemount --unmount ~/BaseSpace`
 
 # Basespace by Rory

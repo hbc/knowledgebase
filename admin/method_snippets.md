@@ -329,7 +329,9 @@ Reads were processed to counts through the bcbio-nextgen single cell/DGE RNA-seq
 ### ATAC-seq
 (Newer)
 
-ATAC-seq data was evaluated for quality using FASTQC (Andrews, 2010)[1a]. Reads were filtered and trimmed with Atropos (Didion et al., 2017)[2a]. High quality reads were mapped to the human genome (build GRcH37/hg19) using Bowtie2 (Langmead et al., 2009)[3a]. After filtering reads from mitochondrial DNA, properly paired reads with high mapping quality (MAPQ score >10, non-duplicates, qualified reads) were retained using Sambamba (Tarasov, et al., 2015)[4a] for further analysis. The 'alignmentSieve' function of Deeptools (Ramirez et al., 2014)[5a] and 'sort' and 'index' functions of Samtools (Li et al., 2009)[6a] were used to isolate fragments in nucleosome free regions (NFRs). Reads were shifted by 9 bp (+4 in positive and -5 in negative strand) to account for the dimeric binding of the Tn5 transposase that results in insertion of two adaptors separated by 9 bp. To call the peaks with unique reads, we used MACS2 (Zhang et al, 2008)[7a] followed by a quality check with the ChIPQC Bioconductor package (Carroll et al, 2014)[8a]. CPM-normalized bigwig files (bin size=20) were visualized using IGV (Robinson et al., 2011)[9a]. Differential binding between CD38high and CD38low samples in SLE patients and healthy subjects was assessed with Diffbind (Stark et al, 2011)[10a] using DESeq2 (Love et al., 2014)[11a] and including sample preparation date in the model. Peaks were filtered at FDR < 0.05 and |log2 fold change| > 1 to obtain significant peaks. 
+Data were processed using the ATAC-seq pipeline implemented in bcbio-nextgen vx.x.x. ATAC-seq data was evaluated for quality using FASTQC (Andrews, 2010)[1a]. Reads were filtered and trimmed with Atropos (Didion et al., 2017)[2a]. High quality reads were mapped to the xxx genome (build xxx) using Bowtie2 (Langmead et al., 2009)[3a]. After filtering reads from mitochondrial DNA, properly paired reads with high mapping quality (MAPQ score >10, non-duplicates, qualified reads) were retained using Sambamba (Tarasov, et al., 2015)[4a] for further analysis. The 'alignmentSieve' function of Deeptools (Ramirez et al., 2014)[5a] and 'sort' and 'index' functions of Samtools (Li et al., 2009)[6a] were used to isolate fragments in nucleosome free regions (NFRs). Reads were shifted by 9 bp (+4 in positive and -5 in negative strand) to account for the dimeric binding of the Tn5 transposase that results in insertion of two adaptors separated by 9 bp. To call the peaks with unique reads, we used MACS2 (Zhang et al, 2008)[7a]. ATAC-seq data quality was assessed using ataqv (Orchard et al, 2020)[8a]. CPM-normalized bigwig files (bin size=20) were visualized using IGV (Robinson et al., 2011)[9a]. Sets of peaks were compared using BEDTools (Quinlan & Hall, 2010)[10a].
+
+Statistical analysis was performed in R v.x.x.x. Differential accessibility was assessed with Diffbind (Stark et al, 2011)[11a] using DESeq2 (Love et al., 2014)[12a] [[including batch in the model]]. Peaks were considered differentially enriched at FDR < 0.05. The genomic distribution of the peaks was annotated using ChIPseeker (Yu et al, 2015)[13a]. Functional enrichment analysis was performed using ClusterProfiler (Wu et al, 2021)[14a].
 
 [1a]: Andrews S. (2010). "FastQC: a quality control tool for high throughput sequence data." Available online at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc.
 
@@ -349,9 +351,16 @@ ATAC-seq data was evaluated for quality using FASTQC (Andrews, 2010)[1a]. Reads 
 
 [9a]: Robinson JT, Thorvaldsdóttir H, Winckler W, et al. Integrative genomics viewer. Nat Biotechnol. 2011;29(1):24-26. doi:10.1038/nbt.1754
 
-[10a]: Stark R, Brown G (2011). DiffBind: differential binding analysis of ChIP-Seq peak data. http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
+[10a]: Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010 Mar 15;26(6):841-2. doi: 10.1093/bioinformatics/btq033.  
 
-[11a]: Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.
+[11a]: Stark R, Brown G (2011). DiffBind: differential binding analysis of ChIP-Seq peak data. http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
+
+[12a]: Love MI, Huber W, Anders S (2014). “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology, 15, 550. doi: 10.1186/s13059-014-0550-8.
+
+[13a]: Yu G, Wang LG, He QY. ChIPseeker: an R/Bioconductor package for ChIP peak annotation, comparison and visualization. Bioinformatics. 2015 Jul 15;31(14):2382-3. doi: 10.1093/bioinformatics/btv145. 
+
+[14a]: Wu T, Hu E, Xu S, Chen M, Guo P, Dai Z, Feng T, Zhou L, Tang W, Zhan L, Fu X, Liu S, Bo X, Yu G. clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. Innovation (Camb). 2021 Jul 1;2(3):100141. doi: 10.1016/j.xinn.2021.100141.
+
 
 ```
 (older)

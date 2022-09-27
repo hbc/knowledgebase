@@ -1,1 +1,1 @@
-https://code.harvard.edu/HSPH/hbc_admin/blob/master/Getting_Started.md
+https://github.com/hbc/hbc_admin/blob/master/Getting_Started.md

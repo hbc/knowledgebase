@@ -10,7 +10,7 @@
 
 **Nanopore**: [Master of pores from CRG](https://github.com/biocorecrg/master_of_pores) * [Tombo](https://nanoporetech.github.io/tombo/) * [Megalodon](https://github.com/nanoporetech/megalodon)
 
-**Multi-omics integration**: [Diablo](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6735831/)
+**Multi-omics integration**: [Diablo](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6735831/) * [totalVI - citeSeq](https://streetslab.berkeley.edu/tools/totalvi/)
 
 **R**: [.Rprofile](r/.Rprofile) * [RShiny](r/rshiny_server.md) * [htmlwidgets](/r/htmlwidgets) * [Tip and tricks](r/R-tips-and-tricks.md) * [Complex heatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) * [Fundamentals of data visualization](https://serialmentor.com/dataviz/) * [Big Book of R](https://www.bigbookofr.com/index.html) * [Statistical rethinking](https://bookdown.org/content/4857/) * [and other bookdown books](https://bookdown.org/) * [Boxplot evolution](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/) * [Intro to stat computing](https://biodatascience.github.io/statcomp/) * [data to viz](https://www.data-to-viz.com/) * [modern statistics for modern biology](https://www.huber.embl.de//msmb/index.html) * [Heatmap examples](https://jokergoo.github.io/) * [Learniing statistics with R](https://learningstatisticswithr.com/) * [Understanding statistics and experimental design](https://library.oapen.org/bitstream/handle/20.500.12657/23029/1007132.pdf) * [data analysis and prediction algorithms with R](https://rafalab.github.io/dsbook/)
 

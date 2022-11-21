@@ -17,4 +17,4 @@
 - https://nature.com/articles/s4157
 
 # bulk-RNA-seq 
-- https://academic.oup.com/bib/article/21/6/2052/5648232
+- Systematic evaluation of splicing calling tools - 2019: https://academic.oup.com/bib/article/21/6/2052/5648232

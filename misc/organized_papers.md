@@ -15,3 +15,6 @@
 - https://nature.com/articles/nrg2813
 - https://nature.com/articles/nrg.2016.142
 - https://nature.com/articles/s4157
+
+# bulk-RNA-seq 
+- https://academic.oup.com/bib/article/21/6/2052/5648232

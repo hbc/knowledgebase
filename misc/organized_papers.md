@@ -16,3 +16,4 @@
 
 # bulk-RNA-seq 
 - Systematic evaluation of splicing calling tools - 2019: https://academic.oup.com/bib/article/21/6/2052/5648232
+- [RPKM/TPM misuse](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)

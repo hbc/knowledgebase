@@ -22,6 +22,8 @@ For the demultiplexing tools, in most cases, you will need:
 - Knowledge of the number of samples in the pool you're trying to demultiplex
 - Potentially, a FASTA file of the genome your sample was aligned to
 
+_NOTE_: When working from a multiplexed dataset (e.g. cell hashing experiment), you may have to re-run `cellranger count` instead of `cellranger multi` to generate the proper barcode and BAM files. In addition, it may be necessary to use the `barcodes.tsv.gz` file from the `filtered_feature_bc_matrix` (instead of raw) in such cases (see for example this [issue](https://github.com/wheaton5/souporcell/issues/128) when running `souporcell`). 
+
 
 ## Pre-processing steps
 
@@ -32,15 +34,19 @@ Once you've collated those files, you need to make sure your VCF and BAM files a
 sort_vcf_same_as_bam.sh $BAM $VCF > demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf
 ```
 
-If you wish to run `freemuxlet` (and possibly other tools I haven't piloted), you will also need to run `dsc-pileup` (available within the singularity image) ahead of `freemuxlet` itself:
+If you wish to run `freemuxlet` (and possibly other tools I haven't piloted), you will also need to run `dsc-pileup` (available within the singularity image) ahead of `freemuxlet` itself. For larger samples (>30k cells), it also helps (= significantly speeds up computational time, from several days to a couple of hours) to pre-filter the BAM file using another of the Aerts' Lab popscle helper tool scripts: `filter_bam_file_for_popscle_dsc_pileup.sh` (available [here](https://github.com/aertslab/popscle_helper_tools/blob/master/filter_bam_file_for_popscle_dsc_pileup.sh))
 
 ```
+# [OPTIONAL but recommended]
+module load gcc/9.2.0 samtools/1.14
+scripts/filter_bam_file_for_popscle_dsc_pileup.sh $BAM $BARCODES demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf demuxafy/data/possorted_genome_bam_filtered.bam
+
 # Run popscle pileup ahead of freemuxlet
-singularity exec $DEMUXAFY popscle dsc-pileup --sam $BAM --vcf demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf --group-list $BARCODES --out $FREEMUXLET_OUTDIR/pileup
+singularity exec $DEMUXAFY popscle dsc-pileup --sam demuxafy/data/possorted_genome_bam_filtered.bam --vcf demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf --group-list $BARCODES --out $FREEMUXLET_OUTDIR/pileup
 ``` 
 
 ## Workflow
 
-After that, you should be set to run whichever demultiplexing tool you want! I have sample scripts for souporcell, vireo and freemuxlet in the following [GitHub repo](https://github.com/hbc/neuhausser_scRNA-seq_human_embryo_hbc04528/tree/main/pilot_scRNA-seq/demuxafy/scripts)
+After that, you should be set to run whichever demultiplexing tool you want! I have sample scripts for `souporcell`, `vireo` and `freemuxlet` in the following [GitHub repo](https://github.com/hbc/neuhausser_scRNA-seq_human_embryo_hbc04528/tree/main/pilot_scRNA-seq/demuxafy/scripts)
 
 You also have the option to generate combined results files to contrast results from different software more easily, as described [here](https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/CombineResults.html), and as implemented in the `combine_results.sbatch` script in the GitHub repo linked above.

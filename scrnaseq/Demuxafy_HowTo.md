@@ -22,7 +22,7 @@ For the demultiplexing tools, in most cases, you will need:
 - Knowledge of the number of samples in the pool you're trying to demultiplex
 - Potentially, a FASTA file of the genome your sample was aligned to
 
-_NOTE_: When working from a multiplexed dataset (e.g. cell hashing experiment), you may have to re-run `cellranger count` instead of `cellranger multi` to generate the proper barcode and BAM files. In addition, it may be necessary to use the `barcodes.tsv.gz` file from the `filtered_feature_bc_matrix` (instead of raw) in such cases (see for example this [issue](https://github.com/wheaton5/souporcell/issues/128) when running `souporcell`). 
+_NOTE_: When working from a multiplexed dataset (e.g. cell hashing experiment), you may have to re-run `cellranger count` instead of `cellranger multi` to generate the proper barcodes and BAM files. In addition, it may be necessary to use the `barcodes.tsv.gz` file from the `filtered_feature_bc_matrix` (instead of raw) in such cases (see for example this [issue](https://github.com/wheaton5/souporcell/issues/128) when running `souporcell`). 
 
 
 ## Pre-processing steps
@@ -47,6 +47,6 @@ singularity exec $DEMUXAFY popscle dsc-pileup --sam demuxafy/data/possorted_geno
 
 ## Workflow
 
-After that, you should be set to run whichever demultiplexing tool you want! I have sample scripts for `souporcell`, `vireo` and `freemuxlet` in the following [GitHub repo](https://github.com/hbc/neuhausser_scRNA-seq_human_embryo_hbc04528/tree/main/pilot_scRNA-seq/demuxafy/scripts)
+After that, you should be set to run whichever demultiplexing tool you want! See sample scripts for a simple case (small 10X study) in the following [GitHub repo](https://github.com/hbc/neuhausser_scRNA-seq_human_embryo_hbc04528/tree/main/pilot_scRNA-seq/demuxafy/scripts); and for a more complex case (large study, multiplexed 10X data using cell hashing) [here](https://github.com/hbc/hbc_10xCITESeq_Pregizer-Visterra-_hbc04485/tree/main/demuxafy/scripts)
 
-You also have the option to generate combined results files to contrast results from different software more easily, as described [here](https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/CombineResults.html), and as implemented in the `combine_results.sbatch` script in the GitHub repo linked above.
+You also have the option to generate combined results files to contrast results from different software more easily, as described [here](https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/CombineResults.html), and as implemented in the `combine_results.sbatch` script in the first GitHub repo linked above.

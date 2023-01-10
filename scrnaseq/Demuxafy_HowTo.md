@@ -34,6 +34,8 @@ Once you've collated those files, you need to make sure your VCF and BAM files a
 sort_vcf_same_as_bam.sh $BAM $VCF > demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf
 ```
 
+### dsc pileup
+
 If you wish to run `freemuxlet` (and possibly other tools I haven't piloted), you will also need to run `dsc-pileup` (available within the singularity image) ahead of `freemuxlet` itself. For larger samples (>30k cells), it also helps (= significantly speeds up computational time, from several days to a couple of hours) to pre-filter the BAM file using another of the Aerts' Lab popscle helper tool scripts: `filter_bam_file_for_popscle_dsc_pileup.sh` (available [here](https://github.com/aertslab/popscle_helper_tools/blob/master/filter_bam_file_for_popscle_dsc_pileup.sh))
 
 ```
@@ -44,6 +46,9 @@ scripts/filter_bam_file_for_popscle_dsc_pileup.sh $BAM $BARCODES demuxafy/data/G
 # Run popscle pileup ahead of freemuxlet
 singularity exec $DEMUXAFY popscle dsc-pileup --sam demuxafy/data/possorted_genome_bam_filtered.bam --vcf demuxafy/data/GRCh38_1000G_MAF0.01_ExonFiltered_ChrEncoding_sorted.vcf --group-list $BARCODES --out $FREEMUXLET_OUTDIR/pileup
 ``` 
+
+_NOTE_: When running the dsc-pileup step on O2, at some point the job might get stalled despite no error message being issued. From my experience, this usually means that the requested memory needs to be increased (I used 48G-56G for most samples I processed, and encountered issues when lowering down to 32G). After filtering the BAM file and with the appropriate amount of memory available, the dsc-pileup step usually completes within 2-3 hours.
+
 
 ## Workflow
 

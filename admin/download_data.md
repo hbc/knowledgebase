@@ -79,9 +79,13 @@ A typical command might be something like this:
 -m mirror is to copy a mirror image of the directory/data including all files and subfolders
 
 Use this if nohup isn't working. Double check the UN, PW and IP address as they change.:
-`wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`
+`wget -m ftp://HSPH_bfx:MBCFHSPH_bfx\!@18.205.134.163`
 
-*note the escaped exclamation point in the password, they like to put characters like that in their passwords, which are usually in the form of MBCF$userid!*
+Site: 18.205.134.163
+User: HSPH_bfx
+Pass: MBCFHSPH_bfx!
+
+*note the escaped exclamation point in the password, they like to put characters like that in their passwords, which are usually in the form of MBCF$userid!* (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
 
 # Broad Institute
 

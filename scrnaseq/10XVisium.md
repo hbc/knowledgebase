@@ -34,4 +34,22 @@ spaceranger mkfastq --run data/11-7-2022-DeVries-10x-GEX-Visium/Files
 
 ```
 
+### 2. Image files
+
+Each slide has 4 capture areas and therefore for a single slide you should have 4 image files.
+
+More on image types [from 10X docs here](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/image-recommendations)
+
+* Check what type of image you have (you will need to specify in `spaceranger` with the correct flag)
+* Open up the image to make sure you have the fiducial border. It's probably done for you. If there are issues with the fiducial alignment (i.e. too tall, too wide) given to you, you may need to manually align using the Loupe browser
+* 
+
+Walker dataset:
+* We have four slides total
+* Slides 1 &2 are combined and there are 8 image files; 4 for each slide. Presumably “Field 1 -4” are for Slide 1 and “Field 5-8” are for slide 2
+    * A similar situation for Slides3&4
+* Issue: We have 5 folders for the FASTQ files - 
+
+Typically the spaceranger is run for each individual capture area; **Problem is, how do we map the correct FASTQ files to a single capture area??**
+
 

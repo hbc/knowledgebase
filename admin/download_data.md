@@ -61,7 +61,7 @@ A typical command might look like this:
 ## Notes
 - Zach and co. always share raw data but may default to sharing it through their pydio web interface, which is not reliable.
 
-- If you email Zach (zherbert@mail.dfci.harvard.edu) and tell him who's data you need (cc: the researcher) he will setup an FTP site for you to use. (Drew has left, so don't email him anymore.)
+- If you email Zach (zherbert@mail.dfci.harvard.edu) and tell him who's data you need (cc: the researcher) he will setup an FTP site for you to use. 
 
 - Make sure to let them know you've pulled down the data, so they can turn off the site when you're done (it costs money to run this).
 
@@ -74,18 +74,14 @@ A typical command might look like this:
 - The final nohup.out file will the download progress in it if you want to confirm download.
 A typical command might be something like this:
 
-`nohup wget -m ftp://userid:password\!@34.198.31.178/*`
+`nohup wget -m ftp://userid:password@34.198.31.178/*`
 
 -m mirror is to copy a mirror image of the directory/data including all files and subfolders
 
 Use this if nohup isn't working. Double check the UN, PW and IP address as they change.:
 `wget -m ftp://HSPH_bfx:MBCFHSPH_bfx\!@18.205.134.163`
 
-Site: 18.205.134.163
-User: HSPH_bfx
-Pass: MBCFHSPH_bfx!
-
-*note the escaped exclamation point in the password, they like to put characters like that in their passwords, which are usually in the form of MBCF$userid!* (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
+*note the escaped exclamation point in the password (\!), they like to put characters like that in their passwords. (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
 
 # Broad Institute
 

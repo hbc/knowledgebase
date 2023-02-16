@@ -14,7 +14,7 @@ When creating an app within R Shiny the first place to start is by naming your a
 Next, we need to understand the difference between the user interface (UI) and server. The UI is the HTML rendering of your Shiny App and is referred to as your front-end since it is what users who interact with your app will see. The server is where the inputs from the UI are processed and output to the UI is returned from. The server is oftentimes referred to as the back-end.  
 
 <p align="center">
-<img src="../img/Shiny_UI_server.png" width="600">
+<img src="Shiny_images/Shiny_UI_server.png" width="600">
 </p>
 
 The last component of the a Shiny app is the `shinyApp` function which launches the app. 
@@ -95,15 +95,53 @@ shinyApp(ui = ui, server = server)
 Once we have tyoped this, we can hit <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>Return</kbd> on a Mac or hit "Run App" in the top of your R Studio window. You app should pop up looking like:
 
 <p align="center">
-<img src="../img/Return_text_app_blank.png" width="600">
+<img src="Shiny_images/Return_text_app_blank.png" width="300">
 </p>
 
 And when you type something in like "Hello", "Hello" should appear appear below:
 
 <p align="center">
-<img src="../img/Return_text_app_hello.png" width="600">
+<img src="Shiny_images/Return_text_app_hello.png" width="300">
 </p>
-    
+
+Let's discuss what is happening here:
+
+- `ui <- fluidPage()` Using a `fluidPage` function to to render an HTML and assigning it to the `ui` object
+- `inputText("input_text", "My input text"),` This is the input text that we are going to give to the server and it is going to be assigned the variable `input$input_text`. The `"My input text"` is what we want to title the text box. **Also, note the use of a comma at the end of this `inputText`** function. Each function inside of the `fluidPage()` function needs to be separated by a comma.
+- `outputText("output_text")` This is the output text from the server that we want displayed. 
+
+- `server <- function(input, output){}` We are opening a function on the server side and assigning it to the `server` object
+- `output$output_text <- renderText({input$input_text})` Here, we are telling R to render the text output of `input$input_text` and assign that to the variable `output$output_text`
+
+- `shinyApp(ui = ui, server = server)` Run the Shiny App
+
+While, we have written a simplistic app here, it has many of the core features that we might be interested in utilizing. Armed with this basic understanding of some of the R Shiny syntax, let's tackle a slightly more complex R Shiny App.
+
+## Your Second R Shiny App: Using a slider to provide input and then performing a arithmetic function on it
+
+In this app we are going to use a slider to select a value and then have our app return the squared value of it. The code for this app should look like:
+
+```
+ui <- fluidPage(
+    sliderInput("number", "Select a number to square", min = 1, max = 10, value = 5),
+    textOutput("squared_number")
+)
+
+server <- function(input, output){
+    output$squared_number <- renderText({
+        input$number **2
+    })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+Run the app and it should look like:
+
+<p align="center">
+<img src="Shiny_images/Squaring)number_app.png" width="300">
+</p>
+
 ***
 
 # Old Info

@@ -1,6 +1,6 @@
 # R Shiny
 
-R Shiny is a package within R that allows the user to create interactive HTML pages that can handle a wide range of applications. Due to the diverse array of applications for R Shiny Apps, there is no way to cover all of these in a single page. However, the goal of this page is to provide a primer on how to start building R Shiny Apps.
+R Shiny is a package for R that allows users to create interactive HTML pages that can handle a wide range of applications. Due to the diverse array of applications for R Shiny Apps, there is no way to cover all of these in a single page. However, the goal of this page is to provide a primer on how to start building R Shiny Apps.
 
 ## Learning Objectives
 
@@ -9,7 +9,7 @@ R Shiny is a package within R that allows the user to create interactive HTML pa
 
 ## Shiny Structure
 
-When creating an app within R Shiny the first place to start is by naming your app. It is a good idea to name your R script `app.R` and place it within a directory that has a meaningful name. For example, your directory might be named `Hello_world` and within this directory you have the R script, `app.R`
+When creating an app within R Shiny the first place to start is by naming your app. It is a good idea to name your R script `app.R` and place it within a directory that has a meaningful name. For example, your directory might be named `Hello_world` and within this directory you have the R script, `app.R`. This convention will be helpful later when you try to host your app online somewhere.
 
 Next, we need to understand the difference between the user interface (UI) and server. The UI is the HTML rendering of your Shiny App and is referred to as your front-end since it is what users who interact with your app will see. The server is where the inputs from the UI are processed and output to the UI is returned from. The server is oftentimes referred to as the back-end.  
 
@@ -21,7 +21,7 @@ The last component of the a Shiny app is the `shinyApp` function which launches 
 
 ## Shiny Syntax
 
-A typical Shiny App will have a structure that looks something like:
+A typical Shiny App will have a structure that at bare minimum looks something like:
 
 ```
 ui <- fluidPage(
@@ -56,10 +56,9 @@ First, let's talk about the UI side where everything gets assigned to the `ui` o
   - `tableOutput()` This returns a table and is usually paired with `renderTable({})` on the server side
   - `plotOutput()` This returns a plot and is usually paired with `renderPlot({})` on the server side
 
-
 Second, let's talk about the server side where everything is assigned to the `server` object:
 
-- `function(input, output){}` This is always the start to your server and it begins a function to be processed
+- `function(input, output){}` This is always the start to your server object and it opens a function to be processed
 - `output$output_variable <- render[Format]({})` This is what you are assigning the output to. The `render[Format]({})` function can have several forms:
     - `renderText({})` Prints text and is usually paired with `textOutput()` on the UI side
     - `renderPrint({})` Prints text that way it comes from the R console and is usually paired with `verbatimTextOutput()` on the UI side
@@ -67,7 +66,7 @@ Second, let's talk about the server side where everything is assigned to the `se
     - `renderPlot({})` Prints a plot and is usually paired with `plotOutput()` on the UI side
     - `input$input_variable ...` This is just saying that we are going to do something with the `input_variable`
     
-Lastly, the UI and the server side are tied together and launched with:
+Lastly, the UI and the server side are tied together and the app is launched with:
 
 ```
 shinyApp(ui = ui, server = server)
@@ -75,7 +74,7 @@ shinyApp(ui = ui, server = server)
 
 ## Writing your first Shiny App
 
-Let's write a simple app that can help reinforce some of these principles. The goal of this app is simply to return text that you have provided as input. While this is an overly simplistic app, it will demonstrate many of the core idea that are integral to an R Shiny App. Here is the code we will use:
+Let's write a simple app that can help reinforce some of these principles. The goal of this app is simply to return text that you have provided as input. While this is an overly simplistic app, it will demonstrate many of the core ideas that are integral to an R Shiny App. Here is the code we will use:
 
 ```
 library(shiny)
@@ -92,7 +91,7 @@ server <- function(input, output){
 shinyApp(ui = ui, server = server)
 ```
 
-Once we have tyoped this, we can hit <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>Return</kbd> on a Mac or hit "Run App" in the top of your R Studio window. You app should pop up looking like:
+Once we have copied and pasted this, we can hit <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>Return</kbd> on a Mac or hit "Run App" in the top of your R Studio window. Your app should pop up looking like:
 
 <p align="center">
 <img src="Shiny_images/Return_text_app_blank.png" width="300">
@@ -104,10 +103,12 @@ And when you type something in like "Hello", "Hello" should appear appear below:
 <img src="Shiny_images/Return_text_app_hello.png" width="300">
 </p>
 
+**NOTE: If you look at your console it is currently listening for input and you cannot use your console for other tasks. Before you can do anything else in R you will need to close the app or hit the stop sign in the console.**
+
 Let's discuss what is happening here:
 
 - `ui <- fluidPage()` Using a `fluidPage` function to to render an HTML and assigning it to the `ui` object
-- `inputText("input_text", "My input text"),` This is the input text that we are going to give to the server and it is going to be assigned the variable `input$input_text`. The `"My input text"` is what we want to title the text box. **Also, note the use of a comma at the end of this `inputText`** function. Each function inside of the `fluidPage()` function needs to be separated by a comma.
+- `inputText("input_text", "My input text"),` This is the input text that we are going to give to the server and it is going to be assigned the variable `input$input_text`. The `"My input text"` is what we want to title the text box. **Also, note the use of a comma at the end of this `inputText()`** function. Each function inside of the `fluidPage()` function needs to be separated by a comma.
 - `outputText("output_text")` This is the output text from the server that we want displayed. 
 
 - `server <- function(input, output){}` We are opening a function on the server side and assigning it to the `server` object
@@ -117,11 +118,13 @@ Let's discuss what is happening here:
 
 While, we have written a simplistic app here, it has many of the core features that we might be interested in utilizing. Armed with this basic understanding of some of the R Shiny syntax, let's tackle a slightly more complex R Shiny App.
 
-## Your Second R Shiny App: Using a slider to provide input and then performing a arithmetic function on it
+## Your Second R Shiny App: Using a slider to provide input and then performing an arithmetic function on it
 
 In this app we are going to use a slider to select a value and then have our app return the squared value of it. The code for this app should look like:
 
 ```
+library(shiny)
+
 ui <- fluidPage(
     sliderInput("number", "Select a number to square", min = 1, max = 10, value = 5),
     textOutput("squared_number")
@@ -129,7 +132,7 @@ ui <- fluidPage(
 
 server <- function(input, output){
     output$squared_number <- renderText({
-        input$number **2
+        input$number ** 2
     })
 }
 
@@ -139,8 +142,75 @@ shinyApp(ui = ui, server = server)
 Run the app and it should look like:
 
 <p align="center">
-<img src="Shiny_images/Squaring)number_app.png" width="300">
+<img src="Shiny_images/Squaring_number_app.png" width="300">
 </p>
+
+Let's take a closer look at the new parts to this code:
+
+- `sliderInput("number", "Select a number to square", min = 1, max = 10, value = 5),` Instead of providing a text input, you are using a slider to gather our input. `"number"` is what we want the inputID to be, `"Select a number to square"` is the title for the slider, `min = 1` is setting the minimum value of the slider, `max = 10` is setting the maximum value of the slider and `value = 5` is setting the default value for the slider.
+- `textOutput("squared_number")` This is returning the squared number output
+- The code block below is taking `input$number` and squaring it, then assigning the text to be rendered into the`output$squared_number` object
+    ```
+    output$squared_number <- renderText({
+        input$number ** 2
+    })
+    ```
+
+Hopefully, at this point you are becoming slightly more comfortable with the syntax employed by R Shiny! Let's try another example to further our understanding.
+
+## Your Third R Shiny App: Selecting a value from a dropdown menu for sample size and creating a random normal distribution from this sample size
+
+In this app, we are going to select a value to use as our sample size from a dropdown menu and then have the app return a random normal distribution plot using this value as the sample size parameter. Copy the code below:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+    selectInput("sample_size", "What should be the sample size?", c(5, 25, 50, 100)),
+    plotOutput("normal_dist")
+)
+
+server <- function(input, output){
+  output$normal_dist <- renderPlot({
+    random_numbers <- rnorm(input$sample_size)
+    hist(random_numbers)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+When we run this app is could look like:
+
+<p align="center">
+<img src="Shiny_images/Sample_size_hist_5.png" width="300">
+</p>
+
+Now we can click on the dropdown menu and select a new sample size and the histogram will update. If we were to select 100, then it could look like:
+
+<p align="center">
+<img src="Shiny_images/Sample_size_hist_100.png" width="300">
+</p>
+
+We have added a bit more complexity to this app, so let's take a look at it:
+
+- `selectInput("sample_size", "What should be the sample size?", c(5, 25, 50, 100)),` The `selectInput()` function allows you to have a dropdown menu with options. We will assign the selected option to the variable `input$sample_size`. The text above the dropdown will be `"What should be the sample size?"` and the vector containing the possible options to choose from for the sample size will be `c(5, 25, 50, 100)`
+- `plotOutput("normal_dist")` Instead of having the output be text, now we are going use the `plotOutput` function to have the output be a plot and we will be reading in the plot from the `output$normal_dist` object.
+- The code block below will use the `rnorm()` function in base R to randomly select a vector of values equal to the length specified from `input$sample_size` and assign it to a variable names `random_numbers`. Then, we will create a histogram using the `hist()` function using these random numbers and assign this plot to be rendered as the object `output$normal_dist`:
+    ```
+    output$normal_dist <- renderPlot({
+        random_numbers <- rnorm(input$sample_size)
+        hist(random_numbers)
+    })
+    ```
+
+## Topics yet to be discussed
+- Tables
+- Action Buttons
+- Radio Buttons
+- `multiple = TRUE`
+- Page layout
+- Bar across the top of the page
 
 ***
 

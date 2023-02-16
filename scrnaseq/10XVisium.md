@@ -22,6 +22,29 @@ You will need to change the formatting slightly.
  
 https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/mkfastq#simple_csv
 
+If you are creating the simple csv samplesheet with specific oligo sequences for each sample index you may need to make edits. The I2 auto-orientation detector cannot be activated when supplying a simple csv. For example, teh NextSeq instrument needs the index 2 in reverse complement. So if you had:
+
+```
+Lane,Sample,Index,Index2
+*,CD_3-GEX_03,GCGGGTAAGT,TAGCACTAAG
+```
+
+You can either: 
+
+1. Specify the reverse complement Index2 oligo 
+
+```
+*,CD_3-GEX_03,GCGGGTAAGT,CTTAGTGCTA
+```
+
+2. Use the 10x index names, e.g. SI-TT-G6
+
+```
+*,CD_3-GEX_03,SI-TT-G6
+```
+
+You can find more information [linked here on the 10X website](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/bcl2fastq-direct#sample-sheet)
+
 Additionally, if you find you have `AdpaterRead1` or `AdapterRead2` under "Setting" in this file (example below), you will want to remove that. For any 10x library regardless of how the demultiplexing is being done, we do not recommend trimming adapters in the Illumina -- **this will cause problems with reads in downstream analyses**.
 
 
@@ -29,7 +52,7 @@ Additionally, if you find you have `AdpaterRead1` or `AdapterRead2` under "Setti
 
 ```bash
 spaceranger mkfastq --run data/11-7-2022-DeVries-10x-GEX-Visium/Files 
-         --samplesheet samplesheets/11-7-2022-DeVries-10x-GEX-Visium_Samplesheet.csv 
+         --simple-csv t samplesheets/11-7-2022-DeVries-10x-GEX-Visium_Samplesheet.csv 
          --output-dir fastq/11-7-2022-DeVries-10x-GEX-Visium
 
 ```

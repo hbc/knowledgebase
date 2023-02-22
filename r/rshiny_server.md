@@ -80,12 +80,12 @@ Let's write a simple app that can help reinforce some of these principles. The g
 library(shiny)
 
 ui <- fluidPage(
-    inputText("input_text", "My input text"),
-    outputText("output_text")
+    textInput("input_text", "My input text"),
+    textOutput("output_text")
 )
 
 server <- function(input, output){
-    output$output_text <- renderText({input$input_text})
+    output$output_text <- renderText(input$input_text)
 }
 
 shinyApp(ui = ui, server = server)
@@ -112,7 +112,7 @@ Let's discuss what is happening here:
 - `outputText("output_text")` This is the output text from the server that we want displayed. 
 
 - `server <- function(input, output){}` We are opening a function on the server side and assigning it to the `server` object
-- `output$output_text <- renderText({input$input_text})` Here, we are telling R to render the text output of `input$input_text` and assign that to the variable `output$output_text`
+- `output$output_text <- renderText(input$input_text)` Here, we are telling R to render the text output of `input$input_text` and assign that to the variable `output$output_text`
 
 - `shinyApp(ui = ui, server = server)` Run the Shiny App
 
@@ -131,9 +131,9 @@ ui <- fluidPage(
 )
 
 server <- function(input, output){
-    output$squared_number <- renderText({
+    output$squared_number <- renderText(
         input$number ** 2
-    })
+    )
 }
 
 shinyApp(ui = ui, server = server)
@@ -151,9 +151,9 @@ Let's take a closer look at the new parts to this code:
 - `textOutput("squared_number")` This is returning the squared number output
 - The code block below is taking `input$number` and squaring it, then assigning the text to be rendered into the`output$squared_number` object
     ```
-    output$squared_number <- renderText({
+    output$squared_number <- renderText(
         input$number ** 2
-    })
+    )
     ```
 
 Hopefully, at this point you are becoming slightly more comfortable with the syntax employed by R Shiny! Let's try another example to further our understanding.
@@ -204,10 +204,58 @@ We have added a bit more complexity to this app, so let's take a look at it:
     })
     ```
 
+`{}` is used within a `render` function when there are multiple lines of code within the render function.
+
+## Your Fourth Shiny App: Using radio buttons to select a data table to render
+
+In this app, we are going to select between two possible built-in R data tables for Shiny to render. Importantly, you should use the `DT` package when rendering data tables with R Shiny. The `DT` package is the recommended package from Shiny documents to use when rendering tables.
+
+```
+library(shiny)
+library(DT)
+
+ui <- fluidPage(
+  radioButtons("dataset", "Select dataset", c("iris", "mtcars")),
+  DTOutput("table")
+)
+
+server <- function(input, output){
+  output$table <- renderDT(
+    if (input$dataset == "iris"){
+      iris
+    }
+    else if (input$dataset == "mtcars"){
+      mtcars
+    }
+  )
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+When we run the app, it should look like:
+
+<p align="center">
+<img src="Shiny_images/Return_table.png" width="600">
+</p>
+
+Additionally, we can toggle the dataset we want and it will update in real-time.
+
+Let's talk about how this app works:
+
+- `radioButtons("dataset", "Select dataset", c("iris", "mtcars"))` These are going to provide what are called "radio buttons" or circular buttons that you can select. We are going to have two choices, `"iris"` or `"mtcars"`. **Note here that we are selecting from a character vector. These ARE NOT the actual mtcars and iris datasets!**
+- `DTOutput("table")` This is the data table output
+- `output$table <- renderDT()` This is going to assign the rendered data table to `output$table`. 
+- Next, we have a pair of conditional statements:
+```
+if (input$dataset == "iris"){
+      iris
+    }
+```
+Here we are saying if our `input$dataset` variable is equal to the `"iris"` string, then call the `iris` table. We then iterate this syntax for `mtcars`. The `if` and `else if` statements are considered one-line of code and thus don't need to be encompassed by `{}`.
+
 ## Topics yet to be discussed
-- Tables
 - Action Buttons
-- Radio Buttons
 - `multiple = TRUE`
 - Page layout
 - Bar across the top of the page

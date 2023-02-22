@@ -9,8 +9,6 @@ Helpful resource: https://lmweber.org/OSTA-book/
 * [Spatial transcriptomics with Seurat](https://yu-tong-wang.github.io/talk/sc_st_data_analysis_R.html)
 * [Spatial single-cell quantification with alevin-fry](https://combine-lab.github.io/alevin-fry-tutorials/2021/af-spatial/)
 
-## Start with the raw data: preprocessing
-
 
 ### 1. BCL to FASTQ
 
@@ -65,14 +63,28 @@ More on image types [from 10X docs here](https://support.10xgenomics.com/spatial
 
 * Check what type of image you have (you will need to specify in `spaceranger` with the correct flag)
 * Open up the image to make sure you have the fiducial border. It's probably done for you. If there are issues with the fiducial alignment (i.e. too tall, too wide) given to you, you may need to manually align using the Loupe browser
-* 
-
-Walker dataset:
-* We have four slides total
-* Slides 1 &2 are combined and there are 8 image files; 4 for each slide. Presumably “Field 1 -4” are for Slide 1 and “Field 5-8” are for slide 2
-    * A similar situation for Slides3&4
-* Issue: We have 5 folders for the FASTQ files - 
-
-Typically the spaceranger is run for each individual capture area; **Problem is, how do we map the correct FASTQ files to a single capture area??**
 
 
+### 3. Counting expression data
+
+The next step is to quantify expression for each capture area. To do this we will use [`spaceranger count`](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/tutorials/count-ff-tutorial). This command will need to be run for each capture area. Below is the command for a single capture area (in this case Slide 1, capture area A0. You may find your files have not been named with A-D, so map them accordingly.
+
+A few things to note if you have samples that were run on multiple flow cells:
+
+* include the `--sample` argument to specify the samplename which corresponds to the capture area
+* for the `--fastqs` you can add multiple paths to the different flow cell folders and separate them by a comma
+
+```bash
+
+spaceranger count --id="CD_Visium_01" \
+                   --sample=CD_Visium_01 \
+                   --description="Slide1_CaptureArea1" \
+                   --transcriptome=refdata-gex-mm10-2020-A \
+                   --fastqs=mkfastq/11-10-2022-DeVries-10x-GEX-Visium/AAAW33YHV/,mkfastq/11-4-2022-Devries-10x-GEX-Visium/AAAW3N3HV/,mkfastq/11-7-2022-DeVries-10x-GEX-Visium/AAAW352HV/,mkfastq/11-8-2022-DeVries-10x-GEX-Visium/AAAW3FCHV/,mkfastq/11-9-2022-DeVries-10x-GEX-Visium/AAAW3F3HV/ \
+                   --image=images/100622_Walker_Slides1_and_2/V11S14-092_20221006_01_Field1.tif\
+                   --slide=V11S14-092 \
+                   --area=A1 \
+                   --localcores=6 \
+                   --localmem=20
+
+```

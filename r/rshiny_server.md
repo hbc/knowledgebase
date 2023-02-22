@@ -64,6 +64,7 @@ Second, let's talk about the server side where everything is assigned to the `se
     - `renderPrint({})` Prints text that way it comes from the R console and is usually paired with `verbatimTextOutput()` on the UI side
     - `renderTable({})` Prints a table and is usually paired with `tableOutput()` on the UI side
     - `renderPlot({})` Prints a plot and is usually paired with `plotOutput()` on the UI side
+    - The `{}` within the `render` family of functions is only needed more than one command with within the render function. However, it is fine to include it when there is only a single command as well. As a result, we will use it in every function so that it is consistent between functions. 
     - `input$input_variable ...` This is just saying that we are going to do something with the `input_variable`
     
 Lastly, the UI and the server side are tied together and the app is launched with:
@@ -85,7 +86,9 @@ ui <- fluidPage(
 )
 
 server <- function(input, output){
-    output$output_text <- renderText(input$input_text)
+    output$output_text <- renderText({
+        input$input_text
+    })
 }
 
 shinyApp(ui = ui, server = server)
@@ -112,7 +115,7 @@ Let's discuss what is happening here:
 - `outputText("output_text")` This is the output text from the server that we want displayed. 
 
 - `server <- function(input, output){}` We are opening a function on the server side and assigning it to the `server` object
-- `output$output_text <- renderText(input$input_text)` Here, we are telling R to render the text output of `input$input_text` and assign that to the variable `output$output_text`
+- `output$output_text <- renderText({input$input_text})` Here, we are telling R to render the text output of `input$input_text` and assign that to the variable `output$output_text`
 
 - `shinyApp(ui = ui, server = server)` Run the Shiny App
 
@@ -131,9 +134,9 @@ ui <- fluidPage(
 )
 
 server <- function(input, output){
-    output$squared_number <- renderText(
+    output$squared_number <- renderText({
         input$number ** 2
-    )
+    })
 }
 
 shinyApp(ui = ui, server = server)
@@ -151,9 +154,9 @@ Let's take a closer look at the new parts to this code:
 - `textOutput("squared_number")` This is returning the squared number output
 - The code block below is taking `input$number` and squaring it, then assigning the text to be rendered into the`output$squared_number` object
     ```
-    output$squared_number <- renderText(
+    output$squared_number <- renderText({
         input$number ** 2
-    )
+    })
     ```
 
 Hopefully, at this point you are becoming slightly more comfortable with the syntax employed by R Shiny! Let's try another example to further our understanding.
@@ -166,14 +169,14 @@ In this app, we are going to select a value to use as our sample size from a dro
 library(shiny)
 
 ui <- fluidPage(
-    selectInput("sample_size", "What should be the sample size?", c(5, 25, 50, 100)),
+    selectInput("normal_sample_size", "What should be the sample size?", c(5, 25, 50, 100)),
     plotOutput("normal_dist")
 )
 
 server <- function(input, output){
   output$normal_dist <- renderPlot({
-    random_numbers <- rnorm(input$sample_size)
-    hist(random_numbers)
+    normal_random_numbers <- rnorm(input$normal_sample_size)
+    hist(normal_random_numbers)
   })
 }
 
@@ -194,17 +197,16 @@ Now we can click on the dropdown menu and select a new sample size and the histo
 
 We have added a bit more complexity to this app, so let's take a look at it:
 
-- `selectInput("sample_size", "What should be the sample size?", c(5, 25, 50, 100)),` The `selectInput()` function allows you to have a dropdown menu with options. We will assign the selected option to the variable `input$sample_size`. The text above the dropdown will be `"What should be the sample size?"` and the vector containing the possible options to choose from for the sample size will be `c(5, 25, 50, 100)`
+- `selectInput("normal_sample_size", "What should be the sample size?", c(5, 25, 50, 100)),` The `selectInput()` function allows you to have a dropdown menu with options. We will assign the selected option to the variable `input$sample_size`. The text above the dropdown will be `"What should be the sample size?"` and the vector containing the possible options to choose from for the sample size will be `c(5, 25, 50, 100)`
+> NOTE: You can also use the `multiple = TRUE` option within `selectInput()` if you would like to be able to select multiple values. For this context it isn't appropriate, but in other contexts it could be.
 - `plotOutput("normal_dist")` Instead of having the output be text, now we are going use the `plotOutput` function to have the output be a plot and we will be reading in the plot from the `output$normal_dist` object.
 - The code block below will use the `rnorm()` function in base R to randomly select a vector of values equal to the length specified from `input$sample_size` and assign it to a variable names `random_numbers`. Then, we will create a histogram using the `hist()` function using these random numbers and assign this plot to be rendered as the object `output$normal_dist`:
     ```
     output$normal_dist <- renderPlot({
-        random_numbers <- rnorm(input$sample_size)
-        hist(random_numbers)
+        normal_random_numbers <- rnorm(input$normal_sample_size)
+        hist(normal_random_numbers)
     })
     ```
-
-`{}` is used within a `render` function when there are multiple lines of code within the render function.
 
 ## Your Fourth Shiny App: Using radio buttons to select a data table to render
 
@@ -220,14 +222,14 @@ ui <- fluidPage(
 )
 
 server <- function(input, output){
-  output$table <- renderDT(
+  output$table <- renderDT({
     if (input$dataset == "iris"){
       iris
     }
     else if (input$dataset == "mtcars"){
       mtcars
     }
-  )
+  })
 }
 
 shinyApp(ui = ui, server = server)
@@ -245,44 +247,266 @@ Let's talk about how this app works:
 
 - `radioButtons("dataset", "Select dataset", c("iris", "mtcars"))` These are going to provide what are called "radio buttons" or circular buttons that you can select. We are going to have two choices, `"iris"` or `"mtcars"`. **Note here that we are selecting from a character vector. These ARE NOT the actual mtcars and iris datasets!**
 - `DTOutput("table")` This is the data table output
-- `output$table <- renderDT()` This is going to assign the rendered data table to `output$table`. 
+- `output$table <- renderDT({})` This is going to assign the rendered data table to `output$table`. 
 - Next, we have a pair of conditional statements:
 ```
 if (input$dataset == "iris"){
       iris
     }
 ```
-Here we are saying if our `input$dataset` variable is equal to the `"iris"` string, then call the `iris` table. We then iterate this syntax for `mtcars`. The `if` and `else if` statements are considered one-line of code and thus don't need to be encompassed by `{}`.
+Here we are saying if our `input$dataset` variable is equal to the `"iris"` string, then call the `iris` table. We then iterate this syntax for `mtcars`. 
 
-## Topics yet to be discussed
-- Action Buttons
-- `multiple = TRUE`
-- Page layout
-- Bar across the top of the page
+## Your fifth R Shiny App: Using checkboxes to select input and an action button to control reactivity
+
+In this app we will introduce checkboxes to select inputs and use an action button to control the reactivity of the app. Previous versions of R Shiny used the eventReactive() function to control actions such as clicking of an action button. However, in Shiny 1.6 this has changed to using bindEvent().
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  checkboxGroupInput("values", "Select numbers to sum", c(1:10)),
+  actionButton("calculate", "Calculate!"),
+  textOutput("sum")
+)
+
+server <- function(input, output){
+  addition <- reactive(
+      sum(as.numeric(input$values)) 
+  ) %>% 
+  bindEvent(input$calculate)
+  output$sum <- renderText({addition()})
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app should look like:
+
+<p align="center">
+<img src="Shiny_images/Check_boxes_with_action_button.png" width="300">
+</p>
+
+We can break apart this 
+
+- `checkboxGroupInput("values", "Select numbers to sum", c(1:10))` This provides checkbox based input, but it will be saved as a character object, so we will need to address this on the server side.
+- `actionButton("calculate", "Calculate!")` This creates the action button that can be clicked to execute calculation on the server side.
+- `textOutput("sum")` Render our output sum
+- `addition <- reactive() %>% bindEvent()` This syntax creates a reactive function called `addition` and it is triggered when the `bindEvent()` is triggered. When the `bindEvent()` is triggered, which in this case is when the action button is clicked (`input$calculate`), then the code within `reactive()` (`sum(as.numeric(input$values))`), will be executed.
+- `output$sum <- renderText(addition())` Lastly, we will called this `addition()` function within our `renderText()` function and assign it to our output variable.
+
+### Modfying the Action button
+
+We can customize our action button a bit using the class option within `actionButton()`:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  checkboxGroupInput("values", "Select numbers to sum", c(1:10)),
+  actionButton("calculate", "Calculate!", class = "btn-success"),
+  textOutput("sum")
+)
+
+server <- function(input, output){
+  addition <- reactive(
+      sum(as.numeric(input$values)) 
+  ) %>% 
+  bindEvent(input$calculate)
+  output$sum <- renderText({addition()})
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+Now the app should look like:
+
+<p align="center">
+<img src="Shiny_images/Altered_action_button.png" width="300">
+</p>
+
+To get the green action button, we just needed to add `class = "btn-success"` to`actionButton()`.
+
+Other values of class that might be of interest are:
+
+- `btn-warning` Creates an orange button
+- `btn-danger` Creates a read button
+- `btn-info` Creates a light blue button
+- `btn-lg` Creates a larger button
+- `btn-sm` Creates a smaller button
+
+You can also combine the color and size options for class by using `class = "btn-success btn-lg"`, which will create a larger, green button.
+
+## Creating a side panel on our Shiny App
+
+Let's go back to using our third app to do this:
+
+```
+library(shiny)
+
+ui <- fluidPage(
+  sidebarPanel(
+    selectInput("normal_sample_size", "What should be the sample size?", c(5, 25, 50, 100))
+  ),
+  mainPanel(
+    plotOutput("normal_dist")
+  )
+)
+
+server <- function(input, output){
+  output$normal_dist <- renderPlot({
+    normal_random_numbers <- rnorm(input$normal_sample_size)
+    hist(normal_random_numbers)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app should now look like:
+
+<p align="center">
+<img src="Shiny_images/Adding_panels.png" width="800">
+</p>
+
+You may need to widen the window or view it in a browser in order for it to render with the side panel on the the left side.
+
+A few edits we've made to the UI to create this involves:
+- `sidebarPanel()` This function wraps around the items we want in the sidebar panel
+- `mainPanel()` This function wraps around the items we want in the main panel
+
+## Let's add some tabs to the top of our app
+
+In the next app we are going to add tabs along the top of our app that allows us different distributions to look at:
+
+```
+ui <- fluidPage(
+  navbarPage("Distributions",
+    tabPanel("Normal",
+      sidebarPanel(
+        selectInput("normal_sample_size", "What should be the sample size?", c(5, 25, 50, 100))
+      ),
+      mainPanel(
+        plotOutput("normal_dist")
+      )
+    ),
+    tabPanel("Uniform",
+      sidebarPanel(
+        selectInput("uniform_sample_size", "What should be the sample size?", c(5, 25, 50, 100))
+      ),
+      mainPanel(
+        plotOutput("uniform_dist")
+      )
+    )
+  )
+)
+
+server <- function(input, output){
+  output$normal_dist <- renderPlot({
+    normal_random_numbers <- rnorm(input$normal_sample_size)
+    hist(normal_random_numbers)
+  })
+  output$uniform_dist <- renderPlot({
+    uniform_random_numbers <- runif(input$uniform_sample_size)
+    hist(uniform_random_numbers)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+This app should look like:
+
+<p align="center">
+<img src="Shiny_images/Added_tabs.png" width="800">
+</p>
+
+Below we explain the functions we added to this app:
+
+- `navbarPage()` This function intiates a navigation bar across the top of the page that can be filled with tabs. This function needs to wrap around all of the tabs. The text (in this case `"Distributions"`) will be placed on the left of the navigation bar. 
+- `tabPanel()` This function initiates each tab of the navigation bar and it needs to wrap around everything in the tab.
+
+We have added symmetrical code for a uniform distribution on the UI-side and server-side.
+
+## Adding a theme to our Shiny App
+
+Shiny has [several themes](https://rstudio.github.io/shinythemes/) to choose from but we first need to load the `shinythemes` library to have them availible to us. We are going to go ahead and add the theme "cerulean" to our app, but you can pick any of the themes:
+
+```
+library(shiny)
+library(shinythemes)
+
+ui <- fluidPage(theme = shinytheme("cerulean"),
+  navbarPage("Distributions",
+    tabPanel("Normal",
+      sidebarPanel(
+        selectInput("normal_sample_size", "What should be the sample size?", c(5, 25, 50, 100))
+      ),
+      mainPanel(
+        plotOutput("normal_dist")
+      )
+    ),
+    tabPanel("Uniform",
+      sidebarPanel(
+        selectInput("uniform_sample_size", "What should be the sample size?", c(5, 25, 50, 100))
+      ),
+      mainPanel(
+        plotOutput("uniform_dist")
+      )
+    )
+  )
+)
+
+server <- function(input, output){
+  output$normal_dist <- renderPlot({
+    normal_random_numbers <- rnorm(input$normal_sample_size)
+    hist(normal_random_numbers)
+  })
+  output$uniform_dist <- renderPlot({
+    uniform_random_numbers <- runif(input$uniform_sample_size)
+    hist(uniform_random_numbers)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+The app should now look like:
+
+<p align="center">
+<img src="Shiny_images/Adding_theme.png" width="800">
+</p>
+
+The only alternation to our code to add a theme was adding this line:
+
+- `theme = shinytheme("cerulean")` This adds the "cerulean" theme to our app
+
+## Launching directly into browser
+
+If you would like to see the app visualized in a browser, you have two choices:
+
+1) From the pop-up window you can left-click the "Open in Browser" button. Be aware that if you close the browser window with the app, you will still need to hit the "Stop" sign above in the Console to stop the app or close the pop-up.
+
+2) Alternatively, you can modify the `shinyApp` command to include `options = list(launch.browser = TRUE)` and it will automatically launch the app in your local browser. The full command would look like:
+
+```
+shinyApp(ui = ui, server = server, options = list(launch.browser = TRUE))
+```
+
+In this scenario, you would still need to hit the stop button in the console to stop the app from running, even after you've closed the browser window.
+
+## Hosting Options
+
+One great aspect of Shiny Apps is that you can host them on internet for anyone to use. However, you will need a server that allows you to host R Shiny apps.
+
+### HMS
+
+Currently, HMS is carrying out a pilot program for hosting R Shiny apps [here](https://it.hms.harvard.edu/our-services/research-computing/services-and-tools/research-applications-software/research).
+
+### Shinyapps.io
+
+Another option that allows you to do this is http://www.shinyapps.io. You will need to make an account in order to host your apps here. A free account let you host apps with low usage and limits the number of apps you can host. Of course, you can pay if you'd like to allow higher usage and more apps.
+Once you have your app written in an `app.R` Rscript within a directory you can cinfugre your account and deploy it using [these instructions](https://shiny.rstudio.com/articles/shinyapps.html). 
 
 ***
 
-# Old Info
-
----
-title: How to set up new app in hbc rshiny
-description: Information on where to connect and where to put apps in hbc rshiny server.
-category: admin
-subcategory: guides
-tags: [visualization, report]
----
-
-To get access to the server, ask to the Director or Associate Director of the core
-
-The server is only reachable from HMS network. The typical way to connect is from the login node in O2. Type this:
-
-```
-ssh hbcreports.med.harvard.edu
-```
-
-Use the password given to you by HMS RC team.
-
-Once inside, copy the folder that contains the code for you app inside `/srv/shiny-server/`, from that point, the app should be available at http://hbcreports.med.harvard.edu/`app_name`/. For instance, look at this: http://hbcreports.med.harvard.edu/heatmaps/
-
-
-**installation of new packages affect to all current apps. This need to be coordinated with the responsible person in the core. Raise any need to install or update during group meeting.**
+[Back to Knowledgebase](https://github.com/hbc/knowledgebase)

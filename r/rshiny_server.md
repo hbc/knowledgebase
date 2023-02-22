@@ -526,6 +526,10 @@ Currently, HMS is carrying out a pilot program for hosting R Shiny apps [here](h
 
 Another option that allows you to do this is [shinyapps.io](http://www.shinyapps.io). You will need to make an account in order to host your apps here. A free account lets you host apps with low usage and limits the number of apps you can host. Of course, you can pay if you'd like to allow higher usage and more apps. Once you have your app written in an `app.R` Rscript within a directory, you can configure your account and deploy it using [these instructions](https://shiny.rstudio.com/articles/shinyapps.html). 
 
+## Additional Resources
+
+[Mastering Shiny](https://mastering-shiny.org/basic-intro.html)
+
 ***
 
 [Back to Knowledgebase](https://github.com/hbc/knowledgebase)

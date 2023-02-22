@@ -195,13 +195,13 @@ shinyApp(ui = ui, server = server)
 When we run this app is could look like:
 
 <p align="center">
-<img src="Shiny_images/Sample_size_hist_5.png" width="300">
+<img src="Shiny_images/Sample_size_hist_5.png" width="600">
 </p>
 
 Now we can click on the dropdown menu and select a new sample size and the histogram will update. If we were to select 100, then it could look like:
 
 <p align="center">
-<img src="Shiny_images/Sample_size_hist_100.png" width="300">
+<img src="Shiny_images/Sample_size_hist_100.png" width="600">
 </p>
 
 We have added a bit more complexity to this app, so let's take a look at it:

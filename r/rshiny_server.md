@@ -98,13 +98,13 @@ shinyApp(ui = ui, server = server)
 Once we have copied and pasted this, we can hit <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>Return</kbd> on a Mac or hit "Run App" in the top of your R Studio window. Your app should pop up looking like:
 
 <p align="center">
-<img src="Shiny_images/Return_text_app_blank.png" width="300">
+<img src="Shiny_images/Return_text_app_blank.png" width="600">
 </p>
 
-And when you type something in like "Hello", "Hello" should appear below:
+And when you type something in like "Hello World", "Hello World" should appear below:
 
 <p align="center">
-<img src="Shiny_images/Return_text_app_hello.png" width="300">
+<img src="Shiny_images/R_Shiny_hello_world.gif" width="800">
 </p>
 
 **NOTE: If you look at your console it is currently listening for input and you cannot use your console for other tasks. Before you can do anything else in R, you will need to close the app or hit the stop sign in the console.**

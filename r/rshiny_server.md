@@ -63,8 +63,8 @@ Second, let's talk about the server side where everything is assigned to the `se
 - `output$output_variable <- render[Format]({})` This is what you are assigning the output to. The `render[Format]({})` function can have several forms:
     - `renderText({})` Prints text and is usually paired with `textOutput()` on the UI side
     - `renderPrint({})` Prints text that way it comes from the R console and is usually paired with `verbatimTextOutput()` on the UI side
-    - `renderDataTable({})` Prints a table and is usually paired with `dataTableOutput()` on the UI side or when using the `DT` package, `renderDT()` and is usually paired with `DTOutput()` on the UI side
     - `renderPlot({})` Prints a plot and is usually paired with `plotOutput()` on the UI side
+    - `renderDataTable({})` Prints a table and is usually paired with `dataTableOutput()` on the UI side or when using the `DT` package, `renderDT()` and is usually paired with `DTOutput()` on the UI side
     - The `{}` within the `render` family of functions is only needed when there is more than one command within the `render` function. However, it is fine to include it when there is only a single command as well. As a result, we will use it in every function so that it is consistent between our differerent apps. 
     - `input$input_variable ...` This is just saying that we are going to do something with the `input_variable`
     

@@ -53,9 +53,9 @@ First, let's talk about the UI side where everything gets assigned to the `ui` o
 - `[format]Output("output_variable")` This is your output that will be visualized. The `"output_variable"` is your outputID and this is what you will name your output on the server side. Like inputIDs, outputIDs should follow R variable naming convetions. Some common functions here are:
   - `textOutput()` This returns text output and is usually paired with `renderText({})` on the server side
   - `verbatimTextOutput()` This returns output styled exactly how output looks in R and is usually paired with `renderPrint({})` on the server side
+  - `plotOutput()` This returns a plot and is usually paired with `renderPlot({})` on the server side
   - `dataTableOutput()` This returns a table and is usually paired with `renderDataTable({})` on the server side
 > Note: The table functions from the `DT` package, `DTOutput()` and `renderDT()`, respectively, are the standard functions to use for rendering tables now.
-  - `plotOutput()` This returns a plot and is usually paired with `renderPlot({})` on the server side
 
 Second, let's talk about the server side where everything is assigned to the `server` object:
 

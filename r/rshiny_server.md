@@ -177,7 +177,7 @@ Create an R Shiny App that does the following:
 
 1) Collects a *numeric input*
 2) Collects input from a slider ranging from 1 to 20
-3) Multiples the numeric input from 1) by the the slider numeric inout from 2)
+3) Multiples the numeric input from 1) by the the slider numeric input from 2)
 4) Returns the product as text
 
 <details>

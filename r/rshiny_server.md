@@ -47,6 +47,7 @@ First, let's talk about the UI side where everything gets assigned to the `ui` o
 - `[format]Input("input_variable")` This is how you will provide your input. The `"input_variable"` is called your inputID and this is how you will be calling this input on the server. When naming these inputIDs stay within R variable naming conventions. There are lots of different types of inputs, including:
   - `textInput()` This is for taking in a single line of text
   - `textAreaInput()` This is for taking in text in a textbox style
+  - `numericInput()` This is similar to `textInput()`, but instead of text, you can provide it a number
   - `sliderInput()` This provides an slider to select values
   - `selectInput()` This provides a list of values to choose from
   - Many more  
@@ -169,6 +170,36 @@ Let's take a closer look at the new parts to this code:
     ```
 
 Hopefully, at this point you are becoming slightly more comfortable with the syntax employed by R Shiny! Let's try another example to further our understanding.
+
+## Exercise
+
+Create an R Shiny App that does the following:
+
+1) Collects a *numeric input*
+2) Collects input from a slider ranging from 1 to 20
+3) Multiples the numeric input from 1) by the the slider numeric inout from 2)
+4) Returns the product as text
+
+<details>
+    <summary><b>Click here to see the answer</b></summary>
+    <pre>
+library(shiny)<br>
+
+
+ui <- fluidPage(
+&nbsp; numericInput("a", "First number to multiply", 5),
+&nbsp; sliderInput("b", "Second number to multiply", min = 1, max = 20, value = 5),
+&nbsp; textOutput("product")
+)
+
+server <- function(input, output){
+&nbsp; output$product <- renderText({
+&nbsp; &nbsp; input$a * input$b
+&nbsp; })
+}
+
+shinyApp(ui = ui, server = server)</pre>
+</details>
 
 ## Your Third R Shiny App: Selecting a value from a dropdown menu for sample size and creating a random normal distribution from this sample size
 

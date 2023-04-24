@@ -131,3 +131,43 @@ Rscript leafcutter/scripts/leafcutter_ds.R --num_threads 1 NCIH_PD_perind_numers
 
 Rscript leafcutter/scripts/leafcutter_ds.R --num_threads 1 TD47_perind_numers.counts.gz T47D_groups.txt -i 3 -e gencode.v31.exons.txt.gz 
 ```
+
+
+### Merging output in R
+
+Leafcutter outputs 2 separate files for each contrast you run. leafcutter_ds_cluster_significance_CONTRASTNAME.txt and leafcutter_ds_effect_sizes_CONTRASTNAME.txt. Below is R code to merge these two files and summarize at the level of intron cluster. 
+
+Note that this script takes 1 parameter (psi_cutoff) which is 0.01 in the below script but can be modified. The script will count the number of introns in the cluster above this value.
+
+
+```R
+#determine parameter value
+psi_cutoff = 0.01
+
+
+#read in p-values and annotate
+
+pval_K6 <- read.table("/path/leafcutter_ds_cluster_significance_PD.txt",sep="\t", header=TRUE) %>%
+  left_join(pruned_annotations, 
+            by = c("genes" = "external_gene_name"))   ## Pruned annotations is a biomart annotations dataframe
+
+
+#only keep good runs (status=success)
+
+pval_PD <- subset(pval_PD, pval_PD$status=="Success")
+pval_PD$N_introns <- (pval_PD$df +1)
+effect_PD <- read.table("/path/leafcutter_ds_effect_sizes_PD.txt",sep="\t", header=TRUE)
+effect_PD$cluster = paste0(sapply( str_split(effect_PD$intron, ":"),"[", 1 ),":",sapply(str_split(effect_PD$intron, ":"),"[", 4 )) #add cluster name
+
+effect_PD_sum <- effect_PD %>%
+ group_by(cluster) %>% summarize(count_deltapsi_above_cutoff = sum(abs(deltapsi) >psi_cutoff)) #determine how many introns are above deltapsi cutoff
+effect_PD_max <- effect_PD %>%
+  group_by(cluster) %>% summarise_each(funs(deltapsi[which.max(abs(deltapsi))])) # determine maximum value of the deltapsi
+
+effect_PD_summary = effect_PD_sum %>% left_join(effect_PD_max, by=c("cluster")) #merge to have all info
+
+LC_full_PD_info <- pval_PD %>% left_join(dplyr::select(effect_PD_summary, "cluster","count_deltapsi_above_cutoff","deltapsi"), by=c("cluster"="cluster")) # merge again with p-values
+
+colnames(LC_full_PD_info)[14] <- "max_deltapsi"
+
+```

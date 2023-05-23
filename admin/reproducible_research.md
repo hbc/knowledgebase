@@ -42,7 +42,10 @@ Use dropbox to share results and code with collaborators (`HBC Team Folder (1)/C
 * text files and "small" processed data files (i.e. files included in the reports, such as normalized counts)
 * documents: manuscripts, extra metadata, presentations
 * anything else the collaborator may need to reproduce the R-based analysis *IF* they wish to reproduce it
-* *RNA-seq* example: create folders for QC, DE and FA. These may be in the base project folder, or if the project is complex, in folders labeled by dates. Within the QC folder, store the QC Rmd and the html report. In the DE folder, store the DE Rmd file, the DE report, and the raw and normalized counts matrices. In the FA folder, store the FA Rmd, the html report and the DESeq2 results tables with gene symbols added.
+* *RNA-seq* example: create folders for QC, DE and FA. These may be in the base project folder, or if the project is complex, in folders labeled by dates. 
+   * Within the QC folder, store the QC Rmd and the html report
+   * In the DE folder, store the DE Rmd file, the DE report, and the raw and normalized counts matrices. Also store the DESeq2 results tables with gene symbols added
+   * In the FA folder, store the FA Rmd, the html report and the FA results tables
 
 ### Basecamp
 

@@ -22,7 +22,7 @@
 - Team members: Radhika Khetani, Mary Piper, Meeta Mistry, Jihe Liu, Will Gammerdinger
 - Email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
 
-**Variants**: [Clonal evolution](variants/clonal_evolution.md) * [Cancer variant databases](https://github.com/seandavi/awesome-cancer-variant-databases) * [Open Cravat](https://open-cravat.readthedocs.io/en/latest/index.html#) * [Applied computational genomics course by A. Quinlan](https://github.com/quinlan-lab/applied-computational-genomics) *[SC Phylogeny](https://github.com/amkozlov/cellphy) * [Validating variants in IGV](https://bioinformatics-core-shared-training.github.io/intro-to-IGV/InspectingVariantsInIGV.html)
+**Variants**: [Clonal evolution](variants/clonal_evolution.md) * [Cancer variant databases](https://github.com/seandavi/awesome-cancer-variant-databases) * [Open Cravat](https://open-cravat.readthedocs.io/en/latest/index.html#) * [Applied computational genomics course by A. Quinlan](https://github.com/quinlan-lab/applied-computational-genomics) *[SC Phylogeny](https://github.com/amkozlov/cellphy) * [Validating variants in IGV](https://bioinformatics-core-shared-training.github.io/intro-to-IGV/InspectingVariantsInIGV.html) * [Human Genome Variation Lab](https://mccoy-lab.github.io/hgv_modules/index.html)
 
 **WGS**: [CRISPR offtarget](wgs/crispr-offtarget.md) * [Pacbio genome assembly](wgs/pacbio_genome_assembly.md)
 

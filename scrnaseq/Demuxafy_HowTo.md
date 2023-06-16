@@ -5,7 +5,7 @@ For detailed instructions and updates on `demuxafy`, see the comprehensive [Read
 
 ## Installation
 
-I originally downloaded the `Demuxafy.sif` singularity image for use on O2 as instructed [here](https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/Installation.html). However, **this singularity image did not pass O2's security checks**. The folks at HMS-RC were kind enough to amend the image for me so that it would pass the security checks. The working image is found at: `/n/app/singularity/containers/aj186/demuxafy.sif` (Victor also has a copy). If you'd like to use it yourself, get in touch with HMS-RC to request it copied on your user folder.
+I originally downloaded the `Demuxafy.sif` singularity image for use on O2 as instructed [here](https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/Installation.html). However, **this singularity image did not pass O2's security checks**. The folks at HMS-RC were kind enough to amend the image for me so that it would pass the security checks. The working image is found at: `/n/app/singularity/containers/Demuxafy.sif` allowing anyone to use it.
 
 Of note, this singularity image includes a bunch of software, including popscle, demuxlet, freemuxlet, souporcell and other demultiplexing as well as doublet detection tools, so very useful to have installed!
 

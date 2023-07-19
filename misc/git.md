@@ -45,16 +45,16 @@ git push origin vx.y.z
 # Sync with upstream/master, delete all commits in origin/master
 ```
 git fetch upstream
-git checkout master
-git reset --hard upstream/master
+git checkout main
+git reset --hard upstream/main
 git push --force
 ```
 
 # Sync with upstream/master
 ```
 git fetch upstream
-git checkout master
-git merge upstream/master
+git checkout main
+git merge upstream/main
 ```
 # big feature workflow - rebase - squash
 ```

@@ -26,13 +26,15 @@ There are also two general subtypes of BCRs, defined by the usage of either lamb
 <br>
 <br>
 
-* * *
+***
 
 ### Removing antigen receptor transcripts from Seurat objects
 <br>
 <br>
 
-**By filtering the Seurat object:**
+**Option 1: By filtering the Seurat object:**
+<br>
+<br>
 
 If the analyst and the client are interested in observing the effects on clustering promoted by antigen receptor genes, these are readily removed by subsetting the object.
 
@@ -179,7 +181,9 @@ Here is a link to an .html document  demonstrating removal of BCR transcripts
 <br>
 
 
-**By excluding TCR transcripts from variable features before dimensionality reduction:**
+**OPTION 2: By excluding TCR transcripts from variable features before dimensionality reduction:**
+<br>
+<br>
 
 An alternative approach consists in keeping all genes in the Seurat object (thus avoiding bias in normalization due to the removal of those genes, which may be highly expressed in activated T lymphocytes and thus represent a large fraction of a cell's captured transcriptome). 
 
@@ -296,9 +300,11 @@ seurat_cca <- RunUMAP(seurat_cca, dims = 1:40)
 
 See normalization and harmonization reports in [this GitHub repo](https://github.com/hbc/sinclair_scRNA-CITE-seq_mouse_T-cells_aging_hbc04771/tree/main) (single sample) or [this one](https://github.com/hbc/chandraker_scRNASeq_human_PBMC_kidney_transplant_hbc04749/tree/main) (multiple samples with merge/integration) for a complete example.
 
+***
 <br>
 <br>
-* * *
+
+
 
 ### Considerations and Best Practices
 <br>

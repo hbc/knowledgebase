@@ -2,12 +2,18 @@
 <br>
 <br>
 
-In vertebrates, the lymphocyte antigen receptors, T Cell Receptor (TCR) and B Cell Receptor (BCR) are encoded by V ("variable"), D ("diversity"), J("joining"), and C ("constant") genes (or gene "segments") located in TCR and BCR loci. Numerous different versions of each segment type are found in germline DNA. (For example, in humans there are > 80 different TCR*a* V segments.) During lymphocyte development, through a process called "somatic recombination", or "v(d)j recombination" (in contrast to "genetic recombination" during meiosis), individual v,d,j and c segments are selected to encode a unique TCR or BCR sequence for each cell. The unselected segments are excised from the DNA. The nearly random selection and combination of individual v,d,j and c segments, promotes a vast (est. > 10<sup>15</sup> ) combinatorial diversity of potential unique antigen binding domains encoded on individual lymphocyte antigen receptors. Antigen receptor diversity generated through somatic recombination, and immune memory promoted through lymphocyte clonal expansion are the hallmarks of vertebrate adaptive immunity.
+In vertebrates, the lymphocyte antigen receptors, T Cell Receptor (TCR) and B Cell Receptor (BCR) are encoded by V ("variable"), D ("diversity"), J ("joining"), and C ("constant") genes (or gene "segments") located in TCR and BCR loci. Numerous different versions of each segment type are found in germline DNA. (For example, in humans there are > 80 different TCR*alpha* V segments.) During lymphocyte development, through a process called "somatic recombination", or "v(d)j recombination" (in contrast to "genetic recombination" during meiosis), individual v,d,j and c segments are selected to encode a unique TCR or BCR sequence for each cell. The unselected segments are excised from the DNA. The nearly random selection and combination of individual v,d,j and c segments, promotes a vast (est. > 10<sup>15</sup> ) combinatorial diversity of potential unique antigen binding domains encoded on individual lymphocyte antigen receptors. Antigen receptor diversity generated through somatic recombination, and immune memory promoted through lymphocyte clonal expansion are the hallmarks of vertebrate adaptive immunity.
 
 
 [https://en.wikipedia.org/wiki/V(D)J_recombination](https://en.wikipedia.org/wiki/V\(D\)J_recombination)
 
 [v(d)j recombination](https://www.ncbi.nlm.nih.gov/books/NBK27140/)
+
+Reference nomenclature for v,d,j gene loci in mouse/human: [IMGT]([http://www.imgt.org/genedb/](https://www.imgt.org/IMGTrepertoire/))
+
+Note on the _nearly_ randomness of the v.d.j recombination process: In practice, germline v,d,j genes do not have the exact same probability of being used for a rearrangement, notably because they differ in terms of their copy number, DNA conformation/chromatin accessibility, and because the process of segment excision is iterative (if a non-functional (= non-productive) rearrangement is generated after a first round of excision favoring genes in the middle of the locus, a second round of rearrangement may occur using more distal genes before the clone is discarded). See [this review](https://pubmed.ncbi.nlm.nih.gov/29944757/) for a quantitative discussion of the matter and its consequence when assessing repertoire sharing.
+
+* * *
 <br>
 <br>
 
@@ -16,9 +22,9 @@ In vertebrates, the lymphocyte antigen receptors, T Cell Receptor (TCR) and B Ce
 
 The presence of RNA transcript counts arising from antigen receptor sequences can promote clustering in sc-RNA-Seq analysis. This can be biologically interesting, or not, depending on the experiment.
 
-For example, there are two subtypes of TCRs, TCR*a*/*b*, or TCR*g*/*d*.  These two different T cell subsets  have distinct biological activities, so segregation of these two subsets is generally useful, and the differential expression of TRA, TRB, TRG and TRD transcripts are useful to promote subset segregation and annotation.
+For example, there are two subtypes of TCRs, TCR*a*/*b* (alpha/beta), or TCR*g*/*d* (gamma/delta). These two different T cell subsets have distinct biological activities, so segregation of these two subsets is generally useful, and the differential expression of TRA, TRB, TRG and TRD transcripts are useful to promote subset segregation and annotation. Broadly speaking, CD4/CD8 T lymphocytes express alpha/beta TCRs while gamma/delta T lymphocytes express gamma/delta TCRs in absence of CD4/CD8 co-stimulatory protein. However, there are some exceptions: for example, a sub-population of [CD4+ Vd1+](https://pubmed.ncbi.nlm.nih.gov/25709606/) (i.e. using TCR V gene, segment delta 1) T cells. 
 
-There are also two general subtypes of BCRs, defined by the usage of either lambda ( *k* ) or kappa ( *l* ) light chains. The biological activities, however, of these two B cell subtypes are less distinct, so clustering induced by differential *l* or *k* gene segment usage may not be interesting to a specific experiment, and in fact, can often promote significant subclustering which can interfere with identification and annotation of more biologically or experimentally interesting clustering and annotation. (Although, there may be some experimental situations where quantification of kappa and lambda B cells is of interest.)
+There are also two general subtypes of BCRs, defined by the usage of either lambda ( *l* ) or kappa ( *k* ) light chains. The biological activities, however, of these two B cell subtypes are less distinct, so clustering induced by differential *l* or *k* gene segment usage may not be interesting to a specific experiment, and in fact, can often promote significant subclustering which can interfere with identification and annotation of more biologically or experimentally interesting clustering and annotation. (Although, there may be some experimental situations where quantification of kappa and lambda B cells is of interest.)
 <br>
 <br>
 
@@ -200,19 +206,19 @@ Mucosal Associated Invariant T (MAIT) cells and Invariant Natural Killer-like T 
 
 In humans, MAIT cells have been documented as using TRAV1-2 and TRAJ12, TRAJ20, and TRAJ33. (Mice use a Trav1-Traj33 TCR*a* chain, paired with Trbv19 or Trbv13 TCR*b* chains.
 
-(Importantly, look for MAIT-specific antibodies in CITE-Seq panels ("TCRVa7.2-prot" for example, in the Biologends TotalSeq B panel.) MAIT cells may best be best found using integrated RNA-Seq and ADT signals.)
+(Importantly, look for MAIT-specific antibodies in CITE-Seq panels ("TCRVa7.2-prot" for example, in the Biologends TotalSeq B panel. Also note the difference in nomenclature: MAIT-specific _gene_ alpha chain = TRAV**1-2**; MAIT-specific _protein_ alpha chain = TCRVa**7.2**...) MAIT cells may best be best found using integrated RNA-Seq and ADT signals.)
 
 
 Human iNKT cells have been documented as using TRV24, TRAJ18, and TRBV11, (mice use Trav14 and Traj18).
 
-However, TCR usage in these cells types is an ongoing avenue of research, so it may be better to identify and annotate these cell types using unfiltered datasets.
+However, TCR usage in these cells types is an ongoing avenue of research, so it may be better to identify and annotate these cell types using unfiltered datasets and other known markers.
 
 <br>
 <br>
 
 **Vertebrate species with poorly annotated transcripts**
 
-Some vertebrate species may not have sufficient annotation to allow identification of TCR and BCR transcripts by Gene Symbols.
+Some vertebrate species may not have sufficient annotation to allow identification of TCR and BCR transcripts by Gene Symbols. The IMGT provides correspondence between species [here](https://www.imgt.org/IMGTrepertoire/LocusGenes/#N).
 
 This code, (provided by Will Gammerdinger, thanks Will!!) should help identify these transcripts in GFF3 annotation.
 

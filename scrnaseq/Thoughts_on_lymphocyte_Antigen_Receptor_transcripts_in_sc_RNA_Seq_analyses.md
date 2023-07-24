@@ -12,8 +12,6 @@ In vertebrates, the lymphocyte antigen receptors, T Cell Receptor (TCR) and B Ce
 Reference nomenclature for v,d,j gene loci in mouse/human: [IMGT]([http://www.imgt.org/genedb/](https://www.imgt.org/IMGTrepertoire/))
 
 Note on the _nearly_ randomness of the v.d.j recombination process: In practice, germline v,d,j genes do not have the exact same probability of being used for a rearrangement, notably because they differ in terms of their copy number, DNA conformation/chromatin accessibility, and because the process of segment excision is iterative (if a non-functional (= non-productive) rearrangement is generated after a first round of excision favoring genes in the middle of the locus, a second round of rearrangement may occur using more distal genes before the clone is discarded). See [this review](https://pubmed.ncbi.nlm.nih.gov/29944757/) for a quantitative discussion of the matter and its consequence when assessing repertoire sharing.
-
-* * *
 <br>
 <br>
 
@@ -28,9 +26,13 @@ There are also two general subtypes of BCRs, defined by the usage of either lamb
 <br>
 <br>
 
+* * *
 
-**Removing antigen receptor transcripts from Seurat objects**
+### Removing antigen receptor transcripts from Seurat objects
+<br>
+<br>
 
+**By filtering the Seurat object:**
 
 If the analyst and the client are interested in observing the effects on clustering promoted by antigen receptor genes, these are readily removed by subsetting the object.
 
@@ -177,7 +179,128 @@ Here is a link to an .html document  demonstrating removal of BCR transcripts
 <br>
 
 
-**Considerations and Best Practices**
+**By excluding TCR transcripts from variable features before dimensionality reduction:**
+
+An alternative approach consists in keeping all genes in the Seurat object (thus avoiding bias in normalization due to the removal of those genes, which may be highly expressed in activated T lymphocytes and thus represent a large fraction of a cell's captured transcriptome). 
+
+For a single sample (no merging or integration of the data), simply add this to your standard normalization and dimensionality reduction workflow, here with SCT:
+
+```
+# Perform SCT-normalization
+seurat_clean <- SCTransform(seurat_clean, verbose = FALSE,
+                            variable.features.n = 3200)
+
+# Exclude TRAV/TRAJ and TRBV/TRBJ genes from top features for PCA reduction
+var_features <- VariableFeatures(seurat_clean)
+delIdx <- c(grep("Trbv", var_features), grep("Trbj", var_features), 
+            grep("Trav", var_features), grep("Traj", var_features))
+var_features[delIdx]  # Print outcomes of `grep()` to ensure no exclusion of other genes!!
+if (length(delIdx) > 0) { var_features <- var_features[-delIdx] }
+
+# Manually force VariableFeatures() to the top 3000 features in the remaining vector
+VariableFeatures(seurat_clean) <- var_features[1:3000]
+
+# Calculate PCs
+DefaultAssay(seurat_clean) <- "SCT"
+seurat_clean <- RunPCA(seurat_clean, assay = "SCT", npcs = 50)
+
+# Perform dimensionality reduction on SCT assay
+DefaultAssay(seurat_clean) <- "SCT"
+seurat_clean <- RunUMAP(seurat_clean, 
+                        reduction = "pca", 
+                        reduction.name = 'umap.rna', 
+                        reduction.key = "UMAPxRNA_",
+                        dims = 1:rpcs)
+```
+
+
+When working with multiple samples and running SCT on each independently before merge (or if applicable, integration), use the following:
+
+```
+# Perform SCT-normalization on each individual sample
+seurat_ls <- SplitObject(seurat_clean, split.by = "orig.ident")
+
+for (i in 1:length(seurat_ls)) {
+  print(paste0("Processing sample ", i))
+  seurat_ls[[i]] <- SCTransform(seurat_ls[[i]], verbose = TRUE,
+                                variable.features.n = 3000,
+                                vars.to.regress = rna_regress)
+}
+
+# Find most variable features across samples to merge
+var_features <- SelectIntegrationFeatures(object.list = seurat_ls, nfeatures = 3200) 
+
+# Exclude TRAV/TRAJ and TRBV/TRBJ genes from top features for PCA reduction
+delIdx <- c(grep("TRBV", var_features), grep("TRBJ", var_features), 
+            grep("TRAV", var_features), grep("TRAJ", var_features))
+var_features[delIdx]
+var_features <- var_features[-delIdx]
+var_features <- var_features[1:3000]
+
+
+# Merge SCT-normalized samples
+seurat_sct <- merge(x = seurat_ls[[1]],
+                    y = seurat_ls[2:length(seurat_ls)],
+                    merge.data = TRUE)
+DefaultAssay(seurat_sct) <- "SCT"
+
+# Manually set variable features of merged Seurat object
+VariableFeatures(seurat_sct) <- var_features
+
+# Calculate PCs using manually set variable features
+seurat_sct <- RunPCA(seurat_sct, assay = "SCT", npcs = 50)
+seurat_sct <- RunUMAP(seurat_sct, 1:40)
+```
+
+For integration with Seurat CCA rather than simple sample merge, use this:
+
+```
+# Perform SCT-normalization on each individual sample
+seurat_ls <- SplitObject(seurat_clean, split.by = "orig.ident")
+
+for (i in 1:length(seurat_ls)) {
+  print(paste0("Processing sample ", i))
+  seurat_ls[[i]] <- SCTransform(seurat_ls[[i]], verbose = TRUE,
+                                variable.features.n = 3000,
+                                vars.to.regress = rna_regress)
+}
+
+# Find integration features across samples
+integ_features <- SelectIntegrationFeatures(object.list = seurat_ls, nfeatures = 3200) 
+
+# Exclude TRAV/TRAJ and TRBV/TRBJ genes from top features for integration
+delIdx <- c(grep("TRBV", integ_features), grep("TRBJ", integ_features), 
+            grep("TRAV", integ_features), grep("TRAJ", integ_features))
+sort(integ_features[delIdx])
+integ_features <- integ_features[-delIdx]
+integ_features <- integ_features[1:3000]
+
+# Prepare SCT objects for integration
+seurat_ls <- PrepSCTIntegration(object.list = seurat_ls,
+				anchor.features = integ_features)
+
+# Find anchors across normalized dataset
+integ_anchors <- FindIntegrationAnchors(object.list = seurat_ls, 
+                                        normalization.method = "SCT", 
+                                        anchor.features = integ_features)
+
+# Integrate by sample
+seurat_cca <- IntegrateData(anchorset = integ_anchors,
+                            normalization.method = "SCT")
+
+# Update UMAP using integrated assay
+DefaultAssay(seurat_cca) <- "integrated"
+seurat_cca <- RunPCA(seurat_cca)
+seurat_cca <- RunUMAP(seurat_cca, dims = 1:40)
+```
+
+See normalization and harmonization reports in [this GitHub repo](https://github.com/hbc/sinclair_scRNA-CITE-seq_mouse_T-cells_aging_hbc04771/tree/main) (single sample) or [this one](https://github.com/hbc/chandraker_scRNASeq_human_PBMC_kidney_transplant_hbc04749/tree/main) (multiple samples with merge/integration) for a complete example.
+
+<br>
+<br>
+* * *
+
+### Considerations and Best Practices
 <br>
 <br>
 

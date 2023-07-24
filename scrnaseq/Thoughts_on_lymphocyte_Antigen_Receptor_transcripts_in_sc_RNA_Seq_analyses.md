@@ -187,6 +187,8 @@ Here is a link to an .html document  demonstrating removal of BCR transcripts
 
 An alternative approach consists in keeping all genes in the Seurat object (thus avoiding bias in normalization due to the removal of those genes, which may be highly expressed in activated T lymphocytes and thus represent a large fraction of a cell's captured transcriptome). 
 
+_NOTE:_ In the following, you will notice that we only removed TRAV/TRAJ and TRBV/TRBJ genes. This is because in practice TRDV/TRDJ segments are rarely sequenced (they are so short that it is difficult to map them to the genome, especially since the germline sequence is further modified by adding some non-templated nucleotides before joining the v,d and j segments).
+
 For a single sample (no merging or integration of the data), simply add this to your standard normalization and dimensionality reduction workflow, here with SCT:
 
 ```

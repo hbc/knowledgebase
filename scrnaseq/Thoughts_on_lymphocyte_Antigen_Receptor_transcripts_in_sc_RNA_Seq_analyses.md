@@ -322,20 +322,24 @@ Where best in the workflow to filter antigen receptor features? I'd advocate mak
 
 You may want to remove transcripts from both the RNA and SCT assays, which will require two different indexing vectors taken from the rownames of these different assays.
 
-An alternative approach is just to filter receptor transcripts from the scale data slot in the SCT assay.
+An alternative approach, see above Option 2.
 
 <br>
 <br>
 
 **MAIT cells and iNKT cells**
 
-[iNKT cells](https://en.wikipedia.org/wiki/Natural_killer_T_cell)
 [MAIT cells](https://en.wikipedia.org/wiki/Mucosal-associated_invariant_T_cell)
+
+
+
+[iNKT cells](https://en.wikipedia.org/wiki/Natural_killer_T_cell)
+
 
 
 Mucosal Associated Invariant T (MAIT) cells and Invariant Natural Killer-like T (iNKT) cells are a subset of T cells, or T cell-like cells that utilize a limited repertoire of TCR gene segments, and the presence of these transcripts could potentially be useful for identifying these rare cell subsets.
 
-In humans, MAIT cells have been documented as using TRAV1-2 and TRAJ12, TRAJ20, and TRAJ33. (Mice use a Trav1-Traj33 TCR*a* chain, paired with Trbv19 or Trbv13 TCR*b* chains.
+In humans, MAIT cells have been documented as using TRAV1-2 (official nomenclature V*a*7.2) and TRAJ12, TRAJ20, and TRAJ33. (Mice use a Trav1-Traj33 TCR*a* chain, paired with Trbv19 or Trbv13 TCR*b* chains.
 
 (Importantly, look for MAIT-specific antibodies in CITE-Seq panels ("TCRVa7.2-prot" for example, in the Biologends TotalSeq B panel. Also note the difference in nomenclature: MAIT-specific _gene_ alpha chain = TRAV**1-2**; MAIT-specific _protein_ alpha chain = TCRVa**7.2**...) MAIT cells may best be best found using integrated RNA-Seq and ADT signals.)
 

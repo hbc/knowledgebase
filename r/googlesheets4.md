@@ -25,7 +25,7 @@ gs4_auth()
 This should open up a default browser window that should look similar to this:
 
 <p align="center">
-<img src="../img/" width="900">
+<img src="../img/Tidyverse_API.png" width="400">
 </p>
 
 > Note: If you want to see all of the authenticated Google Accounts, you can also use the aforementioned command. 

@@ -169,8 +169,12 @@ mtcars_example_2 <- read_sheet("1CIvBGKSWoe-h2WNeBr6-eqB40xdhQ9ACZukrNsSgGFA")
 
 And as long as your Sheet name is unique you can use the `gs4_find()` function in conjunction with your `read_sheet()` function to read in a Sheet:
 
+```
 mtcars_example_3 <-  read_sheet(gs4_find("sample_data_2"))
+```
 
 One problem with this is that Google Sheets will by default only import the first tab of a Google Sheet. If you want a different tab, you'll need to specify it specifically with the `sheet` argument. In our example, we have mtcars in the first tab but iris in the second tab. If we wanted the second `iris` tab of the spreadsheet, then we would need to do:
 
+```
 iris_example <- read_sheet("https://docs.google.com/spreadsheets/d/1CIvBGKSWoe-h2WNeBr6-eqB40xdhQ9ACZukrNsSgGFA", sheet = "iris")
+```

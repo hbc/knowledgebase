@@ -9,11 +9,12 @@ In this KB entry, you will:
 
 ## Setting up Shiny Surveys
 
-This KB entry assumes you have gone through the previous KB entry on R Shiny and will build upon some of these concepts. In order to use `Shinysurveys`, you will need to install and load `Shinysurveys`:
+This KB entry assumes you have gone through the previous KB entry on R Shiny and will build upon some of these concepts. In order to use `Shinysurveys`, you will need to install and load `shinysurveys` as well as loading `shiny`:
 
 ```
 install.packages("shinysurveys")
 library(shinysurveys)
+library(shiny)
 ```
 
 ## Developing a survey using Shinysurveys

@@ -132,7 +132,7 @@ data_to_add_to_iris <- data.frame(col1= c(5.5, 6.2), col2 = c(3.5, 3.6), col3 = 
 Now we can append the sheet:
 
 ```
-sheet_append(gs4_find("sample_data_2"), data_to_add_to_iris, sheet = "iris")
+sheet_append(gs4_find("sample_data_2"), data_to_add_to_iris, sheet = "iris_tab")
 ```
 
 You can replace the `gs4_find("sample_data_2")` with the Google Drive ID or URL, but to make this example more universal, I chose to use this function.

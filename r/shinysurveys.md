@@ -3,7 +3,7 @@
 ## Learning Objectives
 
 In this KB entry, you will:
-  - Develop a survey using Shinysurveys
+  - Develop surveys using Shinysurveys
   - Create additional input modes
   - Connect your Shiny Survey to Google Sheets via shinyapps.io
 
@@ -27,7 +27,7 @@ When using Shinysurveys, the questions are formatted in a structured dataframe. 
   - `dependence_value` - Which `option` will trigger the dependency
   - `required` - A boolean if this is required to complete the survey
 
-### First example
+### First example using text responses
 
 Let's go ahead and start with a basic example of text response input:
 
@@ -78,7 +78,133 @@ The app should look like:
 <img src="img/Name_survey.png" width="600">
 </p>
 
+Now that you can see the survey it is likely more clear that the `option` argument means for text response. It is the text in the text box when the text is undefined. Also, you can see that because this question has the `required` boolean set to `TRUE`, that the "Submit" button cannot be clicked until there is a text response to the required question.
 
+
+## Second example with multiple choice
+
+Let's go ahead and add a second question about gender to our survey. To do this we are going to use a different input method, `mc` (for multiple choice). One important distinction once we start working with input methods that have multiple pre-determined answers, we will need to have the data frame entry for each choice. 
+
+
+```
+questions_df_2 <- data.frame(
+  question = c("What is your first name?",
+               "What is your gender?",
+               "What is your gender?"),
+  option = c("Enter your first name here",
+             "Female",
+             "Male"),
+  input_type = c("text",
+                 "mc",
+                 "mc"),
+  input_id = c("name",
+               "gender",
+               "gender"),
+  dependence = c(NA,
+                 NA,
+                 NA),
+  dependence_value = c(NA,
+                       NA,
+                       NA),
+  required = c(TRUE,
+               FALSE,
+               FALSE)
+)
+```
+
+We can use an almost identical `ui`, `server` and `ShinyApp()` function for this. However, we are going to make a few tweaks:
+
+```
+ui <- fluidPage(
+  surveyOutput(questions_df_2,
+               survey_title = "My first R Shiny Survey!",
+               survey_description = "This is survey is to help me understand how R Shinysurveys work.")
+)
+
+server <- function(input, output, session) {
+  renderSurvey()
+  
+  observeEvent(input$submit, {
+    response_data <- getSurveyData()
+    print(response_data)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Of course we needed to change `questions_df` to `questions_df_2` since we are using a different data frame. Additionally, we added a title and description to our survey with the `survey_title` and `survey_description` arguments. This survey should look like:
+
+<p align="center">
+<img src="img/Name_survey_2.png" width="600">
+</p>
+
+We can notice that this had added our survey title and description at the top of our survey. Also, as we fill out the survey, we can see that after we type in our name, we are also to click "Submit" without selecting a gender. This is because we set the `required` argument to `FALSE` for our gender entries in "questions_df_2".
+
+## Third Example with dependencies
+
+It could be that you want your survey to have dependencies built into it, where a question is only asked if certain previous responses were answered in a given way. We can do this, by adding in a "Prefer to self-describe" option:
+
+```
+questions_df_3 <- data.frame(
+  question = c("What is your first name?",
+               rep("What is your gender?", 3),
+               "What is your preferred gender identification?"),
+  option = c("Enter your first name here",
+             "Female",
+             "Male",
+             "Prefer to self-describe",
+             "Enter your preferred gender indentifcation here"),
+  input_type = c("text",
+                 rep("select", 3),
+                 "text"),
+  input_id = c("name",
+               rep("gender", 3),
+               "preferred_gender_identification"),
+  dependence = c(rep(NA, 4),
+                 "gender"),
+  dependence_value = c(rep(NA, 4),
+                       "Prefer to self-describe"),
+  required = c(rep(TRUE, 5))
+)
+```
+
+The rest of the `ui`, `server` and `ShinyApp()` is siialr to before:
+
+```
+ui <- fluidPage(
+  surveyOutput(questions_df_3,
+               survey_title = "My first R Shiny Survey!",
+               survey_description = "This is survey is to help me understand how R Shinysurveys work.")
+)
+
+server <- function(input, output, session) {
+  renderSurvey()
+  
+  observeEvent(input$submit, {
+    response_data <- getSurveyData()
+    print(response_data)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+We've made some changes here to help create less clutter in the code and also demonstrate a different input mode.
+
+1) We are now using the `rep()` function quite a bit. This is not necessary and you could choose to write out "What is your gender?" three times, but I hope it makes the code a bit more concise.
+2) We have changed our `input_type` for the gender question from "mc" to "select". This change was only made to demonstrate a different input type. Both input types are compatiable with dependencies.
+3) We now have a dependency. Our fifth entry "What is your preferred gender identification?" is dependent on the `input_id` of "gender" and having the "Prefer to self-describe" selected since "Prefer to self-describe" is defined in the `dependence_value` argument. In this case, this might be how the survey could look for someone who identifes as "Male":
+
+<p align="center">
+<img src="img/Name_survey_without_dependency_showing.png" width="600">
+</p>
+
+While someone who identifes as non-binary would have a survey that looks like:
+
+<p align="center">
+<img src="img/Name_survey_with_dependency_showing.png" width="600">
+</p>
 
 
 

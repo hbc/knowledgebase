@@ -206,7 +206,241 @@ While someone who identifes as non-binary would have a survey that looks like:
 <img src="img/Name_survey_with_dependency_showing.png" width="600">
 </p>
 
+## Creating additional input modes
 
+### Slider
 
+Unfortunately, Shinysurvey does not have th entire range of input options that Shiny has by default. However, there are ways to add them. Below, we will show an example of how to add a slider input. In our script we will need to add:
 
+```
+extendInputType(input_type = "slider", {
+  shiny::sliderInput(
+    inputId = surveyID(),
+    label = surveyLabel(),
+    min = 1,
+    max = 10,
+    value = 5
+  ) 
+})
+```
+
+And we can check that this input type was added by querying our extended input types with:
+
+```
+shinysurveys::listInputExtensions()
+```
+
+Now we can add a question to our survey about how the respondent's day is going using a slider:
+
+```
+questions_df_4 <- data.frame(
+  question = c("What is your first name?",
+               rep("What is your gender?", 3),
+               "What is your preferred gender identification?",
+               "On a scale of 1 (worst) - 10 (best), rate how well your day is going "),
+  option = c("Enter your first name here",
+             "Female",
+             "Male",
+             "Prefer to self-describe",
+             "Enter your preferred gender indentifcation here",
+             NA),
+  input_type = c("text",
+                 rep("mc", 3),
+                 "text",
+                 "slider"),
+  input_id = c("name",
+               rep("gender", 3),
+               "preferred_gender_identification",
+               "day_feeling_scale"),
+  dependence = c(rep(NA, 4),
+                 "gender",
+                 NA),
+  dependence_value = c(rep(NA, 4),
+                       "Prefer to self-describe",
+                       NA),
+  required = c(rep(TRUE, 5), FALSE)
+)
+
+ui <- fluidPage(
+  surveyOutput(questions_df_4,
+               survey_title = "My first R Shiny Survey!",
+               survey_description = "This is survey is to help me understand how R Shinysurveys work.")
+)
+
+server <- function(input, output, session) {
+  renderSurvey()
+  
+  observeEvent(input$submit, {
+    response_data <- getSurveyData()
+    print(response_data)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+This App should render like this:
+
+<p align="center">
+<img src="img/Name_survey_with_scale.png" width="600">
+</p>
+
+### Date
+
+### Checkbox
+
+## Connect your Shiny Survey to Google Sheets via shinyapps.io
+
+### Connecting Google Sheets to your Shiny Survey
+
+It is nice that this input is printed to the console, but that isn't particularly helpful if we are trying to deploy this survey. We may want the responses hosted somewhere like Google Sheets. This KB entry assumes that you have reviewed the KB entry for Google Sheets. The first thing we are going to do is load out `googlesheets4` package.
+
+```
+library(googlesheets4)
+```
+
+Now we are going to make make a new spreadsheet called "survey_response_data" either directly in Google Sheets or through R. Note, you would not want to put this creation step in your Shiny survey app as it could re-create the spreadsheet each time the app is run.
+
+```
+header <- data.frame(matrix(nrow = 0, ncol = 4))
+colnames(header) <- c("names", "gender", "preferred_gender", "day_feeling_scale")
+gs4_create("survey_response_data", sheets = header)
+```
  
+We can now modify the `server` of our previos script to write the output to this Google Sheet:
+
+```
+questions_df_4 <- data.frame(
+  question = c("What is your first name?",
+               rep("What is your gender?", 3),
+               "What is your preferred gender identification?",
+               "On a scale of 1 (worst) - 10 (best), rate how well your day is going "),
+  option = c("Enter your first name here",
+             "Female",
+             "Male",
+             "Prefer to self-describe",
+             "Enter your preferred gender indentifcation here",
+             NA),
+  input_type = c("text",
+                 rep("mc", 3),
+                 "text",
+                 "slider"),
+  input_id = c("name",
+               rep("gender", 3),
+               "preferred_gender_identification",
+               "day_feeling_scale"),
+  dependence = c(rep(NA, 4),
+                 "gender",
+                 NA),
+  dependence_value = c(rep(NA, 4),
+                       "Prefer to self-describe",
+                       NA),
+  required = c(rep(TRUE, 5), FALSE)
+)
+
+ui <- fluidPage(
+  surveyOutput(questions_df_4,
+               survey_title = "My first R Shiny Survey!",
+               survey_description = "This is survey is to help me understand how R Shinysurveys work.")
+)
+
+server <- function(input, output, session) {
+  renderSurvey()
+  
+  observeEvent(input$submit, {
+    response_data <- getSurveyData()
+    sheet_append(gs4_find("survey_response_data"), as.data.frame(t(response_data$response)))
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Now we have written from our Shiny Survey to Google Sheets locally, but now we will look into deploying
+
+### Deployment of Shiny Survey with Google Sheets integration onto shinyapps.io
+
+Now we will likely want to deploy our Shiny Survey onto shinyapps.io with Google integration. The first step in doing this is to create a directory to hold your app. In my case, I am going to call it "Example_survey". Within this directory, I am going to place an Rscript called `app.R` which is going to hold the below script:
+
+```
+library(shiny)
+library(shinysurveys)
+library(googlesheets4)
+
+extendInputType(input_type = "slider", {
+  shiny::sliderInput(
+    inputId = surveyID(),
+    label = surveyLabel(),
+    min = 1,
+    max = 10,
+    value = 5
+  ) 
+})
+
+questions_df_4 <- data.frame(
+  question = c("What is your first name?",
+               rep("What is your gender?", 3),
+               "What is your preferred gender identification?",
+               "On a scale of 1 (worst) - 10 (best), rate how well your day is going "),
+  option = c("Enter your first name here",
+             "Female",
+             "Male",
+             "Prefer to self-describe",
+             "Enter your preferred gender indentifcation here",
+             NA),
+  input_type = c("text",
+                 rep("mc", 3),
+                 "text",
+                 "slider"),
+  input_id = c("name",
+               rep("gender", 3),
+               "preferred_gender_identification",
+               "day_feeling_scale"),
+  dependence = c(rep(NA, 4),
+                 "gender",
+                 NA),
+  dependence_value = c(rep(NA, 4),
+                       "Prefer to self-describe",
+                       NA),
+  required = c(rep(TRUE, 5), FALSE)
+)
+
+ui <- fluidPage(
+  surveyOutput(questions_df_4,
+               survey_title = "My first R Shiny Survey!",
+               survey_description = "This is survey is to help me understand how R Shinysurveys work.")
+)
+
+server <- function(input, output, session) {
+  renderSurvey()
+  
+  observeEvent(input$submit, {
+    response_data <- getSurveyData()
+    sheet_append("GOOGLE_DRIVE_ID", as.data.frame(t(response_data$response)))
+  })
+}
+
+shinyApp(ui, server)
+```
+
+> NOTE: You will also need to edit the `sheet_append()` function to have the Google Drive ID for your spreadsheet in there. For some reason, the `gs4_find()` function was timing out and disconnecting me.
+
+Next, we are going to need to create a `.secrets` file to be included in the directory that we upload that has our Google key.
+
+```
+setwd("~/Documents/Example_survey/")
+gs4_auth(email = "YOUR_GOOGLE_ACCOUNT@gmail.com", cache = ".secrets")
+```
+
+This should bring up the authentication page that we have seen before with with authentication and complete it. Now add the following line to the top of our  `app.R` script.
+
+```
+gs4_auth(cache = ".secrets", email = "YOUR_GOOGLE_ACCOUNT@gmail.com")
+```
+
+Now follow the normal instructions for uploading an R Shiny App to shinyapp.io and you are now hosting an Shiny survey on shinyapps.io that is recording your data in real-time to Google Sheets!
+
+## Additional helpful resources
+https://shinysurveys.jdtrat.com/articles/surveying-shinysurveys.html
+https://cran.r-project.org/web/packages/shinysurveys/vignettes/custom-input-extensions.html
+https://debruine.github.io/shinyintro/data.html

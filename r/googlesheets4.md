@@ -142,7 +142,7 @@ You can replace the `gs4_find("sample_data_2")` with the Google Drive ID or URL,
 You can also overwrite a Google sheet using the `sheet_write()` function. 
 
 ```
-sheet_write(iris, "https://docs.google.com/spreadsheets/d/1CIvBGKSWoe-h2WNeBr6-eqB40xdhQ9ACZukrNsSgGFA", sheet = "iris")
+sheet_write(iris, "https://docs.google.com/spreadsheets/d/1CIvBGKSWoe-h2WNeBr6-eqB40xdhQ9ACZukrNsSgGFA", sheet = "iris_tab")
 ```
 
 Now we can see that we have overwritten our `iris` tab again. 

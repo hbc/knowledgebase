@@ -116,13 +116,13 @@ example, BUCKET_NAME zach created & gave permissions for: mbcf-hsph
 
 Login to HMS transfer node (`ssh username@transfer.rc.hms.harvard.edu`)
 
-$gcloud init (answer questions-defaults are typically fine)
+$`gcloud init` (answer questions-defaults are typically fine)
 
-$gsutil ls -l gs://mbcf-hsph
+$`gsutil ls -l gs://mbcf-hsph`
 
-$gsutil cp -R gs://mbcf-hsph/ test/   *I only got it to work by specifying a folder at the destination so this is how I do it - created folder test and cp to it. could go up one folder level but didn't do that for various reasons.
+$`gsutil cp -R gs://mbcf-hsph/ test/`   *I only got it to work by specifying a folder at the destination so this is how I do it - created folder test and cp to it. could go up one folder level but didn't do that for various reasons.
 
-$ nohup gsutil cp -R gs://mbcf-hsph/ test/    *I always use nohup - keeps the transfer going even if there's a network/power issue, etc.
+$`nohup gsutil cp -R gs://mbcf-hsph/ test/`    *I always use nohup - keeps the transfer going even if there's a network/power issue, etc.
 
 (CommandException: Destination URL must name a directory, bucket, or bucket
 subdirectory for the multiple source form of the cp command. 
@@ -130,7 +130,8 @@ Note: This error, due to an unrelated syntax issue, is why i specify a folder. m
 
 misc
 
-tail nohup.out 
+$`tail nohup.out`
+
 Copying gs://mbcf-hsph/231011_KT10562_fastq/multiqc_data/multiqc_sources.txt... 
 Copying gs://mbcf-hsph/231011_KT10562_fastq/multiqc_report.html...              
 / [919 files][  1.2 TiB/  1.2 TiB]    3.6 MiB/s 

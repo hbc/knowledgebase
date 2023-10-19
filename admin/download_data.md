@@ -98,6 +98,45 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
 
 *note the escaped exclamation point in the password (\!), they like to put characters like that in their passwords. (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
 
+## MBCF Google Bucket
+
+-Zach setup a google bucket since the FTP server was painfully slow for data downloads over 1TB (3 days vs 6 hours)
+
+How do I access Google bucket from browser? (for viewing only)
+
+Use: https://console.cloud.google.com/storage/browser/ BUCKET_NAME .
+
+(https://cloud.google.com/storage/docs/cloud-console)
+
+example, BUCKET_NAME zach created & gave permissions for: mbcf-hsph
+*https://console.cloud.google.com/storage/browser/mbcf-hsph*
+
+
+(gsutil credentials need to be setup - presumably best to use a gmail address. Once you do this may not need to do it again. Check elsewhere for info on this (broad, terra). )
+
+Login to HMS transfer node (`ssh username@transfer.rc.hms.harvard.edu`)
+
+$gcloud init (answer questions-defaults are typically fine)
+
+$gsutil ls -l gs://mbcf-hsph
+
+$gsutil cp -R gs://mbcf-hsph/ test/   *I only got it to work by specifying a folder at the destination so this is how I do it - created folder test and cp to it. could go up one folder level but didn't do that for various reasons.
+
+$ nohup gsutil cp -R gs://mbcf-hsph/ test/    *I always use nohup - keeps the transfer going even if there's a network/power issue, etc.
+
+(CommandException: Destination URL must name a directory, bucket, or bucket
+subdirectory for the multiple source form of the cp command. 
+Note: This error, due to an unrelated syntax issue, is why i specify a folder. makes no sense, but works.)
+
+misc
+
+tail nohup.out 
+Copying gs://mbcf-hsph/231011_KT10562_fastq/multiqc_data/multiqc_sources.txt... 
+Copying gs://mbcf-hsph/231011_KT10562_fastq/multiqc_report.html...              
+/ [919 files][  1.2 TiB/  1.2 TiB]    3.6 MiB/s 
+
+HMS RC also suggested: Rclone - here is a good link to get you started. https://rclone.org/googlecloudstorage/
+
 # Broad Institute
 
 - It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs.

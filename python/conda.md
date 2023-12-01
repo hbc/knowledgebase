@@ -19,7 +19,10 @@ mamba create -p /path/to/somewhere/not/home/myEnv -c channel1 packagex==1.23
 
 Example for package install for [dictys](https://github.com/pinellolab/dictys/tree/master):
 
-```
+```bash
 conda create -p  /n/data1/cores/bcbio/meeta_mistry/conda/dictys -y -c conda-forge python=3.9 mamba
-``
+```
+
+> **NOTE:** It's common that installing packages using Conda is slow or fails because Conda is unable to resolve dependencies. To get around this, we suggest the use of Mamba.
+
  

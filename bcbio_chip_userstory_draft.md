@@ -67,8 +67,15 @@ cat SRR6823773.fastq | gzip > ko_sample2_input.fastq.gz
 rm SRR6823773.fastq
 ```
 
-#### 1.2 Copy the template YAML file describing the CHiP-seq analysis
+#### 1.2 Create the template YAML file describing the ChIP-seq analysis
 
+Create the yaml file and then copy in the example text.
+
+```bash
+mkdir templates
+cd templates
+nano chip-example.yaml
+```
 
 chip-example.yaml: 
 
@@ -92,17 +99,24 @@ Here we are telling bcbio that we want our reads trimmed (trim_reads: read_throu
 
 #### 1.3 Create a sample sheet
 
+Create the sample sheet then copy in the example text.
+
+```bash
+mkdir metadata
+cd metadata
+nano neurons.csv
+```
 
 ```
 File,description,genotype,enzyme,batch,phenotype,antibody
 ko_sample1_chip.fastq.gz,ko_sample1_chip,KO,PRDM19,pair1,chip,narrow
-ko_sample1_input.fastq.gz,ko_sample1_input,KO,PRDM19,pair1,input,narrow
+ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1,input,narrow
 ko_sample2_chip.fastq.gz,ko_sample2_chip,KO,PRDM19,pair2,chip,narrow
-ko_sample2_input.fastq.gz,ko_sample2_input,KO,PRDM19,pair2,input,narrow
+ko_sample2_input.fastq.gz,ko_sample2_input,KO,INPUT,pair2,input,narrow
 wt_sample1_chip.fastq.gz,wt_sample1_chip,WT,PRDM19,pair3,chip,narrow
-wt_sample1_input.fastq.gz,wt_sample1_input,WT,PRDM19,pair3,input,narrow
+wt_sample1_input.fastq.gz,wt_sample1_input,WT,INPUT,pair3,input,narrow
 wt_sample2_chip.fastq.gz,wt_sample2_chip,WT,PRDM19,pair4,chip,narrow
-wt_sample2_input.fastq.gz,wt_sample2_input,WT,PRDM19,pair4,input,narrow
+wt_sample2_input.fastq.gz,wt_sample2_input,WT,INPUT,pair4,input,narrow
 ```
 
 The necessary columns here are: `File`, `description`, `batch`, `phenotype` and `antibody`. 
@@ -114,49 +128,57 @@ Here we have one input for every chip. For example ko_sample1 has ko_sample1_chi
 
 
 ```
-
+File,description,genotype,enzyme,batch,phenotype,antibody
+ko_sample1_chip_prdm.fastq.gz,ko_sample1_chip_prdm,KO,PRDM19,pair1,chip,narrow
+ko_sample1_chip_h3k4.fastq.gz,ko_sample1_chip_h3k4,KO,H3K4Me1,pair2,chip,narrow
+ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1;pair2,input,narrow
+ko_sample2_chip_prdm.fastq.gz,ko_sample2_chip_prdm,KO,PRDM19,pair3,chip,narrow
+ko_sample2_chip_h3k4.fastq.gz,ko_sample2_chip_h3k4,KO,H3K4Me1,pair4,chip,narrow
+ko_sample2_input.fastq.gz,ko_sample2_input,KO,INPUT,pair3;pair4,input,narrow
+wt_sample1_chip_prdm.fastq.gz,wt_sample1_chip,WT,PRDM19,pair5,chip,narrow
+wt_sample1_chip_h3k4.fastq.gz,wt_sample1_chip,WT,H3K4Me1,pair6,chip,narrow
+wt_sample1_input.fastq.gz,wt_sample1_input,WT,INPUT,pair5;pair6,input,narrow
+wt_sample2_chip_prdm.fastq.gz,wt_sample2_chip,WT,PRDM19,pair7,chip,narrow
+wt_sample2_chip_h3k4.fastq.gz,wt_sample2_chip,WT,H3K4Me1,pair8,chip,narrow
+wt_sample2_input.fastq.gz,wt_sample2_input,WT,INPUT,pair7;pair8,input,narrow
 ```
 
+We have changed file names and descriptions because bcbio does not allow for duplicates. Each chip must be in its own pair ONLY with its associated input file. Since `ko_sample1_chip_prdm` and `ko_sample1_chip_h3k4` are separate chips they get different pairs (pair1 and pair2 respectively) but the input ko_sample1_input matches both pair1 and pair2. Input files can match as many chips as needed and the pair names should be separated by `;`.
 
-However, please note that the `antibody` column should be added with caution.
-
-- Valid broad antibodies are: 
+The `antibody` column tells bcbio whether to call broad or narrow peaks on the data. Which peak type is the users choice but generally the follow are considered broad antibodies:
 
     {'h3f3a', 'h3k27me3', 'h3k36me3', 'h3k4me1', 'h3k79me2', 'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3', 'broad'}
 
-- Valid narrow antibodies are: 
+While the following are considered narrow antibodies:
 
     {'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac', 'narrow'}
 
 
-If you know your antibody should be called with narrow or broad peaks, supply 'narrow' or 'broad' as the antibody.
-```
-Bcbio will call narrow peaks if you have a antibody column, but do not have a vaild antibody within that list.
+If you are not sure which to use it is best to begin with narrow.
 
-By default, you will get *.narrowPeak files if you do not have a antibody column.
-```
 
 ### 2. Generate YAML config file for analysis
 ```bash
-bcbio_nextgen.py -w template metadata/atac-example.yaml metadata/hindbrain_forebrain.csv fastq
+bcbio_nextgen.py -w template metadata/chip-example.yaml metadata/neurons.csv fastq
 ```
 
 In the result you should see a folder structure:
 ```
-hindbrain_forebrain
+neurons
 |---config
 |---final
 |---work
 ```
 
-`hindbrain_forebrain/config/hindbrain_forebrain.yaml` is the main config file to run the bcbio project. You will
-see this file has a copy of the parameters in `atac-example.yaml` for each sample.
+`chip-example/config/neurons.yaml` is the main config file to run the bcbio project. You will
+see this file has a copy of the parameters in `chip-example.yaml` for each sample.
 
 ### 3. Run the analysis
 This will run the analysis on a local machine, using 16 cores.
+
 ```bash
-cd hindbrain_forebrain/work
-bcbio_nextgen.py ../config/hindbrain_forebrain.yaml -n 16
+cd neurons/work
+bcbio_nextgen.py ../config/neurons.yaml -n 16
 ```
 
 ## Parameters
@@ -182,34 +204,46 @@ bcbio_nextgen.py ../config/hindbrain_forebrain.yaml -n 16
 │   ├── data_versions.csv -- versions of data used in the pipeline
 │   ├── metadata.csv -- supplied metadata about the samples
 │   ├── multiqc
+│   │   ├──list_files_final.txt
+│   │   ├──multiqc_config.yaml
+│   │   ├──multiqc_data
+│   │   │  ├──multiqc_bcbio_metrics.txt
+│   │   │  ├──multiqc_data_final.json
+│   │   │  ├──multiqc_data.json
+│   │   │  ├──multiqc_fastqc.txt
+│   │   │  ├──multiqc_general_stats.txt
+│   │   │  ├──multiqc.log
+│   │   │  ├──multiqc_samtools_idxstats.txt
+│   │   │  ├──multiqc_samtools_stats.txt
+│   │   │  ├──multiqc_sources.txt
+│   │   │  ├──seqbuster_isomirs.txt
+│   │   │  ├──seqbuster_mirs.txt
 │   │   ├── multiqc_report.html -- multiQC report with useful quality control metrics
-│   ├── programs.txt -- versions of programs run in the pipeline
+│   ├──metrics -- folder containing metrics for each sample
+│   ├──programs.txt -- versions of programs run in the pipeline
+│   ├── project-summary.yaml
 ```
 
 ### Sample directories
 
 ```
-├── forebrain_rep1
-│   ├── forebrain_rep1-DN.bam -- dinucleosome alignments
-│   ├── forebrain_rep1-full.bam -- all fraction alignments
-│   ├── forebrain_rep1-MN.bam -- mononucleosome alignments
-│   ├── forebrain_rep1-NF.bam -- nucleosome-free alignments
-│   ├── forebrain_rep1-ready.bam -- identifical to -full
-│   ├── forebrain_rep1-ready.bam.bai 
-│   ├── forebrain_rep1-ready.bw -- bigwig file of full alignments
-│   ├── forebrain_rep1-TN.bam -- trinucleosome alignments
-│   ├── macs2 -- contains peak calls for each fraction, including the full peak calls
+├── ko_sample1_chip
+│   ├── fko_sample1_chip-ready.bam -- all alignments
+│   ├── ko_sample1_chip-ready.bam.bai 
+│   ├── fko_sample1_chip-ready.bw -- bigwig file of full alignments
+│   ├── greylist -- info on reads in greylist
+│   ├── fastqc -- FASTQC files for the sample and samtools statistics
+│   ├── macs2 -- contains peak calls 
 ```
 
-read.bam contains only uniquely mapped non-duplicated reads, see [bam cleaning function](https://github.com/bcbio/bcbio-nextgen/blob/master/bcbio/chipseq/__init__.py#L18). The stats in the `project/multiqc/multiqc_report.html` include all reads (duplicated, multimappers).
+ready.bam contains only uniquely mapped non-duplicated reads. The stats in the `project/multiqc/multiqc_report.html` include all reads (duplicated, multimappers).
 
 ## Downstream analysis
 
 ### Quality Control
 The **MultiQC** report in the project directory under `multiqc/multiqc_report.html`
-and at the **ataqv** report in the project directory under
-`ataqv/ataqv_report.html` have useful quality control information that you can
-use to help decide if your ATAC-seq project worked.
+has useful quality control information that you can
+use to help decide if your ChIP-seq project worked.
 
 It is hard to give specific cutoffs of metrics to use since the kit, the sample
 material, the organism, the genome annotations and so on all affect all of the
@@ -220,47 +254,16 @@ the
 [ENCODE library complexity statistics](https://www.encodeproject.org/data-standards/terms/) and the FastQC
 metrics to try to spot samples with problems.
 
-In the **ataqv** report, we look at the HQAA fragment length distribution plot.
-Ideally, this plot should show a periodic uptick every 200 bases, which
-corresponds to the different nucleosome fractions. The samples should be
-enriched for < 100 which is the nucleosome free fraction, 200 for the
-mononucleosome fraction, 400 for the dinucleosome fraction and 600 for the
-trinucleosome fraction. Often you will not see this behavior though even in
-libraries that were successful. But if some of your samples have this and others
-do not, that is something to be concerned about.
 
-You should see an enrichment around the transcription start sites, if you are
-missing that then your experiment likely failed. The **peaks** table in the
-**tables** tab in the **ataqv** report has a measurement of the high quality
-autosomal alignments overlapping peaks, **ataqv** calculates this metric using
-all of the peaks, not just the peaks from the nucleosome-free fraction, so this
-is useful to look at as well. See the [ataqv github
-repository](https://github.com/ParkerLab/ataqv/issues/13) for a discussion of
-the ranges of values you can expect to see for metrics in the **ataqv** report
-along with other values to look at that might be informative. The Parker lab
-reprocessed samples from many publications with **ataqv** and posted the reports
-[here](https://theparkerlab.med.umich.edu/data/porchard/ataqv-public-survey/)
-which is helpful to browse through to get an idea of what ranges of values you
-can expect. As you can see, they can be all over the place.
-
-#### hindbrain vs forebrain QC reports
+#### QC reports
 - [MultiQC report](http://atac-userstory.s3-website.us-east-2.amazonaws.com/multiqc_report.html)
-- [ataqv report](http://atac-userstory.s3-website.us-east-2.amazonaws.com)
 
 ### Differential affinity analysis
-For doing differential affinity analysis we recommend loading the consensus peak
-table from the `consensus/consensus.counts` file in the project directory. This
-is a table of counts per peak in the nucleosome-free fraction for each sample
-that you can use in any standard count-based differential expression tools like
-[DESeq2](
-https://bioconductor.org/packages/release/bioc/html/DESeq2.html)/[edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html)/[limma](https://bioconductor.org/packages/release/bioc/html/limma.html).
-Often you will find tutorials using
+For doing differential affinity analysis we recommend using
 [DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html)
-but that uses these callers under the hood, so you can just call them directly
-and skip an intermediate step if you want. Either way works. The DiffBind tutorials
-are great for understanding how to go about with your downstream analyses.
+The DiffBind tutorials are great for understanding how to go about with your downstream analyses. 
 
-#### hindbrain vs forebrain differential affinity reports
+#### differential affinity reports
 - [RMarkdown](http://atac-userstory.s3-website.us-east-2.amazonaws.com/peaks.Rmd)
 - [HTML report](http://atac-userstory.s3-website.us-east-2.amazonaws.com/peaks.html)
 - [example data](http://atac-userstory.s3-website.us-east-2.amazonaws.com/differential-affinity-example.tar.gz)

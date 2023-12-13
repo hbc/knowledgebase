@@ -1,113 +1,122 @@
-# ATAC-seq
-The ATAC-seq pipeline in bcbio follows recommendations from the [ENCODE ATAC-seq pipeline](https://www.encodeproject.org/atac-seq/) and [Yiwei Niu's excellent guide](https://yiweiniu.github.io/blog/2019/03/ATAC-seq-data-analysis-from-FASTQ-to-peaks/). 
+# ChIP-seq
 
-bcbio aligns the reads and cleans up the alignments, removing duplicates,
-multimappers and reads aligning to mitochondria. It then breaks up the BAM files
-into separate BAM files for nucleosome free (NF), mononucleosome (MN),
-dinucleosome (DN) and trinucleosome (TN) fractions and calls peaks separately on
-each fraction and also calls peaks on all of the fractions together.
-
-Consensus peaks of the nucleosome free peaks are created by choosing the peak
-with the highest score when peaks overlap, described more in depth in the
-[bedops
-documentation](https://bedops.readthedocs.io/en/latest/content/usage-examples/master-list.html).
-A matrix of peak counts is created with featureCounts that can be used with
-downstream count-based differential expression callers like DESeq2/limma/edgeR.
-
-ENCODE quality control metrics and other quality control information is added to the [MultiQC](https://multiqc.info) report. A separate ATAC-seq specific quality control report is generated using [ataqv](https://github.com/ParkerLab/ataqv).
-
-For CHIP-seq analysis use this config: [chip_seq.yaml](https://github.com/bcbio/bcbio-nextgen/blob/master/config/examples/chip_seq.yaml).
+bcbio evaluates data quality using FASTQC and filters and trims reads as necessary. Reads are aligned to the genome and only uniquely aligning reads are retained. Peaks are called with MACS2. A consensus peak file is generated using bedops and this consensus peak list is used to generate a count matrix using featureCounts.
 
 ## Description of example dataset
-We will be using [ENCSR312LQX](https://www.encodeproject.org/experiments/ENCSR312LQX) and
-[ENCSR310MLB](https://www.encodeproject.org/experiments/ENCSR310MLB/) from the ENCODE project
-as our example datasets. These are P0 samples from the mouse hindbrain and mouse forebrain, each
-with a single replicate each. We'll use these samples to call differential affinity between the mouse 
-hindbrain and forebrain.
+
+We will be working using ChIP-seq data from a recent publication in Neuron by Baizabal et al. (2018) [[1]](https://doi.org/10.1016/j.neuron.2018.04.033). 
+Baizabal et al. sought to understand how chromatin-modifying enzymes function in neural stem cells to establish the epigenetic landscape that determines cell type and stage-specific gene expression. Chromatin-modifying enzymes are transcriptional regulators that control gene expression through covalent modification of DNA or histones. 
+
+This specific dataset focuses on the transcriptional regulator **PRDM16, which is a chromatin-modifying enzyme** that belongs to the larger PRDM (Positive Regulatory Domain) protein family, that is structurally defined by the **presence of a conserved N-terminal histone methyltransferase PR domain** ([Hohenauer and Moore, 2012](https://journals.biologists.com/dev/article/139/13/2267/45169/The-Prdm-family-expanding-roles-in-stem-cells-and)). The authors generated CHiP-seq data for PRDM16. Our dataset consists of two WT samples and two KO samples.
+
 
 ### 1. Download the example data and configuration files
 This downloads the input data, creates the project structure and example configuration files.
 
 #### 1.1 Create input directory and download FASTQ files.
+
+To download the files used in this experiment, you will need to use the SRA Toolkit. Once installed, you can use the following commands:
+
 ```bash
-mkdir atac-example
-cd atac-example
+mkdir chip-example
+cd chip-example
 mkdir -p fastq
 
-# hindbrain samples
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF547YID/@@download/ENCFF547YID.fastq.gz -O fastq/hindbrain_rep1_R1.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF131VHT/@@download/ENCFF131VHT.fastq.gz -O fastq/hindbrain_rep1_R2.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF971XEA/@@download/ENCFF971XEA.fastq.gz -O fastq/hindbrain_rep2_R1.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF215WAD/@@download/ENCFF215WAD.fastq.gz -O fastq/hindbrain_rep2_R2.fastq.gz
-# forebrain samples
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF296GZG/@@download/ENCFF296GZG.fastq.gz -O fastq/forebrain_rep1_R1.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF664RZO/@@download/ENCFF664RZO.fastq.gz -O fastq/forebrain_rep1_R2.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF197GTC/@@download/ENCFF197GTC.fastq.gz -O fastq/forebrain_rep2_R1.fastq.gz
-wget --no-check-certificate https://www.encodeproject.org/files/ENCFF209GGJ/@@download/ENCFF209GGJ.fastq.gz -O fastq/forebrain_rep2_R2.fastq.gz
+# For WT Sample 1 ChIP
+fastq-dump --accession SRR6823762
+fastq-dump --accession SRR6823763
+cat SRR6823762.fastq SRR6823763.fastq | gzip > wt_sample1_chip.fastq.gz
+rm SRR6823762.fastq SRR6823763.fastq
+
+# For WT Sample 1 Input
+fastq-dump --accession SRR6823764
+fastq-dump --accession SRR6823765
+cat SRR6823764.fastq SRR6823765.fastq | gzip > wt_sample1_input.fastq.gz
+rm SRR6823764.fastq SRR6823765.fastq
+
+# For WT Sample 2 ChIP
+fastq-dump --accession SRR6823766
+fastq-dump --accession SRR6823767
+cat SRR6823766.fastq SRR6823767.fastq | gzip > wt_sample2_chip.fastq.gz
+rm SRR6823766.fastq SRR6823767.fastq
+
+# For WT Sample 2 Input
+fastq-dump --accession SRR6823768
+fastq-dump --accession SRR6823769
+cat SRR6823768.fastq SRR6823769.fastq | gzip > wt_sample2_input.fastq.gz
+rm SRR6823768.fastq SRR6823769.fastq
+
+# For KO Sample 1 ChIP
+fastq-dump --accession SRR6823770
+cat SRR6823770.fastq | gzip > ko_sample1_chip.fastq.gz
+rm SRR6823770.fastq
+
+# For KO Sample 1 Input
+fastq-dump --accession SRR6823771
+cat SRR6823771.fastq | gzip > ko_sample1_input.fastq.gz
+rm SRR6823771.fastq
+
+# For KO Sample 2 ChIP                                                                    
+fastq-dump --accession SRR6823772
+cat SRR6823772.fastq | gzip > ko_sample2_chip.fastq.gz
+rm SRR6823772.fastq
+
+# For KO Sample 2 Input
+fastq-dump --accession SRR6823773
+cat SRR6823773.fastq | gzip > ko_sample2_input.fastq.gz
+rm SRR6823773.fastq
 ```
 
-#### 1.2 Download template YAML file describing the ATAC-seq analysis
+#### 1.2 Copy the template YAML file describing the CHiP-seq analysis
 
-```bash
-mkdir -p metadata
-wget --no-check-certificate http://s3.amazonaws.com/bcbio-nextgen/atac_userstory_data/atac-example.yaml -O metadata/atac-example.yaml
-```
 
-atac-example.yaml: 
+chip-example.yaml: 
+
 ```yaml
 details:
 - analysis: chip-seq
   genome_build: mm10
   algorithm:
-    aligner: bwa
-    peakcaller: [macs2]
-    chip_method: atac
+    aligner: bowtie2
+    adapters: illumina
+    trim_reads: read_through
+    peakcaller: macs2
+    chip_method: chip
     keep_duplicates: False
     keep_multimapped: False
 upload:
   dir: ../final
 ```
 
+Here we are telling bcbio that we want our reads trimmed (trim_reads: read_through) rather then letting bcbio decide.
+
 #### 1.3 Create a sample sheet
 
-```bash
-wget --no-check-certificate http://s3.amazonaws.com/bcbio-nextgen/atac_userstory_data/hindbrain_forebrain.csv -O metadata/hindbrain_forebrain.csv
+
+```
+File,description,genotype,enzyme,batch,phenotype,antibody
+ko_sample1_chip.fastq.gz,ko_sample1_chip,KO,PRDM19,pair1,chip,narrow
+ko_sample1_input.fastq.gz,ko_sample1_input,KO,PRDM19,pair1,input,narrow
+ko_sample2_chip.fastq.gz,ko_sample2_chip,KO,PRDM19,pair2,chip,narrow
+ko_sample2_input.fastq.gz,ko_sample2_input,KO,PRDM19,pair2,input,narrow
+wt_sample1_chip.fastq.gz,wt_sample1_chip,WT,PRDM19,pair3,chip,narrow
+wt_sample1_input.fastq.gz,wt_sample1_input,WT,PRDM19,pair3,input,narrow
+wt_sample2_chip.fastq.gz,wt_sample2_chip,WT,PRDM19,pair4,chip,narrow
+wt_sample2_input.fastq.gz,wt_sample2_input,WT,PRDM19,pair4,input,narrow
 ```
 
-#### For ATAC-Seq
-hindbrain_forebrain.csv:
-```
-samplename,description,region,replicate
-forebrain_rep1_R1.fastq.gz,forebrain_rep1,forebrain,rep1
-forebrain_rep2_R1.fastq.gz,forebrain_rep2,forebrain,rep2
-hindbrain_rep1_R1.fastq.gz,hindbrain_rep1,hindbrain,rep1
-hindbrain_rep2_R1.fastq.gz,hindbrain_rep2,hindbrain,rep2
-```
-The only two fields required in this file are `samplename` and `description`, you can put whatever you want
-for the other columns. We recommend adding any additional metdata you know about the samples here.
+The necessary columns here are: `File`, `description`, `batch`, `phenotype` and `antibody`. 
+For ChIP-seq, bcbio requires `batch`,`phenotype`, and `antibody` are unique to ChIP-seq.
 
-##### For ChIP-Seq
+`batch` matches your input samples with their respective chips and the `phenotype` column tells bcbio if a sample is an input or chip.
+
+Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are pair1. However, sometimes the same input is used for multiple chips. Here is the same file but assuming that we also ran a `h3k4me1` chip on all samples
+
+
 ```
-samplename,description,batch,phenotype,replicate,treatment,antibody
-Lib4.R1.bc.2.WTMTF2.fq,WTMTF2_1,pair1,chip,1,WT,narrow
-Lib9.R1R2.bc.19.WTMTF2.fq,WTMTF2_2,pair2,chip,2,WT,narrow
-Lib3.bc.1.WTH3K27ME3.fq,WTH3k27ME3_1,pair3,chip,1,WT,H3k27ME3
-Lib9.R1R2.bc.1.WTH3K27ME3.fq,WTH3k27ME3_2,pair4,chip,2,WT,H3k27ME3
-Lib2.bc.1.MKOFLAG.fq,MTF2KO_1,pair5,chip,1,MTF2KO,narrow
-Lib9.R1R2.bc.30.MKOFLAG.fq,MTF2KO_2,pair6,chip,2,MTF2KO,narrow
-Lib2.bc.2.MKOWTFLAG.fq,MTF2KO_WTRES_1,pair7,chip,1,MTF2KO_WTRES,narrow
-Lib9.R1R2.bc.31.MKOWTFLAG.fq,MTF2KO_WTRES_2,pair8,chip,2,MTF2KO_WTRES,narrow
-Lib2.bc.15.MKOMUTFLAG.fq,MTF2KO_MUTRES_1,pair9,chip,1,MTF2KO_MUTRES,narrow
-Lib9.R1R2.bc.32.MKOMUTFLAG.fq,MTF2KO_MUTRES_2,pair10,chip,2,MTF2KO_MUTRES,narrow
-Lib3.bc.7.EKOH3K27ME3.fq,EEDKO_1,pair11,chip,1,EEDKO,H3k27ME3
-Lib3.bc.8.EKOH3K27ME3.fq,EEDKO_2,pair12,chip,2,EEDKO,H3k27ME3
-Lib10.R1R2.bc.3.EKOWTRES.fq,EKOWT_1,pair13,chip,1,EKO_WT,H3k27ME3
-Lib10.R1R2.bc.5.EKOWTRES.fq,EKOWT_2,pair14,chip,2,EKO_WT,H3k27ME3
-Lib8.R1R2.bc.16.EKOMUTRES.fq,EKOMUT_1,pair15,chip,1,EKO_MUT,H3k27ME3
-Lib10.R1R2.bc.4.EKOMUTRES.fq,EKOMUT_2,pair16,chip,2,EKO_MUT,H3k27ME3
-Lib2.bc.14.INPUT.fq,input_global,pair1;pair2;pair3;pair4;pair5;pair6;pair7;pair8;pair9;pair10;pair11;pair12;pair13;pair14;pair15;pair16,input,1,WT,Input
+
 ```
-For ChIP-seq, bcbio requires `batch` and `phenotype` in addition.
+
 
 However, please note that the `antibody` column should be added with caution.
 

@@ -7,7 +7,7 @@ bcbio evaluates data quality using FASTQC and filters and trims reads as necessa
 We will be working using ChIP-seq data from a recent publication in Neuron by Baizabal et al. (2018) [[1]](https://doi.org/10.1016/j.neuron.2018.04.033). 
 Baizabal et al. sought to understand how chromatin-modifying enzymes function in neural stem cells to establish the epigenetic landscape that determines cell type and stage-specific gene expression. Chromatin-modifying enzymes are transcriptional regulators that control gene expression through covalent modification of DNA or histones. 
 
-This specific dataset focuses on the transcriptional regulator **PRDM16, which is a chromatin-modifying enzyme** that belongs to the larger PRDM (Positive Regulatory Domain) protein family, that is structurally defined by the **presence of a conserved N-terminal histone methyltransferase PR domain** ([Hohenauer and Moore, 2012](https://journals.biologists.com/dev/article/139/13/2267/45169/The-Prdm-family-expanding-roles-in-stem-cells-and)). The authors generated CHiP-seq data for PRDM16. Our dataset consists of two WT samples and two KO samples.
+This specific dataset focuses on the transcriptional regulator **PRDM16, which is a chromatin-modifying enzyme** that belongs to the larger PRDM (Positive Regulatory Domain) protein family, that is structurally defined by the **presence of a conserved N-terminal histone methyltransferase PR domain** ([Hohenauer and Moore, 2012](https://journals.biologists.com/dev/article/139/13/2267/45169/The-Prdm-family-expanding-roles-in-stem-cells-and)). The authors generated ChIP-seq data for PRDM16. Our dataset consists of two WT samples and two KO samples.
 
 
 ### 1. Download the example data and configuration files
@@ -120,11 +120,11 @@ wt_sample2_input.fastq.gz,wt_sample2_input,WT,INPUT,pair4,input,narrow
 ```
 
 The necessary columns here are: `File`, `description`, `batch`, `phenotype` and `antibody`. 
-For ChIP-seq, bcbio requires `batch`,`phenotype`, and `antibody` are unique to ChIP-seq.
+ `batch`,`phenotype`, and `antibody` are columns unique to ChIP-seq.
 
 `batch` matches your input samples with their respective chips and the `phenotype` column tells bcbio if a sample is an input or chip.
 
-Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are pair1. However, sometimes the same input is used for multiple chips. Here is the same file but assuming that we also ran a `h3k4me1` chip on all samples
+Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are pair1. However, sometimes the same input is used for multiple chips. Here is the same file but assuming that we also ran a h3k4me1 chip on all samples:
 
 
 ```
@@ -154,15 +154,16 @@ While the following are considered narrow antibodies:
     {'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac', 'narrow'}
 
 
-If you are not sure which to use it is best to begin with narrow.
+If you are not sure which to use, it is best to begin with narrow.
 
 
 ### 2. Generate YAML config file for analysis
+
 ```bash
 bcbio_nextgen.py -w template metadata/chip-example.yaml metadata/neurons.csv fastq
 ```
 
-In the result you should see a folder structure:
+You should see a folder structure:
 ```
 neurons
 |---config
@@ -182,9 +183,9 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 ```
 
 ## Parameters
+
 * `peakcaller`: `[macs2]` bcbio just supports MACS2
 * `aligner`: supports `bowtie2` and `bwa`. `bwa` will result in a superset of the peaks called by `bowtie2`.
-* `chip_method`: set to `atac` to run the ATAC-seq pipeline
 * `keep_duplicates`: do not remove duplicates before peak calling. Defaults to _False_.
 * `keep_multimapped`: do not remove multimappers before peak calling. Defaults to _False_.
 
@@ -193,7 +194,7 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 ### Project directory
 
 ```
-├── 2020-05-01_hindbrain_forebrain
+├── 2023-05-01_neurons
 │   ├── ataqv
 │   │   ├── index.html -- QC report from ataqv
 │   ├── bcbio-nextgen-commands.log -- list of commands run by bcbio
@@ -230,7 +231,7 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 ├── ko_sample1_chip
 │   ├── fko_sample1_chip-ready.bam -- all alignments
 │   ├── ko_sample1_chip-ready.bam.bai 
-│   ├── fko_sample1_chip-ready.bw -- bigwig file of full alignments
+│   ├── fko_sample1_chip-ready.bw -- bigwig file of alignments
 │   ├── greylist -- info on reads in greylist
 │   ├── fastqc -- FASTQC files for the sample and samtools statistics
 │   ├── macs2 -- contains peak calls 
@@ -241,6 +242,7 @@ ready.bam contains only uniquely mapped non-duplicated reads. The stats in the `
 ## Downstream analysis
 
 ### Quality Control
+
 The **MultiQC** report in the project directory under `multiqc/multiqc_report.html`
 has useful quality control information that you can
 use to help decide if your ChIP-seq project worked.
@@ -250,20 +252,22 @@ material, the organism, the genome annotations and so on all affect all of the
 metrics. We generally look at the samples as a whole for an experiment and see
 if any of the samples are outliers in the important metrics. In the **MultiQC**
 report, we look at the percentage of reads in the peaks, the mapping percentage,
-the 
-[ENCODE library complexity statistics](https://www.encodeproject.org/data-standards/terms/) and the FastQC
+the [ENCODE library complexity statistics](https://www.encodeproject.org/data-standards/terms/) and the FastQC
 metrics to try to spot samples with problems.
 
 
 #### QC reports
+
 - [MultiQC report](http://atac-userstory.s3-website.us-east-2.amazonaws.com/multiqc_report.html)
 
 ### Differential affinity analysis
+
 For doing differential affinity analysis we recommend using
-[DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html)
+[DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html). 
 The DiffBind tutorials are great for understanding how to go about with your downstream analyses. 
 
-#### differential affinity reports
+#### Differential affinity reports
+
 - [RMarkdown](http://atac-userstory.s3-website.us-east-2.amazonaws.com/peaks.Rmd)
 - [HTML report](http://atac-userstory.s3-website.us-east-2.amazonaws.com/peaks.html)
 - [example data](http://atac-userstory.s3-website.us-east-2.amazonaws.com/differential-affinity-example.tar.gz)

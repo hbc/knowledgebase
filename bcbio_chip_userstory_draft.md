@@ -164,7 +164,7 @@ If you are using one of the following chips:
     'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3'
     'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac'
 
-You can directly put add the chip to the `antibody` colum and bcbio will correctly call broad or narrow peaks. If you are using a different antibody you MUST add broad or narrow depending on whether you want broad or narrow peaks. **If bcbio does not have a value in the `antibody` column narrow peaks will be called.**
+You can directly add the chip to the `antibody` colum and bcbio will correctly call broad or narrow peaks. If you are using a different antibody you MUST add broad or narrow depending on whether you want broad or narrow peaks. **If bcbio does not have a value in the `antibody` column narrow peaks will be called.**
 
 
 ### 2. Generate YAML config file for analysis
@@ -177,9 +177,11 @@ You should see a folder structure:
 ```
 neurons
 |---config
-|---final
 |---work
 ```
+
+_The `final` folder will get created here once the bcbio run is complete._
+
 
 `chip-example/config/neurons.yaml` is the main config file to run the bcbio project. You will
 see this file has a copy of the parameters in `chip-example.yaml` for each sample.
@@ -241,17 +243,20 @@ ready.bam contains only uniquely mapped non-duplicated reads. The stats in the `
 
 ### Quality Control
 
-The **MultiQC** report in the project directory under `multiqc/multiqc_report.html`
-has useful quality control information that you can
-use to help decide if your ChIP-seq project worked.
+**MultiQC**
 
 It is hard to give specific cutoffs of metrics to use since the kit, the sample
 material, the organism, the genome annotations and so on all affect all of the
 metrics. We generally look at the samples as a whole for an experiment and see
 if any of the samples are outliers in the important metrics. In the **MultiQC**
-report, we look at the percentage of reads in the peaks, the mapping percentage,
-the [ENCODE library complexity statistics](https://www.encodeproject.org/data-standards/terms/) and the FastQC
-metrics to try to spot samples with problems.
+report, we look speicifically at:
+
+* the percentage of reads in the peaks
+* the mapping percentage
+* the [ENCODE library complexity statistics](https://www.encodeproject.org/data-standards/terms/)
+* the FastQC metrics
+
+**NOTE:** The stats in the `multiqc_report.html` is generated based on alignments pre-filtering. **The input BAM files include all reads (duplicated, multimappers)**.
 
 
 #### QC reports

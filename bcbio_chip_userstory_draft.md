@@ -132,15 +132,6 @@ File,description,genotype,enzyme,batch,phenotype,antibody
 ko_sample1_chip_prdm.fastq.gz,ko_sample1_chip_prdm,KO,PRDM19,pair1,chip,narrow
 ko_sample1_chip_h3k4.fastq.gz,ko_sample1_chip_h3k4,KO,H3K4Me1,pair2,chip,narrow
 ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1;pair2,input,narrow
-ko_sample2_chip_prdm.fastq.gz,ko_sample2_chip_prdm,KO,PRDM19,pair3,chip,narrow
-ko_sample2_chip_h3k4.fastq.gz,ko_sample2_chip_h3k4,KO,H3K4Me1,pair4,chip,narrow
-ko_sample2_input.fastq.gz,ko_sample2_input,KO,INPUT,pair3;pair4,input,narrow
-wt_sample1_chip_prdm.fastq.gz,wt_sample1_chip,WT,PRDM19,pair5,chip,narrow
-wt_sample1_chip_h3k4.fastq.gz,wt_sample1_chip,WT,H3K4Me1,pair6,chip,narrow
-wt_sample1_input.fastq.gz,wt_sample1_input,WT,INPUT,pair5;pair6,input,narrow
-wt_sample2_chip_prdm.fastq.gz,wt_sample2_chip,WT,PRDM19,pair7,chip,narrow
-wt_sample2_chip_h3k4.fastq.gz,wt_sample2_chip,WT,H3K4Me1,pair8,chip,narrow
-wt_sample2_input.fastq.gz,wt_sample2_input,WT,INPUT,pair7;pair8,input,narrow
 ```
 
 We have changed file names and descriptions because bcbio does not allow for duplicates. Each chip must be in its own pair ONLY with its associated input file. Since `ko_sample1_chip_prdm` and `ko_sample1_chip_h3k4` are separate chips they get different pairs (pair1 and pair2 respectively) but the input ko_sample1_input matches both pair1 and pair2. Input files can match as many chips as needed and the pair names should be separated by `;`.
@@ -195,8 +186,6 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 
 ```
 ├── 2023-05-01_neurons
-│   ├── ataqv
-│   │   ├── index.html -- QC report from ataqv
 │   ├── bcbio-nextgen-commands.log -- list of commands run by bcbio
 │   ├── bcbio-nextgen.log -- stdout of bcbio log
 │   ├── consensus 
@@ -207,18 +196,7 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 │   ├── multiqc
 │   │   ├──list_files_final.txt
 │   │   ├──multiqc_config.yaml
-│   │   ├──multiqc_data
-│   │   │  ├──multiqc_bcbio_metrics.txt
-│   │   │  ├──multiqc_data_final.json
-│   │   │  ├──multiqc_data.json
-│   │   │  ├──multiqc_fastqc.txt
-│   │   │  ├──multiqc_general_stats.txt
-│   │   │  ├──multiqc.log
-│   │   │  ├──multiqc_samtools_idxstats.txt
-│   │   │  ├──multiqc_samtools_stats.txt
-│   │   │  ├──multiqc_sources.txt
-│   │   │  ├──seqbuster_isomirs.txt
-│   │   │  ├──seqbuster_mirs.txt
+│   │   ├──multiqc_data -- data used to generate the multiQC report
 │   │   ├── multiqc_report.html -- multiQC report with useful quality control metrics
 │   ├──metrics -- folder containing metrics for each sample
 │   ├──programs.txt -- versions of programs run in the pipeline
@@ -234,7 +212,8 @@ bcbio_nextgen.py ../config/neurons.yaml -n 16
 │   ├── fko_sample1_chip-ready.bw -- bigwig file of alignments
 │   ├── greylist -- info on reads in greylist
 │   ├── fastqc -- FASTQC files for the sample and samtools statistics
-│   ├── macs2 -- contains peak calls 
+│   ├── macs2 -- contains peak calls
+│   ├── qc -- qc info for the sample
 ```
 
 ready.bam contains only uniquely mapped non-duplicated reads. The stats in the `project/multiqc/multiqc_report.html` include all reads (duplicated, multimappers).

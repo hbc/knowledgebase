@@ -124,28 +124,47 @@ The necessary columns here are: `File`, `description`, `batch`, `phenotype` and 
 
 `batch` matches your input samples with their respective chips and the `phenotype` column tells bcbio if a sample is an input or chip.
 
-Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are pair1. However, sometimes the same input is used for multiple chips. Here is the same file but assuming that we also ran a h3k4me1 chip on all samples:
+Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are **pair1**. However, sometimes the same input is used for multiple chips. Here is metadata for ko_sample1 but assuming that we also ran a h3k4me1 chip:
 
 
 ```
+####DO NOT USE####
+
 File,description,genotype,enzyme,batch,phenotype,antibody
 ko_sample1_chip_prdm.fastq.gz,ko_sample1_chip_prdm,KO,PRDM19,pair1,chip,narrow
 ko_sample1_chip_h3k4.fastq.gz,ko_sample1_chip_h3k4,KO,H3K4Me1,pair2,chip,narrow
 ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1;pair2,input,narrow
 ```
 
-We have changed file names and descriptions because bcbio does not allow for duplicates. Each chip must be in its own pair ONLY with its associated input file. Since `ko_sample1_chip_prdm` and `ko_sample1_chip_h3k4` are separate chips they get different pairs (pair1 and pair2 respectively) but the input ko_sample1_input matches both pair1 and pair2. Input files can match as many chips as needed and the pair names should be separated by `;`.
+We have changed file names and descriptions because bcbio does not allow for duplicates. Each chip must be in its own pair ONLY with its associated input file. Since `ko_sample1_chip_prdm` and `ko_sample1_chip_h3k4` are separate chips they get different pairs (**pair1** and **pair2** respectively) but the input ko_sample1_input matches both **pair1** and **pair2**. Input files can match as many chips as needed and the pair names should be separated by `;`.
 
-The `antibody` column tells bcbio whether to call broad or narrow peaks on the data. Which peak type is the users choice but generally the follow are considered broad antibodies:
 
-    {'h3f3a', 'h3k27me3', 'h3k36me3', 'h3k4me1', 'h3k79me2', 'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3', 'broad'}
+#### 1.4 The antibody column for beginners
 
-While the following are considered narrow antibodies:
+The `antibody` column tells bcbio whether to call broad or narrow peaks on the data. If you are a beginner we suggest just using broad or narrow in this column and adding your chip in a separate metadata column (e.g., "enzyme" above). 
 
-    {'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac', 'narrow'}
+As a guide, we provide some common broad and narrow antibodies here.
+
+Broad antibodies:
+
+    'h3f3a', 'h3k27me3', 'h3k36me3', 'h3k4me1', 'h3k79me2', 'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3'
+
+Narrow antibodies:
+
+    'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac'
 
 
 If you are not sure which to use, it is best to begin with narrow.
+
+#### 1.4 The antibody column for experienced users
+
+If you are using one of the following chips:
+
+    'h3f3a', 'h3k27me3', 'h3k36me3', 'h3k4me1', 'h3k79me2'
+    'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3'
+    'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac'
+
+You can directly put add the chip to the `antibody` colum and bcbio will correctly call broad or narrow peaks. If you are using a different antibody you MUST add broad or narrow depending on whether you want broad or narrow peaks. **If bcbio does not have a value in the `antibody` column narrow peaks will be called.**
 
 
 ### 2. Generate YAML config file for analysis

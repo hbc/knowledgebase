@@ -129,7 +129,7 @@ The necessary columns here are: `samplename`, `description`, `batch`, `phenotype
 * `antibody` specifies the target histone modification which ultimately translates to narrow or broad peak calling. More information can be found below.
 
 #### 1.3.1 The batch column 
-In our example dataset we have one input for every chip. For example ko_sample1_chip has a corresponding ko_sample1_input. As such in the 'batch` column, each has the value **pair1**. However, **sometimes the same input is used for multiple chips**. In this case you will need to list mutiple pair values in `batch` column for the input sample. Below is a metadata example for the case where two chips were performed on ko_sample1 (one for Prdm16 and one for H3K4me1) but only a single input was generated:
+In our example dataset we have one input for every chip. For example ko_sample1_chip has a corresponding ko_sample1_input. As such in the `batch` column, each has the value **pair1**. However, **sometimes the same input is used for multiple chips**. In this case you will need to list mutiple pair values in `batch` column for the input sample. Below is a metadata example for the case where two chips were performed on ko_sample1 (one for Prdm16 and one for H3K4me1) but only a single input was generated:
 
 
 ```

@@ -1,6 +1,13 @@
 # ChIP-seq
 
-bcbio evaluates data quality using FASTQC and filters and trims reads as necessary. Reads are aligned to the genome and only uniquely aligning reads are retained. Peaks are called with MACS2. A consensus peak file is generated using bedops and this consensus peak list is used to generate a count matrix using featureCounts.
+The ChIP-seq pipeline is very similar to ATAC-seq. The following steps are taken with bcbio:
+
+* Evaluates data quality using FASTQC and filters and trims reads as necessary.
+* Reads are aligned to the genome and only uniquely aligning reads are retained (duplicates and multi-mappers are removed).
+* Peaks are called from the cleaned up BAM files.
+* Bigwig (.bw) files are generated for the filtered BAM files.
+* Consensus peaks are created by choosing the peak with the highest score when peaks overlap, described more in depth in the [bedops documentation](https://bedops.readthedocs.io/en/latest/content/usage-examples/master-list.html).
+* A matrix of peak counts is created with featureCounts that can be used with downstream count-based differential expression callers like DESeq2/limma/edgeR.
 
 ## Description of example dataset
 
@@ -69,13 +76,13 @@ rm SRR6823773.fastq
 
 #### 1.2 Create the template YAML file describing the ChIP-seq analysis
 
-Create the yaml file and then copy in the example text.
+Create a metadata directory for your yaml and samplesheet.
 
 ```bash
-mkdir templates
-cd templates
-nano chip-example.yaml
+mkdir -p metadata
 ```
+
+Create the `chip-example.yaml` file inside the `metadata` folder and then copy/paste in the example text below.
 
 chip-example.yaml: 
 
@@ -99,16 +106,12 @@ Here we are telling bcbio that we want our reads trimmed (trim_reads: read_throu
 
 #### 1.3 Create a sample sheet
 
-Create the sample sheet then copy in the example text.
+Create the sample sheet file `neurons.csv` inside the `metadata` folder, then copy/paste in the example text below.
 
-```bash
-mkdir metadata
-cd metadata
-nano neurons.csv
-```
+neurons.csv:
 
 ```
-File,description,genotype,enzyme,batch,phenotype,antibody
+samplename,description,genotype,enzyme,batch,phenotype,antibody
 ko_sample1_chip.fastq.gz,ko_sample1_chip,KO,PRDM19,pair1,chip,narrow
 ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1,input,narrow
 ko_sample2_chip.fastq.gz,ko_sample2_chip,KO,PRDM19,pair2,chip,narrow
@@ -119,27 +122,29 @@ wt_sample2_chip.fastq.gz,wt_sample2_chip,WT,PRDM19,pair4,chip,narrow
 wt_sample2_input.fastq.gz,wt_sample2_input,WT,INPUT,pair4,input,narrow
 ```
 
-The necessary columns here are: `File`, `description`, `batch`, `phenotype` and `antibody`. 
- `batch`,`phenotype`, and `antibody` are columns unique to ChIP-seq.
+The necessary columns here are: `samplename`, `description`, `batch`, `phenotype` and `antibody`. The following three are unique to ChIP-seq analysis:
 
-`batch` matches your input samples with their respective chips and the `phenotype` column tells bcbio if a sample is an input or chip.
+* `phenotype` column tells bcbio if a sample is an input or chip.
+* `batch` matches your input samples with their respective chips.
+* `antibody` specifies the target histone modification which ultimately translates to narrow or broad peak calling. More information can be found below.
 
-Here we have one input for every chip. For example ko_sample1 has ko_sample1_chip and ko_sample1_input. These are **pair1**. However, sometimes the same input is used for multiple chips. Here is metadata for ko_sample1 but assuming that we also ran a h3k4me1 chip:
+#### 1.3.1 The batch column 
+In our example dataset we have one input for every chip. For example ko_sample1_chip has a corresponding ko_sample1_input. As such in the 'batch` column, each has the value **pair1**. However, **sometimes the same input is used for multiple chips**. In this case you will need to list mutiple pair values in `batch` column for the input sample. Below is a metadata example for the case where two chips were performed on ko_sample1 (one for Prdm16 and one for H3K4me1) but only a single input was generated:
 
 
 ```
-####DO NOT USE####
+####DO NOT USE - EXAMPLE ONLY####
 
-File,description,genotype,enzyme,batch,phenotype,antibody
-ko_sample1_chip_prdm.fastq.gz,ko_sample1_chip_prdm,KO,PRDM19,pair1,chip,narrow
-ko_sample1_chip_h3k4.fastq.gz,ko_sample1_chip_h3k4,KO,H3K4Me1,pair2,chip,narrow
+samplename,description,genotype,enzyme,batch,phenotype,antibody
+ko_sample1_chip_prdm16.fastq.gz,ko_sample1_chip_prdm,KO,PRDM19,pair1,chip,narrow
+ko_sample1_chip_h3k4me.fastq.gz,ko_sample1_chip_h3k4,KO,H3K4Me1,pair2,chip,narrow
 ko_sample1_input.fastq.gz,ko_sample1_input,KO,INPUT,pair1;pair2,input,narrow
 ```
 
-We have changed file names and descriptions because bcbio does not allow for duplicates. Each chip must be in its own pair ONLY with its associated input file. Since `ko_sample1_chip_prdm` and `ko_sample1_chip_h3k4` are separate chips they get different pairs (**pair1** and **pair2** respectively) but the input ko_sample1_input matches both **pair1** and **pair2**. Input files can match as many chips as needed and the pair names should be separated by `;`.
+We have changed file names and descriptions because bcbio does not allow for duplicates. **Each chip must have its own pair value**. Input files can match as many chips as needed and the pair names should be separated by `;`.
 
 
-#### 1.4 The antibody column for beginners
+#### 1.3.2 The antibody column 
 
 The `antibody` column tells bcbio whether to call broad or narrow peaks on the data. If you are a beginner we suggest just using broad or narrow in this column and adding your chip in a separate metadata column (e.g., "enzyme" above). 
 
@@ -156,15 +161,7 @@ Narrow antibodies:
 
 If you are not sure which to use, it is best to begin with narrow.
 
-#### 1.4 The antibody column for experienced users
-
-If you are using one of the following chips:
-
-    'h3f3a', 'h3k27me3', 'h3k36me3', 'h3k4me1', 'h3k79me2'
-    'h3k79me3', 'h3k9me1', 'h3k9me2', 'h4k20me1', 'h3k9me3'
-    'h2afz', 'h3ac', 'h3k27ac', 'h3k4me2', 'h3k4me3', 'h3k9ac'
-
-You can directly add the chip to the `antibody` colum and bcbio will correctly call broad or narrow peaks. If you are using a different antibody you MUST add broad or narrow depending on whether you want broad or narrow peaks. **If bcbio does not have a value in the `antibody` column narrow peaks will be called.**
+Alternatively, you can directly specify the histone modification (values above) in the `antibody` colum and bcbio will correctly assign broad or narrow peaks. If you are using a different antibody you MUST add the broad or narrow value. **If bcbio does not have a value in the `antibody` column narrow peaks will be called.**
 
 
 ### 2. Generate YAML config file for analysis

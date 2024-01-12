@@ -4,7 +4,7 @@ Every system has a Python installation, but you don't necessarily want to use th
 
 **Solution?**
 
-Set up a full-stack scientific Python deployment is to **use a Python distribution** (Anaconda or Miniconda). It is an installation of Python with a set of curated packages which are guaranteed to work together.
+Set up a full-stack scientific Python deployment **using a Python distribution** (Anaconda or Miniconda). It is an installation of Python with a set of curated packages which are guaranteed to work together.
  
 
 ## Setting up Python distribution on O2
@@ -43,15 +43,43 @@ For conda envs, you can use the full path outside of home when creating env:
 ```bash
 module purge
 module load miniconda3/23.1.0
-conda create -p /path/to/somewhere/not/home/myEnv -c channel1 packagex==1.23
+conda create -p /path/to/somewhere/not/home/myEnv python=3.9 numpy
 ```
 
 > **NOTE:** It's common that installing packages using Conda is slow or fails because Conda is unable to resolve dependencies. To get around this, we suggest the use of Mamba.
 
 **Installing lots of dependency packages?**
 
-You can do this easily by creating a YAML file, for example 
+You can do this easily by creating a yaml file, for example `environment.yaml` below was used to install Pytables:
+
+```bash
+name: pytables
+channels:
+  - defaults
+dependencies:
+  - python=3.9*
+  - numpy >= 1.19.0
+  - zlib
+  - cython >= 0.29.32
+  - hdf5=1.14.0
+  - numexpr >= 2.6.2
+  - packaging
+  - py-cpuinfo
+  - python-blosc2 >= 2.3.0
+```
+
+Now to create the environment we reference the file in the command:
+
+```bash
+conda env create -f environment.yaml
+```
 
 ### Channels 
+
+Where do conda packages come from? The packages are hosted on conda “channels”. From the conda pages:
+
+_"Conda channels are the locations where packages are stored. They serve as the base for hosting and managing packages. Conda packages are downloaded from remote channels, which are URLs to directories containing conda packages. The conda command searches a set of channels."_
+
+Using `-c` you can specify whihc channels you want conda to search in for packages.
 
 > Adapted from [An Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/lectures/environment/python_environments.html) 

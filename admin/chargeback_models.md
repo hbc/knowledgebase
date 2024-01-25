@@ -11,18 +11,11 @@ Can support core infrastructure and expertise development for senior PIs.
 In all cases work must be HIV related.
 
 ## CATALYST
-6.5 hours total including initial emails, consults and analysis.
-Exceptions may be made in consultation with John for :
+5 hours total including initial emails, consults and analysis.
+Exceptions may be made in consultation with Shannan for :
 Grant submissions 
 manuscript resubmissions 
 GEO (or other publication database) uploads
-
-## HSCI
-Available for junior PIs with HSCI affiliation
-When in doubt, check with Maureen
-For regular analyses, 10 hours free and 10 subsequent hours at 50% discount
-For single cell analyses, 10 hours free and 30 subsequent hours at 50% discount
-5 hours free for anyone that has taken one of our courses where they had to register
 
 ## HMS
 On quad researchers only 

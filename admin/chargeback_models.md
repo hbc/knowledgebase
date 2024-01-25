@@ -12,10 +12,10 @@ In all cases work must be HIV related.
 
 ## CATALYST
 5 hours total including initial emails, consults and analysis.
-Exceptions may be made in consultation with Shannan for :
-Grant submissions 
-manuscript resubmissions 
-GEO (or other publication database) uploads
+Exceptions may be made in consultation with Shannan for:
+- Grant submissions 
+- manuscript resubmissions 
+- GEO (or other publication database) uploads
 
 ## HMS
 On quad researchers only 

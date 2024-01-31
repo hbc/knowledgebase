@@ -4,7 +4,7 @@ To have O2 accessible on your laptop/desktop as a folder, you need to use someth
 
 ### 1. Installing sshfs on OSX
 
-Download OSXfuse from [https://github.com/osxfuse/osxfuse/releases](https://github.com/osxfuse/osxfuse/releases/download/osxfuse-3.6.0/osxfuse-3.6.0.dmg), and install it.
+Download macFUSE from [https://github.com/osxfuse/osxfuse/releases](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.6.0/macfuse-4.6.0.dmg), and install it.
 
 Download sshfs from [https://github.com/osxfuse/sshfs/releases](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg), and install it.
 

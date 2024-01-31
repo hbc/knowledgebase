@@ -83,7 +83,7 @@ $ mkdir ~/O2_mount
 
 Finally, let's run the `sshfs` command to have O2 mount as a folder in the above space.
 ```bash
-$ sshfs ecommonsID@transfer.rc.hms.harvard.edu:. ~/O2_mount -o volname="O2" -o follow_symlinks
+$ sshfs ecommonsID@transfer.rc.hms.harvard.edu:. ~/O2 -o volname="O2" -o compression=no -o Cipher=arcfour -o follow_symlinks
 ```
 
 Now we can browse through our home directory on O2 as though it was a folder on our laptop. 

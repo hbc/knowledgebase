@@ -5,7 +5,7 @@ When I am working on large data sets my mind often drifts back to an old Simpson
 
 
 <p align = "center">
-<img src="../../img/simpsons.gif">
+<img src="../img/simpsons.gif">
 </p>
      
 <p align = "center">

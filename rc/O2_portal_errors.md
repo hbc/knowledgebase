@@ -26,7 +26,7 @@ If that doesn't work wait 5-10 min then repeat.
 When you attempt to connect you see:
 
 <p align = "center">
-<img src="../img/can_not_connect">
+<img src="../img/can_not_connect.png">
 </p>
 
 Potential solutions: This error indicates that either you did not load a gcc module or you loaded the incorrect one for the version of R you are running.

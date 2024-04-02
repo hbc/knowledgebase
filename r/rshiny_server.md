@@ -545,6 +545,68 @@ shinyApp(ui = ui, server = server, options = list(launch.browser = TRUE))
 
 In this scenario, you would still need to hit the stop sign button in the console to stop the app from running, even after you've closed the browser window.
 
+## Making Required Inputs
+
+Consider the scenario where you want R Shiny to only evaluate some logic after some input has been provided. You could use an action button to accomplish this task as we've discussed before. However, you can also use the `req()` function. The 'req()' function checks for required values before an evaluation of logic is done. Let's compare two examples to illustrate this:
+
+```
+library(shiny)
+library(tidyverse)
+
+ui <- fluidPage(
+  textInput("input_text", "What is the sum of 2 + 2?"),
+  textOutput("output_text"),
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({
+    if (input$input_text == "4"){
+      "Correct!"
+    }
+    else ("Wrong!")
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+<p align="center">
+<img src="Shiny_images/R_shiny_req_initial.gif" width="400">
+</p>
+
+In this case, the word "Wrong!" appears by default because R Shiny evaluates the initial state of the input as blank and states that this is not equal to 4, so it returns "Wrong!". However, this is not what we want because the user hasn't even _tried_ to to provide input yet, so stating that they are wrong prematurely seems incorrect. Thus, we will add a `req()` function to require that in the input_text actually exists:
+
+```
+library(shiny)
+library(tidyverse)
+
+ui <- fluidPage(
+  textInput("input_text", "What is the sum of 2 + 2?"),
+  textOutput("output_text"),
+)
+
+server <- function(input, output) {
+  output$output_text <- renderText({
+   req(input$input_text, cancelOutput = TRUE)
+    if (input$input_text == "4"){
+      "Correct!"
+    }
+    else ("Wrong!")
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+<p align="center">
+<img src="Shiny_images/R_shiny_req_after.gif" width="400">
+</p>
+
+Now we can see that R Shiny only returns "Wrong!" or "Correct!" after we have provide the input that is required. However, you can see that once we have initally defined this variable and then deleted the text, the `req()` condition is still being meet. Oftentimes, you would not want to use the `req()` function in this way, but rather that an initial parameter, like a file being loaded (which we will explore in the next section), has been met.
+
+## Loading External Files
+
 ## Hosting Options
 
 One great aspect of Shiny Apps is that you can host them on internet for anyone to use. However, you will need a server that allows you to host R Shiny apps.

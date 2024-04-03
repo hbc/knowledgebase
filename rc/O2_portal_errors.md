@@ -31,3 +31,7 @@ When you attempt to connect you see:
 
 Potential solutions: This error indicates that either you did not load a gcc module or you loaded the incorrect one for the version of R you are running.
 Kill the current session and start a new one with the correct gcc loaded in the modules to be loaded tab.
+
+## Issue 4 - When you finally refresh your environment is gone (THE WORST)
+
+What happened is you ran out of memory and R restarted itself behind the scenes. You will NOT get an error message for this of any kind. The best thing to do is quit your session and restart a new one with more memory.

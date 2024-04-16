@@ -1,5 +1,7 @@
 # Setting up an analysis Guidelines
-## Initial folder and git setup on on O2/Odyssey
+## Initial folder and git setup on on O2
+
+(also read new checklist on dropbox - HBC Team Folder (1)/Consults/_checklists/Data Management Checklist of Bulk RNA.docx)
 1. Setup repo on github under the HBC org (default to a private repo unless the PI wants it to be public). 
 
 Adapt the Trello project name to work on the server (i.e. replace spaces with underscores, remove special characters and make lowercase) and use that as the github repo name

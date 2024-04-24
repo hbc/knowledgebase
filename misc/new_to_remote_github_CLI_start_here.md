@@ -1,5 +1,7 @@
 # Putting local git repos into the HBC Github organization remotely via command line interface
 
+Heather Wick
+
 Has your experience with github primarily been through the browser? This document has the basics to begin turning your working directories into github repositories which can be pushed to the HBC location remotely via command line.
 
 ### Wait, back up, what do you mean by push?

@@ -70,7 +70,7 @@ git commit -m "NAME_OF_COMMIT"
 git push -u origin main
 ```
 
-### To add specific files/folders:
+### Add specific files/folders:
 
 ```bash
 git add path/to/files*

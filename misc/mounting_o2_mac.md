@@ -6,6 +6,8 @@ To have O2 accessible on your laptop/desktop as a folder, you need to use someth
 
 Download macFUSE from [https://github.com/osxfuse/osxfuse/releases](https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.6.0/macfuse-4.6.0.dmg), and install it.
 
+NOTE: In order to install macFUSE, you may need to first enable system extensions, following [this guideline from Apple](https://support.apple.com/guide/mac-help/change-security-settings-startup-disk-a-mac-mchl768f7291/mac), which will require restarting your computer.
+
 Download sshfs from [https://github.com/osxfuse/sshfs/releases](https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg), and install it.
 
 > #### Use this only if the above option fails!
@@ -45,7 +47,9 @@ Download sshfs from [https://github.com/osxfuse/sshfs/releases](https://github.c
 
 ### 2. Set up "ssh keys"
 
-Once `sshfs` is installed, the next step is to connect O2 (or a remote server) to our laptops. To make this process seamless,  first set up ssh keys which can be used to connect to the server without having to type in a password everytime.
+Once `sshfs` is installed, the next step is to connect O2 (or a remote server) to our laptops. To make this process seamless,  first set up ssh keys which can be used to connect to the server without having to type in a password every time.
+
+Log into O2 and use `vim` to open `~/.ssh/authorized_keys` and paste the code below copied from your computer to this file and save it. NOTE: make sure to replace `ecommonsID` with your actual username!
 
 ```bash
 # set up ssh keys
@@ -69,10 +73,6 @@ $ cat ~/.ssh/id_rsa.pub | pbcopy
 
 > `pbcopy` puts the output of `cat` into the clipboard (in other words, it is equivalent to copying with <kbd>ctrl + c</kbd>) so you can just paste it as usual with <kbd>ctrl + v</kbd>.
 
-
-Log into O2 and use `vim` to open `~/.ssh/authorized_keys` and paste the contents copied from your computer to this file and save it. 
-
-
 ### 3. Mount O2 using sshfs
 
 Now, let's set up for running `sshfs` on our laptops (local machines), by creating a folder with an intuitive name for your home directory on the cluster to be mounted in.
@@ -81,9 +81,9 @@ Now, let's set up for running `sshfs` on our laptops (local machines), by creati
 $ mkdir ~/O2_mount
 ```
 
-Finally, let's run the `sshfs` command to have O2 mount as a folder in the above space.
+Finally, let's run the `sshfs` command to have O2 mount as a folder in the above space. Again, replace `ecommonsID` with your username.
 ```bash
-$ sshfs ecommonsID@transfer.rc.hms.harvard.edu:. ~/O2 -o volname="O2" -o compression=no -o Cipher=arcfour -o follow_symlinks
+$ sshfs ecommonsID@transfer.rc.hms.harvard.edu:. ~/O2_mount -o volname="O2" -o compression=no -o Cipher=arcfour -o follow_symlinks
 ```
 
 Now we can browse through our home directory on O2 as though it was a folder on our laptop. 

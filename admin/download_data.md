@@ -73,31 +73,6 @@ A typical command might look like this:
 
 # Dana Farber MBCF
 
-## Notes
-- Zach and co. always share raw data but may default to sharing it through their pydio web interface, which is not reliable.
-
-- If you email Zach (zherbert@mail.dfci.harvard.edu) and tell him who's data you need (cc: the researcher) he will setup an FTP site for you to use. 
-
-- Make sure to let them know you've pulled down the data, so they can turn off the site when you're done (it costs money to run this).
-
-- Their data is typically in tar.gz files, it can pay off to decompress them right away so you know if you have the whole file...
-
-## Getting the data
-
-- You can access the data through a `wget` command.
-- Preface it with `nohup` so your job keeps running even if you connection drops.
-- The final nohup.out file will the download progress in it if you want to confirm download.
-A typical command might be something like this:
-
-`nohup wget -m ftp://userid:password@34.198.31.178/*`
-
--m mirror is to copy a mirror image of the directory/data including all files and subfolders
-
-Use this if nohup isn't working. Double check the UN, PW and IP address as they change.:
-`wget -m ftp://HSPH_bfx:MBCFHSPH_bfx\!@18.205.134.163`
-
-*note the escaped exclamation point in the password (\!), they like to put characters like that in their passwords. (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
-
 ## MBCF Google Bucket
 
 -Zach setup a google bucket since the FTP server was painfully slow for data downloads over 1TB (3 days vs 6 hours)
@@ -137,6 +112,44 @@ Copying gs://mbcf-hsph/231011_KT10562_fastq/multiqc_report.html...
 / [919 files][  1.2 TiB/  1.2 TiB]    3.6 MiB/s 
 
 HMS RC also suggested: Rclone - here is a good link to get you started. https://rclone.org/googlecloudstorage/
+
+## OLD DFCI Notes - still helpful for wget!
+- Zach and co. always share raw data 
+
+- If you email Zach (zherbert@mail.dfci.harvard.edu) and tell him who's data you need (cc: the researcher) he will setup an FTP site for you to use. 
+
+- Make sure to let them know you've pulled down the data, so they can turn off the site when you're done (it costs money to run this).
+
+- Their data is typically in tar.gz files, it can pay off to decompress them right away so you know if you have the whole file...
+
+## Getting the data
+
+- You can access the data through a `wget` command.
+- Preface it with `nohup` so your job keeps running even if you connection drops.
+- The final nohup.out file will the download progress in it if you want to confirm download.
+A typical command might be something like this:
+
+`nohup wget -m ftp://userid:password@34.198.31.178/*`
+
+-m mirror is to copy a mirror image of the directory/data including all files and subfolders
+
+Use this if nohup isn't working. Double check the UN, PW and IP address as they change.:
+`wget -m ftp://HSPH_bfx:MBCFHSPH_bfx\!@18.205.134.163`
+
+*note the escaped exclamation point in the password (\!), they like to put characters like that in their passwords. (old: `wget -m ftp://jhutchinson:MBCFjhutchinson\!@34.198.31.178`)
+
+# CosMx Data from BWH
+
+- Only for the Clark lab and CosMx data so far, but who knows...
+- Get an email from the lab then schedule a time with Miles Tran mtran26 at bwh dot harvard dot edu. (Great that the Clark lab downloads the data at the same time so we know they have a copy of the data)
+- They use an AWS download service and send a tarball. Apparently AWS opens permissions on the tarball so they send a link that's good for 15 minutes
+- at the scheduled time, Miles sends a bit.ly code. use wget and the code (previously had sent a very long code with instructions to put it in 'single quotes' but that never worked for me, so he sends the bit.ly now). In the example below, I made up the code for the transfer (ie. https://bit.ly/7d34a6e), and then the transferred tarball would be called 7d34a6e)
+- (Preface wget with `nohup` so your job keeps running even if you connection drops.)
+- what I do:
+- login to o2 (transfer node or not) - go to appropriate directory
+- nohup wget https://bit.ly/7d34a6e
+- tar zxvf 7d34a6e
+- Done!
 
 # Broad Institute
 

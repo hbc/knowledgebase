@@ -51,3 +51,12 @@ What happened is you ran out of memory and R restarted itself behind the scenes.
 
 Also, previous issues with O2portal RStudio crashing - “the compute-f architecture is not good enough and this part of the process fails because (maybe) it was built/installed on a newer node” .
 Solution: add the flag when you start the session to just exclude those nodes -x compute-f-17-[09-25]
+
+## Issue 6 - commands using cores fail
+
+```
+Error in `.rowNamesDF<-`(x, value = value) : invalid 'row.names' length
+In addition: Warning message:
+In mclapply(X, function(...) { :
+  scheduled cores 1, 2 did not deliver results, all values of the jobs will be affected
+```

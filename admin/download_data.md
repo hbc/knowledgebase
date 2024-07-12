@@ -156,55 +156,40 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
 - It can depend on the platform the researcher used, but the Broad typically only give out BAM files for normal RNA-seq runs.
 - For their DGE (96 well) platform, they give everything under the sun.
 - For 10x they may give you cellranger count output data matrices, and may or may not include bam files or even fastq files, so check you have what you need.
-- You have to use their ASPERA system to pull down the files and you will need not only login and password info to get the data, but a limited time password to decrypt the data.
-  - you can run ASPERA on your machine but by far the easiest method [*can someone update this when they do an actual Broad download? I'm not sure this is toally accurate*] is with their command line script `shares_download.sh`.
-  - If you don't have this info, have the client request it from the Broad and have the client send you the Broad's reply email with the info.
 
-Getting the Aspera client installed to facilitate transfer directly to o2 using the command line is initially a bit of a chore, but once installed makes data transfers simple. 
+## Aspera 
+For detailed instructions, examples and FAQs, see: http://www.broadinstitute.org/aspera/doc/aspera_shares_transfers.txt
 
-Install the Aspera Connect client for Linux to a directory on o2.Transfer.RC.hms.harvard.edu as follows:
+Install the Aspera CLI client for Linux (maybe try this first cp /home/ms561/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh . -- or just run the script as is from my directory) otherwise:
+        On the machine you will use for the transfer, download the Aspera CLI client from https://data.broadinstitute.org/aspera_doc/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
 
-1.	Go here to the Aspera site [IBM Aspera Connect](https://www.ibm.com/aspera/connect/)
+sh ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+PATH=/home/ms561/.aspera/cli/bin:$PATH
+MANPATH=/home/ms561/.aspera/cli/share/man:$MANPATH
 
-2.	Click on "see all installers"
+you will get credentials that look like this (and typically must be used within a few days):
+USERNAME: SN0020420 
+PASSWORD: Y5pkItiMlDay
 
-3.	Check the box for a recent linux version
+change to the directory where you want the data. The aspera download requires you specify a directory so in this example, make a directory named data, then use the following commands:
 
-4.	Scroll down to Fix package location to get ftp credentials
+mkdir data (if you haven't already)
 
-5.	sftp with given userid and server location. For example: `sftp vRmfnWoc@delivery04.dhe.ibm.com`  
-	It will prompt you for ftp password
-	
-6.	Download files with mget: `mget*`
+Run this command, using the correct username (twice) and password:
 
-	This will download:  
-	- ibm-aspera-connect_4.1.1.73_linux.tar.gz
-	- IBM_Aspera_Connect_4.1_User_Guide_for_Linux.pdf
-	- IBM_ASP_CONNECT_V4.1.1_RN_EN.pdf
+aspera shares download --username=SN0020420 --password=Y5pkItiMlDay --host=shares.broadinstitute.org --destination=data/ --source=SN0020420/
 
-7.	Extract the tarball: `tar -xf ibm-aspera-connect_4.1.1.73_linux.tar.gz`  
-	This will open a shell script ibm-aspera-connect_4.1.1.73_linux.sh
+a directory is created, something like SN0020420
 
-8.	Run the shell script: `bash ibm-aspera-connect_4.1.1.73_linux.sh`  
-	This will install the Aspera Connect client into .aspera/connect under your home directory
+cd SN0020420
+tar -xzfv $name.tar.gz
+($name where $name is the name of your file ending in .tar.gz.)
 
-9.	Add the executable to your path: `export PATH=~/.aspera/connect/bin:$PATH`
-        
-10.	Download the shares_download.sh script from http://www.broadinstitute.org/aspera/shares_download.txt:  
-	`wget http://www.broadinstitute.org/aspera/shares_download.txt`
-        
-11.	Rename this bash script from shares_download.txt to shares_download.sh:  
-	`mv shares_download.txt shares_download.sh`
+md5sum -c $hashName.md5 
+(Replace $hashName with the name of the included file ending in .md5)
 
-12. Make it executible script: `chmod a+x shares_download.sh`
-        
-13.	Use the shares_download.sh script to download your file. You will need the shares site credentials from the email from the Broad with this usage:  
-	`shares_download.sh /download/destination https://shares.broadinstitute.org SN0020420:password SN0020420/`
-	
-	For example, to download into a directory ./data :  
-	`bash shares_download.sh data https://shares.broadinstitute.org SN0243649:OJCGRLNFB8O6R9P SN0243649/`
-	
-Steps 1:12 should only have to be run once.
+Getting the Aspera client installed to facilitate transfer directly to o2 using the command line is initially a bit of a chore, but once installed makes data transfers simple. (I used globus to copy it from my mac to o2.)
+
 
 # BaseSpace to O2 by Radhika (July 2022)
 

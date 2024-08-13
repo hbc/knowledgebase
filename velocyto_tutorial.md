@@ -40,7 +40,7 @@ source velocyto/bin/activate
 
 ## Make sure you have proper `10x` gtf and download repeat masking gtf from ensembl
 
-* You can acquire the 10x gtf from the bauer (or other) sequencing center
+* You can acquire the 10x gtf for your particular experiment from the Bauer (or other) sequencing center
 * the repeat masking gtf can be downloaded from ucsc
   * for example grch38 can be downloaded from https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=611454127_NtvlaW6xBSIRYJEBI0iRDEWisITa&clade=mammal&org=Human&db=0&hgta_group=allTracks&hgta_track=rmsk&hgta_table=rmsk&hgta_regionType=genome&position=&hgta_outputType=gff&hgta_outFileName=hg38_rmsk.gtf
 

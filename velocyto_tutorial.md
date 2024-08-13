@@ -4,9 +4,9 @@ Velocyto is a necessary first step to running RNA velocity
 
 Getting this to work on the server can be a bit fidgety. Things to consider:
 * There are multiple wrappers for velocyto, and which one you use depends on:
-  * whether you're using data from a simple scRNAseq run or from a multiomics run (even if only using the RNAseq aspect)
+  * whether you're using data from a simple scRNAseq run or from a multiomics run (even if only using the RNAseq data from the multiomics project)
   * whether you want to write output to a different folder
-* Memory allocation is finnicky with samtools; you need both enough memory for each run and enough memory for each thread, and memory for each thread * number of threads must be less than or equal to memory requested
+* Memory allocation is finnicky, especially with samtools; you need both enough memory for each velocyto run and enough memory for each samtools thread, and memory for each thread * number of threads must be less than or equal to memory requested
 
 ## Initial set up
 
@@ -79,7 +79,7 @@ source velocyto/bin/activate
 I ran velocyto on a multi-omics data set. Different samples required different amounts of memory.
 For one sample, 160GB total requested memory wasn't enough to process (as it was for previous samples) but increasing to 200GB worked; note I didn't need to increase samtools' memory for this to work.
 
-Here's what the script looked like (please note these directories are real/live so you can go see how the directory is set up -- please don't overwrite them!):
+Here's what the script looked like (please note these directories are real/live so you can go see how the directory is set up when writing your own script -- please don't overwrite them!):
 
 ```
 #!/bin/sh

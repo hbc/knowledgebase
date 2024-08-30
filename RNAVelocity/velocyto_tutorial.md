@@ -1,5 +1,7 @@
 # Velocyto documentation
 
+Heather Wick
+
 Velocyto is a necessary first step to running RNA velocity
 
 Getting this to work on the server can be a bit fidgety. Things to consider:
@@ -38,7 +40,7 @@ source velocyto/bin/activate
 # pip3 install scvelo
 ```
 
-## Make sure you have proper `10x` gtf and download repeat masking gtf from ensembl
+## Make sure you have the proper `10x` gtf and download repeat masking gtf from ensembl
 
 * You can acquire the 10x gtf for your particular experiment from the Bauer (or other) sequencing center
 * the repeat masking gtf can be downloaded from ucsc
@@ -76,8 +78,7 @@ source velocyto/bin/activate
 
 ## Example code
 
-I ran velocyto on a multi-omics data set. Different samples required different amounts of memory.
-For one sample, 160GB total requested memory wasn't enough to process (as it was for previous samples) but increasing to 200GB worked; note I didn't need to increase samtools' memory for this to work.
+I ran velocyto on a multi-omics data set. Different sized samples required different amounts of memory, ranging from 60-250GB depending on the size of the original bam (5.6G - 124G). For larger samples, it's best to run this in `scratch`, which should have much faster I/O. 
 
 Here's what the script looked like (please note these directories are real/live so you can go see how the directory is set up when writing your own script -- please don't overwrite them!):
 
@@ -91,7 +92,7 @@ Here's what the script looked like (please note these directories are real/live 
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=200G
+#SBATCH --mem=250G
 #SBATCH --mail-type=ALL
 
 ### USAGE:

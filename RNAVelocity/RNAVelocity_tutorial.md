@@ -6,7 +6,7 @@ There are several ways to approach RNA velocity, once you have [generated your l
 
 * One way is to analyze the loom files directly, as outlined in [Mary Piper's tutorial](https://github.com/hbc/tutorials/blob/7ff670c5e3b477da09b6c2e832e05bd43e25448f/scRNAseq/scRNAseq_analysis_tutorial/lessons/velocity.md). However, if you already have a Seurat object, you may not want to re-analyze your data.
 
-* Another theoretical way to approach would be to merge your loom files and subset them based on a pre-existing, annotated Seurat file in R, also described by Mary [here](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/seurat_loom_subset_velocity.md). However, several packages, including Seurat, have changed enough that this can be highly challenging, especially if you are working with Seurat objects generated with different versions of Seurat, which makes it not possible to frankenstein the objects together in a way that scVelo will comprehend. I originally started with this method and abandoned it. I do not recommend.
+* Another theoretical way to approach would be to merge your loom files and subset them based on a pre-existing, annotated Seurat file in R, also described by Mary [here](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/seurat_loom_subset_velocity.md). However, several packages, including Seurat, have changed enough that this can be highly challenging, especially if you are working with Seurat objects generated with different versions of Seurat, which makes it not possible to frankenstein the objects together into an anndata object in a way that scVelo will comprehend. I originally started with this method and abandoned it. I do not recommend.
 
 * Instead, if you already have an annotated Seurat file I recommend merging your loom files and combining with your Seurat object in python, as outlined [here](https://uci-genpals.github.io/pseudotime/2021/02/09/scvelo-tutorial.html). For your convenience, I have outlined below the exact steps I took on O2 to do this. There are some small differences between the linked tutorial and what I executed.
 
@@ -18,9 +18,47 @@ This step is described in the [velocyto tutorial](./velocyto_tutorial.md)
 
 ### Step 2: create annotated, clustered Seurat object for your data using the methods of your choice
 
-In my case, this was a Seurat v4 object saved as an RDS.
+In my case, this was a Seurat v4 object saved as an RDS. 
 
-### Step 3: convert Seurat object into an anndata object
+### Step 3: save meta data, genes, and expression counts matrix from your Seurat object as separate files
+
+This step is necessary for converting your Seurat object into an anndata object. In R:
+
+```
+library(Seurat)
+library(SeuratDisk)
+library(SeuratWrappers)
+library(loomR)
+library(stringr)
+
+setwd("/n/data1/cores/bcbio/PIs/werner_neuhausser/neuhausser_scRNA-seq_human_embryo_hbc04528/multiome_combined-2023-10-16/RNAvelocity/scVelo/data/redo")
+
+# Bring in Seurat with known clusters
+seurat_obj <- readRDS('/n/data1/cores/bcbio/PIs/werner_neuhausser/neuhausser_scRNA-seq_human_embryo_hbc04528/multiome_combined-2023-10-16/data/4A_neuhausser_RNAonly_harmonizedByTime_cluster_labeled.rds')
+seurat_obj[["ATAC"]] <- NULL #remove ATAC seq to avoid incurring errors; only recommended if you are working with a multiomics Seurat object; may not be fully necessary but ran into many issues
+
+# save metadata table:
+seurat_obj$barcode <- colnames(seurat_obj)
+seurat_obj$UMAP_1 <- seurat_obj@reductions$umap.rna@cell.embeddings[,1] #umap.rna because this data originally had atacseq; regular scRNA seq will just be umap
+seurat_obj$UMAP_2 <- seurat_obj@reductions$umap.rna@cell.embeddings[,2]
+write.csv(seurat_obj@meta.data, file='metadata.csv', quote=F, row.names=F)
+
+# write expression counts matrix
+library(Matrix)
+counts_matrix <- GetAssayData(seurat_obj, assay='RNA', slot='counts')
+writeMM(counts_matrix, file='counts.mtx')
+
+# write dimesnionality reduction matrix, in this example case pca matrix
+write.csv(seurat_obj@reductions$pca@cell.embeddings, file='pca.csv', quote=F, row.names=F)
+
+# write gene names
+write.table(
+  data.frame('gene'=rownames(counts_matrix)),file='gene_names.csv',
+  quote=F,row.names=F,col.names=F
+)
+```
+
+### Step 4: convert Seurat object counts/meta data into an anndata object
 
 I always loaded my velocyto environment and modules from the velocyto tutorial first:
 
@@ -81,13 +119,13 @@ sc.pl.umap(adata, color='sample_id', frameon=False, legend_loc='on data', title=
 # save dataset as anndata format
 adata.write('my_data.h5ad')
 ```
-### Step 4: concatenate loom and merge with seurat to create combined anndata object for RNA velocity analysis
+### Step 5: concatenate loom and merge with seurat to create combined anndata object for RNA velocity analysis
 
-I have the individual important aspects of this outlined below, but you can [click here to jump directly to the full scripts for step 4 and 5](#scripts-for-steps-4-and-5)
+I have the individual important aspects of this outlined below if you want to read some more detail about each step as you follow along, but for convenience you can [click here to jump directly to the full scripts for step 5 and 6](#full-scripts-for-steps-5-and-6) which you can simply copy/paste.
 
 Depending on the size of your loom, you may not be able to run this interactively.
 
-#### 4.1: Rename the cell ids in your loom files to match the cell ids in your Seurat object and make unique variable names
+#### 5.1: Rename the cell ids in your loom files to match the cell ids in your Seurat object and make unique variable names
 
 ```
 import scvelo as scv
@@ -165,7 +203,7 @@ ldata5.var_names_make_unique()
 ldata6.var_names_make_unique()
 ```
 
-#### 4.2 Concatenate the loom files, remove any extraneously added sample designations, and merge with the anndata object (saved from step 3 from your Seurat object)
+#### 5.2 Concatenate the loom files, remove any extraneously added sample designations, and merge with the anndata object (saved from step 3 from your Seurat object)
 
 Check the barcodes from your concatenated ldata object before merging with the anndata object. In my case, it added -0, -2, ... -5 to all of my samples to differentiate them, but that would have created a mismatch with the cell ID naming in my anndata object. This was not something mentioned in the linked tutorial.
 
@@ -190,7 +228,7 @@ sc.pl.umap(adata, color='SCT_snn_res.0.4', frameon=False, legend_loc='on data', 
 sc.pl.umap(adata, color='sample_id', frameon=False, legend_loc='on data', title='Samples', save='_sample_id_postmerge.pdf')
 ```
 
-### Step 5: Run RNA Velocity
+### Step 6: Run RNA Velocity
 
 This is perhaps the most straightforward part. Note that if you run the dynamical model you need an extra line of code, which I have commented out below. You will also need to request more memory and time
 
@@ -238,11 +276,11 @@ scv.pl.velocity(adata, var_names=['FABP5'], color='Timepoint', save='_Timepoint_
 adata.write('merged_adata_ldata_6samples.h5ad')
 ```
 
-### Step 6: Run downstream analysis
+### Step 7: Run downstream analysis
 
-This involves looking at top genes, doing additional QC, looking at subsets of the data, etc. I will flesh this out as we do them. Running interactively would be ideal
+This involves looking at top genes, doing additional QC, looking at subsets of the data, etc. I will flesh this out as we do them. Running interactively would be ideal.
 
-## Scripts for Steps 4 and 5:
+## Full cripts for Steps 5 and 6:
 
 Submission script:
   

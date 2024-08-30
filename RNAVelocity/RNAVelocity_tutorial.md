@@ -1,12 +1,12 @@
-## Running RNA Velocity using an existing annotated seurat file and loom files created using the [velocyto tutorial](./velocyto_tutorial.md)
+## Running RNA Velocity with scVelo
 
 Heather Wick
 
-There are several ways to approach RNA velocity after generating loom files.
+There are several ways to approach RNA velocity, once you have [generated your loom files](./velocyto_tutorial.md).
 
 * One way is to analyze the loom files directly, as outlined in [Mary Piper's tutorial](https://github.com/hbc/tutorials/blob/7ff670c5e3b477da09b6c2e832e05bd43e25448f/scRNAseq/scRNAseq_analysis_tutorial/lessons/velocity.md). However, if you already have a Seurat object, you may not want to re-analyze your data.
 
-* Another theoretical way to approach would be to merge your loom files and subset them based on a pre-existing, annotated Seurat file, in R, also described by Mary [here](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/seurat_loom_subset_velocity.md). However, several packages, including Seurat, have changed enough that this can be highly challenging, especially if you are working with Seurat objects generated with different versions of Seurat. I originally started with this method and abandoned it. I do not recommend.
+* Another theoretical way to approach would be to merge your loom files and subset them based on a pre-existing, annotated Seurat file in R, also described by Mary [here](https://github.com/hbc/tutorials/blob/master/scRNAseq/scRNAseq_analysis_tutorial/lessons/seurat_loom_subset_velocity.md). However, several packages, including Seurat, have changed enough that this can be highly challenging, especially if you are working with Seurat objects generated with different versions of Seurat, which makes it not possible to frankenstein the objects together in a way that scVelo will comprehend. I originally started with this method and abandoned it. I do not recommend.
 
 * Instead, if you already have an annotated Seurat file I recommend merging your loom files and combining with your Seurat object in python, as outlined [here](https://uci-genpals.github.io/pseudotime/2021/02/09/scvelo-tutorial.html). For your convenience, I have outlined below the exact steps I took on O2 to do this. There are some small differences between the linked tutorial and what I executed.
 

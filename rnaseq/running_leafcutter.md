@@ -161,8 +161,11 @@ effect_PD$cluster = paste0(sapply( str_split(effect_PD$intron, ":"),"[", 1 ),":"
 
 effect_PD_sum <- effect_PD %>%
  group_by(cluster) %>% summarize(count_deltapsi_above_cutoff = sum(abs(deltapsi) >psi_cutoff)) #determine how many introns are above deltapsi cutoff
-effect_PD_max <- effect_PD %>%
-  group_by(cluster) %>% summarise_each(funs(deltapsi[which.max(abs(deltapsi))])) # determine maximum value of the deltapsi
+
+# summarise_each() and funs() are deprecated
+# effect_PD_max <- effect_PD %>%
+#   group_by(cluster) %>% summarise_each(funs(deltapsi[which.max(abs(deltapsi))])) # determine maximum value of the deltapsi
+effect_PD_max <- effect_PD %>% group_by(cluster) %>% summarize(max_deltapsi = max(abs(deltapsi)))
 
 effect_PD_summary = effect_PD_sum %>% left_join(effect_PD_max, by=c("cluster")) #merge to have all info
 

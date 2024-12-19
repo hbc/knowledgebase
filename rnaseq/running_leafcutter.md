@@ -165,7 +165,9 @@ effect_PD_sum <- effect_PD %>%
 # summarise_each() and funs() are deprecated
 # effect_PD_max <- effect_PD %>%
 #   group_by(cluster) %>% summarise_each(funs(deltapsi[which.max(abs(deltapsi))])) # determine maximum value of the deltapsi
-effect_PD_max <- effect_PD %>% group_by(cluster) %>% summarize(max_deltapsi = max(abs(deltapsi)))
+# determine maximum value of deltapsi (ignoring sign)
+effect_PD_max <- effect_PD %>% group_by(cluster) %>%
+ summarize(max_deltapsi = deltapsi[which.max(abs(deltapsi))])
 
 effect_PD_summary = effect_PD_sum %>% left_join(effect_PD_max, by=c("cluster")) #merge to have all info
 

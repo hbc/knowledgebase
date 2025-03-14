@@ -1,0 +1,1 @@
+This directory contains files demonstrating how to run Baysor segmentation on imaging-based spatial trascriptomics data, how to load these data into a Seurat Object, and using Baysor output for qc filtering transcripts and cells

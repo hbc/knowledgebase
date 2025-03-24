@@ -23,8 +23,8 @@
 
 **Spatial Transcriptomics**: [Running Baysor on o2](https://github.com/hbc/knowledgebase/blob/master/SpatialTranscriptomics/Baysor/RunningBaysor.md) * [Baysor Output into a Seurat Object](https://github.com/hbc/knowledgebase/blob/master/SpatialTranscriptomics/Baysor/LoadingBaysorSegmentationIntoSeurat.R)
 
-**Training team**: [github](https://github.com/hbctraining) * [Upcoming workshops](http://bioinformatics.sph.harvard.edu/training) * [Past workshops](http://bioinformatics.sph.harvard.edu/training#past-workshops) * [Workshop materials](https://hbctraining.github.io/main)
-- Team members: Radhika Khetani, Mary Piper, Meeta Mistry, Jihe Liu, Will Gammerdinger
+**Training Team**: [GitHub page](https://github.com/hbctraining) * [Training Webpage](http://bioinformatics.sph.harvard.edu/training) * [Workshop materials](https://hbctraining.github.io/main) * [HTML reference for GitHub-flavored Markdown](https://hbctraining.github.io/main/GitHub_HTML_reference.html) * [GitHub Pages Documentation](https://hbctraining.github.io/main/GitHub_pages/Pages_documentation.html)
+- Team members: Meeta Mistry, Will Gammerdinger, Heather Wick, Elizabeth Partan, Noor Sohail, Upen Bhattarai
 - Email: [hbctraining (at) hsph.harvard.edu](mailto:hbctraining@hsph.harvard.edu)
 
 **Variants**: [Clonal evolution](variants/clonal_evolution.md) * [Cancer variant databases](https://github.com/seandavi/awesome-cancer-variant-databases) * [Open Cravat](https://open-cravat.readthedocs.io/en/latest/index.html#) * [Applied computational genomics course by A. Quinlan](https://github.com/quinlan-lab/applied-computational-genomics) *[SC Phylogeny](https://github.com/amkozlov/cellphy) * [Validating variants in IGV](https://bioinformatics-core-shared-training.github.io/intro-to-IGV/InspectingVariantsInIGV.html) * [Human Genome Variation Lab](https://mccoy-lab.github.io/hgv_modules/index.html)

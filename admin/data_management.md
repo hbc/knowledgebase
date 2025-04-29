@@ -46,6 +46,21 @@ With the caveat that every project is different here are some general guidelines
 
 ## Globus howto (in progress)
 
+### Instructions to client for copying data to their o2 storage
+In the Globus File Manager window (add Globus link you setup for them) you’ll see our/HBC “source” (“Client Globus Share name”) on the left side. 
+-On the other side, choose your O2 data destination location using the “search” icon. This takes you to the File Manager Collection Search. In the Collection field, type HMS-RC (unless HMS-RC is already showing below as a Recent - then just choose that). 
+-Then you'll be returned to the original File Manager Screen (and/or prompted for your HMS O2 login first)
+-Put your path in - /n/data1/bwh/medicine/PIname/ (and you can make a specific folder)   
+- Click on the START button on the side of our data to transfer it to you.
+
+### Instructions to client for copying data to their hard drive/other local storage (needs Globus connect in these cases- for any storage accessible as a mounted drive on a computer)
+1. Mount your dropbox on your computer, if not already.
+2. Install the globus connect app on your system. (https://www.globus.org/globus-connect-personal).
+3. Once installed, add/identify the dropbox path (ie finder/folder where you’re transferring the data from)
+   a. Instructions on a mac:  – choose Preferences/Options - use + sign to add destination - this brings up the finder for choosing the source of your data.
+   b. Similar on Windows, I can get you further instructions if needed
+4. In the Globus File Manager window (add Globus link you setup for them) you’ll see our/HBC “destination” (“Client Globus Share name”) on the left side. On the other side, choose your data source location using the “search” – then click on whatever you setup using the + above in 3.a.  Click on the START button on the side of your data to transfer it to us.
+
 ### 1. Arrange the transfer with the researcher
 
 #### Warn them about need for xfer 

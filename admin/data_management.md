@@ -46,6 +46,36 @@ With the caveat that every project is different here are some general guidelines
 
 ## Globus howto (in progress)
 
+Globus is the tool HMS-RC provides for copying data to/from their storage. Login with your HUID at globus.org.
+
+### Setting up Globus to send or receive data
+
+The first step is telling the client about globus, if needed, and ask them for their globus login or to set it up. Here's a script:
+
+Globus LogIN help 
+
+Go to [https://www.globus.org/](https://www.globus.org/) and click on "LogIn/Use your existing organizational login/Harvard University", this will take you to Harvard Key. If you don’t have Harvard Key you can create a globus id - [https://www.globusid.org/create](https://www.globus.org/create) 
+
+
+#### Setting up a Globus share client for a client 
+1. Login to Globus (globus.org) It will open to the file manager. 
+2. Click search icon and choose HMS–RC or type in "HMS–RC". If prompted, use your HMS–RC login, i.e. nn123/pw. 
+3. type in the path of the data you want to share or of the location where you want the data copied. (ie from: /n/data1/cores/bcbio/PIs/angela_depace/ or to: PI_name/hbc_PIname_hbc01234/data/) - (identify a folder as opposed to an individual file)
+4. when you set the correct HMS-RC path, click the "share" option to the right 
+5. on the new screen, click "add guest collection" in the upper right. write a display name. I.e. 20250715_PI name_project number. Add the HMSRC path in the description field
+6 press create collection. This takes you to the permissions screen.
+7. Press add "permissions – share with" enter the person‘s email address or Globus ID.
+8.  click "send notification", write a message. Click wite if the client is copying data to us. click "add permission", click done.
+9. Typically I click on the roles tab and "assign new role" and add Shannan (or another colleague) as an administrator so someone else is in the loop.
+11. In the permissions tab under path, it shows a showing link for sharing, copy that and share it with the client again in an email or on basecamp. The followup helps make sure the link is used. 
+
+
+#### Globus tips and tricks
+-After logging in to globus, it may prompt you to login to HMS-RC. (depending where you are, it may say something like "identity nn123@a$%$^erlqwerqhqoa") This sometimes can be a little flaky and non-intuitive but just keep trying and even if you get an error, sometimes the path will show up in the file manager screen with the /n Drive folder- and everything is good.
+-the "add permissions" option is an example of strange globus flakiness is here it sometimes will say you must re-authenticate, and may show one or more strings. Choose the HMS one (something like nn123@a$%$^erlqwerqhqoa identity) and then enter your Hms ID and password click authenticate in order to access this resource. And continue. Should be fine.
+<img width="624" height="682" alt="image" src="https://github.com/user-attachments/assets/e752637f-a177-4d10-ae1f-b508cd1f21b1" />
+
+
 ### Instructions to client for copying data to their o2 storage
 In the Globus File Manager window (add Globus link you setup for them) you’ll see our/HBC “source” (“Client Globus Share name”) on the left side. 
 -On the other side, choose your O2 data destination location using the “search” icon. This takes you to the File Manager Collection Search. In the Collection field, type HMS-RC (unless HMS-RC is already showing below as a Recent - then just choose that). 
@@ -81,7 +111,7 @@ In the Globus File Manager window (add Globus link you setup for them) you’ll 
 >Alternatively, we can use the new Globus secure transfer service that HMS offers. It has worked quite well for us to transfer from O2 to external servers and individual laptops/computers. I'm attaching some of their guidance docs on setting up the client and initiating a transfer. We would need you to sign into the system with your Harvard ID first (see below) and give us your Globus user ID (see the “Account” section in the Globus interface) or the email you used to sign in. We'd then share the folder with you to access via Globus and you will receive an email with instructions. 
 
 >**Globus LogIN help**
->Go to https://www.globus.org/ and click on "LogIn/Use your existing organizational login/Harvard University", this will take you to Harvard Key. You can also login with your ecommons ID. If you don’t have Harvard Key you can create a globus id - (https://www.globusid.org/create).
+Go to https://www.globus.org/ and click on "LogIn/Use your existing organizational login/Harvard University", this will take you to Harvard Key. You can also login with your ecommons ID. If you don’t have Harvard Key you can create a globus id - (https://www.globusid.org/create).
 
 >Please let us know if you have O2 access and if not, please share your Globus ID and we'll set up your data for transfer.
 

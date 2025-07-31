@@ -160,8 +160,7 @@ Use this if nohup isn't working. Double check the UN, PW and IP address as they 
 ## Aspera 
 For detailed instructions, examples and FAQs, see: http://www.broadinstitute.org/aspera/doc/aspera_shares_transfers.txt
 
-Install the Aspera CLI client for Linux (maybe try this first cp /home/ms561/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh . -- or just run the script as is from my directory) otherwise:
-        On the machine you will use for the transfer, download the Aspera CLI client from https://data.broadinstitute.org/aspera_doc/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
+Install the Aspera CLI client for Linux on o2. (download the Aspera CLI client from https://data.broadinstitute.org/aspera_doc/ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh )
 
 sh ibm-aspera-cli-3.9.6.1467.159c5b1-linux-64-release.sh
 PATH=/home/ms561/.aspera/cli/bin:$PATH
@@ -171,7 +170,7 @@ you will get credentials that look like this (and typically must be used within 
 USERNAME: SN0020420 
 PASSWORD: Y5pkItiMlDay
 
-change to the directory where you want the data. The aspera download requires you specify a directory so in this example, make a directory named data, then use the following commands:
+change to the directory where you want the data. (/n/data1/cores/bcbio/PIs/) The aspera download requires you specify a directory so in this example, make a directory named data, then use the following commands:
 
 mkdir data (if you haven't already)
 
@@ -190,6 +189,42 @@ md5sum -c $hashName.md5
 
 Getting the Aspera client installed to facilitate transfer directly to o2 using the command line is initially a bit of a chore, but once installed makes data transfers simple. (I used globus to copy it from my mac to o2.)
 
+# Globus
+Notes from James 
+
+Downloading data (more notes about sharing data with clients at * [Globus](admin/Globus.md) )
+
+to have someone send you data via Globus create a globus ID, the sender will use this to estalish a transfer.
+
+https://www.globusid.org/
+
+When the transfer is ready, you will receive an email message from Globus with a link.
+
+Create a download destination directory, for example, on o2 in /n/data1/cores/bcbio/PIs/
+
+Click on globus link provided
+
+highlight the files/directories in the left hand pane you want to transfer from the client
+
+click on "Transfer or Sync to"
+
+this will open two panes
+
+in the right hand destination panel, search for "HMS-RC" in the top Collection slot.
+
+when it finds it, paste the path to your dir you've established for the destination directory. Click on the window to enter.
+
+You may instead have to click on the square to the left of the base directory, like "/n" and click the arrow to open the available subdirectories.
+
+keep doing this to add to the path name to your destination directory.
+
+you may have to select the provided data folders again in the left pane.
+
+you may get a message asking you to confirm your globus id, and enter your Harvard passkey information.
+
+hit Start, you'll see a window drop down and in a bit a green flag on the left Activity button, as well as a Green "Transfer request submitted successfully" banner, saying things are working. If you get a red flag something aint right., stop ther transfer and try again.
+
+you can click on the green banner to monitor the transfer.
 
 # BaseSpace to O2 by Radhika (July 2022)
 

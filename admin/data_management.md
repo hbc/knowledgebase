@@ -13,11 +13,11 @@ As an HMS Core we get storage on O2 for free. We are not the biggest user but we
 
 ## Get the data out of our main storage area
 ### Return data from completed analyses to the researcher
-* this is a hassle so we typically only do it for larger data folders
+
 * can be by
-  1) "sneaker net" - downloading onto a drive and handing it off to the researcher (not preferred)
-  2) GLOBUS - https://www.globus.org/ If the researcher sets up a GLOBUIS account, we can work with HMS RC to make their directory available to GLOBUS so the researcher can download it through the web or CL interface. While we haven't tested it, this method has the potential to be the least work for us.
-  3) upload to the researcher's server - preferred if access to the server is simple. A good example would be the research data storage that HMS PIs have access to or an FTP server. Passwords, logins and occasionally VPN access are typically required.
+  1) GLOBUS - HMS (and FSARC) provides Globus for secure data transfer. See [Globus](admin/Globus.md) - for sending data to clients.
+  2) upload to the researcher's server - preferred if access to the server is simple. A good example would be the research data storage that HMS PIs have access to or an FTP server. Passwords, logins and occasionally VPN access are typically required.
+  3) "sneaker net" - downloading onto a drive and handing it off to the researcher (Rare, not preferred)
   
 I recommend avoiding things like Dropbox, Google Drive or Box unless the data is small. They aren't really built for this purpose.
 
@@ -44,6 +44,35 @@ With the caveat that every project is different here are some general guidelines
   * Is the consult unique in its approach? i.e. do you think its something we might come back to in the future for other analyses. If yes, tidy it up and archive. If it is something like a standard RNA-seq analysis, we probably don't need it. 
  * How long has it been since the data was accessed? If its older than 2 years, we likely won't be using it again. Ask the researcher what they want returned to them and delete the rest.
 
+## Globus howto
+
+See [Globus](admin/Globus.md) - for sending data to clients AND for downloading data with Globus, see the Globus section in [[Data Management](admin/data_management.md) ](https://github.com/hbc/knowledgebase/blob/master/admin/download_data.md#globus)
+
+Sample script for older projects. 
+
+Subject: Delete/return data? re: (list project) PIname_c018_20K_cells_Samples_9-28-17
+ 
+Hi xxx –
+ 
+I hope this email finds you well. We have data from your lab’s project. Do you have the data you need from this? Due to storage constraints, we must remove the data from our HMS O2 storage. We will delete the data if you are all set. The project is from 2019 and is labeled:
+ 
+PI1/Contact1 - Test RNASeq of human brain HBC12345
+
+If you do not have the data and want to retain the raw and derived data in whole or in part, please let us know so we can facilitate transferring the data back to you.
+ 
+Is two weeks enough before we delete the data?
+  
+We look forward to hearing from you.
+  
+Thanks and best,
+
+If they say yes, they'd like the data, 
+Start by asking the PI/Postdoc for their globus ID or to get one. Once you get it, move on to explaining how to use it. See [Globus](admin/Globus.md) for more scripts/suggested process.
+
+
+
+<!-- This content will not appear in the rendered Markdown -->
+<!--
 ## Globus howto (in progress)
 
 Globus is the tool HMS-RC provides for copying data to/from their storage. Login with your HUID at globus.org.
@@ -170,7 +199,7 @@ Share the folder with the researcher after searching for them via their Globus I
 
 
 
-
+-->
 
 
 

@@ -6,7 +6,38 @@ Depending on what you’re doing, there may be a few steps for setting up a glob
 
 ## Copying data with a link
 
-However, if you’re just copying data using globus, (for instance from Harvard BPF core), just click on the provided link and follow the Globus instructions (login, specify where you’re copying the data – on HMS RC or FAS RC (ie. /n/data1/cores/bcbio/PIs/PIname/project_folder/data)), click Start> under the data being shared and the transfer should start.  
+However, if you’re just copying data using globus, (for instance from Harvard BPF core), just click on the provided link and follow the Globus instructions (login, specify where you’re copying the data – on HMS RC or FAS RC (ie. /n/data1/cores/bcbio/PIs/PIname/project_folder/data)), click Start> under the data being shared and the transfer should start. 
+
+## More detailed instructions
+
+To have someone send you data via Globus, first create a globus ID here  [https://www.globusid.org/](https://www.globusid.org/). The sender will need this to estalish a transfer.  It will look something like this. e1187b4cb7ce18b2@harvard.edu
+
+When the transfer is ready, you will receive an email message from Globus with a url link to your data.
+
+Create a download destination directory, for example, on o2 in /n/data1/cores/bcbio/PIs/
+
+Click on the globus url link provided in the email message.
+
+Highlight the files/directories in the left hand pane you want to transfer from the client
+
+Click on "Transfer or Sync to"
+
+This will open two panes
+
+In the right hand destination panel, search for "HMS-RC" in the top Collection slot.
+
+When it finds it, paste the path to your dir you've created for the destination directory. Click on the window to enter the path name.
+
+(You may instead have to click on the square to the left of the base directory, like "/n" and click the arrow to progressively open the available subdirectories to your destination directory.)
+
+You may have to select the provided data folders again in the left pane.
+
+You may get a message asking you to confirm your globus id, and enter your Harvard passkey information.
+
+Hit Start, you'll see a window drop down,  and in a moment, a green flag on the left Activity button, as well as a Green "Transfer request submitted successfully" banner, indicating things are working. If you get a red flag something is not right. Stop the transfer and try again.
+
+You can click on the green banner to monitor the transfer.
+
 
 ## Sharing data with a client
 Create a Globus guest collection in order to share/receive data from a client

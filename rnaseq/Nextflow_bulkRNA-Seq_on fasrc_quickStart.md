@@ -1,4 +1,4 @@
-8_7_25
+8_7_25 Billingsley
 
 ### Quick Start guide to aligning a bulk RNA-Seq experiment using Nextflow pipeline on fas.rc
 

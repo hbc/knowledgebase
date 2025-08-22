@@ -44,10 +44,31 @@ c) to ensure the compression finished,  add the `—remove-files` option to the 
 In general, the command to compress files would then look like this (`--remove-files` has to be before the other options as `-f` indicates a file name coming after):
 `tar --remove-files -cvzf  YYYYMMDD_folder.tar.gz folder`
 
-
 And in the case of this Arlelen Sharpe hbc038956  example, it would look like this:
 `tar --remove-files -cvzf  20201020_Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895.tar.gz Sharpe_RNAseq_analysis_of_siRNA_treated_PANCafs_and_myeloid_cells_after_coculture_hbc03895`
 This will compress the folder  and remove the original files (which will still be around in the backed up .snapshot folder for some weeks or months!)
+
+### Additional considerations:
+
+
+The `—remove-files` option ... The files are not *supposed* to be removed unless the tar operation is successful, however this apparently is not completely bulletproof!  An alternative suggestion is to not use -remove-files in the tar command. After checking that everything is correct (see subsequent suggestions), then delete the original files.
+
+Timing out. It is possible, for some very large directories, for an srun of even 12 hours to time out before compression is complete. If you don't notice this, or if the complete compression operation fails for some other reason, there *will* be an apparent tar.gz file created, though incomplete or corrupted.  You could easily copy this over to standby and never realize the file was corrupt. So you should check for file integrity before copying.
+
+`gzip -t file.tar.gz` This uses gzip's built‑in test mode to verify the compressed data's checksum. If the file is corrupted or incomplete, gzip will report an error.
+
+Examine checksums of the compressed file before copying to standby (see 6 below) and the compressed file after copying to standby.  If the checksums match, you can safely delete the original data and original compressed file.
+
+`md5sum file.tar.gz` will return the checksum.
+
+Consider removing large raw data files, like .bam and .fastq files before compressing the directory. 
+
+List them first. For example, `find . -type f -name '*.bam'` will list the .bam files in the directory and subdirectories.
+
+But *only* delete these if you have written confirmation from the client that they have copies of these (and if you trust the client to have copies of these.) It is most likely that you are archiving a project after it has been completed, and maybe a GEO submission has already been made. But if a GEO submission is forthcoming, even if the client says they have copies of the raw data, I might wait and not delete these until after the GEO submission has been completed. 
+
+`find . -type f -name '*.bam' -delete` will delete them.
+
 
 ## 5) Login to the transfer node
 The standby folder can only be accessed from the transfer node

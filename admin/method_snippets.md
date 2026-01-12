@@ -265,6 +265,41 @@ ChIP-seq data quality will be evaluated using FASTQC [6], and if required filter
 
 [17]: Bailey, Timothy L, Mikael Bodén, Fabian A Buske, Martin Frith, Charles E Grant, Luca Clementi, Jingyuan Ren, Wilfred W Li, and William S Noble. “MEME SUITE: Tools for Motif Discovery and Searching..” Nucleic Acids Research 37, no. Web Server issue: W202–8. doi:10.1093/nar/gkp335.
 
+### ChIPseq: nf-core
+
+ChIPseq data were processed through the nf-core version 23.10.1 [1] chipseq pipeline version 2.0.0 [2]. Briefly, raw read QC was performed using FastQC version 0.11.9 [3], TrimGalore version 0.6.7 [4], and cutadapt version 3.4 [5]. Reads were aligned to GrCh38 using Bowtie2 version 2.4.4 [6]. Alignment QC, including marking of duplicates and removal of blacklist regions, was performed using Picard version 2.27.4 [7], SAMtools version 1.15.1 [8], BamTools version 2.5.2 [9], BEDtools version 2.30.0 [10], deepTools version 3.5.1 [11], and PhantomPeakQualTools version 1.2.2 [12]. Broad peaks (H3K4me1) and narrow peaks (H3K27ac) were called using MACS2 version 2.2.7.1 [13] and annotated using HOMER version 4.11 [14].
+
+1.	Ewels PA, Peltzer A, Fillinger S, et al. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020;38(3):276-278. doi:10.1038/s41587-020-0439-x
+2.	Patel H, Espinosa-Carrasco J, Wang C, et al. nf-core/chipseq. https://zenodo.org/records/13899404
+3.	Andrews S. FastQC. https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+4.	Krueger F. Trim Galore. https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+5.	Martin M. Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet.journal 2011:17(1):10-12. doi:10.14806/ej.17.1.200
+6.	Langmead B, Salzberg SL. Fast gapped-read alignment with Bowtie 2. Nat Methods. 2012;9(4):357-359. doi:10.1038/nmeth.1923
+7.	Broad Institute. Picard toolkit. 2019. https://broadinstitute.github.io/picard/
+8.	Danecek P, Bonfield JK, Liddle J, et al. Twelve years of SAMtools and BCFtools. Gigascience. 2021;10(2):giab008. doi:10.1093/gigascience/giab008
+9.	Barnett D. BAMtools. https://github.com/pezmaster31/bamtools
+10.	Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010;26(6):841-842. doi:10.1093/bioinformatics/btq033
+11.	Ramírez F, Ryan DP, Grüning B, et al. deepTools2: a next generation web server for deep-sequencing data analysis. Nucleic Acids Res. 2016;44(W1):W160-W165. doi:10.1093/nar/gkw257
+12.	Landt SG, Marinov GK, Kundaje A, et al. ChIP-seq guidelines and practices of the ENCODE and modENCODE consortia. Genome Res. 2012;22(9):1813-1831. doi:10.1101/gr.136184.111
+13.	Zhang Y, Liu T, Meyer CA, et al. Model-based analysis of ChIP-Seq (MACS). Genome Biol. 2008;9(9):R137. doi:10.1186/gb-2008-9-9-r137
+14.	Heinz S, Benner C, Spann N, et al. Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities. Mol Cell. 2010;38(4):576-589. doi:10.1016/j.molcel.2010.05.004
+
+### CUT&RUN: nf-core
+
+CUT&RUN data were processed through the nf-core version 24.04.3 [1] cutandrun pipeline version 3.2.2 [2]. Briefly, raw read QC was performed using FastQC version 0.12.1 [3], TrimGalore version 0.6.6 [4], and cutadapt version 2.10 [5]. Reads were aligned to GrCh38 using Bowtie2 version 2.4.4 [6]. Alignment QC, including marking of duplicates, was performed using Picard version 3.1.0 [7] and SAMtools version 1.17 [8]. Peaks were called using MACS2 version 2.2.7.1 [9]. Peak QC was performed using BEDtools version 2.31.0 [10] and deepTools version 3.5.1 [11].
+
+1.	Ewels PA, Peltzer A, Fillinger S, et al. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020;38(3):276-278. doi:10.1038/s41587-020-0439-x
+2.	Meers MP, Bryson TD, Henikoff JG, Henikoff S. Improved CUT&RUN chromatin profiling tools. Elife. 2019;8:e46314. doi:10.7554/eLife.46314
+3.	Andrews S. FastQC. https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+4.	Krueger F. Trim Galore. https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+5.	Martin M. Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet.journal 2011:17(1):10-12. doi:10.14806/ej.17.1.200
+6.	Langmead B, Salzberg SL. Fast gapped-read alignment with Bowtie 2. Nat Methods. 2012;9(4):357-359. doi:10.1038/nmeth.1923
+7.	Broad Institute. Picard toolkit. 2019. https://broadinstitute.github.io/picard/
+8.	Danecek P, Bonfield JK, Liddle J, et al. Twelve years of SAMtools and BCFtools. Gigascience. 2021;10(2):giab008. doi:10.1093/gigascience/giab008
+9.	Zhang Y, Liu T, Meyer CA, et al. Model-based analysis of ChIP-Seq (MACS). Genome Biol. 2008;9(9):R137. doi:10.1186/gb-2008-9-9-r137
+10.	Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010;26(6):841-842. doi:10.1093/bioinformatics/btq033
+11.	Ramírez F, Ryan DP, Grüning B, et al. deepTools2: a next generation web server for deep-sequencing data analysis. Nucleic Acids Res. 2016;44(W1):W160-W165. doi:10.1093/nar/gkw257
+
 ### TF
 
 Likely transcription factors (TF) associated with differentially expressed genes will be identified using oPOSSUM-3[1], a web-accessible software system for identification of over-represented transcription factor binding sites (TFBS) and TFBS families in DNA sequences of co-expressed genes.
@@ -274,6 +309,15 @@ Likely transcription factors (TF) associated with differentially expressed genes
 ### Integrative analysis of RNA-seq and ChIP-seq data
 
 RNA-seq and ChIP-seq data will be integrated using BETA [Wang S, Sun H, Ma J, Zang C, Wang C, Wang J, Tang Q, Meyer CA, Zhang Y, Liu XS. Target analysis by integration of transcriptome and ChIP-seq data with BETA. Nat Protoc. 2013 Dec;8(12):2502-15. doi: 10.1038/nprot.2013.150. Epub 2013 Nov 21. PMID: 24263090; PMCID: PMC4135175] to identify which of the differentially expressed genes are associated with epigenetic changes. BETA uses a computational model to quantify the regulatory potential of a gene based on the number and distance of regulatory sites around the gene, and categorizes the effects as activating, repressive or both.
+
+### scATACseq
+
+Single cell accessibility counts were generated using 10x Genomics CellRanger ATAC count version 2.1.0 [1]. Fragment files were subset to nucleosome-free regions (NFR) by selecting fragments ≤ 147 bp. Peak matrices, fragment files, and metadata from CellRanger were imported into Seurat version 5.0.2 [2] using CreateChromatinAssay from the Signac R package version 1.14.0 [3]. Peaks were called per timepoint using MACS2 [4] with Ensembl Homo sapiens 98 as the reference. Peaks on nonstandard chromosomes and in genomic blacklist regions were removed. Finally, counts per sample were quantified using FeatureMatrix from the Signac R package version 1.14.0 [3].
+
+1.	Satpathy AT, Granja JM, Yost KE, et al. Massively parallel single-cell chromatin landscapes of human immune cell development and intratumoral T cell exhaustion. Nat Biotechnol. 2019;37(8):925-936. doi:10.1038/s41587-019-0206-z
+2.	Hao Y, Stuart T, Kowalski MH, et al. Dictionary learning for integrative, multimodal and scalable single-cell analysis. Nat Biotechnol. 2024;42(2):293-304. doi:10.1038/s41587-023-01767-y
+3.	Stuart T, Srivastava A, Madad S, Lareau CA, Satija R. Single-cell chromatin state analysis with Signac. Nat Methods. 2021;18(11):1333-1341. doi:10.1038/s41592-021-01282-5
+4.	Zhang Y, Liu T, Meyer CA, et al. Model-based analysis of ChIP-Seq (MACS). Genome Biol. 2008;9(9):R137. doi:10.1186/gb-2008-9-9-r137
 
 ### ATAC-seq: bcbio
 

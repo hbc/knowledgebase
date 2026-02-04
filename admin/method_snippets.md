@@ -36,7 +36,7 @@ Methylation arrays will be processed and analyzed using a combination of  Biocon
 
 ----------
 
-## Variant calling
+## Variant calling: bcbio
 
 Overall, the parameters of our workflows are based on GATK best practices (https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows), contributions from bcbio community (https://github.com/bcbio/bcbio-nextgen) and our own validations (https://github.com/bcbio/bcbio_validations/).
 
@@ -153,6 +153,10 @@ Karczewski et al.The mutational constraint spectrum quantified from variation in
 We create gemini database [16] as output (https://gemini.readthedocs.io/en/latest/). We support any internal vcf or bed based annotation (internal frequency database) via vcfanno.
 
 [16]: Paila U, Chapman BA, Kirchner R, Quinlan AR. GEMINI: integrative exploration of genetic variation and genome annotations. PLoS Comput Biol. 2013;9(7):e1003153. doi:10.1371/journal.pcbi.1003153.
+
+## Variant calling: nf-core
+
+Samples were processed through the nf-core [sarek pipeline](https://nf-co.re/sarek/) version XXX (optional: in WES mode using the bed file from XXX). Briefly, read quality control and preprocessing was performed using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) version XXX and [FastP](https://github.com/OpenGene/fastp) version XXX. Sequences were aligned to human reference genome iGenomes GRCh38 from NCBI using [BWA-MEM](https://github.com/lh3/bwa) version XXX. Single nucleotide variants (SNVs) and short insertions / deletions (indels) were called using [GATK HaplotypeCaller](https://gatk.broadinstitute.org/hc/en-us/articles/30332006386459-HaplotypeCaller) version XXX. Variants were annotated using [SnpEff/SnpSift](https://pcingola.github.io/SnpEff/) version XXX and [Ensembl Variant Effect Predictor (VEP)](https://github.com/Ensembl/ensembl-vep) version XXX.
 
 ----------
 

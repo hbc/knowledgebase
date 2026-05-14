@@ -34,7 +34,7 @@ When you are done you can deactivate the environment or close it:
 conda deactivate
 ```
 
-The environments and associated libs are located in `~/home/minconda3/envs`. Both miniconda and the created environments can occupy a lot of space and max out your home directory! 
+The environments and associated libs are located in `~/.conda/envs/`. Both miniconda and the created environments can occupy a lot of space and max out your home directory! 
 
 **Solution: Create the conda env in another space**
 
